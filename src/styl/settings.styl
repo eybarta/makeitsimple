@@ -1,0 +1,148 @@
+// margins + padding aliases
+$space = {
+	mt: margin-top,
+	mb: margin-bottom,
+	ml: margin-left,
+	mr: margin-right,
+	pt: padding-top,
+	pb: padding-bottom,
+	pl: padding-left,
+	pr: padding-right,
+}
+// ALIAS
+@alias {
+	mt: margin-top;
+	mb: margin-bottom;
+	ml: margin-left;
+	mr: margin-right;
+	pt: padding-top;
+	pb: padding-bottom;
+	pl: padding-left;
+	pr: padding-right;
+}
+
+// HEADER HEIGHT
+head-height = 57px
+
+// GRID
+$centered
+	lost-center 1100px
+
+// COLORS 
+dark = #1a232e
+darkblue = #023451
+lightblue = #16507d
+midblue = #33a0ff
+linkblue = #0075bf
+lightgray = #c4c4c4
+gray = #97989d
+linkgray = #727272
+// breakpoints
+breaks = {
+	mobile: 640px,
+	mid: 570px,
+	tablet: 769px,
+	base: 1024px,
+	big: 1200px,
+	bigger: 1600px,
+	max: 1880px
+}
+
+margins = {
+	min:10px,
+	small:20px,
+	med:30px,
+	big:50px,
+	bigger:70px,
+	max:100px,
+	head: head-height
+}
+
+
+
+// mixins
+fontsizer(min = 13px, max = 24px, rangemin = breaks.mobile, rangemax = breaks.max)
+	font-size responsive min max
+	font-range rangemin rangemax
+
+
+// FONT SIZES
+$font-base = 16px
+
+font = {
+	biggest: unit($font-base*3.875, px),	//62px
+	bigger: unit($font-base*2.625, px),		// 42px
+	big: unit($font-base*2, px),			// 32px
+	more: unit($font-base*1.75, px),		// 28px
+	mid: unit($font-base*1.5, px),			// 24px
+	small: unit($font-base*1.25, px),		// 20px
+	smaller: unit($font-base*1.125, px),	// 18px
+	base: unit($font-base, px),				// 16px
+	smallest: unit($font-base*0.875, px)	// 14px
+}
+
+title1()
+	fontsizer(font.biggest*0.85, font.biggest)
+	font-family 'Helvetica Thin'
+	
+title2()
+	fontsizer(font.bigger*0.85, font.bigger)
+	font-family 'Helvetica Thin'
+title3()
+	fontsizer(font.big*0.85, font.big)
+	font-family 'Helvetica Thin'
+title4()
+	fontsizer(font.more*0.85, font.more)
+	font-family 'Helvetica Thin'
+title5()
+	fontsizer(font.mid*0.85, font.mid)
+	font-family 'Helvetica Thin'
+title6()
+	fontsizer(font.small*0.85, font.small)
+	font-family 'Helvetica Thin txt'
+sub-title()
+	font-family 'Helvetica Thin txt'
+	fontsizer(font.smaller*0.85, font.smaller)
+mid-txt()
+	font-family 'Helvetica Thin txt'
+	fontsizer(font.base*0.85, font.base)
+small-txt()
+	font-family 'Helvetica Thin txt'
+	fontsizer(font.smallest*0.85, font.smallest)
+	
+
+// POSITIONING
+absolute-center(dir)
+	position relative
+	& > *
+		position absolute
+		if (dir==vertical)
+			top 50%
+			transform translateY(-50%)
+		else if (dir==horizontal)
+			left 50%
+			transform translateX(-50%)
+		else
+			top 50%
+			left 50%
+			transform translate(-50%,-50%)
+
+mid()
+	display inline-block
+	vertical-align middle
+
+inline-mid()
+	& > *:not(.not-me)
+		mid()
+	&:before
+		mid()
+		content ''
+		height 100%
+
+$zero
+	padding 0
+	margin 0
+$sharpen
+	-webkit-font-smoothing antialiased
+	text-shadow 1px 1px 1px rgba(0,0,0,0.08)
+	-moz-osx-font-smoothing grayscale

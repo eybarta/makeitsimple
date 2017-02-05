@@ -1,0 +1,258 @@
+@import 'rupture'
+@import 'settings'
+.txt
+    color #8aa7be
+    line-height 20px
+    letter-spacing 1.1px
+.minitxt
+    small-txt()
+    letter-spacing 1.1px
+    color lightgray
+    strong
+        font-weight normal
+        color darkblue
+.subtxt
+    color lightblue
+    opacity 0.5
+a.link, a.link:visited
+    color linkblue
+
+.item-group
+    lost-utility clearfix
+    .item
+        margin-bottom 5%
+        img
+            margin-bottom 20px
+            width 98%
+        .minitxt
+            padding 0 8%
+            line-height 20px
+            +below(breaks.mid)
+                padding 0
+
+// INTROS
+.intro
+    background url('./assets/img/bg.jpg') no-repeat 50% 50% / cover
+    background-attachment fixed
+    &.intro-v3
+        background-image url('./assets/img/v3-big.jpg')
+
+.midtxt
+    color #8c8c8c
+    text-align center
+    line-height 24px
+    display block
+    margin 0 auto
+    +below(breaks.mid)
+        width 80%
+.bottom-graphic-v3
+    position relative
+    background url('./assets/img/v3-bottom-graphic.jpg') no-repeat 50% bottom / auto 100%
+    padding-bottom 16%
+    +below(breaks.mid)
+        min-height 5vh
+.flip-title
+    direction rtl
+    inline-mid()
+    .subtxt
+        sub-title()
+        margin-right 2%
+        direction ltr
+        +below(breaks.tablet)
+            margin 10px 0 0 0
+            display block
+
+
+.info-toggle
+    position absolute
+    top 45px
+    left 45px
+    cursor pointer
+    span
+        font-size 16px
+        color #c9cbcf
+        padding-left 14px
+        display inline-block
+        vertical-align middle
+    &:before
+        content ''
+        display inline-block
+        vertical-align middle
+        border 2px solid #bcbec2
+        border-radius 50%
+        width 64px
+        height 64px
+        background url('./assets/img/info.svg') no-repeat 50% 50%
+
+        
+// FAQ BLOCK
+.faq-control
+    width 80%
+    margin 50px auto
+    h5
+        display inline-block
+        vertical-align top
+        width 40%
+        color darkblue
+        text-align center
+        +below(breaks.tablet)
+            width auto
+            display block
+            text-align left
+    .qa
+        display inline-block
+        vertical-align top
+        width 40%
+        border-left 1px solid gray
+        padding-left 28px
+        +below(breaks.tablet)
+            width auto
+            display block
+            margin-top 20px
+        ul
+            li
+                position relative
+                margin 20px 0 20px
+                padding-left 28px
+                cursor pointer
+                for num in 1..10
+                    &:nth-child({num}) label > div:before
+                        content ''+num
+                label
+                    cursor pointer
+                    &>div
+                        &:before
+                            position absolute
+                            top 0
+                            left 0
+                            transform translateY(5%)
+                
+                    h6
+                        mid()
+                        font-size 15px
+                        color #444
+                        width 90%
+                    .answer
+                        small-txt()
+                        line-height 21px
+                        color gray
+                        padding-top 20px
+                        max-height 0
+                        overflow hidden
+                        transition max-height 400ms ease
+                    .plus
+                        position absolute
+                        top 5px
+                        right 0
+                        width 11px
+                        height 10px
+                        &:before, &:after
+                            content ''
+                            position absolute
+                            top 50%
+                            left 50%
+                            transform translate(-50%,-50%)
+                            height 1px
+                            width 100%
+                            background gray
+                        &:before
+                            display none
+                            background midblue
+                            height 1px
+                            transform translate(-50%,-50%) rotate(-90deg)
+                    input:checked
+                        & + div
+                            &:after
+                                content ''
+                                position absolute
+                                top 0
+                                left -28px
+                                height 100%
+                                border-left 2px solid midblue
+                        & + div .plus
+                            &:after
+                                background midblue
+                            &:before
+                                display block
+                        & + div h4
+                            color midblue
+                        & + div .answer
+                            max-height 200px
+                            +below(breaks.mobile)
+                                max-height 400px
+
+                &:after
+                    content ''
+
+                
+// GOOGLE MAP
+.google-map-wrapper
+    width 100%
+    height 70vh
+    .google-map
+        height 100% !important
+
+
+// INFO BLOCK
+.info-block
+    h3
+        margin 15vh 0 5%
+    li
+        margin-bottom 5%
+    .img-wrap
+        height 200px
+        inline-mid()
+        text-align center
+        img
+            margin 0 auto
+    .big-num
+        color #05a5e6
+        text-align center
+        fontsizer(120px, 140px)
+    a
+        mid-txt()
+        display block
+        padding-top 20px
+        color rgba(dark, 0.6)
+        text-indent 26%
+        white-space nowrap
+        margin 0 auto
+        +below(breaks.mid)
+            width 80%
+    .centered-text
+        width 45%
+        margin 0 auto 90px
+        color #8c8c8c
+        line-height 32px
+        text-align center
+        +below(breaks.tablet)
+            width 60%
+    
+// OUT BLOCK
+.out-block
+    background #21455e
+    text-align center
+    padding 6% 0 5%
+    h2,h4
+        color #fff
+    h4
+        line-height 23px
+        width 40%
+        margin 0 auto
+        +below(breaks.tablet)
+            width 80%
+    h2
+        width 40%
+        margin 0 auto
+        padding 56px 0 76px
+        +below(breaks.tablet)
+            width 80%
+            padding 36px 0 56px
+    .btn
+        @extend $sharpen
+        background #ededed
+        color darkblue
+        font-size 15px
+        text-align center
+        padding 15px 25px
+        display inline-block

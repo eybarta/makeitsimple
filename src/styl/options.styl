@@ -1,0 +1,49 @@
+@import 'rupture'
+@import 'settings'
+
+a
+    text-decoration none
+    color dark
+    &:visited
+        color inherit
+
+.tcenter
+    text-align center
+
+.center
+    margin 0 auto
+
+.centered
+    @extend $centered
+
+.unattach
+    background-attachment initial !important
+
+.w50
+    width 50%
+// margin 
+for alias, prop in $space
+    for size,value in margins
+        .{alias}-{size}
+            if (size==head)
+                {prop} value+20
+            else
+                {prop} value
+            +below(breaks.tablet)
+                if (size==head)
+                    {prop} round((value*2)+20)
+                else
+                    {prop} round((value/1.6))
+            +below(breaks.mobile)
+                if (size==head)
+                    {prop} round(value)
+                else
+                    {prop} round((value/2))
+
+
+.sub-title
+    sub-title()
+.mid-txt
+    mid-txt()
+.small-txt
+    small-txt()

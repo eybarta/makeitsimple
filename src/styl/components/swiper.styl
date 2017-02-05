@@ -1,0 +1,153 @@
+@import 'settings'
+@import 'rupture'
+
+med = 620px
+
+.swiper-control
+    position relative
+    padding 0 3%    
+    margin 0 auto
+    +below(1100px)
+        padding 0 4%
+    +below(900px)
+        padding 0 6%
+    +below(med)
+        padding 0 9%
+    .swiper-pagination
+        position relative
+        padding-top 20px
+        margin 0 auto
+        text-align center
+    .swiper-container
+        margin 0 auto
+        .swiper-slide
+            cursor move
+            padding-top 1%
+            a
+                display inline-block
+            +below(900px)
+                padding-top 2.5%
+            +below(500px)
+                padding-top 6%
+            .minitxt
+                text-align center
+                margin-top 15px
+                color #16507d
+                opacity 0.3
+                transition opacity 400ms ease
+                font-size 14px
+            img
+                width 100%
+                opacity 0.8
+                position relative
+                transform translate3d(0,0,0)
+                transition opacity 400ms ease, transform 400ms ease
+            &:hover
+                .minitxt
+                    opacity 1
+                img
+                    opacity 1
+                    transform translateY(-5%)
+
+// NEXT & PREVIOUS BUTTONS
+.swiper-control, .pages-wrap
+    .swiper-button-prev, .swiper-container-rtl .swiper-button-next,
+            .swiper-button-next, .swiper-container-rtl .swiper-button-prev
+                width 20px
+                height 20px
+                border-top 1px solid #999999
+                border-left 1px solid #999999
+                transform-origin 50%
+                transform rotate(-45deg)
+                background-image none !important
+                &.swiper-button-prev
+                    left 1%
+                    +below(900px)
+                        left 2%
+                    +below(415px)
+                        left 3%
+                &.swiper-button-next
+                    right 1%
+                    transform rotate(135deg)
+                    +below(900px)
+                        right 2%
+                    +below(415px)
+                        right 3%
+
+.pages-wrap
+    .swiper-button-prev, .swiper-container-rtl .swiper-button-next,
+    .swiper-button-next, .swiper-container-rtl .swiper-button-prev
+        position fixed
+        z-index 999
+        width 120px
+        height 100vh
+        opacity 0
+        border 0
+        top 0
+        transform none !important                
+        transition opacity 400ms ease
+        +below(med)
+            width 30px
+        &:after
+            content ''
+            position absolute
+            top 50%
+            left 0
+            transform translate(50%, -50%) rotate(-45deg)
+            width 111px
+            height 111px
+            border-top 1px solid #a7a9ae
+            border-left 1px solid #a7a9ae
+            transform-origin 50%
+            border-width 12px
+            +below(med)
+                width 30px
+                height 30px
+                border-width 6px                    
+        &.swiper-button-disabled
+            opacity 0 !important
+        &:hover
+            opacity 0.8
+        &.swiper-button-prev
+            left 0
+        &.swiper-button-next
+            right 0
+            &:after
+                transform translate(-50%, -50%) rotate(135deg)
+
+.swiper-control
+    .swiper-button-prev, .swiper-container-rtl .swiper-button-next,
+    .swiper-button-next, .swiper-container-rtl .swiper-button-prev
+        top 50%
+// SWIPER PAGINATION BULLETS
+.swiper-control, .pages-wrap
+    .swiper-pagination-bullet
+        margin 0 5px
+        &:first-child
+            position relative
+            border-radius 0
+            &:after
+                content ''
+                background #000
+                position absolute
+                top 0
+                left 50%
+                width 75%
+                padding-top 75%
+                transform translate(-47%, -52%) rotate(45deg)
+        &-active
+            background #16507d
+            border-radius 50%
+            position relative
+            &:after
+                background #16507d !important
+       
+
+
+// PAGES SLIDER CONFIG
+ .pages-wrap
+    .swiper-pagination
+        position absolute
+        bottom auto !important
+        top 95vh
+        

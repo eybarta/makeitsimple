@@ -1,0 +1,8 @@
+// Place your settings in this file to overwrite default and user settings.
+{
+    "editor.acceptSuggestionOnEnter": false,
+    "editor.quickSuggestionsDelay": 200,
+    "editor.wordBasedSuggestions": false,
+    "editor.quickSuggestions": false,
+    "vsicons.presets.angular": false
+}

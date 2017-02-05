@@ -1,0 +1,115 @@
+@import '~normalize'
+@import 'rupture'
+@import 'settings'
+
+body
+    font-family "Helvetica Thin", "Helvetica Neue", Helvetica, Arial, sans-serif
+    font-weight 300
+    & > *
+        font-family "Helvetica Thin", "Helvetica Neue", Helvetica, Arial, sans-serif
+        
+
+
+.full-height
+    width 100%
+    min-height 100vh
+.wrap
+    .preview-section
+        & > div
+            lost-center 1100px
+            +below(1200px)
+                padding 0 3%
+    img.big_graphic
+        vertical-align middle
+        width 37%
+        +below(breaks.tablet)
+            max-width 98%
+            width auto
+            display block
+            margin 0 auto
+        +below(breaks.mobile)
+            max-width 80%
+            
+
+    .infobox
+        display inline-block
+        width 60%
+        vertical-align middle
+        padding 0 5%
+        +below(breaks.tablet)
+            width 100%
+
+
+    
+        
+.dark-big-block
+    position relative
+    // TEMP IMAGE
+    background url('./assets/img/placeholder-block.jpg') no-repeat 50% 50% / cover
+    height 100vh
+// GRID
+for num in (1..12)
+	.col-{num}
+		lost-column num/12
+
+.group-3
+    & > *
+        lost-column 1/3 3 3%
+        +below(520px)
+            lost-column 1/1 1 0
+
+.group-4
+    @extend $centered
+    & > *
+        lost-column 1/4 4 2%
+        +below(breaks.base)
+            lost-column 1/2 2 2%
+        +below(520px)
+            lost-column 1/1 1 0
+
+
+footer
+    min-height 40vh
+    background darken(#fbfbfd, 1)
+    padding 2% 4%
+    padding-bottom 1%
+    .minitxt
+        small-txt()
+        margin-bottom 10px
+        color #727272
+        line-height 20px
+        width 75%
+        +below(520px)
+            width 100%
+        &:last-child
+            margin-top 16px
+            ul 
+                margin 0
+                padding 0
+                li
+                    small-txt()
+                    color #727272
+                    margin 0
+                    padding 0 0 3px
+    li
+        padding-top 4%
+        +below(600px)
+            lost-column 1/1 1 !important
+            padding-top 12%
+    h6
+        margin-bottom 20px
+        color darkblue
+        &:after
+            content ''
+            display block
+            padding-top 20px
+            width 16%
+            border-bottom 1px solid lightgray
+    a.link
+        small-txt()
+        display block
+    small
+        small-txt()
+        display block
+        color lightgray
+        text-align center
