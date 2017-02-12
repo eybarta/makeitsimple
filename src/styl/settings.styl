@@ -26,14 +26,14 @@ head-height = 57px
 
 // GRID
 $centered
-	lost-center 1100px
+	lost-center 1200px
 
 // COLORS 
 dark = #1a232e
 darkblue = #023451
 lightblue = #16507d
 midblue = #33a0ff
-linkblue = #0075bf
+linkblue = #05a5e6
 lightgray = #c4c4c4
 gray = #97989d
 linkgray = #727272
@@ -86,47 +86,54 @@ title1()
 	font-family 'Helvetica Thin'
 	
 title2()
-	fontsizer(font.bigger*0.85, font.bigger)
+	fontsizer(round(font.bigger*0.85), round(font.bigger))
 	font-family 'Helvetica Thin'
 title3()
-	fontsizer(font.big*0.85, font.big)
+	fontsizer(round(font.big*0.85), round(font.big))
 	font-family 'Helvetica Thin'
 title4()
-	fontsizer(font.more*0.85, font.more)
+	fontsizer(round(font.more*0.85), round(font.more))
 	font-family 'Helvetica Thin'
 title5()
-	fontsizer(font.mid*0.85, font.mid)
+	fontsizer(round(font.mid*0.85), round(font.mid))
 	font-family 'Helvetica Thin'
 title6()
-	fontsizer(font.small*0.85, font.small)
+	fontsizer(round(font.small*0.85), round(font.small))
 	font-family 'Helvetica Thin txt'
 sub-title()
 	font-family 'Helvetica Thin txt'
-	fontsizer(font.smaller*0.85, font.smaller)
+	fontsizer(round(font.smaller*0.85), round(font.smaller))
 mid-txt()
 	font-family 'Helvetica Thin txt'
-	fontsizer(font.base*0.85, font.base)
+	fontsizer(round(font.base*0.85), round(font.base))
 small-txt()
 	font-family 'Helvetica Thin txt'
-	fontsizer(font.smallest*0.85, font.smallest)
+	fontsizer(round(font.smallest*0.85), round(font.smallest))
 	
 
 // POSITIONING
-absolute-center(dir)
-	position relative
-	& > *
-		position absolute
-		if (dir==vertical)
-			top 50%
-			transform translateY(-50%)
-		else if (dir==horizontal)
-			left 50%
-			transform translateX(-50%)
-		else
-			top 50%
-			left 50%
-			transform translate(-50%,-50%)
+self-center(dir=both)
+	position absolute
+	if (dir==vertical)
+		top 50%
+		transform translateY(-50%)
+	else if (dir==horizontal)
+		left 50%
+		transform translateX(-50%)
+	else
+		top 50%
+		left 50%
+		transform translate(-50%,-50%)
 
+absolute-center(dir=both)
+	position relative unless @position
+	& > *
+		if (dir==vertical)
+			self-center(vertical)
+		else if (dir==horizontal)
+			self-center(horizontal)
+		else
+			self-center()
 mid()
 	display inline-block
 	vertical-align middle

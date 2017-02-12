@@ -11,26 +11,21 @@ $hamburger
             width 48%
             opacity 0.9
         &:before
-            transform translate(-50%, -10.5px)
+            transform translate(-50%, -8px)
             box-sizing content-box
-            height 3px
-            border-top 5px solid #fff
-            border-bottom 5px solid #fff
-        &.background--light:before
-                border-color #000
-            +below(breaks.mobile)
-                border-width 4px
-                height 2px
-                transform translate(-50%, -7.5px)
+            height 6px
+            border-top 2px solid #fff
+            border-bottom 2px solid #fff
+            +below(breaks.tablet)
+                transform translate(-50%, -6px)
+                height 4px
+                
         &:after
             background #fff
-            height 5px
-            transform translate(-50%, 5.5px)
-            +below(breaks.mobile)
-                height 4px
-                transform translate(-50%, 4.5px)      
-        &.background--light:after
-            background #000 
+            height 2px
+            transform translate(-50%, 8px)
+            +below(breaks.tablet)
+                transform translate(-50%, 6px)
 
 
 header
@@ -44,23 +39,45 @@ header
     height head-height
     width 100%
     z-index 1001
-    transition all 400ms ease-in-out-circ
-    overflow hidden
+    transition transform 400ms ease-in-out-circ, top 400ms ease-in-out-circ, left 400ms ease-in-out-circ, width 400ms ease-in-out-circ
     +below(breaks.tablet)
+        opacity 0
         height auto
+        transition opacity 400ms ease-in-out-circ
+        &.loaded
+            opacity 1
     &:before, &:after
         content ''
         opacity 0
         transition opacity 1200ms ease
-    
+        cursor pointer
+    +above(breaks.tablet)
+        &:not(.placed):before,
+        &:not(.placed):after
+            height 100%
+            position absolute
+            top 0
+            background #222935
+            width 29px
+            border-radius 360px 0 0 360px
+            left -29px
+            border 0
+            transform none
+            opacity 0.9
+        &:not(.placed):after
+            border-radius 0 360px 360px 0
+            right -29px
+            left auto
 
     .contain
-        transition opacity 100ms ease
+        position relative
+        transition opacity 400ms ease
         text-align center
         height 100%
         width 95%
         margin 0 auto
-        max-width 1100px
+        max-width 1200px
+        overflow hidden
         +above(breaks.tablet)
             height 100%
             absolute-center(vertical)
@@ -68,15 +85,19 @@ header
             inline-mid()
             width 100%
             display block
+            padding 10% 0
             +above(breaks.tablet)
+                padding 0
                 height head-height
                 right 0
                 height 100%
                 width auto
+
             li
                 margin 0 13px
                 +below(breaks.tablet)
                     display block !important
+                    margin-bottom 20px
                 a
                     mid-txt()
                     color linkgray
@@ -92,6 +113,12 @@ header
                         transform translate(-50%, 10px)
                         border-bottom 1px solid linkgray
                         transition width 300ms ease-out-back
+                    +below(breaks.tablet)
+                        text-transform uppercase
+                        font-family 'Helvetica Thin txt'
+                        letter-spacing 1.1px
+                        &:after
+                            bottom 5px
                     &:hover:after
                         width 100%
                     &.active
@@ -108,49 +135,76 @@ header
                 left 0
                 height 26px
     &.hamburger 
+        @extend $hamburger
         top 3%
         border-radius 50%
         text-align center
         +below(breaks.tablet)
-            top 0           
-            background transparent
+            top 1%        
             transform initial
-
-        // transition left 400ms ease-in-out-circ
-        @extend $hamburger      
-        &.placed
-            left 96%
+            left auto
+            right 3%
             opacity 0.6
             cursor pointer
-            +below(breaks.tablet)
-                right 0
-                left auto
-            &:hover
-                +above(breaks.tablet)
-                    opacity 1
-    &.animate
-        height 0px
-        width 3%
-        padding-top 3%
+            width 13%
+            padding-top 13%
+            .contain
+                opacity 0
+                height 0
+                overflow hidden
+    &.seed
         border-radius 50%
+        overflow hidden
+        top 50%
+        left 50%
+        transform translate(-50%,-50%)
+        width 1px
+        height 1px
+        opacity 0
+        transition opacity 400ms linear, width 400ms ease, height 400ms ease, transform 400ms ease, border-radius 400ms ease, top 400ms ease, left 400ms ease
+    
+    &.animate
+        height 58px
+        width 0px
+        border-radius 0
         +below(breaks.tablet)
-            width 10%
-            padding-top 10%
+            width 58px
         .contain
             opacity 0
+    &.placed
+        width 58px
+        left 96%
+        opacity 0.6
+        cursor pointer
+        background #222935
+        border-radius 360px
+        transition transform 400ms ease-in-out-circ, top 400ms ease-in-out-circ, left 400ms ease-in-out-circ
+        +below(breaks.tablet)
+            left auto
     &.maxed
         @extend $hamburger
+        height 100%
+        width 100%
+        border-radius 0
+        opacity 1
+        .contain
+            opacity 1
+            height 100%
+            .logo
+                self-center(horizontal)
+                bottom 0
+            .nav
+                self-center()            
         &:before, &:after
             +below(breaks.tablet)
                 height 3px
                 background #08a6e7
                 border 0
                 opacity 1
-                top 15%
+                top 3%
                 right 2%
                 width 4%
-                left auto
-                
+                left auto                
         &:before
             +below(breaks.tablet)
                 transform rotate(-45deg)

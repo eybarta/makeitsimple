@@ -7,10 +7,11 @@
 .minitxt
     small-txt()
     letter-spacing 1.1px
-    color lightgray
+    line-height 1.1
+    color darken(lightgray, 15)
     strong
         font-weight normal
-        color darkblue
+        color #203451
 .subtxt
     color lightblue
     opacity 0.5
@@ -20,23 +21,109 @@ a.link, a.link:visited
 .item-group
     lost-utility clearfix
     .item
-        margin-bottom 5%
+        +below(breaks.tablet)
+            margin-bottom 10%
         img
             margin-bottom 20px
             width 98%
+            max-width 170px
+            +below(breaks.mobile)
+                max-width initial
         .minitxt
-            padding 0 8%
-            line-height 20px
+            padding 0 9%
             +below(breaks.mid)
                 padding 0
+            +below(breaks.mobile)
+                font-size 15px
 
 // INTROS
 .intro
-    background url('./assets/img/bg.jpg') no-repeat 50% 50% / cover
-    background-attachment fixed
-    &.intro-v3
+    position relative
+    overflow hidden
+    &:before
+        content ''
+        background url('./assets/img/bg.jpg') no-repeat 50% 50% / cover
+        position absolute 0 0 0 0
+        z-index 1
+    &.intro-v3:before
         background-image url('./assets/img/v3-big.jpg')
-
+    /.pages-wrap .intro
+        background url('./assets/img/bg.jpg') no-repeat 50% 50% / cover
+        &:before
+            display none
+    .i-360
+        position absolute
+        bottom 30px
+        right 60px
+        font-size 14px
+        color #708190
+        z-index 9
+        opacity 0
+        transition opacity 400ms ease-in-cubic
+        img
+            position relative
+            transform rotate(-345deg)
+            transition transform 800ms ease-out-back
+            
+    em
+        font-size 14px
+        font-style italic
+        color #fff
+        display inline-block
+        padding 0 2px
+    .play-overlay
+        absolute-center()
+        position absolute 0 0 0 0
+        cursor pointer
+        background rgba(#002d54, 0.9)
+        z-index 2
+        opacity 0
+        transform scale(0.5)
+        transition 200ms opacity ease-out-cubic, transform 400ms ease-out-back
+        img
+            max-width 302px
+            +below(breaks.tablet)
+                width 60%
+        div
+            top 75%
+            text-align center
+            +below(breaks.bigger)
+                top 80%
+            span
+                display block
+            span:first-child
+                font-size responsive 24px 48px
+                color #fff
+                padding-bottom 10px
+            span:nth-child(2)
+                font-size 14px 24px
+                color #3e7bb0
+    iframe
+        display none
+        position absolute 57px 0 0 0
+        width 100%
+        height calc(100% - 57px)
+        z-index 3
+        transition opacity 200ms ease
+        +below(breaks.tablet)
+            top 0
+            height 100%
+    .play
+        opacity 0
+        & + iframe
+            display block
+    &.hp.playoverlay
+        &:before
+            -webkit-filter blur(5px) !important
+            filter url('assets/blur.svg#blur')
+            filter blur(5px)
+        .play-overlay
+            opacity 1
+            transform scale(1)
+        .i-360
+            opacity 1
+            img
+                transform rotate(0deg)
 .midtxt
     color #8c8c8c
     text-align center
@@ -44,13 +131,14 @@ a.link, a.link:visited
     display block
     margin 0 auto
     +below(breaks.mid)
-        width 80%
+        width 40%
 .bottom-graphic-v3
     position relative
     background url('./assets/img/v3-bottom-graphic.jpg') no-repeat 50% bottom / auto 100%
     padding-bottom 16%
     +below(breaks.mid)
         min-height 5vh
+        padding-bottom 30%
 .flip-title
     direction rtl
     inline-mid()
@@ -61,30 +149,29 @@ a.link, a.link:visited
         +below(breaks.tablet)
             margin 10px 0 0 0
             display block
-
-
 .info-toggle
     position absolute
-    top 45px
-    left 45px
+    top 4vh
+    left 4vh
     cursor pointer
+    white-space nowrap
     span
-        font-size 16px
+        mid-txt()
         color #c9cbcf
         padding-left 14px
         display inline-block
         vertical-align middle
+        +below(breaks.tablet)
+            padding-left 6px
     &:before
         content ''
         display inline-block
         vertical-align middle
         border 2px solid #bcbec2
         border-radius 50%
-        width 64px
-        height 64px
-        background url('./assets/img/info.svg') no-repeat 50% 50%
-
-        
+        width 44%
+        padding-top 41%
+        background url('./assets/img/info.svg') no-repeat 50% 50% / auto 60%
 // FAQ BLOCK
 .faq-control
     width 80%
@@ -108,7 +195,7 @@ a.link, a.link:visited
         +below(breaks.tablet)
             width auto
             display block
-            margin-top 20px
+            margin-top 30px
         ul
             li
                 position relative
@@ -195,33 +282,63 @@ a.link, a.link:visited
 
 // INFO BLOCK
 .info-block
-    h3
-        margin 15vh 0 5%
     li
-        margin-bottom 5%
+        +below(breaks.tablet)
+            padding-top 10%
+        +below(520px)
+            padding-top 20%
+        &:last-child
+            padding-bottom 0
     .img-wrap
         height 200px
+        +below(520px)
+            height auto
         inline-mid()
         text-align center
         img
             margin 0 auto
+            +below(520px)
+                width 55%
+                margin-bottom 2%
+
     .big-num
+        absolute-center(both)
+        font-family "Helvetica Neue"
+        border 3px solid #05a5e6
+        border-radius 50%
+        width 80%
+        padding-top 80%
+        margin 0 auto 10%
         color #05a5e6
-        text-align center
-        fontsizer(120px, 140px)
+        & + .midtxt
+            mid-txt()
+            width 80%
+        +below(breaks.tablet)
+            width 60%
+            padding-top 60%
+        
+        span
+            font-size 140px
+            transform translate(-52%,-56%)
     a
         mid-txt()
         display block
         padding-top 20px
-        color rgba(dark, 0.6)
+        color rgba(dark, 0.75)
         text-indent 26%
         white-space nowrap
         margin 0 auto
         +below(breaks.mid)
-            width 80%
+            text-indent initial
+            display inline-block
+            width 54%
+            position relative
+            left 50%
+            transform translateX(-50%)
     .centered-text
+        title4()
         width 45%
-        margin 0 auto 90px
+        margin 0 auto
         color #8c8c8c
         line-height 32px
         text-align center
@@ -232,27 +349,29 @@ a.link, a.link:visited
 .out-block
     background #21455e
     text-align center
-    padding 6% 0 5%
-    h2,h4
+    h2, .mid-txt
         color #fff
-    h4
+    .mid-txt
         line-height 23px
-        width 40%
+        width 45%
         margin 0 auto
+        letter-spacing 1px
         +below(breaks.tablet)
             width 80%
     h2
-        width 40%
+        width 25%
         margin 0 auto
         padding 56px 0 76px
         +below(breaks.tablet)
             width 80%
             padding 36px 0 56px
     .btn
-        @extend $sharpen
         background #ededed
         color darkblue
-        font-size 15px
+        font-size 14px
         text-align center
         padding 15px 25px
         display inline-block
+        font-family "Helvetica Thin txt"
+        font-weight 600
+        letter-spacing 1px

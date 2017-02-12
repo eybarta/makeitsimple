@@ -3,17 +3,28 @@
 h1
     title1()
     color darkblue
-    margin 90px 0
     text-align center
+    font-family "Helvetica Neue"
 h2
     title2()
     color darkblue
+    font-family "Helvetica Neue"
 h3
     title3()
     color darkblue
+    font-family "Helvetica Neue"
+    &.breaked
+        +below(640px)
+            text-align left !important
+            position relative
+            display inline-block
+            left 50%
+            transform translateX(-50%)
 h4
     title4()
 h5
     title5()
 h6
     title6()
+    font-family "Helvetica Neue"
+    

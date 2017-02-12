@@ -1,15 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>MIS | Make It Simple</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="./dist/css/style.css">
-</head>
-<body>
+<template>
     <header class="">
         <div class="contain">
-
             <ul class="nav">
                 <li><a href="index.html#top">Home</a></li>
                 <li><a href="index.html#why">Why simple</a></li>
@@ -18,12 +9,14 @@
                 <li><a href="">Awards Club</a></li>
                 <li><a href="index.html#contact">Contact us</a></li>
             </ul>
-            <a href="index.html#top" class="logo"></a>
+            <a href="/" class="logo"></a>
         </div>
     </header>
-    <div id="pages"></div>
+</template>
+<script>
+export default {
 
-    <script src="./dist/js/swiper.min.js"></script>
-    <script src="./dist/js/pages.js"></script>
-</body>
-</html>
+}
+</script>
+<style>
+</style>
