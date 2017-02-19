@@ -1,22 +1,47 @@
 @import 'settings'
 @import 'options'
 
+
+header-height = 58px
+header-height-mini = 40px
+
+
+$close
+    width unit(header-height/2, 'px')
+    height @width
+    self-center(vertical)
+    right 3%
+    +below(breaks.base)
+        width unit(header-height-mini/2, 'px')
+        height @width
+    +below(breaks.mobile)
+        right unit(header-height-mini/2, 'px')
+        top @right
+        transform none
+    @extend $cross
+    
 $hamburger
+    self-center()
+    width unit(header-height/2, 'px')
+    z-index 9
+    +below(breaks.base)
+        width unit(header-height-mini/2, 'px')
     &:before, &:after
             content ''
             display block
             position absolute
             top 50%
             left 50%
-            width 48%
+            width 100%
             opacity 0.9
+            background none
         &:before
             transform translate(-50%, -8px)
             box-sizing content-box
             height 6px
             border-top 2px solid #fff
             border-bottom 2px solid #fff
-            +below(breaks.tablet)
+            +below(breaks.base)
                 transform translate(-50%, -6px)
                 height 4px
                 
@@ -24,7 +49,7 @@ $hamburger
             background #fff
             height 2px
             transform translate(-50%, 8px)
-            +below(breaks.tablet)
+            +below(breaks.base)
                 transform translate(-50%, 6px)
 
 
@@ -36,178 +61,148 @@ header
     transform translate(-50%,0px)
     transform-origin 50%
     background #222935
-    height head-height
-    width 100%
+    height header-height
+    width 105%
     z-index 1001
-    transition transform 400ms ease-in-out-circ, top 400ms ease-in-out-circ, left 400ms ease-in-out-circ, width 400ms ease-in-out-circ
+    transition transform 400ms ease-in-out-circ, top 400ms ease-in-out-circ, left 400ms ease-in-out-circ, width 400ms ease-in-out-circ, opacity 650ms ease-out-quad, clip-path 600ms ease-out-back, -webkit-clip-path 600ms ease-out-back
+    border-radius 360px
+    overflow hidden
+    +below(breaks.base)
+        height header-height-mini
     +below(breaks.tablet)
-        opacity 0
-        height auto
-        transition opacity 400ms ease-in-out-circ
-        &.loaded
-            opacity 1
-    &:before, &:after
-        content ''
-        opacity 0
-        transition opacity 1200ms ease
+        height 100vh
+    +below(breaks.mobile)
+        border-radius 0
+        width 100%
+    .toggler
         cursor pointer
-    +above(breaks.tablet)
-        &:not(.placed):before,
-        &:not(.placed):after
-            height 100%
-            position absolute
-            top 0
-            background #222935
-            width 29px
-            border-radius 360px 0 0 360px
-            left -29px
-            border 0
-            transform none
-            opacity 0.9
-        &:not(.placed):after
-            border-radius 0 360px 360px 0
-            right -29px
-            left auto
-
+        position absolute
+        z-index 99
     .contain
         position relative
-        transition opacity 400ms ease
         text-align center
         height 100%
-        width 95%
+        width 85%
         margin 0 auto
         max-width 1200px
         overflow hidden
-        +above(breaks.tablet)
-            height 100%
-            absolute-center(vertical)
+        opacity 0
+        transition opacity 400ms ease
         .nav
+            float right
             inline-mid()
             width 100%
             display block
             padding 10% 0
+            backface-visibility hidden
+            +below(breaks.tablet)
+                position relative
+                transform translateY(-80%)
+                transition  transform 400ms ease-in-out-quad
             +above(breaks.tablet)
                 padding 0
-                height head-height
+                height header-height
                 right 0
                 height 100%
                 width auto
-
             li
                 margin 0 13px
                 +below(breaks.tablet)
                     display block !important
-                    margin-bottom 20px
+                    margin-bottom unit(header-height-mini/2, 'px')
                 a
-                    mid-txt()
+                    display inline-block
+                    transform translate3d(0,0,0)
+                    font-size 14px
                     color linkgray
                     position relative
-                    -webkit-font-smoothing antialiased
-                    -moz-osx-font-smoothing grayscale
-                    &:after
-                        content ''
-                        width 0
-                        position absolute
-                        bottom 0
-                        left 50%
-                        transform translate(-50%, 10px)
-                        border-bottom 1px solid linkgray
-                        transition width 300ms ease-out-back
-                    +below(breaks.tablet)
-                        text-transform uppercase
-                        font-family 'Helvetica Thin txt'
-                        letter-spacing 1.1px
-                        &:after
-                            bottom 5px
-                    &:hover:after
-                        width 100%
+                    font-family 'HelveticaLight' !important
+                    padding-bottom 5px
+                    border-bottom 1px solid transparent
+                    &:hover, &.active
+                         border-bottom 1px solid linkgray
                     &.active
                         color linkblue
-                        &:after
-                            width 100%
+                    +below(breaks.tablet)
+                        sub-title()
+                        text-transform uppercase
+                        letter-spacing 1px
         .logo
+            self-center(vertical)
             width 235px
-            height head-height
+            height header-height
             display block
             margin 0 auto
             background url('data:img/png;base64,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') no-repeat 50% 50%
             +above(breaks.tablet)
                 left 0
                 height 26px
-    &.hamburger 
-        @extend $hamburger
-        top 3%
-        border-radius 50%
-        text-align center
+            +below(breaks.tablet)
+                self-center(horizontal)
+                bottom 5%
+                top auto
+    &.maximized
+        .toggler
+            @extend $close
+        .contain
+            opacity 1
+            .nav
+                // transform translateY(-50%)
         +below(breaks.tablet)
-            top 1%        
-            transform initial
-            left auto
-            right 3%
-            opacity 0.6
-            cursor pointer
-            width 13%
-            padding-top 13%
+            height 100vh
+            clip-path circle(100vh at center)
+            -webkit-clip-path circle(100vh at center)
+            opacity 1
+            .nav
+                self-center(vertical)
+  
+    &.animate
+        width header-height
+        .contain
+            opacity 0
+        +below(breaks.base)
+            width header-height-mini
+        +below(breaks.tablet)
+            width 100vw
+            height 100vh
+            clip-path circle(100vh at center)
+            -webkit-clip-path circle(100vh at center)
+    &.hamburger
+        top 1%
+        +below(breaks.tablet)
+            top 0
+            right 0
+            left 0
+            bottom 0
+            transform translate(0,0)
+            width 100%
+            height 100%
+            clip-path circle(1vh at center)
+            -webkit-clip-path circle(1vh at center)
+            opacity 0.2
+            transform-origin 50% 50%
+            .nav
+                transform translate(-50%, -150%)
+                transition transform 600ms ease-out-back, opacity 400ms ease-out
             .contain
                 opacity 0
                 height 0
                 overflow hidden
-    &.seed
-        border-radius 50%
-        overflow hidden
-        top 50%
-        left 50%
-        transform translate(-50%,-50%)
-        width 1px
-        height 1px
-        opacity 0
-        transition opacity 400ms linear, width 400ms ease, height 400ms ease, transform 400ms ease, border-radius 400ms ease, top 400ms ease, left 400ms ease
-    
-    &.animate
-        height 58px
-        width 0px
-        border-radius 0
-        +below(breaks.tablet)
-            width 58px
-        .contain
-            opacity 0
+                .nav
+                    opacity 0
+                    transform translate(-50%, -150%)    
     &.placed
-        width 58px
-        left 96%
+        left calc(100% - 50px)
         opacity 0.6
         cursor pointer
         background #222935
-        border-radius 360px
         transition transform 400ms ease-in-out-circ, top 400ms ease-in-out-circ, left 400ms ease-in-out-circ
+        .toggler
+            @extend $hamburger
         +below(breaks.tablet)
-            left auto
-    &.maxed
-        @extend $hamburger
-        height 100%
-        width 100%
-        border-radius 0
-        opacity 1
-        .contain
-            opacity 1
-            height 100%
-            .logo
-                self-center(horizontal)
-                bottom 0
-            .nav
-                self-center()            
-        &:before, &:after
-            +below(breaks.tablet)
-                height 3px
-                background #08a6e7
-                border 0
-                opacity 1
-                top 3%
-                right 2%
-                width 4%
-                left auto                
-        &:before
-            +below(breaks.tablet)
-                transform rotate(-45deg)
-        &:after
-            +below(breaks.tablet)
-                transform rotate(45deg)
+            top unit(header-height-mini/2, 'px')
+            left calc(100% - 60px)
+            width 40px
+            height 40px
+            clip-path none
+            border-radius 360px

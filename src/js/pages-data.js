@@ -154,7 +154,9 @@ export const PageSlides = [
         infoblock2: {
             title: {
                 tag: 'h3',
-                txt: 'INFORMATION WORTH SEEING'
+                txt: 'INFORMATION WORTH SEEING',
+                options: ['word-break'],
+                classNames: ['pb-big']
             },
             group: {
                 type: 'images',
@@ -263,7 +265,9 @@ export const PageSlides = [
         infoblock2: {
             title: {
                 tag: 'h3',
-                txt: 'INFORMATION WORTH SEEING'
+                txt: 'INFORMATION WORTH SEEING',
+                options: ['word-break'],
+                classNames: ['pb-big']
             },
             group: {
                 type: 'images',
@@ -372,7 +376,9 @@ export const PageSlides = [
         infoblock2: {
             title: {
                 tag: 'h3',
-                txt: 'INFORMATION WORTH SEEING'
+                txt: 'INFORMATION WORTH SEEING',
+                options: ['word-break'],
+                classNames: ['pb-big']
             },
             group: {
                 type: 'images',
@@ -481,7 +487,9 @@ export const PageSlides = [
         infoblock2: {
             title: {
                 tag: 'h3',
-                txt: 'INFORMATION WORTH SEEING'
+                txt: 'INFORMATION WORTH SEEING',
+                options: ['word-break'],
+                classNames: ['pb-big']
             },
             group: {
                 type: 'images',
@@ -590,7 +598,9 @@ export const PageSlides = [
         infoblock2: {
             title: {
                 tag: 'h3',
-                txt: 'INFORMATION WORTH SEEING'
+                txt: 'INFORMATION WORTH SEEING',
+                options: ['word-break'],
+                classNames: ['pb-big']
             },
             group: {
                 type: 'images',
@@ -699,7 +709,9 @@ export const PageSlides = [
         infoblock2: {
             title: {
                 tag: 'h3',
-                txt: 'INFORMATION WORTH SEEING'
+                txt: 'INFORMATION WORTH SEEING',
+                options: ['word-break'],
+                classNames: ['pb-big']
             },
             group: {
                 type: 'images',
@@ -808,7 +820,9 @@ export const PageSlides = [
         infoblock2: {
             title: {
                 tag: 'h3',
-                txt: 'INFORMATION WORTH SEEING'
+                txt: 'INFORMATION WORTH SEEING',
+                options: ['word-break'],
+                classNames: ['pb-big']
             },
             group: {
                 type: 'images',
@@ -917,7 +931,9 @@ export const PageSlides = [
         infoblock2: {
             title: {
                 tag: 'h3',
-                txt: 'INFORMATION WORTH SEEING'
+                txt: 'INFORMATION WORTH SEEING',
+                options: ['word-break'],
+                classNames: ['pb-big']
             },
             group: {
                 type: 'images',
@@ -1026,7 +1042,9 @@ export const PageSlides = [
         infoblock2: {
             title: {
                 tag: 'h3',
-                txt: 'INFORMATION WORTH SEEING'
+                txt: 'INFORMATION WORTH SEEING',
+                options: ['word-break'],
+                classNames: ['pb-big']
             },
             group: {
                 type: 'images',
@@ -1135,7 +1153,9 @@ export const PageSlides = [
         infoblock2: {
             title: {
                 tag: 'h3',
-                txt: 'INFORMATION WORTH SEEING'
+                txt: 'INFORMATION WORTH SEEING',
+                options: ['word-break'],
+                classNames: ['pb-big']
             },
             group: {
                 type: 'images',
@@ -1244,7 +1264,9 @@ export const PageSlides = [
         infoblock2: {
             title: {
                 tag: 'h3',
-                txt: 'INFORMATION WORTH SEEING'
+                txt: 'INFORMATION WORTH SEEING',
+                options: ['word-break'],
+                classNames: ['pb-big']
             },
             group: {
                 type: 'images',

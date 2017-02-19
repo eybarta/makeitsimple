@@ -3,6 +3,7 @@ const path = require('path');
 const resolvePath = require('resolve-path')
 const DashboardPlugin = require('webpack-dashboard/plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const WebpackCleanupPlugin = require('webpack-cleanup-plugin');
 const autoprefixer = require('autoprefixer');
 
 const nodeEnv = process.env.NODE_ENV || 'development';
@@ -136,6 +137,9 @@ if (isProduction) {
             output: {
             comments: false,
             },
+        }),
+        new WebpackCleanupPlugin({
+            exclude: ["js/**/*", "css/**/*", "img/**/*"],
         })
     )
 }

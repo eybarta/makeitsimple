@@ -21,11 +21,12 @@ a.link, a.link:visited
 .item-group
     lost-utility clearfix
     .item
-        +below(breaks.tablet)
-            margin-bottom 10%
+        +below(breaks.mobile)
+            &:not(:first-child)
+                margin-top 14%
         img
             margin-bottom 20px
-            width 98%
+            width 70%
             max-width 170px
             +below(breaks.mobile)
                 max-width initial
@@ -40,17 +41,39 @@ a.link, a.link:visited
 .intro
     position relative
     overflow hidden
+    background-color #002d55
     &:before
         content ''
-        background url('./assets/img/bg.jpg') no-repeat 50% 50% / cover
+        background url('./assets/img/bg.jpg') no-repeat 50% 50% / 170% auto
         position absolute 0 0 0 0
         z-index 1
     &.intro-v3:before
         background-image url('./assets/img/v3-big.jpg')
     /.pages-wrap .intro
-        background url('./assets/img/bg.jpg') no-repeat 50% 50% / cover
+        background url('./assets/img/bg.jpg') no-repeat 0 0 / cover
+        +below(breaks.mobile)
+            background-position 50% 0
         &:before
             display none
+    /.pages-wrap .swiper-slide:first-child
+        .intro
+            +above(breaks.tablet)
+                background-position 0 57px
+    .intro-txt
+        +below(breaks.mobile)
+            width 80%
+    .close-btn
+        border-radius 100%
+        border 1px solid #fff
+        width 40px
+        height 40px
+        position absolute 40px false false 40px
+        z-index 99999
+        display none
+        @extend $cross
+        &:before, &:after
+            background #fff
+            width 60%
     .i-360
         position absolute
         bottom 30px
@@ -60,6 +83,11 @@ a.link, a.link:visited
         z-index 9
         opacity 0
         transition opacity 400ms ease-in-cubic
+        +below(breaks.mobile)
+            inline-mid()
+            bottom 2px
+            right auto
+            left 2px
         img
             position relative
             transform rotate(-345deg)
@@ -100,18 +128,14 @@ a.link, a.link:visited
                 color #3e7bb0
     iframe
         display none
-        position absolute 57px 0 0 0
+        position absolute 0 0 0 0
         width 100%
-        height calc(100% - 57px)
+        height 100%
         z-index 3
         transition opacity 200ms ease
         +below(breaks.tablet)
             top 0
             height 100%
-    .play
-        opacity 0
-        & + iframe
-            display block
     &.hp.playoverlay
         &:before
             -webkit-filter blur(5px) !important
@@ -124,6 +148,21 @@ a.link, a.link:visited
             opacity 1
             img
                 transform rotate(0deg)
+                +below(breaks.mobile)
+                    transform rotate(0deg) scale(0.6)
+            span
+                +below(breaks.mobile)
+                    margin-bottom -2px
+                    
+.play
+    #playintro
+        opacity 0 !important
+    #i360
+        opacity 0 !important
+    &:before
+        opacity 0.8
+    iframe
+        display block
 .midtxt
     color #8c8c8c
     text-align center
@@ -136,9 +175,14 @@ a.link, a.link:visited
     position relative
     background url('./assets/img/v3-bottom-graphic.jpg') no-repeat 50% bottom / auto 100%
     padding-bottom 16%
+    margin-top 4%
+    +below(breaks.base)
+        padding-bottom 25%
+        margin-top 10%
     +below(breaks.mid)
         min-height 5vh
         padding-bottom 30%
+        margin-top 20%
 .flip-title
     direction rtl
     inline-mid()
@@ -151,10 +195,13 @@ a.link, a.link:visited
             display block
 .info-toggle
     position absolute
-    top 4vh
-    left 4vh
+    top 7vh
+    left 6vh
     cursor pointer
     white-space nowrap
+    +below(breaks.mobile)
+        top 4vh
+        left 3vh
     span
         mid-txt()
         color #c9cbcf
@@ -182,10 +229,12 @@ a.link, a.link:visited
         width 40%
         color darkblue
         text-align center
+        padding-top 12px
         +below(breaks.tablet)
             width auto
             display block
             text-align left
+            padding-top 0
     .qa
         display inline-block
         vertical-align top
@@ -221,8 +270,8 @@ a.link, a.link:visited
                         width 90%
                     .answer
                         small-txt()
-                        line-height 21px
-                        color gray
+                        line-height 1.3
+                        color darken(gray, 25)
                         padding-top 20px
                         max-height 0
                         overflow hidden
@@ -291,6 +340,8 @@ a.link, a.link:visited
             padding-bottom 0
     .img-wrap
         height 200px
+        +below(breaks.tablet)
+            height 120px
         +below(520px)
             height auto
         inline-mid()
@@ -304,18 +355,19 @@ a.link, a.link:visited
     .big-num
         absolute-center(both)
         font-family "Helvetica Neue"
-        border 3px solid #05a5e6
+        border 5px solid #05a5e6
         border-radius 50%
-        width 80%
-        padding-top 80%
+        width 204px
+        height 204px
         margin 0 auto 10%
         color #05a5e6
         & + .midtxt
             mid-txt()
             width 80%
-        +below(breaks.tablet)
-            width 60%
-            padding-top 60%
+            +below(breaks.base)
+                width 60%
+        +below(breaks.base)
+            margin-bottom 2%
         
         span
             font-size 140px
@@ -342,8 +394,10 @@ a.link, a.link:visited
         color #8c8c8c
         line-height 32px
         text-align center
-        +below(breaks.tablet)
-            width 60%
+        +below(breaks.base)
+            width 70%
+        +below(breaks.mobile)
+            width 80%
     
 // OUT BLOCK
 .out-block

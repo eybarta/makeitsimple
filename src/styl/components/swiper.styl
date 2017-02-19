@@ -38,15 +38,19 @@ med = 620px
                 width 100%
                 opacity 1
                 position relative
-                transform translate3d(0,-5%,0)
+                transform translate3d(0,-4%,0)
                 transition opacity 400ms ease, transform 400ms ease
-        .swiper-wrapper:hover
-            .swiper-slide:not(:hover)
-                .minitxt
-                    opacity 0.3
-                img
-                    transform translateY(0%)
-                    opacity 0.8
+                +below(breaks.tablet)
+                    &:hover
+                        transform translate3d(0,-1%,0)
+        +above(breaks.tablet)
+            .swiper-wrapper:hover
+                .swiper-slide:not(:hover)
+                    .minitxt
+                        opacity 0.3
+                    img
+                        transform translateY(0%)
+                        opacity 0.8
 // NEXT & PREVIOUS BUTTONS
 .swiper-control, .pages-wrap
     .swiper-button-prev, .swiper-container-rtl .swiper-button-next,
@@ -133,7 +137,7 @@ med = 620px
         height 34px
         white-space nowrap
         +below(breaks.mobile)
-            padding 0 2px
+            padding 0 6px
     .swiper-pagination-bullet
         margin 0 5px
         width 14px
@@ -156,8 +160,8 @@ med = 620px
                 left 50%
                 width 10px
                 border-radius 0
-                border-right 7px solid transparent
-                border-left 7px solid transparent
+                border-right 6px solid transparent
+                border-left 6px solid transparent
                 background initial
                 border-bottom 4px solid #000
                 transform translate(-50%, -4px)
@@ -177,4 +181,6 @@ med = 620px
         position absolute
         bottom auto !important
         top 93vh
+        +below(breaks.mobile)
+            top 80vh
         

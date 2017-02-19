@@ -2,17 +2,18 @@ import $ from 'jquery'
 import _ from 'lodash'
 import inView from 'in-view'
 
-var $header, $desktop, mintimer, maxtimer;
+var $header, $toggle, $desktop, mintimer, maxtimer;
 
 export function initScrollNav() {
     $header = $('header');
+    $toggle = $('#toggle');
     $desktop = $(window).width()>768;
-    !$desktop ? deviceMinimize() : $header.attr('class', '')
+    // !$desktop ? deviceMinimize() : $header.attr('class', 'maximized')
     let sections = ['top', 'why', 'make', 'faq', 'awards', 'contact']
     let $links = $("header .nav a");
 
     _.each(sections, section => {
-        inView.threshold(0.5);
+        inView.threshold(0.2);
         inView(`#${section}`).on('enter', el => {
             $links.removeClass('active')
             .filter(`[href$=${section}]`).addClass('active');
@@ -21,6 +22,10 @@ export function initScrollNav() {
     $links.on('click touchstart', function(e) {
         if ($('body').hasClass('root')) {
             e.preventDefault();
+            if (!$desktop) {
+                console.log('MINIMIZE');
+                // deviceMinimize();
+            }
             if ($(window).width()>767) {
                 $(window).off('scroll')
             }
@@ -31,107 +36,128 @@ export function initScrollNav() {
                     scrollTop: $(anchor).offset().top
                 }, 400, function() {
                     setTimeout(function() {
-                        scrollCheck();
+                        initMenu();
                     },50)
                 })
             }
         }
             
     })
+    $toggle.on('click', toggleMenu);
+    initMenu();
 
-    scrollCheck();
-
-    $(window).on('resize', scrollCheck);
+    $(window).on('resize', initMenu);
 }
 
 
-
-function scrollCheck() {
-    $desktop = $(window).width()>768;
-    $(window).off('scroll').on('scroll', function() {
-        if ($(window).scrollTop()<20 && $header.hasClass('hamburger')) {
-            if ($desktop) maximizeMenu();
-            $('#top').removeClass('playoverlay');
-        } 
-        else if ($(window).scrollTop()>20) {
-            if (!$header.hasClass('hamburger')) minimizeMenu();
-            $('#top').addClass('playoverlay');
-        }
-    })
-    clearTimers();
-    if (!$desktop) {
-        deviceMinimize();
+function toggleMenu() {
+    if (/max/g.test($header.attr('class'))) {
+        minimizeMenu();
     }
     else {
-        $header.attr('class', '');
+        maximizeMenu()
     }
 }
+function initMenu() {
+    console.log("INIT MENU");
+    $desktop = $(window).width()>768;
+    clearTimers();
 
+    $(window).off('scroll').on('scroll', scrollCheck);
+    
+    scrollCheck();
+}
+function scrollCheck() {
+    if ($(window).scrollTop()<20 && $header.hasClass('hamburger')) {
+        if ($("#top").hasClass('play')) {
+            $header.hide();
+        }
+        else if ($desktop) maximizeMenu();
+        $('#top').removeClass('playoverlay');
+        
+
+    } 
+    else if ($(window).scrollTop()>20  && !$header.hasClass('hamburger')) {
+        $header.show();
+        minimizeMenu();
+        $('#top').addClass('playoverlay');
+    }
+}
 function clearTimers() {
     clearTimeout(maxtimer);
     clearTimeout(mintimer);
 }
 // Minimize and Maximize Menu
 function minimizeMenu(e) {
-    preventStop(e)
+    if (e && !/a/i.test(e.target.tagName)) {
+        preventStop(e)
+    }
     clearTimers();
-    !$desktop ? deviceMinimize() : desktopMinimize();
+    // !$desktop ? deviceMinimize() : desktopMinimize();
+    desktopMinimize();
 }
 function maximizeMenu(e) {
     preventStop(e)
     clearTimers();
-    !$desktop ? deviceMaximize() : desktopMaximize();
+    // !$desktop ? deviceMaximize() : desktopMaximize();
+    desktopMaximize();
 }
 
 // Menu Min/Max for DEVICES (Tablet, Smartphones)
 function deviceMaximize() {
-    maxtimer = setTimeout(function() {
-        $header.off('click')
-            .on('click', minimizeMenu)
-            .removeClass("hamburger")
-            .addClass('seed');
-            setTimeout(function() {
-                $header.addClass('maxed');
-            },200)
-    }, 100)
-
+    $header
+        .off('click')
+        .on('click', minimizeMenu)
+        .addClass('seed');
+        setTimeout(function() {
+            $header.removeClass("hamburger").addClass('maxed');
+        },200)
 }
 function deviceMinimize() {
-    mintimer = setTimeout(function() {
-        $header.off('click')
-            .on('click', maximizeMenu)
-            .removeClass('maxed');
-            setTimeout(function() {
-                $header.removeClass('seed')
-                $header.addClass("hamburger")   
-                $header.addClass('loaded')                 
-            },400)
-    }, 100)
+    $header.off('click')
+    .on('click', maximizeMenu)
+    .removeClass('maxed');
+    setTimeout(function() {
+        $header.removeClass('seed')
+        $header.addClass("hamburger")   
+        $header.addClass('loaded')                 
+    },300)
 }
 
 // Menu Min/Max for DESKTOP
 function desktopMaximize() {
-    $header.off()
-    $header.removeClass('placed')
-    maxtimer = setTimeout(function() {
-        $header.removeClass("hamburger")
+    console.log('maximize');
+    $header
+        .off()
+        .removeClass('placed')
+        
         setTimeout(function() {
-            $header.removeClass("animate")
-            
-        },200)
-    },400)
+            $header.removeClass("hamburger")
+                    
+                
+                setTimeout(function() {
+                    $header.removeClass("animate")
+                    $header.attr('class', 'maximized')
+                }, 400)
+                
+        },400)
 }
 
 function desktopMinimize() {
-    $header.addClass('animate');
-    mintimer = setTimeout(function() {
-        $header.addClass("hamburger")
+    console.log('minimize');
+    $header
+        .removeClass('maximized')
+        .addClass('animate')
+                .addClass("hamburger");
         setTimeout(function() {
-            $header
-                .on('click', maximizeMenu)
-                .addClass("placed");
-        },400)
-    },200)
+                
+                setTimeout(function() {
+                    $header
+                        .on('click', maximizeMenu)
+                        .addClass("placed");
+                },400)
+        },50)
+        
 }
 
 function preventStop(e) {

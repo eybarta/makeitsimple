@@ -1,6 +1,7 @@
 
 import $ from 'jquery'
 import Vue from 'vue'
+// import InView from 'vue-inview'
 
 import './styl/app.styl';
 import 'swiper/dist/css/swiper.css'

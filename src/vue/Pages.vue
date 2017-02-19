@@ -11,6 +11,7 @@
                         :infoblock="slide.infoblock"
                         :outblock="slide.outblock"
                         :infoblock2="slide.infoblock2"
+                        :track-by="slide.hash"
                          ></swiper-slide>
                 </div>
                 <div class="swiper-button-prev"></div>

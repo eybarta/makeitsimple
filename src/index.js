@@ -18,9 +18,14 @@ $(() => {
     
 function  bindEvents() {
     // INTRO PLAYER
-    $("#playintro").one('click', function() {
-        $(this).toggleClass('play');
+    $("#top").on('click', function() {
+        console.log('play/stop');
+        $("header").toggle();
+        $("#top").toggleClass('play')
+        
         $('#introvideo').attr('src', 'http://simple.mis-implants.com/vr8')
+        $("#closeIntro").show().on('click', closeIntroVideo)
+        
     })
 
     // FAQ || ENABLE SELF CLICK (closing item)
@@ -32,4 +37,10 @@ function  bindEvents() {
         }, 150)
       }
 	})
+}
+
+
+function closeIntroVideo() {
+    $('#introvideo').attr('src', '').hide()
+    $("#closeIntro").hide()
 }

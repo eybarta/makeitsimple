@@ -21,8 +21,6 @@ export default {
         InfoBlock,
         OutBlock
     },
-    computed: {
-    }
 }
 </script>
 <style lang="stylus">
