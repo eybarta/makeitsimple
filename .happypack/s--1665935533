@@ -30,7 +30,7 @@ function initScrollNav() {
     $header = (0, _jquery2.default)('header');
     $toggle = (0, _jquery2.default)('#toggle');
     $desktop = (0, _jquery2.default)(window).width() > 1025;
-    var sections = ['top', 'why', 'make', 'faq', 'awards', 'contact'];
+    var sections = ['top', 'why', 'make', 'faq', 'more'];
     var $links = (0, _jquery2.default)("header .nav a");
 
     _lodash2.default.each(sections, function (section) {

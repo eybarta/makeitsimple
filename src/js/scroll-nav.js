@@ -8,7 +8,7 @@ export function initScrollNav() {
     $header = $('header');
     $toggle = $('#toggle');
     $desktop = $(window).width()>1025;
-    let sections = ['top', 'why', 'make', 'faq', 'awards', 'contact']
+    let sections = ['top', 'why', 'make', 'faq', 'more']
     let $links = $("header .nav a");
 
     _.each(sections, section => {

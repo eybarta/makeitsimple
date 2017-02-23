@@ -46,7 +46,9 @@ a.link, a.link:visited
         z-index 999
     video
         self-center()
-        height 100%
+        width 100%
+        +portrait()
+            display none
     .floater
         position absolute
         top 18%
@@ -56,10 +58,11 @@ a.link, a.link:visited
             left 2%
             transform scale(0.8)
     &:before
-        content ''
-        background url('./assets/img/simple-intro.png') no-repeat 50% 50% / 50% auto
-        position absolute 0 0 0 0
-        z-index 1
+        +portrait()
+            content ''
+            background url('./assets/img/simple-intro.png') no-repeat 50% 50% / 100% auto
+            position absolute 0 0 0 0
+            z-index 1
     &.intro-v3:before
         background-image url('./assets/img/v3-big.jpg')
     /.pages-wrap .intro
@@ -147,11 +150,10 @@ a.link, a.link:visited
             top 0
             height 100%
     &.hp.playoverlay
-        &:before
-            -webkit-filter blur(5px) !important
-            filter url('assets/blur.svg#blur')
-            filter blur(5px)
+        &:before, video
+            @extend $blur
         .play-overlay
+            background rgba(darkblue, 0.8)
             opacity 1
             transform scale(1)
         .i-360
@@ -528,11 +530,7 @@ a.link, a.link:visited
     img
         transform none !important
         &.under
-            filter: url("data:image/svg+xml;utf9,<svg%20version='1.1'%20xmlns='http://www.w3.org/2000/svg'><filter%20id='blur'><feGaussianBlur%20stdDeviation='10'%20/></filter></svg>#blur");
-            -webkit-filter:blur(5px);
-            -ms-filter: blur(5px);
-            -o-filter: blur(5px);
-            filter:blur(5px);
+            @extend $blur
                 
 .info-toggle
     position absolute
