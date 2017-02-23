@@ -1,0 +1,151 @@
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+exports.initScrollNav = initScrollNav;
+
+var _jquery = require('jquery');
+
+var _jquery2 = _interopRequireDefault(_jquery);
+
+var _lodash = require('lodash');
+
+var _lodash2 = _interopRequireDefault(_lodash);
+
+var _inView = require('in-view');
+
+var _inView2 = _interopRequireDefault(_inView);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var $header,
+    $toggle,
+    $desktop,
+    mintimer,
+    maxtimer,
+    scrollpauser = 0;
+
+function initScrollNav() {
+    $header = (0, _jquery2.default)('header');
+    $toggle = (0, _jquery2.default)('#toggle');
+    $desktop = (0, _jquery2.default)(window).width() > 1025;
+    var sections = ['top', 'why', 'make', 'faq', 'awards', 'contact'];
+    var $links = (0, _jquery2.default)("header .nav a");
+
+    _lodash2.default.each(sections, function (section) {
+        _inView2.default.threshold(0.2);
+        _inView2.default.offset({
+            top: 20,
+            bottom: 150
+        });
+        (0, _inView2.default)('#' + section).on('enter', function (el) {
+            $links.removeClass('active').filter('[href$=' + section + ']').addClass('active');
+        });
+    });
+    $links.on('click touchstart', function (e) {
+        if ((0, _jquery2.default)('body').hasClass('root')) {
+            e.preventDefault();
+            if (!$desktop) {
+                console.log('MINIMIZE');
+                minimizeMenu();
+            }
+            if ((0, _jquery2.default)(window).width() > 1025) {
+                (0, _jquery2.default)(window).off('scroll');
+                (0, _jquery2.default)("#top").removeClass('stick');
+            }
+
+            var anchor = (0, _jquery2.default)(this.getAttribute('href'));
+            if (anchor.length > 0) {
+                (0, _jquery2.default)('html,body').animate({
+                    scrollTop: (0, _jquery2.default)(anchor).offset().top
+                }, 400, function () {
+                    setTimeout(function () {
+                        initMenu();
+                    }, 50);
+                });
+            }
+        }
+    });
+    $toggle.on('click', toggleMenu);
+    initMenu();
+
+    (0, _jquery2.default)(window).on('resize.menu', initMenu);
+}
+
+function toggleMenu() {
+    if (/max/g.test($header.attr('class'))) {
+        minimizeMenu();
+    } else {
+        maximizeMenu();
+    }
+}
+function initMenu() {
+    console.log("INIT MENU");
+    $desktop = (0, _jquery2.default)(window).width() > 1025;
+    clearTimers();
+    (0, _jquery2.default)(window).off('scroll').on('scroll', scrollCheck);
+    scrollCheck();
+}
+function scrollCheck(e) {
+    if ((0, _jquery2.default)(window).scrollTop() < 20 && $header.hasClass('hamburger')) {
+        if ($desktop) {
+            (0, _jquery2.default)("#top").addClass('stick');
+        }
+        if ((0, _jquery2.default)("#top").hasClass('play')) {
+            $header.hide();
+        } else if ($desktop) {
+            maximizeMenu();
+        }
+        (0, _jquery2.default)('#top').removeClass('playoverlay');
+    } else if ((0, _jquery2.default)(window).scrollTop() > 20) {
+        if (!$header.hasClass('hamburger')) {
+            minimizeMenu();
+        }
+        $header.show();
+        (0, _jquery2.default)('#top').addClass('playoverlay');
+    } else if (!$desktop) {
+        minimizeMenu();
+    }
+
+    if ((0, _jquery2.default)(window).scrollTop() > 400) {
+        (0, _jquery2.default)("#top").removeClass('stick');
+    }
+}
+// Minimize and Maximize Menu
+function minimizeMenu(e) {
+    if (e && !/a/i.test(e.target.tagName)) {
+        preventStop(e);
+    }
+    clearTimers();
+    $header.addClass('animate').removeClass('maximized').addClass('seed');
+    setTimeout(function () {
+        $header.addClass("hamburger");
+        setTimeout(function () {
+            $header.on('click', maximizeMenu).removeClass('seed').addClass("placed");
+        }, 300);
+    }, 400);
+}
+function maximizeMenu(e) {
+    preventStop(e);
+    clearTimers();
+    $header.off('click').removeClass('placed');
+    setTimeout(function () {
+        $header.removeClass("hamburger");
+        setTimeout(function () {
+            $header.removeClass("animate").removeClass('seed');
+            $header.attr('class', 'maximized');
+        }, 400);
+    }, 400);
+}
+
+function clearTimers() {
+    clearTimeout(maxtimer);
+    clearTimeout(mintimer);
+}
+function preventStop(e) {
+    if (!!e) {
+        e.preventDefault();
+        e.stopPropagation();
+    }
+}

@@ -8,6 +8,7 @@
                     <swiper-slide v-for="slide in slides" 
                         :hash="slide.hash"
                         :introBg="slide.introBg"
+                        :introFloatingElement="slide.introFloatingElement"
                         :infoblock="slide.infoblock"
                         :outblock="slide.outblock"
                         :infoblock2="slide.infoblock2"

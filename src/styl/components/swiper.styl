@@ -43,7 +43,7 @@ med = 620px
                 +below(breaks.tablet)
                     &:hover
                         transform translate3d(0,-1%,0)
-        +above(breaks.tablet)
+        +above(breaks.base)
             .swiper-wrapper:hover
                 .swiper-slide:not(:hover)
                     .minitxt
@@ -90,6 +90,8 @@ med = 620px
         top 0
         transform none !important                
         transition opacity 400ms ease
+        +below(breaks.base)
+            display none
         +below(med)
             width 30px
         &:after
@@ -100,8 +102,8 @@ med = 620px
             transform translate(50%, -50%) rotate(-45deg)
             width 111px
             height 111px
-            border-top 1px solid #a7a9ae
-            border-left 1px solid #a7a9ae
+            border-top 1px solid rgba(#a7a9ae, 0.4)
+            border-left 1px solid rgba(#a7a9ae, 0.4)
             transform-origin 50%
             border-width 12px
             +below(med)
@@ -119,20 +121,25 @@ med = 620px
             &:after
                 transform translate(-50%, -50%) rotate(135deg)
 
-.swiper-control
+#make .swiper-control
     .swiper-button-prev, .swiper-container-rtl .swiper-button-next,
     .swiper-button-next, .swiper-container-rtl .swiper-button-prev
-        top 50%
+        top 35%
+        +below(breaks.base)
+            display none
 // SWIPER PAGINATION BULLETS
+
+#make .swiper-pagination-bullets
+    margin-top 80px
 .swiper-control, .pages-wrap
     .swiper-pagination-bullets
         inline-mid()
         width auto !important
         padding 0 26px
         left 50% !important
-        bottom -30px
+        
         transform translateX(-50%)
-        background rgba(#fff, 0.8)
+        background #fff
         border-radius 45px
         height 34px
         white-space nowrap
@@ -140,8 +147,8 @@ med = 620px
             padding 0 6px
     .swiper-pagination-bullet
         margin 0 5px
-        width 14px
-        height 14px
+        width 12px
+        height 12px
         +below(breaks.mobile)
             width 12px
             height 12px
@@ -149,8 +156,8 @@ med = 620px
         &:first-child
             position relative
             border-radius 0
-            height 10px
-            width 12px
+            height 8px
+            width 11px
             transform translateY(2px)
             &:after
                 content ''
@@ -158,13 +165,13 @@ med = 620px
                 position absolute
                 top 0
                 left 50%
-                width 10px
+                width 8px
                 border-radius 0
                 border-right 6px solid transparent
                 border-left 6px solid transparent
                 background initial
                 border-bottom 4px solid #000
-                transform translate(-50%, -4px)
+                transform translate(-52%, -4px)
         &-active
             background #16507d
             border-radius 50%
@@ -184,3 +191,33 @@ med = 620px
         +below(breaks.mobile)
             top 80vh
         
+
+// VIDEO SLIDER
+.video-slider
+    .swiper-control 
+        position relative 0 0 0 0
+        padding 0
+        .swiper-container
+            width 100%
+            .swiper-wrapper
+                .swiper-slide
+                    padding 0
+                    video
+                        width 100vw
+        .video-swiper-pagination
+            bottom 5vh
+            background none
+            z-index 999
+            position absolute
+            +below(breaks.mobile)
+                transform translateX(-50%) scale(0.8)
+                bottom 10px
+            .swiper-pagination-bullet
+                &:first-child:after
+                    transform translate(-47%, -4px)
+                &:not(.swiper-pagination-bullet-active)
+                    background #c9cbcf
+                    opacity 0.8
+                    &:first-child:after
+                        border-bottom-color #c9cbcf
+                        opacity 0.8

@@ -1,0 +1,66 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <style>
+        body
+        {
+            background-color:#000;
+            padding:0px;margin:0px;
+            overflow:hidden;
+        }
+
+
+        .IntructionsWrapper
+        {
+            width:100%;height:100vh;display: flex;align-items: center;justify-content: center;
+            position:absolute;z-index:10000;
+        }
+        .Intructions
+        {
+            position:absolute;z-index:6000;
+        }
+        .InstructionsIcon
+        {
+            position:relative;margin:auto;width:340px;height:340px;
+        }
+        .InstructionsIcon img
+        {
+            position:absolute;top:0px;left:0px;
+        }
+        .InstructionsIcon .rot
+        {
+            animation: progRotation linear 4s infinite;
+            -webkit-animation: progRotation linear 4s infinite;
+            -moz-animation: progRotation linear 4s infinite;
+        }        
+        @keyframes progRotation{
+            from {transform:rotate(360deg) ;}
+            to {transform:rotate(0deg) ;}
+        }
+        @-webkit-keyframes progRotation{
+            from {-webkit-transform:rotate(360deg) ;}
+            to {-webkit-transform:rotate(0deg) ;}
+        }
+        @-moz-keyframes progRotation{
+            from {-moz-transform:rotate(360deg) ;}
+            to {-moz-transform:rotate(0deg) ;}
+        }
+
+
+    </style>
+</head>
+<body>
+
+    <div class="IntructionsWrapper">
+        <div style="Intructions">
+            <div class="InstructionsIcon">
+                <img src="images/Rot360.png" />
+                <img src="images/RotRing.png" class="rot" />
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>

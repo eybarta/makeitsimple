@@ -1,0 +1,39 @@
+'use strict';
+
+var _jquery = require('jquery');
+
+var _jquery2 = _interopRequireDefault(_jquery);
+
+var _vue = require('vue');
+
+var _vue2 = _interopRequireDefault(_vue);
+
+require('./styl/app.styl');
+
+require('swiper/dist/css/swiper.css');
+
+var _swiper = require('./js/swiper');
+
+var _scrollNav = require('./js/scroll-nav');
+
+var _Pages = require('./vue/Pages.vue');
+
+var _Pages2 = _interopRequireDefault(_Pages);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+// import InView from 'vue-inview'
+
+(0, _jquery2.default)(function () {
+    (0, _swiper.initPagesSwiper)();
+    (0, _scrollNav.initScrollNav)();
+});
+
+var pages = new _vue2.default({
+    render: function render(h) {
+        return h(_Pages2.default);
+    },
+    mounted: function mounted() {
+        console.log("VUE ROOT MOUNTED");
+    }
+}).$mount('#pages');

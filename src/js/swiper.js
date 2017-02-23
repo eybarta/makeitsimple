@@ -1,8 +1,8 @@
 var misSwiper, pagesSwiper;
 
 export function initSwiper()  {
-    misSwiper =  new Swiper('.swiper-container', {
-        pagination: '.swiper-pagination',
+    misSwiper =  new Swiper('.mis-swiper-container', {
+        pagination: '.mis-swiper-pagination',
         paginationClickable: true,
         slidesPerView:5,
         spaceBetween:20,
@@ -34,6 +34,8 @@ export function initSwiper()  {
 export function initPagesSwiper() {
     pagesSwiper = new Swiper('.swiper-container', {
         pagination: '.swiper-pagination',
+        // grabCursor: true,
+        simulateTouch: false,
         paginationClickable: true,
         slidesPerView:1,
         spaceBetween:0,
@@ -41,7 +43,23 @@ export function initPagesSwiper() {
         autoHeight: true,
         hashnav: true,
         hashnavWatchState: true,
+        longSwipes:true,
+        shortSwipes:false,
         nextButton: '.swiper-button-next',
         prevButton: '.swiper-button-prev',
+    });
+}
+
+export function videoSwiper() {
+    return new Swiper('.video-swiper', {
+        pagination: '.video-swiper-pagination',
+        // grabCursor: true,
+        simulateTouch: true,
+        paginationClickable: true,
+        slidesPerView:1,
+        spaceBetween:0,
+        keyboardControl: true,
+        autoHeight: true,
+        autoplay: 11000
     });
 }

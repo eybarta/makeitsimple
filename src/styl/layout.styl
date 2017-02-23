@@ -14,14 +14,12 @@ body
     width 100%
     min-height 100vh
 .wrap
-    .preview-section
-        & > div
-            lost-center 1200px
-            +below(1200px)
-                padding 0 3%
     img.big_graphic
         vertical-align middle
         width 43%
+        +below(breaks.base)
+            margin 3% 5% 0 -5%
+            width 45%
         +below(breaks.tablet)
             max-width 50%
             transform initial
@@ -39,17 +37,22 @@ body
         padding 0 1%
         .info-title
             padding 0 5%
+            centerize-children()
+        +below(breaks.base)
+            width 54%
+            .txt
+                width 90%
+                margin-top 10px
         +below(breaks.tablet)
             width 100%
+        +below(breaks.mobile)
+            .info-title, .txt
+                text-align center
+                width auto
 
 
     
         
-.dark-big-block
-    position relative
-    // TEMP IMAGE
-    background url('./assets/img/placeholder-block.jpg') no-repeat 50% 50% / cover
-    height 100vh
 // GRID
 for num in (1..12)
 	.col-{num}
@@ -60,7 +63,7 @@ for num in (1..12)
         padding 0 3%
     & > *
         lost-column 1/3 4 1%
-        +below(520px)
+        +below(breaks.mobile)
             lost-column 1/1 1 0
 
 .group-4
@@ -76,14 +79,15 @@ for num in (1..12)
 footer
     min-height 40vh
     background darken(#fbfbfd, 1)
-    padding 2% 4%
+    padding 2% 8%
     padding-bottom 1%
     +below(breaks.mobile)
         padding-top 6%
     & > ul > *
         lost-column 1/3 3 8%
-        +below(520px)
+        +below(breaks.tablet)
             lost-column 1/1 1 0
+            margin-top 40px
     .minitxt
         small-txt()
         margin-bottom 10px
@@ -110,7 +114,7 @@ footer
 
     h6
         margin-bottom 20px
-        color darkblue
+        color linkgray
         &:after
             content ''
             display block

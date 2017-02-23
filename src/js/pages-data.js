@@ -3,112 +3,113 @@ export const PageSlides = [
     {
         hash: 'More_with_less',
         introBg: './dist/img/intro-v3.jpg',
-            infoblock: {
-                title: {
-                    tag: 'h1',
-                    txt: 'More with less'
-                },
-                txt: 'MIS continuously strives to uphold this simple concept. An excellent example of this is the V3 implant. The triangular design of the V3 means less implant. Less implant means more room for blood pooling and vascularization so that more bone can grow Faster.',
-                group: {
-                    type: 'numbers',
-                    items: [
-                        {
-                            title: 3,
-                            text: 'The triangular shape provide high immediate crestal stability'
-                        },
-                        {
-                            title: 2,
-                            text: '2 Platforms. Blue for Narrow and Purple for Standard'
-                        },
-                        {
-                            title: 12,
-                            text: 'The 12° conical connection creates an ultimate seal'
-                        },
-                        {
-                            title: 4,
-                            text: '4 placement tools are specificly designed to enable reliable procedure'
-                        }
-                    ]
-                },
-                image: './dist/img/v3-bottom-graphic.jpg'
+        introFloatingElement: 'data:img/png;base64,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',
+        infoblock: {
+            title: {
+                tag: 'h1',
+                txt: 'More with less'
             },
-            outblock: {
-                txt: 'The simplicity of this geometrical change; circular to triangular; is at the core of some major advantages of the V3.Less cortical pressure, less bone resorption and better initial and biological stability. ',
-                h2: 'V3, More bone where it matters most',
-                btn: {
-                    link: '#p',
-                    txt: 'Contact your local distributor'
-                }
+            txt: 'MIS continuously strives to uphold this simple concept. An excellent example of this is the V3 implant. The triangular design of the V3 means less implant. Less implant means more room for blood pooling and vascularization so that more bone can grow Faster.',
+            group: {
+                type: 'numbers',
+                items: [
+                    {
+                        title: 3,
+                        text: 'The triangular shape provide high immediate crestal stability'
+                    },
+                    {
+                        title: 2,
+                        text: '2 Platforms. Blue for Narrow and Purple for Standard'
+                    },
+                    {
+                        title: 12,
+                        text: 'The 12° conical connection creates an ultimate seal'
+                    },
+                    {
+                        title: 4,
+                        text: '4 placement tools are specificly designed to enable reliable procedure'
+                    }
+                ]
             },
-            infoblock2: {
-                title: {
-                    tag: 'h3',
-                    txt: 'INFORMATION WORTH SEEING',
-                    options: ['word-break'],
-                    classNames: ['pb-big']
-                },
-                group: {
-                    type: 'images',
-                    items: [
-                        {
-                            img:  {
-                                src: 'dist/img/prints.svg',
-                                alt: 'Printing Catalog'
-                            },
-                            links: [
-                                {
-                                    txt: 'V3 Mini Catalog >',
-                                    href: '#p'
-                                },
-                                {
-                                    txt: 'Conical  Printing Catalog >',
-                                    href: '#p'
-                                }
-                            ]
-                        },
-                        {
-                            img:  {
-                                src: 'dist/img/www.svg',
-                                alt: 'Online Catalog'
-                            },
-                            links: [
-                                {
-                                    txt: 'V3 Minisite >',
-                                    href: '#p'
-                                },
-                                {
-                                    txt: 'VCONCEPT Minisite >',
-                                    href: '#p'
-                                }
-                            ]
-                        },
-                         {
-                            img:  {
-                                src: 'dist/img/online-catalog-icon.png',
-                                alt: 'Online Catalog'
-                            },
-                            links: [
-                                {
-                                    txt: 'V3 Mini Catalog >',
-                                    href: '#p'
-                                }
-                            ]
-                        },
-                        {
-                            img:  {
-                                src: 'dist/img/magnify.svg',
-                                alt: 'Online Catalog'
-                            },
-                            links: [
-                                {
-                                    txt: 'VCONCEPT Clinic Cases >',
-                                    href: '#p'
-                                }
-                            ]
-                        },
-                    ]
-                }
+            image: './dist/img/v3-bottom-graphic.jpg'
+        },
+        outblock: {
+            txt: 'The simplicity of this geometrical change; circular to triangular; is at the core of some major advantages of the V3.Less cortical pressure, less bone resorption and better initial and biological stability. ',
+            h2: 'V3, More bone where it matters most',
+            btn: {
+                link: '#p',
+                txt: 'Contact your local distributor'
             }
+        },
+        infoblock2: {
+            title: {
+                tag: 'h3',
+                txt: 'INFORMATION WORTH SEEING',
+                options: ['word-break'],
+                classNames: ['pb-big']
+            },
+            group: {
+                type: 'images',
+                items: [
+                    {
+                        img:  {
+                            src: 'dist/img/prints.svg',
+                            alt: 'Printing Catalog'
+                        },
+                        links: [
+                            {
+                                txt: 'V3 Mini Catalog',
+                                href: '#p'
+                            },
+                            {
+                                txt: 'Conical  Printing Catalog',
+                                href: '#p'
+                            }
+                        ]
+                    },
+                    {
+                        img:  {
+                            src: 'dist/img/www.svg',
+                            alt: 'Online Catalog'
+                        },
+                        links: [
+                            {
+                                txt: 'V3 Minisite',
+                                href: '#p'
+                            },
+                            {
+                                txt: 'VCONCEPT Minisite',
+                                href: '#p'
+                            }
+                        ]
+                    },
+                        {
+                        img:  {
+                            src: 'dist/img/online-catalog-icon.png',
+                            alt: 'Online Catalog'
+                        },
+                        links: [
+                            {
+                                txt: 'V3 Mini Catalog',
+                                href: '#p'
+                            }
+                        ]
+                    },
+                    {
+                        img:  {
+                            src: 'dist/img/magnify.svg',
+                            alt: 'Online Catalog'
+                        },
+                        links: [
+                            {
+                                txt: 'VCONCEPT Clinic Cases',
+                                href: '#p'
+                            }
+                        ]
+                    },
+                ]
+            }
+        }
     },
     // PAGE SLIDE 2 -- Agility is in our nature
     {
@@ -168,11 +169,11 @@ export const PageSlides = [
                         },
                         links: [
                             {
-                                txt: 'V3 Mini Catalog >',
+                                txt: 'V3 Mini Catalog',
                                 href: '#p'
                             },
                             {
-                                txt: 'Conical  Printing Catalog >',
+                                txt: 'Conical  Printing Catalog',
                                 href: '#p'
                             }
                         ]
@@ -184,11 +185,11 @@ export const PageSlides = [
                         },
                         links: [
                             {
-                                txt: 'V3 Minisite >',
+                                txt: 'V3 Minisite',
                                 href: '#p'
                             },
                             {
-                                txt: 'VCONCEPT Minisite >',
+                                txt: 'VCONCEPT Minisite',
                                 href: '#p'
                             }
                         ]
@@ -200,7 +201,7 @@ export const PageSlides = [
                         },
                         links: [
                             {
-                                txt: 'V3 Mini Catalog >',
+                                txt: 'V3 Mini Catalog',
                                 href: '#p'
                             }
                         ]
@@ -212,7 +213,7 @@ export const PageSlides = [
                         },
                         links: [
                             {
-                                txt: 'VCONCEPT Clinic Cases >',
+                                txt: 'VCONCEPT Clinic Cases',
                                 href: '#p'
                             }
                         ]
@@ -252,7 +253,7 @@ export const PageSlides = [
                     }
                 ]
             },
-            image: './dist/img/bottom-graphic-agility.jpg'
+            image: './dist/img/bottom-graphic-key.jpg'
         },
         outblock: {
             txt: 'The simplicity of this geometrical change; circular to triangular; is at the core of some major advantages of the V3.Less cortical pressure, less bone resorption and better initial and biological stability. ',
@@ -279,11 +280,11 @@ export const PageSlides = [
                         },
                         links: [
                             {
-                                txt: 'V3 Mini Catalog >',
+                                txt: 'V3 Mini Catalog',
                                 href: '#p'
                             },
                             {
-                                txt: 'Conical  Printing Catalog >',
+                                txt: 'Conical  Printing Catalog',
                                 href: '#p'
                             }
                         ]
@@ -295,11 +296,11 @@ export const PageSlides = [
                         },
                         links: [
                             {
-                                txt: 'V3 Minisite >',
+                                txt: 'V3 Minisite',
                                 href: '#p'
                             },
                             {
-                                txt: 'VCONCEPT Minisite >',
+                                txt: 'VCONCEPT Minisite',
                                 href: '#p'
                             }
                         ]
@@ -311,7 +312,7 @@ export const PageSlides = [
                         },
                         links: [
                             {
-                                txt: 'V3 Mini Catalog >',
+                                txt: 'V3 Mini Catalog',
                                 href: '#p'
                             }
                         ]
@@ -323,7 +324,7 @@ export const PageSlides = [
                         },
                         links: [
                             {
-                                txt: 'VCONCEPT Clinic Cases >',
+                                txt: 'VCONCEPT Clinic Cases',
                                 href: '#p'
                             }
                         ]
@@ -390,11 +391,11 @@ export const PageSlides = [
                         },
                         links: [
                             {
-                                txt: 'V3 Mini Catalog >',
+                                txt: 'V3 Mini Catalog',
                                 href: '#p'
                             },
                             {
-                                txt: 'Conical  Printing Catalog >',
+                                txt: 'Conical  Printing Catalog',
                                 href: '#p'
                             }
                         ]
@@ -406,11 +407,11 @@ export const PageSlides = [
                         },
                         links: [
                             {
-                                txt: 'V3 Minisite >',
+                                txt: 'V3 Minisite',
                                 href: '#p'
                             },
                             {
-                                txt: 'VCONCEPT Minisite >',
+                                txt: 'VCONCEPT Minisite',
                                 href: '#p'
                             }
                         ]
@@ -422,7 +423,7 @@ export const PageSlides = [
                         },
                         links: [
                             {
-                                txt: 'V3 Mini Catalog >',
+                                txt: 'V3 Mini Catalog',
                                 href: '#p'
                             }
                         ]
@@ -434,7 +435,7 @@ export const PageSlides = [
                         },
                         links: [
                             {
-                                txt: 'VCONCEPT Clinic Cases >',
+                                txt: 'VCONCEPT Clinic Cases',
                                 href: '#p'
                             }
                         ]
@@ -501,11 +502,11 @@ export const PageSlides = [
                         },
                         links: [
                             {
-                                txt: 'V3 Mini Catalog >',
+                                txt: 'V3 Mini Catalog',
                                 href: '#p'
                             },
                             {
-                                txt: 'Conical  Printing Catalog >',
+                                txt: 'Conical  Printing Catalog',
                                 href: '#p'
                             }
                         ]
@@ -517,11 +518,11 @@ export const PageSlides = [
                         },
                         links: [
                             {
-                                txt: 'V3 Minisite >',
+                                txt: 'V3 Minisite',
                                 href: '#p'
                             },
                             {
-                                txt: 'VCONCEPT Minisite >',
+                                txt: 'VCONCEPT Minisite',
                                 href: '#p'
                             }
                         ]
@@ -533,7 +534,7 @@ export const PageSlides = [
                         },
                         links: [
                             {
-                                txt: 'V3 Mini Catalog >',
+                                txt: 'V3 Mini Catalog',
                                 href: '#p'
                             }
                         ]
@@ -545,7 +546,7 @@ export const PageSlides = [
                         },
                         links: [
                             {
-                                txt: 'VCONCEPT Clinic Cases >',
+                                txt: 'VCONCEPT Clinic Cases',
                                 href: '#p'
                             }
                         ]
@@ -612,11 +613,11 @@ export const PageSlides = [
                         },
                         links: [
                             {
-                                txt: 'V3 Mini Catalog >',
+                                txt: 'V3 Mini Catalog',
                                 href: '#p'
                             },
                             {
-                                txt: 'Conical  Printing Catalog >',
+                                txt: 'Conical  Printing Catalog',
                                 href: '#p'
                             }
                         ]
@@ -628,11 +629,11 @@ export const PageSlides = [
                         },
                         links: [
                             {
-                                txt: 'V3 Minisite >',
+                                txt: 'V3 Minisite',
                                 href: '#p'
                             },
                             {
-                                txt: 'VCONCEPT Minisite >',
+                                txt: 'VCONCEPT Minisite',
                                 href: '#p'
                             }
                         ]
@@ -644,7 +645,7 @@ export const PageSlides = [
                         },
                         links: [
                             {
-                                txt: 'V3 Mini Catalog >',
+                                txt: 'V3 Mini Catalog',
                                 href: '#p'
                             }
                         ]
@@ -656,7 +657,7 @@ export const PageSlides = [
                         },
                         links: [
                             {
-                                txt: 'VCONCEPT Clinic Cases >',
+                                txt: 'VCONCEPT Clinic Cases',
                                 href: '#p'
                             }
                         ]
@@ -723,11 +724,11 @@ export const PageSlides = [
                         },
                         links: [
                             {
-                                txt: 'V3 Mini Catalog >',
+                                txt: 'V3 Mini Catalog',
                                 href: '#p'
                             },
                             {
-                                txt: 'Conical  Printing Catalog >',
+                                txt: 'Conical  Printing Catalog',
                                 href: '#p'
                             }
                         ]
@@ -739,11 +740,11 @@ export const PageSlides = [
                         },
                         links: [
                             {
-                                txt: 'V3 Minisite >',
+                                txt: 'V3 Minisite',
                                 href: '#p'
                             },
                             {
-                                txt: 'VCONCEPT Minisite >',
+                                txt: 'VCONCEPT Minisite',
                                 href: '#p'
                             }
                         ]
@@ -755,7 +756,7 @@ export const PageSlides = [
                         },
                         links: [
                             {
-                                txt: 'V3 Mini Catalog >',
+                                txt: 'V3 Mini Catalog',
                                 href: '#p'
                             }
                         ]
@@ -767,7 +768,7 @@ export const PageSlides = [
                         },
                         links: [
                             {
-                                txt: 'VCONCEPT Clinic Cases >',
+                                txt: 'VCONCEPT Clinic Cases',
                                 href: '#p'
                             }
                         ]
@@ -779,7 +780,7 @@ export const PageSlides = [
     // PAGE SLIDE 8 -- Integrity unwavering
     {
         hash: 'Integrity_unwavering',
-        introBg: './dist/img/intro-inovation.jpg',
+        introBg: './dist/img/intro-integrity.jpg',
         infoblock: {
             title: {
                 tag: 'h1',
@@ -807,7 +808,7 @@ export const PageSlides = [
                     }
                 ]
             },
-            image: './dist/img/bottom-graphic-inovation.jpg'
+            image: './dist/img/bottom-graphic-integrity.jpg'
         },
         outblock: {
             txt: 'The simplicity of this geometrical change; circular to triangular; is at the core of some major advantages of the V3.Less cortical pressure, less bone resorption and better initial and biological stability. ',
@@ -834,11 +835,11 @@ export const PageSlides = [
                         },
                         links: [
                             {
-                                txt: 'V3 Mini Catalog >',
+                                txt: 'V3 Mini Catalog',
                                 href: '#p'
                             },
                             {
-                                txt: 'Conical  Printing Catalog >',
+                                txt: 'Conical  Printing Catalog',
                                 href: '#p'
                             }
                         ]
@@ -850,11 +851,11 @@ export const PageSlides = [
                         },
                         links: [
                             {
-                                txt: 'V3 Minisite >',
+                                txt: 'V3 Minisite',
                                 href: '#p'
                             },
                             {
-                                txt: 'VCONCEPT Minisite >',
+                                txt: 'VCONCEPT Minisite',
                                 href: '#p'
                             }
                         ]
@@ -866,7 +867,7 @@ export const PageSlides = [
                         },
                         links: [
                             {
-                                txt: 'V3 Mini Catalog >',
+                                txt: 'V3 Mini Catalog',
                                 href: '#p'
                             }
                         ]
@@ -878,7 +879,7 @@ export const PageSlides = [
                         },
                         links: [
                             {
-                                txt: 'VCONCEPT Clinic Cases >',
+                                txt: 'VCONCEPT Clinic Cases',
                                 href: '#p'
                             }
                         ]
@@ -945,11 +946,11 @@ export const PageSlides = [
                         },
                         links: [
                             {
-                                txt: 'V3 Mini Catalog >',
+                                txt: 'V3 Mini Catalog',
                                 href: '#p'
                             },
                             {
-                                txt: 'Conical  Printing Catalog >',
+                                txt: 'Conical  Printing Catalog',
                                 href: '#p'
                             }
                         ]
@@ -961,11 +962,11 @@ export const PageSlides = [
                         },
                         links: [
                             {
-                                txt: 'V3 Minisite >',
+                                txt: 'V3 Minisite',
                                 href: '#p'
                             },
                             {
-                                txt: 'VCONCEPT Minisite >',
+                                txt: 'VCONCEPT Minisite',
                                 href: '#p'
                             }
                         ]
@@ -977,7 +978,7 @@ export const PageSlides = [
                         },
                         links: [
                             {
-                                txt: 'V3 Mini Catalog >',
+                                txt: 'V3 Mini Catalog',
                                 href: '#p'
                             }
                         ]
@@ -989,7 +990,7 @@ export const PageSlides = [
                         },
                         links: [
                             {
-                                txt: 'VCONCEPT Clinic Cases >',
+                                txt: 'VCONCEPT Clinic Cases',
                                 href: '#p'
                             }
                         ]
@@ -1056,11 +1057,11 @@ export const PageSlides = [
                         },
                         links: [
                             {
-                                txt: 'V3 Mini Catalog >',
+                                txt: 'V3 Mini Catalog',
                                 href: '#p'
                             },
                             {
-                                txt: 'Conical  Printing Catalog >',
+                                txt: 'Conical  Printing Catalog',
                                 href: '#p'
                             }
                         ]
@@ -1072,11 +1073,11 @@ export const PageSlides = [
                         },
                         links: [
                             {
-                                txt: 'V3 Minisite >',
+                                txt: 'V3 Minisite',
                                 href: '#p'
                             },
                             {
-                                txt: 'VCONCEPT Minisite >',
+                                txt: 'VCONCEPT Minisite',
                                 href: '#p'
                             }
                         ]
@@ -1088,7 +1089,7 @@ export const PageSlides = [
                         },
                         links: [
                             {
-                                txt: 'V3 Mini Catalog >',
+                                txt: 'V3 Mini Catalog',
                                 href: '#p'
                             }
                         ]
@@ -1100,7 +1101,7 @@ export const PageSlides = [
                         },
                         links: [
                             {
-                                txt: 'VCONCEPT Clinic Cases >',
+                                txt: 'VCONCEPT Clinic Cases',
                                 href: '#p'
                             }
                         ]
@@ -1167,11 +1168,11 @@ export const PageSlides = [
                         },
                         links: [
                             {
-                                txt: 'V3 Mini Catalog >',
+                                txt: 'V3 Mini Catalog',
                                 href: '#p'
                             },
                             {
-                                txt: 'Conical  Printing Catalog >',
+                                txt: 'Conical  Printing Catalog',
                                 href: '#p'
                             }
                         ]
@@ -1183,11 +1184,11 @@ export const PageSlides = [
                         },
                         links: [
                             {
-                                txt: 'V3 Minisite >',
+                                txt: 'V3 Minisite',
                                 href: '#p'
                             },
                             {
-                                txt: 'VCONCEPT Minisite >',
+                                txt: 'VCONCEPT Minisite',
                                 href: '#p'
                             }
                         ]
@@ -1199,7 +1200,7 @@ export const PageSlides = [
                         },
                         links: [
                             {
-                                txt: 'V3 Mini Catalog >',
+                                txt: 'V3 Mini Catalog',
                                 href: '#p'
                             }
                         ]
@@ -1211,7 +1212,7 @@ export const PageSlides = [
                         },
                         links: [
                             {
-                                txt: 'VCONCEPT Clinic Cases >',
+                                txt: 'VCONCEPT Clinic Cases',
                                 href: '#p'
                             }
                         ]
@@ -1278,11 +1279,11 @@ export const PageSlides = [
                         },
                         links: [
                             {
-                                txt: 'V3 Mini Catalog >',
+                                txt: 'V3 Mini Catalog',
                                 href: '#p'
                             },
                             {
-                                txt: 'Conical  Printing Catalog >',
+                                txt: 'Conical  Printing Catalog',
                                 href: '#p'
                             }
                         ]
@@ -1294,11 +1295,11 @@ export const PageSlides = [
                         },
                         links: [
                             {
-                                txt: 'V3 Minisite >',
+                                txt: 'V3 Minisite',
                                 href: '#p'
                             },
                             {
-                                txt: 'VCONCEPT Minisite >',
+                                txt: 'VCONCEPT Minisite',
                                 href: '#p'
                             }
                         ]
@@ -1310,7 +1311,7 @@ export const PageSlides = [
                         },
                         links: [
                             {
-                                txt: 'V3 Mini Catalog >',
+                                txt: 'V3 Mini Catalog',
                                 href: '#p'
                             }
                         ]
@@ -1322,7 +1323,7 @@ export const PageSlides = [
                         },
                         links: [
                             {
-                                txt: 'VCONCEPT Clinic Cases >',
+                                txt: 'VCONCEPT Clinic Cases',
                                 href: '#p'
                             }
                         ]

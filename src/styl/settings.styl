@@ -61,7 +61,7 @@ breaks = {
 	mobile: 640px,
 	mid: 570px,
 	tablet: 769px,
-	base: 1024px,
+	base: 1025px,
 	big: 1200px,
 	bigger: 1600px,
 	max: 1880px
@@ -131,6 +131,14 @@ small-txt()
 	
 
 // POSITIONING
+centerize-children()
+	+below(breaks.tablet)
+		& > *
+			margin 0 auto
+			padding 0
+			text-align center
+			display block !important
+
 self-center(dir=both)
 	position absolute
 	if (dir==vertical)
@@ -153,10 +161,21 @@ absolute-center(dir=both)
 			self-center(horizontal)
 		else
 			self-center()
-mid()
+mid(align=middle)
 	display inline-block
-	vertical-align middle
+	vertical-align align
 
+
+
+inline-grp(align=middle)
+	& > *:not(.not-me)
+			mid(align)
+		&:before
+			mid(align)
+			content ''
+			height 100%
+
+// ALIAS to inline-grp()
 inline-mid()
 	& > *:not(.not-me)
 		mid()
@@ -164,7 +183,6 @@ inline-mid()
 		mid()
 		content ''
 		height 100%
-
 $zero
 	padding 0
 	margin 0

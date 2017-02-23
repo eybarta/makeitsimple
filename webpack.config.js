@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 const resolvePath = require('resolve-path')
+const HappyPack = require('happypack');
 const DashboardPlugin = require('webpack-dashboard/plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const WebpackCleanupPlugin = require('webpack-cleanup-plugin');
@@ -12,18 +13,22 @@ const isProduction = nodeEnv === 'production';
 const buildPath = path.resolve(__dirname, 'dist');
 const sourcePath = path.resolve(__dirname, 'src');
 const normalize = path.resolve(__dirname, './node_modules/css-reset-and-normalize/stylus/flavored-reset-and-normalize.styl');
-const rupture = require('rupture');// path.resolve(__dirname, './node_modules/rupture/rupture/index.styl');
+const rupture = require('rupture');
 const poststylus = require('poststylus');
 
 // Common plugins
 const plugins = [
+    new HappyPack({
+        id: 'js',
+        threads: 4,
+        loaders: [ 'babel-loader' ],
+    }),
     new webpack.LoaderOptionsPlugin(
 			{
 			test: /\.styl$/,
 			options: {
 					stylus: {
                         use: [ rupture({implicit:false}), poststylus([ 'lost', 'rucksack-css' ])],
-
 					}
 				},
 			  preferPathResolver: 'webpack',
@@ -75,7 +80,7 @@ const rules = [
     },
     {
         test: /\.js$/,
-        loader: 'babel-loader',
+        loader: 'happypack/loader?id=js',
         exclude: /node_modules/
     },
     {
@@ -95,15 +100,16 @@ const rules = [
     {
         test: /\.(ttf|svg|eot)$/,
         loader: 'file-loader',
+        exclude: /img/,
         options: {
             name: 'fonts/[hash].[ext]',
             publicPath: './'
         },
     },
     {
-        test: /\.(png|jpg|gif)$/,
+        test: /\.(png|jpg|gif|svg)$/,
         loader: 'url-loader?limit=5000&publicPath=../../dist/&name=img/[name].[ext]',
-        exclude: /dist/
+        exclude: [/dist/, /fonts/]
         
     }
 ]

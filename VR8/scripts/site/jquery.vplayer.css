@@ -1,0 +1,208 @@
+﻿/* generic video controller videoGal.js*/
+.noselect {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Chrome/Safari/Opera */
+     -khtml-user-select: none; /* Konqueror */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  not supported by any browser */
+}
+
+.hpvFadeAnim
+{
+    transition:opacity ease 0.5s;
+    -moz-transition:opacity ease 0.5s;
+    -webkit-transition:opacity ease 0.5s;
+}
+.hpvController
+{
+    width:480px;height:480px;
+    position:absolute;
+    left:50%;top:50%;
+    margin-top:-240px;margin-left:-240px;
+    -webkit-transition: opacity 0.5s ease;
+    -moz-transition: opacity 0.5s ease;
+    -o-transition: opacity 0.5s ease;
+    transition: opacity 0.5s ease;
+    z-index:1007;
+    opacity:1;
+    background-position:center center;
+    background-repeat:no-repeat;
+    cursor:pointer;
+}
+.hpvPlayer
+{
+    position:absolute;z-index:1000;
+    top: 50vh;left: 50vw;
+
+    /*width:100vw;height:auto;*/
+    height:110vh;width:auto;
+
+    -webkit-transform: translateY(-50%) translateX(-50%);
+    -moz-transform: translateY(-50%) translateX(-50%);
+    transform: translateY(-50%) translateX(-50%);
+}
+
+
+#hpvRingCanvas
+{
+    z-index:1006;
+    position:absolute;width:270px;height:270px;top:105px;left:105px;
+    border:solid 0px gray;
+}
+.hpvHandle,
+.hpvHandle2
+{
+    z-index:1007;
+    position:absolute;width:30px;height:30px;
+    cursor:pointer;
+    transform-origin:top center;
+    -webkit-transform-origin:top center;
+    -moz-transform-origin:top center;
+    -o-transform-origin:top center;
+}
+.hpvBtnLabel
+{
+    color:#fff;font-size:14px;
+    z-index:1007;
+    position:absolute;
+    width:100px;height:100px;
+    cursor:pointer;
+    transform-origin:center center;
+    -webkit-transform-origin:center center;
+    -moz-transform-origin:center center;
+    -o-transform-origin:center center;
+    align-content: center;
+    display: flex;
+    align-items: center;
+    text-align:left;
+}
+.hpvBtnLabel.r
+{
+    text-align:right !important;
+}
+
+.hpvBtnLabel .inner
+{
+    color:#fff;display:inline-block;margin:auto;
+    text-align:inherit;
+}
+
+
+.hpvHandleVal
+{
+    z-index:1007;
+    position:absolute;width:30px;
+    text-align:center;
+    transform-origin:top center;
+    -webkit-transform-origin:top center;
+    -moz-transform-origin:top center;
+    -o-transform-origin:top center;
+    color:white;
+}
+
+.hpvFS,
+.hpv360
+{
+    z-index:1007;position:absolute;width:100px;height:100px;cursor:pointer;
+    transform-origin:center center;
+    -webkit-transform-origin:center center;
+    -moz-transform-origin:center center;
+    -o-transform-origin:center center;
+    transform: translateY(-50px) !important;
+    -webkit-transform: translateY(-50px) !important;
+    -moz-transform: translateY(-50px) !important;
+    -o-transform: translateY(-50px) !important;
+}
+
+
+.hpvTotal
+{
+    z-index:1007;position:absolute;width:30px;height:30px;
+    top:225px;left: 82px;
+}
+.hpvTotalVal
+{
+    z-index: 1007;
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    top: 234px;
+    left: 42px;
+    color: white;
+    text-align: right;
+}
+
+#hpvDragger
+{
+    z-index:1200;position:absolute;width:30px;height:105px;
+    top:0px;left:0px;
+    cursor:pointer;
+    transform-origin:top center;
+    -webkit-transform-origin:top center;
+    -moz-transform-origin:top center;
+    -o-transform-origin:top center;
+}
+
+.hpvPalyPauseIcon
+{
+    z-index:1007;position:absolute;width:270px;height:270px;top:105px;left:105px;
+}
+.hpvPalyPauseIcon .line
+{
+    position:absolute;z-index:1007;
+    width:3px;height:152px;background-color:#fff;overflow:hidden;
+    top:0px;left:0px;
+    transform-origin:center center;-webkit-transform-origin:center center;-moz-transform-origin:center center;-o-transform-origin:center center;
+    transition:all ease 0.8s;-moz-transition:all ease 0.8s;-webkit-transition:all ease 0.8s;-o-transition:all ease 0.8s;
+}
+.hpvPalyPauseIcon .line:nth-child(1){top:59px;left:112px;}
+.hpvPalyPauseIcon .line:nth-child(2){top:59px;left:154px;}
+.hpvPalyPauseIcon .line:nth-child(3){top:59px;left:154px;}
+.hpvPalyPauseIcon .line.play:nth-child(1){top:59px;left:91px;}
+.hpvPalyPauseIcon .line.play:nth-child(2){transform: rotate(60deg);-moz-transform: rotate(60deg);-webkit-transform: rotate(60deg);-o-transform: rotate(60deg);top: 97px;left: 156px;}
+.hpvPalyPauseIcon .line.play:nth-child(3){transform: rotate(120deg);-moz-transform: rotate(120deg);-webkit-transform: rotate(120deg);-o-transform: rotate(120deg);top: 22px;left: 156px;}
+
+.hpvCloseLayer
+{
+    position: absolute;
+    top: 3vh;
+    left: 3vh;
+    width: 35px;
+    height: 35px;
+    background-image: url(images/btnCloseVideoLayer.png);
+    opacity: 0.3;
+    cursor: pointer;
+    z-index: 1009;
+    background-size: cover;
+}
+.hpvCloseLayer:hover
+{
+    opacity: 1;
+}
+
+.hpvSound
+{
+    position: absolute;top: 3vh;right: 3vh;width: 35px;
+    height: 35px;opacity: 0.3;cursor: pointer;z-index: 1009;
+    background-size: cover;
+}
+.hpvSound:hover
+{
+    opacity: 1;
+}
+
+
+
+
+
+
+
+@media all and (min-width: 1800px)
+{
+    .hpvPlayer
+    {
+        width:100vw;height:auto;
+    }
+}

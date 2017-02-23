@@ -14,7 +14,9 @@ a
     text-align center
 
 .center
-    margin 0 auto
+    lost-center 1200px
+    +below(1200px)
+        padding 0 3%
 
 .centered
     @extend $centered
@@ -50,3 +52,30 @@ for alias, prop in $space
     mid-txt()
 .small-txt
     small-txt()
+
+.subtitle-left
+    width 43%
+    +below(breaks.mobile)
+        display block
+        width auto
+.title-right
+    width 56%
+    padding-left 3%
+    text-align left
+    vertical-align middle
+    +below(breaks.mobile)
+        width auto
+        padding 0
+        text-align center
+
+::selection
+    background lighten(gray, 30)
+
+
+&.breaked
+    +below(769px)
+        text-align left !important
+        position relative
+        display inline-block
+        left 50%
+        transform translateX(-50%)    

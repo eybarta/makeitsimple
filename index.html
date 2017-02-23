@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <title>MIS | Make It Simple</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./dist/css/aos.css">
     <link rel="stylesheet" href="./dist/css/style.css">
 </head>
 <body class="root">
     <header class="maximized">
         <button id="toggle" class="toggler"></button>
         <div class="contain">
-
             <ul class="nav">
                 <li><a href="#top">Home</a></li>
                 <li><a href="#why">Why simple</a></li>
@@ -25,6 +25,7 @@
     <div class="wrap">
         <div class="intro hp full-height unattach" id="top">
             <button id="closeIntro" class="close-btn"></button>
+            <!--<video id="vid" src="https://s3-eu-west-1.amazonaws.com/mis-implants/makeitsimple/Minisite/First-Animation.mp4" autoplay></video>-->
             <div id='i360' class="i-360">
                 <img src="dist/img/360-icon.png" alt="The video includes a 360° experience">
                 <span>The video includes a <em>360°</em> experience</span>
@@ -36,9 +37,9 @@
                     <span>(Click to know more)</span>
                 </div>
             </div>
-            <iframe id="introvideo" src="" frameborder="0"></iframe>
+            <iframe id="introvideo" frameborder="0"></iframe>
         </div>
-        <div class="preview-section pb-max" id="why">
+        <div class="preview-section" id="why">
             <div class="center">
                 <img class="big_graphic" src="dist/img/intro_graphic.jpg" alt="MIS Implants">
                 <div class="infobox">
@@ -70,17 +71,17 @@
             </div>
 
         </div>
-        <div id="make" class="pb-head pt-head">
-            <h2 class="flip-title tcenter pb-bigger">
-                <span>MIS, Make It Simple</span>
-                <span class="subtxt">Because simplicity is as simple as you make it.</span>
+        <div id="make" class="pb-big pt-big">
+            <h2 class="flip-title tcenter pb-bigger center">
+                <span class="title-right">MIS, Make It Simple</span>
+                <span class="subtxt subtitle-left">Because simplicity is as simple as you make it.</span>
             </h2>
 
             <!--
             // SLIDER >> MAKE IT SIMPLE
             -->
             <div class="swiper-control">
-                <div class="swiper-container">
+                <div class="swiper-container mis-swiper-container">
                     <!-- Additional required wrapper -->
                     <div class="swiper-wrapper">
                         <!-- Slides -->
@@ -163,26 +164,25 @@
                     <div class="swiper-button-prev"></div>
                     <div class="swiper-button-next"></div>
                     <!-- If we need pagination -->
-                    <div class="swiper-pagination"></div>
+                    <div class="swiper-pagination mis-swiper-pagination"></div>
             </div>
         </div>
         <!--
             Video slider with gradient background
         -->
-        <div class="dark-big-block">
-            <div class="info-toggle">
-                <span class="small-txt">Click to learn more</span>
-            </div>
+        <div id="vidSlider">
+
         </div>
+
 
         <!--
             FAQ block
         -->
-        <div class="faq-block pt-head pb-head" id="faq">
+        <div class="faq-block pt-max pb-max" id="faq">
             <h2 class="tcenter">Frequently Asked Questions</h2>
 
-            <div class="faq-control mt-big">
-                <h5>Make It Simple</h5>
+            <div class="faq-control mt-bigger">
+                <h5 class="pb-med">Make It Simple</h5>
                 <div class="qa">
                     <ul>
                         <li>
@@ -237,42 +237,50 @@ All of our efforts within the company focus on this mission: To simplify the pro
             </div>
         </div>
         <div class="info-block pt-max pb-bigger">
-            <h3 class="mb-max tcenter">SIMPLY MORE INFORMATION</h3>
+            <h2 id="infoTitle" class="mb-max tcenter">SIMPLY MORE INFORMATION</h2>
 
             <ul class="group-4">
                 <li>
                     <div class="img-wrap">
                         <img src="dist/img/prints.svg" alt="Printing Catalog">
                     </div>
-                    <a href="">Conical  Printing Catalog  ></a>
-                    <a href="">Internal Printing Catalog  ></a>
+                    <div class="out-links">
+                        <a href="">Conical  Printing Catalog  <span>></span></a>
+                        <a href="">Internal Printing Catalog <span>></span></a>
+                    </div>
                 </li>
                  <li>
                     <div class="img-wrap">
                         <img src="dist/img/implants.svg" alt="Printing Catalog">
                     </div>
-
-                    <a href="">Our Implants  ></a>
-                    <a href="">V3 Implant  ></a>
-                    <a href="">C1 Implant  ></a>
-                    <a href="">Seven Implant  ></a>
+                    <div class="out-links">
+                        <a href="">Our Implants <span>></span></a>
+                        <a href="">V3 Implant <span>></span></a>
+                        <a href="">C1 Implant <span>></span></a>
+                        <a href="">Seven Implant <span>></span></a>
+                    </div>
                 </li>
                  <li>
                     <div class="img-wrap">
                         <img src="dist/img/www.svg" alt="Printing Catalog">
                     </div>
-                    <a href="">MIS Main Website ></a>
-                    <a href="">V3 Minisite ></a>
-                    <a href="">VCONCEPT Minisite ></a>
+                    <div class="out-links">
+                        <a href="">MIS Main Website<span>></span></a>
+                        <a href="">V3 Minisite<span>></span></a>
+                        <a href="">VCONCEPT Minisite<span>></span></a>
+                    </div>
+
                 </li>
                  <li>
                      <div class="img-wrap">
                         <img src="dist/img/eye.svg" alt="Printing Catalog">
                     </div>
-                    <a href="">Printed Materials ></a>
-                    <a href="">Image Gallery ></a>
-                    <a href="">Videos ></a>
-                    <a href="">Lectures ></a>
+                    <div class="out-links">
+                        <a href="">Printed Materials<span>></span></a>
+                        <a href="">Image Gallery<span>></span></a>
+                        <a href="">Videos<span>></span></a>
+                        <a href="">Lectures<span>></span></a>
+                    </div>
                 </li>
             </ul>
         </div>

@@ -1,0 +1,419 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>MIS Make it simple</title>
+    <style>
+        .* {
+            padding: 0px;
+            margin: 0px;
+        }
+
+        body {
+            padding: 0px;
+            margin: 0px !important;
+            font-size: 12px;
+            font-family: Arial;
+            height: 100%;
+            width: 100vw;
+            overflow: hidden;
+        }
+
+        .TopBar {
+            width: 100%;
+            height: 50px;
+            background-color: #023350;
+            clear: both;
+            z-index: 5000;
+            position: fixed;
+            top: 0px;
+            left: 0px;
+            color: #808080;
+        }
+
+        /* main player*/
+        #desktopVideoPlayer1 {
+            height: auto;
+            width: auto;
+            width: 100vw;
+            height: 100vh;
+            position: relative;
+            overflow: hidden;
+            z-index: 5005;
+            transition: all ease 0.6s;
+            -webkit-transition: all ease 0.6s;
+            -moz-transition: all ease 0.6s;
+        }
+
+            #desktopVideoPlayer1 video {
+                object-fit: fill;
+                /*width:100%;
+                height:auto;*/
+                /*height: auto;
+                width: auto;
+                min-width: 100%;
+                min-height: 100%;*/
+            }
+
+        .hideLayer {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+
+        /* 360 player*/
+        #desktopVideoVR {
+            z-index: 5000;
+            position: absolute;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            top: 0px;
+            left: 0px;
+            background-color: black;
+        }
+
+        .PlayerWrapper {
+            width: 100%;
+            text-align: center;
+            height: 100%;
+        }
+
+            .PlayerWrapper iframe {
+                margin: auto;
+                border-width: 0px;
+            }
+
+        /* vrc vr controls*/
+    </style>
+    <link href="scripts/site/jquery.vplayer.css" rel="stylesheet" />
+
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
+    <script src="scripts/site/jquery.vplayer.js?v2"></script>
+
+    <script>
+        function isIOS() { return /(iPad|iPhone|iPod)/g.test(navigator.userAgent); }
+        function isIE11() { return navigator.userAgent.match(/Trident/); }
+        function isFirefox() { return /firefox/i.test(navigator.userAgent); };
+
+        var isFullScreen = false;
+        var iconURL = "images/icFS.png";
+        var modeIcon;
+        var hpvBtnLabel;
+        var _isTimeForVR = false;
+        var _currentVrURL = "";
+        var VrImageURL = "";
+
+        function loadVideo() {
+            var url = "https://s3-eu-west-1.amazonaws.com/mis-implants/makeitsimple/MIS_CC_011116_compressed.mp4";
+            if (isIOS()) {
+                url = "https://s3-eu-west-1.amazonaws.com/mis-implants/makeitsimple/VR/ipad_movie_online_3.mp4";
+            }
+            $("#desktopVideoPlayer1").data('vplayer').openVideo(url);
+        }
+
+        ///
+        $(document).ready(function () {
+
+
+            document.addEventListener("fullscreenchange", FShandler);
+            document.addEventListener("webkitfullscreenchange", FShandler);
+            document.addEventListener("mozfullscreenchange", FShandler);
+            document.addEventListener("MSFullscreenChange", FShandler);
+            modeIcon = $('#desktopVideoPlayer1').find(".modeIcon");
+            hpvBtnLabel = $('#desktopVideoPlayer1').find(".hpvBtnLabel");
+            _hpvFS = $('#desktopVideoPlayer1').find(".hpvBtnLabel");
+
+            if (isIOS()) {
+                $(hpvBtnLabel).find(".inner").html("");
+                $(modeIcon).hide();
+            }
+
+            $('#desktopVideoPlayer1').vplayer({
+                isVrMode: false,
+                onTimeChange: function (curTime) {
+                    //console.log("curTime=" + curTime);
+                    if (curTime > 45 && curTime < 47) {
+                        //VR1 Manufacturing hall
+                        _isTimeForVR = true; setVrTimePoint(0);
+                        VrVideoURL = "https://s3-eu-west-1.amazonaws.com/mis-implants/makeitsimple/VR/360_0155_EDITED_injected.mp4";
+                        VrImageURL = "https://s3-eu-west-1.amazonaws.com/mis-implants/makeitsimple/VR/360_0155_preview.jpg";
+                    } else if (curTime > 49 && curTime < 51) {
+                        //VR2 Automatic storehouse
+                        _isTimeForVR = true; setVrTimePoint(1);
+                        VrVideoURL = "https://s3-eu-west-1.amazonaws.com/mis-implants/makeitsimple/VR/360_0149_injected.mp4";
+                        VrImageURL = "https://s3-eu-west-1.amazonaws.com/mis-implants/makeitsimple/VR/360_0149_preview.jpg";
+                    } else if (curTime > 68 && curTime < 80) {
+                        //VR3 Automatic packging
+                        _isTimeForVR = true; setVrTimePoint(1);
+                        VrVideoURL = "https://s3-eu-west-1.amazonaws.com/mis-implants/makeitsimple/VR/360_0115_injected.mp4";
+                        VrImageURL = "https://s3-eu-west-1.amazonaws.com/mis-implants/makeitsimple/VR/360_0115_preview.jpg";
+                    } else {
+                        //NO VR
+                        _isTimeForVR = false; setVrTimePoint(-1); VrVideoURL = ""; VrImageURL = "";
+                    }
+                },
+                onVideoIndexChange: function () { }
+            });
+            loadVideo();
+        });
+
+
+        var VrIndex = -1;
+        function setVrTimePoint(index) {
+            if (VrIndex != index) {
+                //mode changed
+                $("#desktopVideoPlayer1").data('vplayer').updateVRControls();//mode has changed, update the ui
+            }
+
+            var tempIcon = "";
+            var txtMode = "FULL<br/>SCREEN";
+            VrIndex = index;
+            if (index < 0) {
+                tempIcon = (isFullScreen ? "images/icNS.png" : "images/icFS.png");
+                txtMode = (isFullScreen ? "NORMAL<br/>SCREEN" : "FULL<br/>SCREEN");
+                if (isIOS()) {
+                    txtMode = "";
+                    $(modeIcon).hide();
+                }
+            }
+            else {
+                tempIcon = "images/icVR.png";
+                txtMode = "CLICK<br/>ANYWHERE";
+                $(modeIcon).show();
+            }
+
+            if (tempIcon != iconURL) {
+                iconURL = tempIcon;
+
+                //add short delay before switching from 360 to FS
+                setTimeout(function () {
+                    //width: 150 or 210
+                    $(modeIcon).attr("src", iconURL);
+                    $(hpvBtnLabel).find(".inner").html(txtMode);//txtMode
+
+                    //not good: makes the offset of the label wrong!
+                    //$(hpvBtnLabel).css("width", index < 0 ? "180px" : "220px");
+                }, index < 0 ? 150 : 0);
+            }
+
+
+
+            //display VR button on video
+            $("#stat").html("setVrTimePoint:" + index);
+        }
+
+        function changeModeClicked() {
+            if (VrIndex < 0) {
+                toggleFS();//Toggle full/normal screen mode
+            }
+            else {
+                loadVR();
+            }
+        }
+
+        function loadVR() {
+            var PlayerBase = "Player/index.html";
+            //var PlayerBase = "VrPlayer.html";
+            //http://localhost:62906/VR6/VrPlayer.html?image=https://s3-eu-west-1.amazonaws.com/mis-implants/makeitsimple/VR/360_0155_preview.jpg&is_stereo=false
+
+            $("#desktopVideoVR").show();
+            if (isIOS() || isIE11() || isFirefox()) {
+                var vrURL = PlayerBase + "?image=" + VrImageURL + "&is_stereo=false";
+            } else {
+                var vrURL = PlayerBase + "?video=" + VrVideoURL + "&is_stereo=false";
+            }
+
+
+            //Load the VR Layer behind
+            //document.getElementById('VrFrame').contentWindow.loadVrVideo(VrVideoURL, VrImageURL);
+            //var vrURL = "VrPlayer.html?image=" + VrImageURL + "&video=" + VrVideoURL + "&is_stereo=false";
+            //var vrURL = "VrPlayer.html?image=" + VrImageURL + "&is_stereo=false";
+
+            $("#VrFrame").attr("src", vrURL);
+
+            ////stop video
+            $("#desktopVideoPlayer1").data('vplayer').stopVideo();
+
+            //close clip circle path
+            setTimeout(function () {
+                $("#hpvPlayer1").addClass("close");
+            }, 300);
+
+            //fade out all layer
+            setTimeout(function () {
+                $("#desktopVideoPlayer1").addClass("hideLayer");
+            }, 600);
+
+            //Move the main video layer behind the VR
+            setTimeout(function () {
+                swithLayersDepth(1);
+                //open the main movie mask back to be full behind
+                $("#hpvPlayer1").removeClass("close");
+            }, 2500);
+        }
+
+        function swithLayersDepth(mode) {
+            $("#desktopVideoVR").css("z-index", mode == 0 ? "5000" : "5005");
+            $("#desktopVideoPlayer1").css("z-index", mode == 0 ? "5005" : "5000");
+        }
+
+
+        function closeVR() {
+            //1 Stop the vr player
+            document.getElementById('VrFrame').contentWindow.pauseVideo();
+
+            //2 show the normal player above
+            $("#desktopVideoPlayer1").removeClass("hideLayer");
+
+            //3 Animate closing the VR mask clip
+            $("#desktopVideoVR").addClass("close");
+            setTimeout(function () { $("#desktopVideoVR").addClass("hideLayer"); }, 500);
+
+            //Continue the main movie
+            setTimeout(function () {
+                $("#desktopVideoPlayer1").data('vplayer').playVideo();
+            }, 1000);
+
+            //4 Switch layers order
+            setTimeout(function () {
+                swithLayersDepth(0);
+            }, 1800);
+
+            //5 Set the vr at full mode back when it's now behind the main movie
+            setTimeout(function () {
+                $("#desktopVideoVR").removeClass("close");
+                $("#desktopVideoVR").removeClass("hideLayer");
+
+
+                //load empty frame
+                $("#VrFrame").attr("src", "empty.html");
+            }, 2200);
+        }
+
+        function onVideoClick() {
+            if (_isTimeForVR) {
+                loadVR();
+            }
+
+        }
+
+        function UpdateScreenController() {
+            setVrTimePoint(VrIndex);
+        }
+        function FShandler() {
+            //change screen mode handler
+            isFullScreen = getIsFullScreen();
+            UpdateScreenController();
+        }
+        function getIsFullScreen() {
+            return (
+                document.fullscreenElement ||
+                document.webkitFullscreenElement ||
+                document.mozFullScreenElement ||
+                document.msFullscreenElement
+            );
+        }
+
+        function toggleFS() {
+            var i = document.getElementById("hpVideo");
+            if (isFullScreen) {
+                // exit full-screen
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.webkitExitFullscreen) {
+                    document.webkitExitFullscreen();
+                } else if (document.mozCancelFullScreen) {
+                    document.mozCancelFullScreen();
+                } else if (document.msExitFullscreen) {
+                    document.msExitFullscreen();
+                }
+            }
+            else {
+                // go full-screen
+                if (i.requestFullscreen) {
+                    i.requestFullscreen();
+                } else if (i.webkitRequestFullscreen) {
+                    i.webkitRequestFullscreen();
+                } else if (i.mozRequestFullScreen) {
+                    i.mozRequestFullScreen();
+                } else if (i.msRequestFullscreen) {
+                    i.msRequestFullscreen();
+                }
+            }
+            UpdateScreenController();
+        }
+    </script>
+
+
+    <style>
+        .clip {
+            clip-path: circle(120vw at center);
+            -webkit-clip-path: circle(120vw at center);
+            -moz-clip-path: circle(120vw at center);
+        }
+
+            .clip.close {
+                transition: all ease 1s;
+                -moz-transition: all ease 1s;
+                -webkit-transition: all ease 1s;
+                clip-path: circle(10px at center);
+                -webkit-clip-path: circle(10px at center);
+                -moz-clip-path: circle(10px at center);
+            }
+    </style>
+</head>
+
+
+<body>
+    <div class="TopBar" style="display:none;">
+        <div style="position:relative;top:10px;color:#ff6a00;font-size:18px;left:30px;" id="stat">
+            Status
+        </div>
+    </div>
+
+    <div id="hpVideo">
+
+        <!-- Main movie layer -->
+        <div id="desktopVideoPlayer1" class="noselect">
+            <!--<div class="hpvCloseLayer hpvFadeAnim hpvNormal" onclick="dtCloseHpVideoLayer();"></div>-->
+            <div class="hpvSound hpvFadeAnim hpvNormal" id="hpvSoundBtn">
+                <img id="videoSoundOff" src="images/svg/Sound-Off.svg" style="display:none;" />
+                <img id="videoSoundOn" src="images/svg/Sound-on.svg" />
+            </div>
+
+            <div class="hpvController">
+                <div id="hpvDragger"><img src="images/trans30x30.png" /></div>
+                <div class="hpvHandleVal hpvEx hpvFadeAnim"></div>
+                <div class="hpvHandle hpvEx hpvFadeAnim"><img src="images/jogEdge.png" /></div>
+
+                <div class="hpvHandle2 hpvExVr hpvFadeAnim"><img src="images/jogEdge.png" /></div>
+                <div id="btnFs" onclick="changeModeClicked();" style="display:initial;" class="hpvFS hpvExVr hpvFadeAnim">
+                    <img class="modeIcon" src="images/icFS.png" />
+                </div>
+                <div class="hpvBtnLabel hpvExVr hpvFadeAnim">
+                    <div class='inner'>FULL<br />SCREEN</div>
+                </div>
+
+                <div class="hpvTotalVal hpvEx hpvFadeAnim">0.00</div>
+                <div class="hpvTotal hpvEx hpvFadeAnim"><img src="images/jogEdgeHor.png" /></div>
+                <div class="hpvPalyPauseIcon hpvNormal">
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                </div>
+                <canvas id="hpvRingCanvas" class="hpvNormal" width="270" height="270"></canvas>
+            </div>
+            <video onclick="onVideoClick();" class="hpvPlayer clip" id="hpvPlayer1"><source id="vhpvPlayerSrc" type="video/mp4" /></video>
+        </div>
+
+        <!-- 360 movie layer -->
+        <div id="desktopVideoVR" class="clip" style="display:none;">
+            <div class="PlayerWrapper">
+                <iframe src="VrPlayer.html?video=black.mp4&is_stereo=false" id="VrFrame" width="100%" height="100%" scrolling="no" allowfullscreen></iframe>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
