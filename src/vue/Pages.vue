@@ -13,16 +13,18 @@
                         :outblock="slide.outblock"
                         :infoblock2="slide.infoblock2"
                         :track-by="slide.hash"
+                        key="slide.hash"
                          ></swiper-slide>
                 </div>
                 <div class="swiper-button-prev"></div>
                 <div class="swiper-button-next"></div>
                  <!-- If we need pagination -->
                 <div class="swiper-pagination"></div>
+                 <!-- If we need scrollbar -->
+                <div class="swiper-scrollbar"></div>
         </div>
-        <footer>
-
-            <ul class="centered">
+        <footer class="pt-bigger">
+            <ul class="center">
                 <li>
                     <h6>Mission & Vision</h6>
                     <p class="minitxt">
@@ -73,4 +75,6 @@ export default {
 }
 </script>
 <style lang="stylus">
+.pages-wrap
+    overflow hidden
 </style>

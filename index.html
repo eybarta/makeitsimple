@@ -22,31 +22,35 @@
         </div>
     </header>
     <div class="wrap">
-        <div class="intro hp full-height unattach" id="top">
-            <button id="closeIntro" class="close-btn"></button>
-            <video id="vid" src="https://s3-eu-west-1.amazonaws.com/mis-implants/makeitsimple/Minisite/First-Animation.mp4" autoplay></video>
-            <div id='i360' class="i-360">
-                <img src="dist/img/360-icon.png" alt="The video includes a 360° experience">
-                <span>The video includes a <em>360°</em> experience</span>
-            </div>
-            <div id="playintro" class="play-overlay">
-                <img src="dist/img/play-btn.png" alt="Play Video">
-                <div class="intro-txt">
-                    <span>All the great things are simple...</span>
-                    <span>(Click to know more)</span>
+        <div id="top">
+            <div id="intro" class="intro hp full-height unattach">
+                <button id="closeIntro" class="close-btn"></button>
+                <img id="simpleIntro" src="dist/img/simple-intro.png" />
+                <video id="vid" preload="auto" autoplay></video>
+                
+                <div id='i360' class="i-360">
+                    <img src="dist/img/360-icon.png" alt="The video includes a 360° experience">
+                    <span>The video includes a <em>360°</em> experience</span>
                 </div>
+                <div id="playintro" class="play-overlay">
+                    <img src="dist/img/play-btn.png" alt="Play Video">
+                    <div class="intro-txt">
+                        <span>All the great things are simple...</span>
+                        <span>(Click to know more)</span>
+                    </div>
+                </div>
+                <iframe id="introvideo" frameborder="0"></iframe>
             </div>
-            <iframe id="introvideo" frameborder="0"></iframe>
         </div>
         <div class="preview-section" id="why">
             <div class="center">
                 <img class="big_graphic" src="dist/img/intro_graphic.jpg" alt="MIS Implants">
                 <div class="infobox">
                     <div class="info-title">
-                        <h2 class="mb-med">Why Simple?</h2>
+                        <h2 class="mb-big">Why Simple?</h2>
                         <p class="sub-title txt">Simplification is a strategic imperative for MIS. We believe that this is the key to unlocking innovation and positioning ourselves for future success in an increasingly complex world.</p>
                     </div>
-                    <div class="item-group group-3 mt-max">
+                    <div class="item-group group-3">
                         <div class="item">
                             <img src="dist/img/circle-simplify.png" alt="Simplify">
                             <p class="minitxt">
@@ -70,8 +74,8 @@
             </div>
 
         </div>
-        <div id="make" class="pb-big pt-big">
-            <h2 class="flip-title tcenter pb-bigger center">
+        <div id="make" class="mis-slider pb-bigger">
+            <h2 class="flip-title pb-bigger center">
                 <span class="title-right">MIS, Make It Simple</span>
                 <span class="subtxt subtitle-left">Because simplicity is as simple as you make it.</span>
             </h2>
@@ -168,20 +172,19 @@
         </div>
         <!--
             Video slider with gradient background
+            // LOADED WITH VUE**
         -->
-        <div id="vidSlider">
-
-        </div>
+        <div id="vidSlider"></div>
 
 
         <!--
             FAQ block
         -->
-        <div class="faq-block pt-max pb-max" id="faq">
-            <h2 class="tcenter">Frequently Asked Questions</h2>
+        <div class="faq-block center" id="faq">
+            <h2>Frequently Asked Questions</h2>
 
-            <div class="faq-control mt-bigger">
-                <h5 class="pb-med">Make It Simple</h5>
+            <div class="faq-control">
+                <h5>Make It Simple</h5>
                 <div class="qa">
                     <ul>
                         <li>
@@ -235,7 +238,7 @@ All of our efforts within the company focus on this mission: To simplify the pro
                 &nbsp;
             </div>
         </div>
-        <div class="info-block pt-max pb-bigger" id="more">
+        <div class="info-block pt-max pb-max center" id="more">
             <h2 id="infoTitle" class="mb-max tcenter">SIMPLY MORE INFORMATION</h2>
             <ul class="group-4">
                 <li>
@@ -243,8 +246,8 @@ All of our efforts within the company focus on this mission: To simplify the pro
                         <img src="dist/img/prints.svg" alt="Printing Catalog">
                     </div>
                     <div class="out-links">
-                        <a href="">Conical  Printing Catalog  <span>></span></a>
-                        <a href="">Internal Printing Catalog <span>></span></a>
+                        <a target="_blank" href="http://www.mis-implants.com/Media/Printed-Materials/Products.aspx?#37484">Conical  Printing Catalog  <span>></span></a>
+                        <a target="_blank" href="http://www.mis-implants.com/Media/Printed-Materials/Products.aspx?#2560">Internal Printing Catalog <span>></span></a>
                     </div>
                 </li>
                  <li>
@@ -252,10 +255,10 @@ All of our efforts within the company focus on this mission: To simplify the pro
                         <img src="dist/img/implants.svg" alt="Printing Catalog">
                     </div>
                     <div class="out-links">
-                        <a href="">Our Implants <span>></span></a>
-                        <a href="">V3 Implant <span>></span></a>
-                        <a href="">C1 Implant <span>></span></a>
-                        <a href="">Seven Implant <span>></span></a>
+                        <a target="_blank" href="http://www.mis-implants.com/Products/Implants.aspx">Our Implants <span>></span></a>
+                        <a target="_blank" href="http://www.mis-implants.com/Products/Implants/v3.aspx">V3 Implant <span>></span></a>
+                        <a target="_blank" href="http://www.mis-implants.com/Products/Implants/c1.aspx">C1 Implant <span>></span></a>
+                        <a target="_blank" href="http://www.mis-implants.com/Products/Implants/seven.aspx">Seven Implant <span>></span></a>
                     </div>
                 </li>
                  <li>
@@ -263,9 +266,9 @@ All of our efforts within the company focus on this mission: To simplify the pro
                         <img src="dist/img/www.svg" alt="Printing Catalog">
                     </div>
                     <div class="out-links">
-                        <a href="">MIS Main Website<span>></span></a>
-                        <a href="">V3 Minisite<span>></span></a>
-                        <a href="">VCONCEPT Minisite<span>></span></a>
+                        <a target="_blank" href="http://www.mis-implants.com">MIS Main Website<span>></span></a>
+                        <a target="_blank" href="http://v3-implant.com">V3 Minisite<span>></span></a>
+                        <a target="_blank" href="http://www.vconcept.com">VCONCEPT Minisite<span>></span></a>
                     </div>
 
                 </li>
@@ -274,17 +277,16 @@ All of our efforts within the company focus on this mission: To simplify the pro
                         <img src="dist/img/eye.svg" alt="Printing Catalog">
                     </div>
                     <div class="out-links">
-                        <a href="">Printed Materials<span>></span></a>
-                        <a href="">Image Gallery<span>></span></a>
-                        <a href="">Videos<span>></span></a>
-                        <a href="">Lectures<span>></span></a>
+                        <a target="_blank" href="http://www.mis-implants.com/Media/Printed-Materials/Products.aspx">Printed Materials<span>></span></a>
+                        <a target="_blank" href="http://www.mis-implants.com/Media/Image-Gallery/Products.aspx">Image Gallery<span>></span></a>
+                        <a target="_blank" href="http://www.mis-implants.com/Media/Movies/Products.aspx">Videos<span>></span></a>
+                        <a target="_blank" href="http://www.mis-implants.com/Media/Movies/Lectures.aspx">Lectures<span>></span></a>
                     </div>
                 </li>
             </ul>
         </div>
-        <footer>
-
-            <ul class="centered">
+        <footer class="pt-bigger">
+            <ul class="center">
                 <li>
                     <h6>Mission & Vision</h6>
                     <p class="minitxt">
@@ -314,12 +316,12 @@ All of our efforts within the company focus on this mission: To simplify the pro
                     
                 </li>
             </ul>
-
-            <small class="pt-bigger pb-min">© MIS Corporation. All Rights Reserved.</small>
+            <small class="pb-med">© MIS Corporation. All Rights Reserved.</small>
         </footer>
     </div>
 
     <script type='text/javascript' src='http://maps.google.com/maps/api/js?sensor=false&amp;ver=5.9&key=AIzaSyDSa2Yj_l65LMWLN-ukJ_tuG96KVMLSNdE'></script>
+    <script src="./dist/js/sibgif.min.js"></script>
     <script src="./dist/js/swiper.min.js"></script>
     <script src="./dist/js/script.js"></script>
 </body>

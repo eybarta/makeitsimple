@@ -1,17 +1,14 @@
-
 import $ from 'jquery'
+import _ from 'lodash'
 import Vue from 'vue'
-// import InView from 'vue-inview'
 
 import './styl/app.styl';
 import 'swiper/dist/css/swiper.css'
 import { initPagesSwiper } from './js/swiper'
-import { initScrollNav } from './js/scroll-nav'
 
 
 $(() => {
     initPagesSwiper();
-    initScrollNav();
 })
 
 import Pages from './vue/Pages.vue'

@@ -1,73 +1,43 @@
-'use strict';
+SyntaxError: D:/eyal/projects/mis_MakeItSimple/src/js/swiper.js: Unexpected token, expected , (37:4)
 
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-exports.initSwiper = initSwiper;
-exports.initPagesSwiper = initPagesSwiper;
-exports.videoSwiper = videoSwiper;
-var misSwiper, pagesSwiper;
+[0m [90m 35 | [39m            }
+ [90m 36 | [39m        }
+[31m[1m>[22m[39m[90m 37 | [39m    })[33m;[39m
+ [90m    | [39m    [31m[1m^[22m[39m
+ [90m 38 | [39m}
+ [90m 39 | [39m
+ [90m 40 | [39m[36mexport[39m [36mfunction[39m initPagesSwiper() {[0m
 
-function initSwiper() {
-    misSwiper = new Swiper('.mis-swiper-container', {
-        pagination: '.mis-swiper-pagination',
-        paginationClickable: true,
-        slidesPerView: 5,
-        spaceBetween: 20,
-        keyboardControl: true,
-        preventClicks: false,
-        nextButton: '.swiper-button-next',
-        prevButton: '.swiper-button-prev',
-        breakpoints: {
-            1200: {
-                slidesPerView: 4,
-                spaceBetween: 15
-            },
-            900: {
-                slidesPerView: 3,
-                spaceBetween: 10
-            },
-            620: {
-                slidesPerView: 2,
-                spaceBetween: 10
-            },
-            500: {
-                slidesPerView: 1,
-                spaceBetween: 10
-            }
-        }
-    });
-}
+BabelLoaderError: SyntaxError: D:/eyal/projects/mis_MakeItSimple/src/js/swiper.js: Unexpected token, expected , (37:4)
 
-function initPagesSwiper() {
-    pagesSwiper = new Swiper('.swiper-container', {
-        pagination: '.swiper-pagination',
-        // grabCursor: true,
-        simulateTouch: false,
-        paginationClickable: true,
-        slidesPerView: 1,
-        spaceBetween: 0,
-        keyboardControl: true,
-        autoHeight: true,
-        hashnav: true,
-        hashnavWatchState: true,
-        longSwipes: true,
-        shortSwipes: false,
-        nextButton: '.swiper-button-next',
-        prevButton: '.swiper-button-prev'
-    });
-}
+[0m [90m 35 | [39m            }
+ [90m 36 | [39m        }
+[31m[1m>[22m[39m[90m 37 | [39m    })[33m;[39m
+ [90m    | [39m    [31m[1m^[22m[39m
+ [90m 38 | [39m}
+ [90m 39 | [39m
+ [90m 40 | [39m[36mexport[39m [36mfunction[39m initPagesSwiper() {[0m
 
-function videoSwiper() {
-    return new Swiper('.video-swiper', {
-        pagination: '.video-swiper-pagination',
-        // grabCursor: true,
-        simulateTouch: true,
-        paginationClickable: true,
-        slidesPerView: 1,
-        spaceBetween: 0,
-        keyboardControl: true,
-        autoHeight: true,
-        autoplay: 11000
-    });
-}
+    at transpile (D:\eyal\projects\mis_MakeItSimple\node_modules\babel-loader\lib\index.js:61:13)
+    at Object.module.exports (D:\eyal\projects\mis_MakeItSimple\node_modules\babel-loader\lib\index.js:134:16)
+    at applySyncOrAsync (D:\eyal\projects\mis_MakeItSimple\node_modules\happypack\lib\applyLoaders.js:341:21)
+    at apply (D:\eyal\projects\mis_MakeItSimple\node_modules\happypack\lib\applyLoaders.js:268:5)
+    at D:\eyal\projects\mis_MakeItSimple\node_modules\happypack\lib\applyLoaders.js:131:7
+    at applyPitchLoader (D:\eyal\projects\mis_MakeItSimple\node_modules\happypack\lib\applyLoaders.js:184:14)
+    at applyPitchLoader (D:\eyal\projects\mis_MakeItSimple\node_modules\happypack\lib\applyLoaders.js:192:14)
+    at applyPitchLoaders (D:\eyal\projects\mis_MakeItSimple\node_modules\happypack\lib\applyLoaders.js:222:4)
+    at applyLoaders (D:\eyal\projects\mis_MakeItSimple\node_modules\happypack\lib\applyLoaders.js:116:3)
+    at HappyWorker.compile (D:\eyal\projects\mis_MakeItSimple\node_modules\happypack\lib\HappyWorker.js:32:3)
+    at Object.compile (D:\eyal\projects\mis_MakeItSimple\node_modules\happypack\lib\HappyForegroundThreadPool.js:61:14)
+    at HappyPlugin.compileAndUpdateCache (D:\eyal\projects\mis_MakeItSimple\node_modules\happypack\lib\HappyPlugin.js:344:14)
+    at HappyPlugin.compileInForeground (D:\eyal\projects\mis_MakeItSimple\node_modules\happypack\lib\HappyPlugin.js:321:25)
+    at HappyPlugin.compile (D:\eyal\projects\mis_MakeItSimple\node_modules\happypack\lib\HappyPlugin.js:237:32)
+    at Object.HappyLoader (D:\eyal\projects\mis_MakeItSimple\node_modules\happypack\lib\HappyLoader.js:42:15)
+    at LOADER_EXECUTION (D:\eyal\projects\mis_MakeItSimple\node_modules\loader-runner\lib\LoaderRunner.js:119:14)
+    at runSyncOrAsync (D:\eyal\projects\mis_MakeItSimple\node_modules\loader-runner\lib\LoaderRunner.js:120:4)
+    at iterateNormalLoaders (D:\eyal\projects\mis_MakeItSimple\node_modules\loader-runner\lib\LoaderRunner.js:229:2)
+    at Array.<anonymous> (D:\eyal\projects\mis_MakeItSimple\node_modules\loader-runner\lib\LoaderRunner.js:202:4)
+    at Storage.finished (D:\eyal\projects\mis_MakeItSimple\node_modules\enhanced-resolve\lib\CachedInputFileSystem.js:38:15)
+    at D:\eyal\projects\mis_MakeItSimple\node_modules\enhanced-resolve\lib\CachedInputFileSystem.js:69:9
+    at D:\eyal\projects\mis_MakeItSimple\node_modules\graceful-fs\graceful-fs.js:78:16
+    at FSReqWrap.readFileAfterClose [as oncomplete] (fs.js:445:3)

@@ -37,7 +37,7 @@ export const PageSlides = [
             txt: 'The simplicity of this geometrical change; circular to triangular; is at the core of some major advantages of the V3.Less cortical pressure, less bone resorption and better initial and biological stability. ',
             h2: 'V3, More bone where it matters most',
             btn: {
-                link: '#p',
+                link: 'http://www.mis-implants.com/MIS-Info/ContactUs.aspx',
                 txt: 'Contact your local distributor'
             }
         },
@@ -62,12 +62,36 @@ export const PageSlides = [
                                 href: '#p'
                             },
                             {
-                                txt: 'Conical  Printing Catalog',
+                                txt: 'V3 User Manual',
+                                href: '#p'
+                            },
+                            {
+                                txt: 'Conical Restorative Catalog',
                                 href: '#p'
                             }
                         ]
                     },
                     {
+                        img:  {
+                            src: 'dist/img/online-catalog-icon.png',
+                            alt: 'Online Catalog'
+                        },
+                        links: [
+                            {
+                                txt: 'V3 Mini Catalog',
+                                href: '#p'
+                            },
+                            {
+                                txt: 'V3 Movie',
+                                href: '#p'
+                            },
+                            {
+                                txt: 'VCONCEPT Movie',
+                                href: '#p'
+                            }
+                        ]
+                    },
+                     {
                         img:  {
                             src: 'dist/img/www.svg',
                             alt: 'Online Catalog'
@@ -83,18 +107,6 @@ export const PageSlides = [
                             }
                         ]
                     },
-                        {
-                        img:  {
-                            src: 'dist/img/online-catalog-icon.png',
-                            alt: 'Online Catalog'
-                        },
-                        links: [
-                            {
-                                txt: 'V3 Mini Catalog',
-                                href: '#p'
-                            }
-                        ]
-                    },
                     {
                         img:  {
                             src: 'dist/img/magnify.svg',
@@ -102,7 +114,11 @@ export const PageSlides = [
                         },
                         links: [
                             {
-                                txt: 'VCONCEPT Clinic Cases',
+                                txt: 'VCONCEPT Clinical Cases',
+                                href: '#p'
+                            },
+                            {
+                                txt: 'V3 Research Overview',
                                 href: '#p'
                             }
                         ]
@@ -148,7 +164,7 @@ export const PageSlides = [
             txt: 'The simplicity of this geometrical change; circular to triangular; is at the core of some major advantages of the V3.Less cortical pressure, less bone resorption and better initial and biological stability. ',
             h2: 'V3, More bone where it matters most',
             btn: {
-                link: '#p',
+                link: 'http://www.mis-implants.com/MIS-Info/ContactUs.aspx',
                 txt: 'Contact your local distributor'
             }
         },
@@ -169,11 +185,27 @@ export const PageSlides = [
                         },
                         links: [
                             {
-                                txt: 'V3 Mini Catalog',
+                                txt: 'Company Profile',
                                 href: '#p'
                             },
                             {
-                                txt: 'Conical  Printing Catalog',
+                                txt: 'Warranty Certificate',
+                                href: '#p'
+                            }
+                        ]
+                    },
+                    {
+                        img:  {
+                            src: 'dist/img/online-catalog-icon.png',
+                            alt: 'Online Catalog'
+                        },
+                        links: [
+                            {
+                                txt: 'Company Overview',
+                                href: '#p'
+                            },
+                            {
+                                txt: 'Our Mission & Vision',
                                 href: '#p'
                             }
                         ]
@@ -185,35 +217,11 @@ export const PageSlides = [
                         },
                         links: [
                             {
-                                txt: 'V3 Minisite',
+                                txt: 'MIS Website',
                                 href: '#p'
                             },
                             {
-                                txt: 'VCONCEPT Minisite',
-                                href: '#p'
-                            }
-                        ]
-                    },
-                        {
-                        img:  {
-                            src: 'dist/img/online-catalog-icon.png',
-                            alt: 'Online Catalog'
-                        },
-                        links: [
-                            {
-                                txt: 'V3 Mini Catalog',
-                                href: '#p'
-                            }
-                        ]
-                    },
-                    {
-                        img:  {
-                            src: 'dist/img/magnify.svg',
-                            alt: 'Online Catalog'
-                        },
-                        links: [
-                            {
-                                txt: 'VCONCEPT Clinic Cases',
+                                txt: 'V3 Minisite',
                                 href: '#p'
                             }
                         ]
@@ -259,7 +267,7 @@ export const PageSlides = [
             txt: 'The simplicity of this geometrical change; circular to triangular; is at the core of some major advantages of the V3.Less cortical pressure, less bone resorption and better initial and biological stability. ',
             h2: 'V3, More bone where it matters most',
             btn: {
-                link: '#p',
+                link: 'http://www.mis-implants.com/MIS-Info/ContactUs.aspx',
                 txt: 'Contact your local distributor'
             }
         },
@@ -280,11 +288,31 @@ export const PageSlides = [
                         },
                         links: [
                             {
-                                txt: 'V3 Mini Catalog',
+                                txt: 'Patient Brochure',
                                 href: '#p'
                             },
                             {
-                                txt: 'Conical  Printing Catalog',
+                                txt: 'Company Profile',
+                                href: '#p'
+                            }
+                        ]
+                    },
+                    {
+                        img:  {
+                            src: 'dist/img/online-catalog-icon.png',
+                            alt: 'Online Catalog'
+                        },
+                        links: [
+                            {
+                                txt: 'Patient Movie',
+                                href: '#p'
+                            },
+                            {
+                                txt: 'Company Movie',
+                                href: '#p'
+                            },
+                            {
+                                txt: 'The Company Behind...',
                                 href: '#p'
                             }
                         ]
@@ -296,23 +324,11 @@ export const PageSlides = [
                         },
                         links: [
                             {
-                                txt: 'V3 Minisite',
+                                txt: 'MIS Website',
                                 href: '#p'
                             },
                             {
-                                txt: 'VCONCEPT Minisite',
-                                href: '#p'
-                            }
-                        ]
-                    },
-                        {
-                        img:  {
-                            src: 'dist/img/online-catalog-icon.png',
-                            alt: 'Online Catalog'
-                        },
-                        links: [
-                            {
-                                txt: 'V3 Mini Catalog',
+                                txt: 'V3 Minisite',
                                 href: '#p'
                             }
                         ]
@@ -324,7 +340,7 @@ export const PageSlides = [
                         },
                         links: [
                             {
-                                txt: 'VCONCEPT Clinic Cases',
+                                txt: 'MIS Scientific Info',
                                 href: '#p'
                             }
                         ]
@@ -370,7 +386,7 @@ export const PageSlides = [
             txt: 'The simplicity of this geometrical change; circular to triangular; is at the core of some major advantages of the V3.Less cortical pressure, less bone resorption and better initial and biological stability. ',
             h2: 'V3, More bone where it matters most',
             btn: {
-                link: '#p',
+                link: 'http://www.mis-implants.com/MIS-Info/ContactUs.aspx',
                 txt: 'Contact your local distributor'
             }
         },
@@ -391,27 +407,11 @@ export const PageSlides = [
                         },
                         links: [
                             {
-                                txt: 'V3 Mini Catalog',
+                                txt: 'Conical Catalog',
                                 href: '#p'
                             },
                             {
-                                txt: 'Conical  Printing Catalog',
-                                href: '#p'
-                            }
-                        ]
-                    },
-                    {
-                        img:  {
-                            src: 'dist/img/www.svg',
-                            alt: 'Online Catalog'
-                        },
-                        links: [
-                            {
-                                txt: 'V3 Minisite',
-                                href: '#p'
-                            },
-                            {
-                                txt: 'VCONCEPT Minisite',
+                                txt: 'Internal Catalog',
                                 href: '#p'
                             }
                         ]
@@ -423,23 +423,31 @@ export const PageSlides = [
                         },
                         links: [
                             {
-                                txt: 'V3 Mini Catalog',
+                                txt: 'Tools - Online Catalog',
+                                href: '#p'
+                            },
+                            {
+                                txt: 'Kits - Online Catalog',
                                 href: '#p'
                             }
                         ]
                     },
                     {
                         img:  {
-                            src: 'dist/img/magnify.svg',
+                            src: 'dist/img/www.svg',
                             alt: 'Online Catalog'
                         },
                         links: [
                             {
-                                txt: 'VCONCEPT Clinic Cases',
+                                txt: 'Tools Webpage',
+                                href: '#p'
+                            },
+                            {
+                                txt: 'Kits Webpage',
                                 href: '#p'
                             }
                         ]
-                    },
+                    }
                 ]
             }
         }
@@ -481,7 +489,7 @@ export const PageSlides = [
             txt: 'The simplicity of this geometrical change; circular to triangular; is at the core of some major advantages of the V3.Less cortical pressure, less bone resorption and better initial and biological stability. ',
             h2: 'V3, More bone where it matters most',
             btn: {
-                link: '#p',
+                link: 'http://www.mis-implants.com/MIS-Info/ContactUs.aspx',
                 txt: 'Contact your local distributor'
             }
         },
@@ -506,12 +514,40 @@ export const PageSlides = [
                                 href: '#p'
                             },
                             {
-                                txt: 'Conical  Printing Catalog',
+                                txt: 'MCENTER Mini Catalog',
+                                href: '#p'
+                            },
+                            {
+                                txt: '4MATRIX Flier',
+                                href: '#p'
+                            },
+                            {
+                                txt: 'Innovation Flier',
                                 href: '#p'
                             }
                         ]
                     },
                     {
+                        img:  {
+                            src: 'dist/img/online-catalog-icon.png',
+                            alt: 'Online Catalog'
+                        },
+                        links: [
+                            {
+                                txt: 'V3 Movie',
+                                href: '#p'
+                            },
+                            {
+                                txt: 'Mguide Movie',
+                                href: '#p'
+                            },
+                            {
+                                txt: '4MATRIX Movie',
+                                href: '#p'
+                            }
+                        ]
+                    },
+                        {
                         img:  {
                             src: 'dist/img/www.svg',
                             alt: 'Online Catalog'
@@ -524,17 +560,9 @@ export const PageSlides = [
                             {
                                 txt: 'VCONCEPT Minisite',
                                 href: '#p'
-                            }
-                        ]
-                    },
-                        {
-                        img:  {
-                            src: 'dist/img/online-catalog-icon.png',
-                            alt: 'Online Catalog'
-                        },
-                        links: [
+                            },
                             {
-                                txt: 'V3 Mini Catalog',
+                                txt: 'MGUIDE Webpage',
                                 href: '#p'
                             }
                         ]
@@ -592,7 +620,7 @@ export const PageSlides = [
             txt: 'The simplicity of this geometrical change; circular to triangular; is at the core of some major advantages of the V3.Less cortical pressure, less bone resorption and better initial and biological stability. ',
             h2: 'V3, More bone where it matters most',
             btn: {
-                link: '#p',
+                link: 'http://www.mis-implants.com/MIS-Info/ContactUs.aspx',
                 txt: 'Contact your local distributor'
             }
         },
@@ -613,39 +641,51 @@ export const PageSlides = [
                         },
                         links: [
                             {
-                                txt: 'V3 Mini Catalog',
+                                txt: 'B+ Leaflet',
                                 href: '#p'
                             },
                             {
-                                txt: 'Conical  Printing Catalog',
+                                txt: 'B+ Flier',
+                                href: '#p'
+                            },
+                             {
+                                txt: 'V3 Mini Catalog',
                                 href: '#p'
                             }
                         ]
                     },
                     {
                         img:  {
-                            src: 'dist/img/www.svg',
+                            src: 'dist/img/online-catalog-icon.png',
                             alt: 'Online Catalog'
                         },
                         links: [
                             {
-                                txt: 'V3 Minisite',
+                                txt: 'B+ Movie',
                                 href: '#p'
                             },
                             {
-                                txt: 'VCONCEPT Minisite',
+                                txt: 'V3 Movie',
                                 href: '#p'
                             }
                         ]
                     },
                         {
                         img:  {
-                            src: 'dist/img/online-catalog-icon.png',
+                            src: 'dist/img/www.svg',
                             alt: 'Online Catalog'
                         },
                         links: [
                             {
-                                txt: 'V3 Mini Catalog',
+                                txt: 'B+ Minisite',
+                                href: '#p'
+                            },
+                            {
+                                txt: 'B+ Webpage',
+                                href: '#p'
+                            },
+                            {
+                                txt: 'V3 Ministe',
                                 href: '#p'
                             }
                         ]
@@ -656,6 +696,10 @@ export const PageSlides = [
                             alt: 'Online Catalog'
                         },
                         links: [
+                            {
+                                txt: 'B+ Clinic Cases',
+                                href: '#p'
+                            },
                             {
                                 txt: 'VCONCEPT Clinic Cases',
                                 href: '#p'
@@ -703,7 +747,7 @@ export const PageSlides = [
             txt: 'The simplicity of this geometrical change; circular to triangular; is at the core of some major advantages of the V3.Less cortical pressure, less bone resorption and better initial and biological stability. ',
             h2: 'V3, More bone where it matters most',
             btn: {
-                link: '#p',
+                link: 'http://www.mis-implants.com/MIS-Info/ContactUs.aspx',
                 txt: 'Contact your local distributor'
             }
         },
@@ -724,51 +768,43 @@ export const PageSlides = [
                         },
                         links: [
                             {
-                                txt: 'V3 Mini Catalog',
+                                txt: 'Company Profile',
                                 href: '#p'
                             },
                             {
-                                txt: 'Conical  Printing Catalog',
+                                txt: 'C1 User Guide',
                                 href: '#p'
                             }
                         ]
                     },
                     {
-                        img:  {
-                            src: 'dist/img/www.svg',
-                            alt: 'Online Catalog'
-                        },
-                        links: [
-                            {
-                                txt: 'V3 Minisite',
-                                href: '#p'
-                            },
-                            {
-                                txt: 'VCONCEPT Minisite',
-                                href: '#p'
-                            }
-                        ]
-                    },
-                        {
                         img:  {
                             src: 'dist/img/online-catalog-icon.png',
                             alt: 'Online Catalog'
                         },
                         links: [
                             {
-                                txt: 'V3 Mini Catalog',
+                                txt: 'Company Movie',
+                                href: '#p'
+                            },
+                            {
+                                txt: 'The Company Behind...',
                                 href: '#p'
                             }
                         ]
                     },
-                    {
+                        {
                         img:  {
-                            src: 'dist/img/magnify.svg',
+                            src: 'dist/img/www.svg',
                             alt: 'Online Catalog'
                         },
                         links: [
                             {
-                                txt: 'VCONCEPT Clinic Cases',
+                                txt: 'Company Overview Webpage',
+                                href: '#p'
+                            },
+                            {
+                                txt: 'Contact Us Webpage',
                                 href: '#p'
                             }
                         ]
@@ -814,7 +850,7 @@ export const PageSlides = [
             txt: 'The simplicity of this geometrical change; circular to triangular; is at the core of some major advantages of the V3.Less cortical pressure, less bone resorption and better initial and biological stability. ',
             h2: 'V3, More bone where it matters most',
             btn: {
-                link: '#p',
+                link: 'http://www.mis-implants.com/MIS-Info/ContactUs.aspx',
                 txt: 'Contact your local distributor'
             }
         },
@@ -835,16 +871,28 @@ export const PageSlides = [
                         },
                         links: [
                             {
-                                txt: 'V3 Mini Catalog',
+                                txt: 'Conical Catalog',
                                 href: '#p'
                             },
                             {
-                                txt: 'Conical  Printing Catalog',
+                                txt: 'Conical Restorative Catalog',
                                 href: '#p'
                             }
                         ]
                     },
                     {
+                        img:  {
+                            src: 'dist/img/online-catalog-icon.png',
+                            alt: 'Online Catalog'
+                        },
+                        links: [
+                            {
+                                txt: 'V3 Online Catalog',
+                                href: '#p'
+                            }
+                        ]
+                    },
+                        {
                         img:  {
                             src: 'dist/img/www.svg',
                             alt: 'Online Catalog'
@@ -860,18 +908,6 @@ export const PageSlides = [
                             }
                         ]
                     },
-                        {
-                        img:  {
-                            src: 'dist/img/online-catalog-icon.png',
-                            alt: 'Online Catalog'
-                        },
-                        links: [
-                            {
-                                txt: 'V3 Mini Catalog',
-                                href: '#p'
-                            }
-                        ]
-                    },
                     {
                         img:  {
                             src: 'dist/img/magnify.svg',
@@ -879,7 +915,7 @@ export const PageSlides = [
                         },
                         links: [
                             {
-                                txt: 'VCONCEPT Clinic Cases',
+                                txt: 'VCONCEPT Clinical Cases',
                                 href: '#p'
                             }
                         ]
@@ -925,7 +961,7 @@ export const PageSlides = [
             txt: 'The simplicity of this geometrical change; circular to triangular; is at the core of some major advantages of the V3.Less cortical pressure, less bone resorption and better initial and biological stability. ',
             h2: 'V3, More bone where it matters most',
             btn: {
-                link: '#p',
+                link: 'http://www.mis-implants.com/MIS-Info/ContactUs.aspx',
                 txt: 'Contact your local distributor'
             }
         },
@@ -946,16 +982,28 @@ export const PageSlides = [
                         },
                         links: [
                             {
-                                txt: 'V3 Mini Catalog',
+                                txt: 'Conical Catalog',
                                 href: '#p'
                             },
                             {
-                                txt: 'Conical  Printing Catalog',
+                                txt: 'Conical Restorative Catalog',
                                 href: '#p'
                             }
                         ]
                     },
                     {
+                        img:  {
+                            src: 'dist/img/online-catalog-icon.png',
+                            alt: 'Online Catalog'
+                        },
+                        links: [
+                            {
+                                txt: 'V3 Online Catalog',
+                                href: '#p'
+                            }
+                        ]
+                    },
+                        {
                         img:  {
                             src: 'dist/img/www.svg',
                             alt: 'Online Catalog'
@@ -971,18 +1019,6 @@ export const PageSlides = [
                             }
                         ]
                     },
-                        {
-                        img:  {
-                            src: 'dist/img/online-catalog-icon.png',
-                            alt: 'Online Catalog'
-                        },
-                        links: [
-                            {
-                                txt: 'V3 Mini Catalog',
-                                href: '#p'
-                            }
-                        ]
-                    },
                     {
                         img:  {
                             src: 'dist/img/magnify.svg',
@@ -990,7 +1026,7 @@ export const PageSlides = [
                         },
                         links: [
                             {
-                                txt: 'VCONCEPT Clinic Cases',
+                                txt: 'VCONCEPT Clinical Cases',
                                 href: '#p'
                             }
                         ]
@@ -1036,7 +1072,7 @@ export const PageSlides = [
             txt: 'The simplicity of this geometrical change; circular to triangular; is at the core of some major advantages of the V3.Less cortical pressure, less bone resorption and better initial and biological stability. ',
             h2: 'V3, More bone where it matters most',
             btn: {
-                link: '#p',
+                link: 'http://www.mis-implants.com/MIS-Info/ContactUs.aspx',
                 txt: 'Contact your local distributor'
             }
         },
@@ -1147,7 +1183,7 @@ export const PageSlides = [
             txt: 'The simplicity of this geometrical change; circular to triangular; is at the core of some major advantages of the V3.Less cortical pressure, less bone resorption and better initial and biological stability. ',
             h2: 'V3, More bone where it matters most',
             btn: {
-                link: '#p',
+                link: 'http://www.mis-implants.com/MIS-Info/ContactUs.aspx',
                 txt: 'Contact your local distributor'
             }
         },
@@ -1258,7 +1294,7 @@ export const PageSlides = [
             txt: 'The simplicity of this geometrical change; circular to triangular; is at the core of some major advantages of the V3.Less cortical pressure, less bone resorption and better initial and biological stability. ',
             h2: 'V3, More bone where it matters most',
             btn: {
-                link: '#p',
+                link: 'http://www.mis-implants.com/MIS-Info/ContactUs.aspx',
                 txt: 'Contact your local distributor'
             }
         },

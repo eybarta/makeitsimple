@@ -1,27 +1,21 @@
 import $ from 'jquery'
 import _ from 'lodash'
-import inView from 'in-view'
-
-var $header, $toggle, $desktop, mintimer, maxtimer, scrollpauser = 0;
+import {sectionsInView} from './sections-inview'
+var $header, $links, $toggle, $desktop, introAnimation, mintimer, maxtimer, firstScroll = true;
 
 export function initScrollNav() {
     $header = $('header');
     $toggle = $('#toggle');
     $desktop = $(window).width()>1025;
-    let sections = ['top', 'why', 'make', 'faq', 'more']
-    let $links = $("header .nav a");
+    introAnimation = document.getElementById('vid');
+    $links = $("header .nav a");
 
-    _.each(sections, section => {
-        inView.threshold(0.2);
-        inView.offset({
-            top: 20,
-            bottom: 150,
-        });
-        inView(`#${section}`).on('enter', el => {
-            $links.removeClass('active')
-            .filter(`[href$=${section}]`).addClass('active');
-        })
-    })
+    sectionsInView()
+    bindMenuEvents()
+    
+}
+
+function bindMenuEvents() {
     $links.on('click touchstart', function(e) {
         if ($('body').hasClass('root')) {
             e.preventDefault();
@@ -31,7 +25,7 @@ export function initScrollNav() {
             }
             if ($(window).width()>1025) {
                 $(window).off('scroll')
-                $("#top").removeClass('stick');
+                $("#intro").removeClass('stick');
             }
             
             let anchor = $(this.getAttribute('href'));
@@ -53,49 +47,59 @@ export function initScrollNav() {
     $(window).on('resize.menu', initMenu);
 }
 
-
 function toggleMenu() {
-    if (/max/g.test($header.attr('class'))) {
-        minimizeMenu();
-    }
-    else {
-        maximizeMenu()
-    }
+    (/max/g.test($header.attr('class'))) 
+    ? minimizeMenu()
+    : maximizeMenu()
 }
 function initMenu() {
-    console.log("INIT MENU");
     $desktop = $(window).width()>1025;
     clearTimers();
     $(window).off('scroll').on('scroll', scrollCheck);
     scrollCheck();
 }
 function scrollCheck(e) {
-    if ($(window).scrollTop()<20 && $header.hasClass('hamburger')) {
-        if ($desktop) {
-            $("#top").addClass('stick');
-        }
-        if ($("#top").hasClass('play')) {
+    let scrolltop = $(window).scrollTop();
+    if (scrolltop<20) {
+        $("#intro").addClass('stick');
+        if ($("#intro").hasClass('play')) {
             $header.hide();
         }
-        else if ($desktop) {
-             maximizeMenu();
+        if (!!introAnimation && !firstScroll) {
+            introAnimation.loop = false;
+            introAnimation.currentTime = 14;
         }
-        $('#top').removeClass('playoverlay');
+        $header.hasClass('hamburger') && maximizeMenu();            
+        $('#intro').removeClass('playoverlay');
     } 
-    else if ($(window).scrollTop()>20) {
+    else if (scrolltop>20) {
         if ( !$header.hasClass('hamburger')) {
             minimizeMenu();
         }
         $header.show();
-        $('#top').addClass('playoverlay');
+        $('#intro').addClass('playoverlay');
+        if (scrolltop<300) {
+            $("#intro").addClass('stick');
+            if (!introAnimation.loop) {
+                introAnimation.loop = true;
+                introAnimation.play();
+            }
+        }
+        else {
+            $("#intro").removeClass('stick');
+            if (!!introAnimation && !!introAnimation.loop) {
+                introAnimation.loop = false;
+                introAnimation.currentTime = 14;
+            }
+        }
     }
+    
+    
     else if (!$desktop) {
         minimizeMenu();
     }
-
-    if ($(window).scrollTop()>400) {
-        $("#top").removeClass('stick')
-    }
+    firstScroll = false;
+    $("#intro").css('opacity', 1);
 }
 // Minimize and Maximize Menu
 function minimizeMenu(e) {

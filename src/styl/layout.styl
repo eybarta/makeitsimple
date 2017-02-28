@@ -13,6 +13,10 @@ body
 .full-height
     width 100%
     min-height 100vh
+
+#top
+    position relative
+    height calc(100vh + 300px)    
 .wrap
     img.big_graphic
         vertical-align middle
@@ -37,7 +41,8 @@ body
         padding 0 1%
         .info-title
             padding 0 5%
-            centerize-children()
+            +below(breaks.mobile)
+                padding 0
         +below(breaks.base)
             width 54%
             .txt
@@ -46,8 +51,8 @@ body
         +below(breaks.tablet)
             width 100%
         +below(breaks.mobile)
+            padding 0
             .info-title, .txt
-                text-align center
                 width auto
 
 
@@ -59,8 +64,6 @@ for num in (1..12)
 		lost-column num/12
 
 .group-3
-    +below(breaks.mobile)
-        padding 0 3%
     & > *
         lost-column 1/3 4 1%
         +below(breaks.mobile)
@@ -72,7 +75,7 @@ for num in (1..12)
         lost-column 1/4 4 2%
         +below(breaks.base)
             lost-column 1/2 2 2%
-        +below(520px)
+        +below(breaks.mobile)
             lost-column 1/1 1 0
 
 
@@ -87,7 +90,10 @@ footer
         lost-column 1/3 3 8%
         +below(breaks.tablet)
             lost-column 1/1 1 0
-            margin-top 40px
+            padding-top 116px
+            margin-top 0
+            &:first-child
+                padding-top 78px                
     .minitxt
         small-txt()
         margin-bottom 10px
@@ -105,12 +111,6 @@ footer
                     color #727272
                     margin 0
                     padding 0 0 3px
-    li
-        padding-top 4%
-        +below(breaks.mobile)
-            lost-column 1/1 1 !important
-            &:not(:first-child)
-                padding-top 14%
 
     h6
         margin-bottom 20px
@@ -121,6 +121,8 @@ footer
             padding-top 20px
             width 16%
             border-bottom 1px solid lightgray
+            +below(breaks.tablet)
+                padding-top 15px
     a.link
         small-txt()
         display block
@@ -129,3 +131,6 @@ footer
         display block
         color lightgray
         text-align center
+        padding-top 100px
+        +below(breaks.tablet)
+            padding-top 140px

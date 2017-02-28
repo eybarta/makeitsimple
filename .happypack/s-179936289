@@ -30,20 +30,54 @@ function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj;
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var vidSwiper;
 (0, _jquery2.default)(function () {
+    loadIntro();
     (0, _scrollNav.initScrollNav)();
     (0, _swiper.initSwiper)();
-    vidSwiper = (0, _swiper.videoSwiper)();
     (0, _googleMap.initMap)();
-
     bindEvents();
+
+    console.log((0, _jquery2.default)("#vidSource"));
 });
 
+function loadIntro() {
+    console.log("LOADINTRO !!!! ");
+
+    (0, _jquery2.default)("#vid").one('canplaythrough', function () {
+        (0, _jquery2.default)("#simpleIntro").fadeOut();
+        console.log("PLAY !!!! ", this);
+        //  this.loop = true;
+        //  this.play();
+    });
+    (0, _jquery2.default)("#vid").attr('src', 'https://s3-eu-west-1.amazonaws.com/mis-implants/makeitsimple/Minisite/simple-minisite.mp4');
+
+    // console.log('load intro >>', SuperGif);
+    // // let loading_gif = new Image();
+    // // loading_gif.src = 'dist/img/animation/intro-animation.gif';
+    // let introvid = document.getElementById('vid');
+    // console.log('introvid .. ', introvid);
+    // var gif = new SuperGif({
+    //     gif: introvid,
+    //     progressbar_foreground_color: '#05a5e6'
+    // });
+
+    // console.log('gif  ..  ', gif)
+
+    // gif.load(function (err) {
+    //     console.log('JLJBLVBLUVBL')
+    //     if (err) {
+    //         console.error("EROOR >> ", err);
+    //     } else {
+    //         console.log('Yay, the gif loaded!');
+    //     }
+    // });
+    // loading_gif.onload = function() {
+    //     $("#vid").attr('src', loading_gif.src);
+    // }
+}
 function bindEvents() {
     // INTRO PLAYER
     (0, _jquery2.default)("#top").one('click', playIntroVideo);
-
     // FAQ || ENABLE SELF CLICK (closing item)
     (0, _jquery2.default)("#faq li").on('mousedown', function (e) {
         var radio = (0, _jquery2.default)(this).find("input[type=radio]").get(0);
@@ -54,7 +88,6 @@ function bindEvents() {
         }
     });
 
-    (0, _jquery2.default)("#infoToggle").on('click', infoToggleHandler);
     (0, _jquery2.default)(window).on('resize.title', titleTextHandler);
     titleTextHandler();
 }
@@ -66,23 +99,16 @@ function closeIntroVideo() {
     (0, _jquery2.default)('#introvideo').attr('src', '').hide();
     setTimeout(function () {
         (0, _jquery2.default)("#top").one('click', playIntroVideo);
+        (0, _jquery2.default)("vid").fadeIn('fast').play();
     }, 1);
 }
 
 function playIntroVideo() {
-    console.log("PLAY INTRO");
+    (0, _jquery2.default)("vid").stop().fadeOut('fast');
     (0, _jquery2.default)("header").toggle();
     (0, _jquery2.default)("#top").toggleClass('play');
     (0, _jquery2.default)('#introvideo').attr('src', 'http://simple.mis-implants.com/vr8').show();
     (0, _jquery2.default)("#closeIntro").show().one('click', closeIntroVideo);
-}
-
-function infoToggleHandler() {
-    (0, _jquery2.default)(this).toggleClass('on');
-    var $control = (0, _jquery2.default)(this).next(".swiper-control");
-    $control.find(".info-overlay").toggleClass('on');
-    $control.find("video").toggleClass('under');
-    vidSwiper.stopAutoplay();
 }
 
 // TITLE TEXT CHANGES ON RESIZE

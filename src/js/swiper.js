@@ -4,13 +4,17 @@ export function initSwiper()  {
     misSwiper =  new Swiper('.mis-swiper-container', {
         pagination: '.mis-swiper-pagination',
         paginationClickable: true,
-        slidesPerView:5,
+        slidesPerView:7,
         spaceBetween:20,
         keyboardControl: true,
         preventClicks: false,
         nextButton: '.swiper-button-next',
         prevButton: '.swiper-button-prev',
         breakpoints: {
+            1600: {
+                slidesPerView:5,
+                spaceBetween:15,
+            },
             1200: {
                 slidesPerView:4,
                 spaceBetween:15,
@@ -32,22 +36,32 @@ export function initSwiper()  {
 }
 
 export function initPagesSwiper() {
-    pagesSwiper = new Swiper('.swiper-container', {
-        pagination: '.swiper-pagination',
-        // grabCursor: true,
-        simulateTouch: false,
-        paginationClickable: true,
-        slidesPerView:1,
-        spaceBetween:0,
-        keyboardControl: true,
-        autoHeight: true,
-        hashnav: true,
-        hashnavWatchState: true,
-        longSwipes:true,
-        shortSwipes:false,
-        nextButton: '.swiper-button-next',
-        prevButton: '.swiper-button-prev',
-    });
+        pagesSwiper = new Swiper('.swiper-container', {
+            pagination: '.swiper-pagination',
+            simulateTouch: false,
+            paginationClickable: true,
+            slidesPerView:1,
+            spaceBetween:0,
+            keyboardControl: true,
+            autoHeight: true,
+            hashnav: true,
+            hashnavWatchState: true,
+            longSwipes:true,
+            shortSwipes:false,
+            preloadImages: false,
+            lazyLoadingInPrevNext: true,
+            scrollbar: '.swiper-scrollbar',
+            nextButton: '.swiper-button-next',
+            prevButton: '.swiper-button-prev',
+            onInit(swiper) {
+                
+                setTimeout(function() {
+                    console.log('swiper > ', swiper);
+                    swiper.updateAutoHeight()
+                }, 1500)
+            },
+        });
+    
 }
 
 export function videoSwiper() {

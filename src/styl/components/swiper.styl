@@ -9,8 +9,8 @@ med = 620px
     margin 0 auto
     +below(1100px)
         padding 0 4%
-    +below(900px)
-        padding 0 6%
+    +below(breaks.tablet)
+        padding 0
     .swiper-pagination
         position relative
         padding-top 20px
@@ -18,15 +18,14 @@ med = 620px
         text-align center
     .swiper-container
         margin 0 auto
+        padding-top 1%
         .swiper-slide
             cursor move
             padding-top 1%
             a
                 display inline-block
-            +below(900px)
-                padding-top 2.5%
-            +below(500px)
-                padding-top 6%
+            +below(breaks.tablet)
+                // padding-top 0
             .minitxt
                 text-align center
                 margin-top 15px
@@ -41,16 +40,14 @@ med = 620px
                 transform translate3d(0,-4%,0)
                 transition opacity 400ms ease, transform 400ms ease
                 +below(breaks.tablet)
+                    transform translate3d(0,0,0)
                     &:hover
                         transform translate3d(0,-1%,0)
         +above(breaks.base)
             .swiper-wrapper:hover
                 .swiper-slide:not(:hover)
-                    .minitxt
-                        opacity 0.3
                     img
                         transform translateY(0%)
-                        opacity 0.8
 // NEXT & PREVIOUS BUTTONS
 .swiper-control, .pages-wrap
     .swiper-button-prev, .swiper-container-rtl .swiper-button-next,
@@ -131,6 +128,8 @@ med = 620px
 
 #make .swiper-pagination-bullets
     margin-top 80px
+    +below(breaks.mobile)
+        margin-top 35px
 .swiper-control, .pages-wrap
     .swiper-pagination-bullets
         inline-mid()
@@ -157,21 +156,20 @@ med = 620px
             position relative
             border-radius 0
             height 8px
-            width 11px
+            width 12px
             transform translateY(2px)
             &:after
                 content ''
                 background #000
                 position absolute
                 top 0
-                left 50%
-                width 8px
+                left 0
                 border-radius 0
                 border-right 6px solid transparent
                 border-left 6px solid transparent
                 background initial
                 border-bottom 4px solid #000
-                transform translate(-52%, -4px)
+                transform translate(0, -4px)
         &-active
             background #16507d
             border-radius 50%
@@ -202,8 +200,10 @@ med = 620px
             .swiper-wrapper
                 .swiper-slide
                     padding 0
-                    video
+                    video, img
                         width 100vw
+                        &.under
+                            blur-me()
         .video-swiper-pagination
             bottom 5vh
             background none
@@ -213,10 +213,15 @@ med = 620px
                 transform translateX(-50%) scale(0.8)
                 bottom 10px
             .swiper-pagination-bullet
-                &:first-child:after
-                    transform translate(-47%, -4px)
+                &:first-child
+                    width 12px
+                    height 12px
+                    border-radius 100%
+                    transform none
+                    &:after
+                        display none
                 &:not(.swiper-pagination-bullet-active)
-                    background #c9cbcf
+                    background lighten(#c9cbcf, 20)
                     opacity 0.8
                     &:first-child:after
                         border-bottom-color #c9cbcf

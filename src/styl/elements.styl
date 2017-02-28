@@ -11,10 +11,11 @@
     color darken(lightgray, 15)
     strong
         font-weight normal
-        color #203451
+        color #023451
 .subtxt
-    color lightblue
-    opacity 0.5
+    color rgba(lightblue, 0.7)
+    font-family 'Helvetica Neue'
+    letter-spacing 0.5px
 a.link, a.link:visited
     color linkblue
 
@@ -23,7 +24,7 @@ a.link, a.link:visited
     .item
         +below(breaks.mobile)
             &:not(:first-child)
-                margin-top 14%
+                margin-top 60px
         img
             margin-bottom 20px
             width 70%
@@ -36,11 +37,46 @@ a.link, a.link:visited
                 padding 0
             +below(breaks.mobile)
                 font-size 15px
+
+
+.preview-section
+    .item-group
+        padding-top 110px
+        +below(breaks.mobile)
+            padding-top 90px
+            img
+                margin-left -3px
+
+.mis-slider
+    padding-top 190px
+    text-align center
+    margin 0 auto
+    width 98%
+    +below(breaks.mobile)
+        padding-top 140px
+        width 94%
+        h2 span
+            text-align left
+
 // INTROS
+#simpleIntro
+    position absolute
+    top 50%
+    left 50%
+    transform translate(-50%, -50%)
+    z-index 99999999
+    width 111%
+    opacity 0.3
+    animation breathe
 .intro
     position relative
+    &.hp
+        position absolute
+        bottom 0
+        opacity 0
     overflow hidden
     background url('./assets/img/bg.jpg') no-repeat 50% 50% / cover
+    transition opacity 200ms ease
     &.stick
         position fixed
         z-index 999
@@ -60,13 +96,13 @@ a.link, a.link:visited
     &:before
         +portrait()
             content ''
-            background url('./assets/img/simple-intro.png') no-repeat 50% 50% / 100% auto
+            background url('./assets/img/simple-intro.png') no-repeat 50% 50% / 160% auto
             position absolute 0 0 0 0
             z-index 1
     &.intro-v3:before
         background-image url('./assets/img/v3-big.jpg')
     /.pages-wrap .intro
-        background url('./assets/img/bg.jpg') no-repeat 0 0 / cover
+        background url('./assets/img/bg.jpg') no-repeat 50% 0 / cover
         +below(breaks.mobile)
             background-position 50% 0
         &:before
@@ -75,7 +111,7 @@ a.link, a.link:visited
         +below(breaks.mobile)
             width 80%
     .close-btn
-        border-radius 100%
+        border-radius 18px
         border 1px solid #fff
         width 35px
         height 35px
@@ -117,8 +153,8 @@ a.link, a.link:visited
         // background rgba(#002d54, 0.9)
         z-index 2
         opacity 0
-        transform scale(0.8)
-        transition 200ms opacity ease-out-cubic, transform 400ms ease-out-back
+        transform scale(2)
+        transition 200ms opacity ease-out-cubic, transform 200ms ease-out-quad
         img
             max-width 302px
             +below(breaks.tablet)
@@ -133,10 +169,11 @@ a.link, a.link:visited
             span:first-child
                 font-size responsive 24px 48px
                 color #fff
-                padding-bottom 10px
+                padding-bottom 15px
             span:nth-child(2)
-                font-size 14px 24px
-                color #3e7bb0
+                mid-txt()
+                letter-spacing 0.8px
+                color #05a5e6
         .intro-txt
             width 100%
     iframe
@@ -151,19 +188,15 @@ a.link, a.link:visited
             height 100%
     &.hp.playoverlay
         &:before, video
-            @extend $blur
+            blur-me()
         .play-overlay
             background rgba(darkblue, 0.8)
             opacity 1
             transform scale(1)
         .i-360
             opacity 1
-            img
-                +below(breaks.mobile)
-                    transform scale(0.6)
-            span
-                +below(breaks.mobile)
-                    margin-bottom -2px
+            +below(breaks.mobile)
+                display none
                     
 .play
     #playintro
@@ -197,26 +230,42 @@ a.link, a.link:visited
         margin-top 20%
 .flip-title
     direction rtl
-    white-space nowrap
-    centerize-children()
+    white-space nowrap    
+    +below(breaks.tablet)
+        white-space normal
+        padding-bottom 60px
     & > *
         display inline-block
+        +below(breaks.tablet)
+            display block
     .subtxt
         sub-title()
         direction ltr
         +below(breaks.tablet)
-            margin-top 5px
+            margin-top 15px
 
 
 // FAQ BLOCK
+.faq-block
+    padding-top 78px
+    padding-bottom 78px
+    h2
+        text-align center
+        +below(breaks.mobile)
+            text-align left
+            width 70%
 .faq-control
     width 80%
-    margin 80px auto 50px
+    margin 60px auto 0
+    +below(breaks.mobile)
+        margin-top 90px
+        width 100%
     h5
+        font-family "Helvetica Neue"
         display inline-block
         vertical-align top
         width 40%
-        color darkblue
+        color #0a314c
         text-align center
         padding-top 12px
         +below(breaks.tablet)
@@ -224,6 +273,8 @@ a.link, a.link:visited
             display block
             text-align left
             padding-top 0
+            padding-bottom 57px
+
     .qa
         display inline-block
         vertical-align top
@@ -233,13 +284,17 @@ a.link, a.link:visited
         +below(breaks.tablet)
             width auto
             display block
-            margin-top 30px
         ul
+            padding-top 25px
             li
                 position relative
                 margin 20px 0 20px
                 padding-left 28px
                 cursor pointer
+                &:first-child
+                    margin-top 0
+                &:last-child
+                    margin-bottom 0
                 for num in 1..10
                     &:nth-child({num}) label > div:before
                         content ''+num
@@ -349,24 +404,25 @@ a.link, a.link:visited
     li
         +below(breaks.tablet)
             padding-top 10%
-        +below(520px)
-            padding-top 20%
+        +below(breaks.mobile)
+            padding-top 78px
         &:last-child
             padding-bottom 0
     .img-wrap
         height 200px
-        +below(520px)
-            height auto
         inline-grp()
         text-align center
+        +below(breaks.mobile)
+            height auto
+            text-align left
         img
             margin 0 auto
-            +below(520px)
+            +below(breaks.mobile)
                 width 55%
-                margin-bottom 2%
+                margin 0 0 2%
         +below(breaks.tablet)
             inline-grp(bottom)
-            margin-bottom 20px
+            margin-bottom 28px
                 
     .big-num
         absolute-center(both)
@@ -392,6 +448,16 @@ a.link, a.link:visited
         .out-links
             width 60%
             margin auto
+            +below(breaks.mobile)
+                width auto
+                a
+                    display block
+                    width auto
+                    transform none
+                    left auto
+                    color rgba(dark, 0.75)
+                    &:hover
+                        color rgba(dark, 0.95)
     a
         mid-txt()
         font-family "Helvetica Neue"
@@ -465,6 +531,7 @@ a.link, a.link:visited
     background #f2f2f2
     border-radius 0 0 360px 360px
     padding-top 45px
+    opacity 0.8
     z-index 9999
     span
         font-family "Helvetica Neue"
@@ -485,18 +552,20 @@ a.link, a.link:visited
         &:before
             content ''
             self-center()
-            transform translate(-50%, -50%) rotate(-45deg)
+            transform translate(-35%, -50%) rotate(-45deg)
             width 20px
             height 20px
             border-top 1px solid #656668
             border-left 1px solid #656668
+
+
 
 .video-slider
     position relative
     .info-overlay
         opacity 0
         position absolute 0 0 0 0
-        background rgba(#000b17, 0.8)
+        background rgba(#000b17, 0.9)
         z-index 9998
         transition opacity 200ms ease
         &.on
@@ -525,12 +594,11 @@ a.link, a.link:visited
                     margin-bottom 35px
                 h5
                     margin-bottom 8px
-    video
+    video, img
         transition filter 400ms ease, -webkit-filter 400ms ease
     img
         transform none !important
-        &.under
-            @extend $blur
+       
                 
 .info-toggle
     position absolute
@@ -543,8 +611,8 @@ a.link, a.link:visited
         top 4vh
         left 3vh
     +below(breaks.mobile)
-        top 2vh
-        left 1vh
+        top 3vh
+        left 2vh
     &:after
         content 'Click to learn more'
         mid-txt()

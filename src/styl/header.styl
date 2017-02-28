@@ -86,7 +86,7 @@ header
         height 100%
         width 85%
         margin 0 auto
-        max-width 1200px
+        max-width 900px
         overflow hidden
         opacity 0
         transition opacity 400ms ease
@@ -122,10 +122,12 @@ header
                     font-family 'HelveticaLight' !important
                     padding-bottom 6px
                     border-bottom 1px solid transparent
-                    &:hover, &.active
-                         border-bottom 1px solid linkgray
+                    &:hover
+                         color lighten(linkblue, 5)
                     &.active
                         color linkblue
+                        border-bottom 1px solid linkblue
+                        pointer-events none
                     +below(breaks.base)
                         sub-title()
                         text-transform uppercase

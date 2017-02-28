@@ -3,30 +3,30 @@
         <h1 v-if="title.tag=='h1'" v-text="title.txt"></h1>
         <h3 v-else-if="title.tag=='h3'" v-html="titleText" :class="[breakWords ? 'breaked' : '', !!title.classNames ? title.classNames : '' ]"></h3>
         <div v-if="!!txt" class="centered-text pb-max pt-bigger" v-text="txt"></div>
-            <ul class="group-4 items pt-big">
-                <li class="pb-med" v-if="group.type=='numbers'" v-for="(item, index) in group.items">
-                    <div v-if="numload" class="big-num" :class="[item.title>9 ? 'dbl' : '']"  data-aos="fade-down" :data-aos-duration="index*500">
-                        <count-up v-if="isNumber(item.title)" :start="0" :end="parseInt(item.title)" :decimals="0" :duration="2.5" :options="countOptions"></count-up>
-                        <span v-else v-html="item.title" class="bigger"></span>
-                    </div>
-                    <p class="midtxt tcenter" v-text="item.text"></p>
-                </li>
-                <li  v-if="group.type=='images'" v-for="(item, index) in group.items" data-aos="fade-left" :data-aos-duration="index*500">
-                    <div class="img-wrap">
-                        <img :src="item.img.src" alt="item.img.alt">
-                    </div>
-                    <div class="out-links">
-                        <a v-for="link in item.links" href="link.href">{{link.txt}} <span>></span></a>
-                    </div>
-                </li>
-            </ul>
-        <div v-if="!!image" data-aos="fade-up" class="bottom-graphic-v3" :style="'background-image:url('+image+')'"></div>
+        <ul id="itemlist" :class="[group.items.length>3 ? 'group-4' : 'group-3', 'centered', 'items', 'pt-big']">
+            <li class="pb-med" v-if="group.type=='numbers'" v-for="(item, index) in group.items">
+                <div v-if="numload" class="big-num" :class="[item.title>9 ? 'dbl' : '']" >
+                    <count-up v-if="isNumber(item.title)" :start="0" :end="parseInt(item.title)" :decimals="0" :duration="2.5" :options="countOptions"></count-up>
+                    <span v-else v-html="item.title" class="bigger"></span>
+                </div>
+                <p class="midtxt tcenter" v-text="item.text"></p>
+            </li>
+            <li  v-if="group.type=='images'" v-for="(item, index) in group.items">
+                <div class="img-wrap">
+                    <img :src="item.img.src" alt="item.img.alt">
+                </div>
+                <div class="out-links">
+                    <a v-for="link in item.links" href="link.href">{{link.txt}} <span>></span></a>
+                </div>
+            </li>
+        </ul>
+        <div v-if="!!image" class="bottom-graphic-v3" :style="'background-image:url('+image+')'"></div>
     </div>
 </template>
 <script>
 import CountUp from 'vue-countup-v2';
 import inView from 'in-view'
-import AOS from 'aos'
+// import AOS from 'aos'
 export default {
     props: ['title', 'txt', 'group', 'image'],
     data() {
@@ -45,21 +45,20 @@ export default {
     },
     mounted() {
         window.addEventListener('resize', this.resizeHandler);
-        inView.offset({ bottom: -window.screen.height})
-        inView('.items').once('enter', el => {
+        inView.offset({ bottom: 0})
+        inView('#itemlist').once('enter', el => {
             this.$set(this, 'numload', true)
         });
-        console.log(AOS);
         
-         AOS.init({
-            offset: 400,
-            duration: 400,
-            easing: 'ease-out-quad',
-            delay: 20,
-        });
-        this.$nextTick(function() {
-            AOS.refresh()
-        })
+        //  AOS.init({
+        //     offset: 400,
+        //     duration: 400,
+        //     easing: 'ease-out-quad',
+        //     delay: 20,
+        // });
+        // this.$nextTick(function() {
+        //     AOS.refresh()
+        // })
     },
     components: {
       CountUp  
@@ -92,6 +91,8 @@ export default {
 }
 </script>
 <style lang="stylus" scoped>
+.info-block
+    min-height 400px
 h3
     text-align center
 .dbl span

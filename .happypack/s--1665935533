@@ -74,14 +74,9 @@ function initScrollNav() {
 }
 
 function toggleMenu() {
-    if (/max/g.test($header.attr('class'))) {
-        minimizeMenu();
-    } else {
-        maximizeMenu();
-    }
+    /max/g.test($header.attr('class')) ? minimizeMenu() : maximizeMenu();
 }
 function initMenu() {
-    console.log("INIT MENU");
     $desktop = (0, _jquery2.default)(window).width() > 1025;
     clearTimers();
     (0, _jquery2.default)(window).off('scroll').on('scroll', scrollCheck);
@@ -91,6 +86,7 @@ function scrollCheck(e) {
     if ((0, _jquery2.default)(window).scrollTop() < 20 && $header.hasClass('hamburger')) {
         if ($desktop) {
             (0, _jquery2.default)("#top").addClass('stick');
+            (0, _jquery2.default)("#vid").prop('loop', true);
         }
         if ((0, _jquery2.default)("#top").hasClass('play')) {
             $header.hide();
@@ -108,8 +104,9 @@ function scrollCheck(e) {
         minimizeMenu();
     }
 
-    if ((0, _jquery2.default)(window).scrollTop() > 400) {
+    if ((0, _jquery2.default)(window).scrollTop() > 500) {
         (0, _jquery2.default)("#top").removeClass('stick');
+        (0, _jquery2.default)("#vid").prop('loop', false);
     }
 }
 // Minimize and Maximize Menu
