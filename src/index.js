@@ -3,88 +3,42 @@ import './styl/app.styl';
 import 'swiper/dist/css/swiper.css'
 
 import $ from 'jquery'
-
+import { initIntroAnimation } from './js/intro-animation'
+import { initIntroVideo } from './js/intro-video'
 import { initSwiper } from './js/swiper'
 import { initMap } from './js/google-map';
 import { initScrollNav } from './js/scroll-nav'
 import * as utils from './js/utils'
 
 $(() => {
-    loadIntro();
+    initIntroAnimation();
+    initIntroVideo();
     initScrollNav();
     initSwiper();
     initMap();
     bindEvents();
-
-    console.log($("#vidSource"))
-
-    
-    
 })
 
-function loadIntro() {
-    $("#vid").one('canplaythrough', function() {
-        $("#simpleIntro").fadeOut(100)
-    })
-    $("#vid").attr('src', 'https://s3-eu-west-1.amazonaws.com/mis-implants/makeitsimple/Minisite/simple-minisite.mp4');
-}    
+  
 function  bindEvents() {
-    // INTRO PLAYER
-    $("#top").one('click', playIntroVideo)
     // FAQ || ENABLE SELF CLICK (closing item)
-    $("#faq li").on('mousedown', function(e) {
-        let radio = $(this).find("input[type=radio]").get(0);
-    	if (!!radio.checked) {
-        setTimeout(function() {
-          radio.checked = false;
-        }, 150)
-      }
-	})
+    $("#faq li").on('mousedown', faqSelfClick)
 
     $(window).on('resize.title', titleTextHandler)
     titleTextHandler();
 }
 
 
-function closeIntroVideo() {
-    var ref = this;
-    console.log('close intro video');
-    try {
 
-        let closer = $("#introvideo").get(0).contentWindow.vrExitVR();
-        console.log("closer >> ", closer);
-        if (closer) {
-            closevid()
-        }
-    }
-    catch(e) {
-        console.log('in catch>> ', e);
-        closevid()
-    }
-    
-    function closevid() {
-        $(ref).hide();
-        $("header").toggle();
-        $("#top").toggleClass('play')
-        $('#introvideo').attr('src', '').hide()
+// FAQ self click
+ function faqSelfClick(e) {
+    let radio = $(this).find("input[type=radio]").get(0);
+    if (!!radio.checked) {
         setTimeout(function() {
-            $("#top").one('click', playIntroVideo);
-            $("#vid").fadeIn(200)
-            $("#vid").get(0).play();
-        },1)
+            radio.checked = false;
+        }, 150)
     }
-    
 }
-
-function  playIntroVideo() {
-    $("vid").stop().fadeOut('fast');
-    $("header").toggle();
-    $("#top").toggleClass('play')
-    $('#introvideo').attr('src', 'http://simple.mis-implants.com/vr8').show()
-    $("#closeIntro").show().one('click', closeIntroVideo)
-    
-}
-
 // TITLE TEXT CHANGES ON RESIZE
 var titletxt = "SIMPLY MORE INFORMATION";
 function titleTextHandler() {

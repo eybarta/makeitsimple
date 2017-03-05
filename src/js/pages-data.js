@@ -15,27 +15,27 @@ export const PageSlides = [
                 items: [
                     {
                         title: 3,
-                        text: 'The triangular shape provide high immediate crestal stability'
+                        text: 'The triangular shape provides high immediate crestal stability.'
                     },
                     {
                         title: 2,
-                        text: '2 Platforms. Blue for Narrow and Purple for Standard'
+                        text: '2 platforms. Blue for narrow and purple for standard.'
                     },
                     {
                         title: 12,
-                        text: 'The 12° conical connection creates an ultimate seal'
+                        text: 'The 12° conical connection creates an ultimate seal.'
                     },
                     {
                         title: 4,
-                        text: '4 placement tools are specificly designed to enable reliable procedure'
+                        text: '4 different placement tools are specifically designed to enable a reliable procedure.'
                     }
                 ]
             },
             image: './dist/img/v3-bottom-graphic.jpg'
         },
         outblock: {
-            txt: 'The simplicity of this geometrical change; circular to triangular; is at the core of some major advantages of the V3.Less cortical pressure, less bone resorption and better initial and biological stability. ',
-            h2: 'V3, More bone where it matters most',
+            txt: 'The simplicity of this geometrical change; circular to triangular; is at the core of some major advantages of the V3. Less cortical pressure, less bone resorption and better initial and biological stability. ',
+            h2: 'V3. More bone where it matters most.',
             btn: {
                 link: 'http://www.mis-implants.com/MIS-Info/ContactUs.aspx',
                 txt: 'Contact your local distributor'
@@ -136,33 +136,33 @@ export const PageSlides = [
                 tag: 'h1',
                 txt: 'Agility is in our nature'
             },
-            txt: 'MIS continuously strives to uphold this simple concept. An excellent example of this is the V3 implant. The triangular design of the V3 means less implant. Less implant means more room for blood pooling and vascularization so that more bone can grow Faster.',
+            txt: 'At MIS, being agile means knowing when to change course and take in new ideas and requirements. It also means moving fast towards meeting the needs of our customers.',
             group: {
                 type: 'numbers',
                 items: [
                     {
                         title: 4,
-                        text: 'The triangular shape provide high immediate crestal stability'
+                        text: '4 Engineers working on a single project to provide the right solution.'
                     },
                     {
-                        title: 2,
+                        title: 15,
                         text: '2 Platforms. Blue for Narrow and Purple for Standard'
                     },
                     {
-                        title: 48,
-                        text: 'The 12° conical connection creates an ultimate seal'
+                        title: '2K',
+                        text: 'Thousands of fatigue, insertion tool, sealing and other tests to ensure the best product.'
                     },
                     {
-                        title: 4,
-                        text: '4 placement tools are specificly designed to enable reliable procedure'
+                        title: 20,
+                        text: '2 groups of 10 doctors participate in brainstorming groups in order to advance and improve developments.'
                     }
                 ]
             },
             image: './dist/img/bottom-graphic-agility.jpg'
         },
         outblock: {
-            txt: 'The simplicity of this geometrical change; circular to triangular; is at the core of some major advantages of the V3.Less cortical pressure, less bone resorption and better initial and biological stability. ',
-            h2: 'V3, More bone where it matters most',
+            txt: 'At times, making an improvement to an existing product is crucial. Moving quickly towards advancement is a key to success.',
+            h2: 'Moving swiftly to produce the best product.',
             btn: {
                 link: 'http://www.mis-implants.com/MIS-Info/ContactUs.aspx',
                 txt: 'Contact your local distributor'
@@ -239,33 +239,33 @@ export const PageSlides = [
                 tag: 'h1',
                 txt: 'Key to satisfied patients'
             },
-            txt: 'Dental implants are the preferred option to replace missing teeth. Hundreds of thousands of people all over the world are using MIS dental implants to perfect their smile and restore confidence.',
+            txt: 'Proven history, with millions of implants placed the world over. MIS provides the patient with the most effective solution for the restoration of missing teeth, making it simple to leave the doctor\'s office with a complete smile.',
             group: {
                 type: 'numbers',
                 items: [
                     {
-                        title: 4,
-                        text: 'The triangular shape provide high immediate crestal stability'
+                        title: 3,
+                        text: 'MIS restoration options for single teeth, fixed bridge for multiple teeth, complete denture, or a fixed restoration for a completely edentulous jaw.'
+                    },
+                    {
+                        title: 3,
+                        text: '3 parts of rehabilitation: implant, abutment and prosthetic restoration.'
+                    },
+                    {
+                        title: 5,
+                        text: 'V3, C1, SEVEN, M4, UNO For 5 choices of implant based restorations.'
                     },
                     {
                         title: 2,
-                        text: '2 Platforms. Blue for Narrow and Purple for Standard'
-                    },
-                    {
-                        title: 48,
-                        text: 'The 12° conical connection creates an ultimate seal'
-                    },
-                    {
-                        title: 4,
-                        text: '4 placement tools are specificly designed to enable reliable procedure'
+                        text: 'Reconstruction for both young and aging patients.'
                     }
                 ]
             },
             image: './dist/img/bottom-graphic-key.jpg'
         },
         outblock: {
-            txt: 'The simplicity of this geometrical change; circular to triangular; is at the core of some major advantages of the V3.Less cortical pressure, less bone resorption and better initial and biological stability. ',
-            h2: 'V3, More bone where it matters most',
+            txt: 'Restoring a patient\'s missing smile is simple with the vast range of prosthetic and rehabilitation options that MIS has to offer.',
+            h2: 'MIS Implants different scenarios, one solution',
             btn: {
                 link: 'http://www.mis-implants.com/MIS-Info/ContactUs.aspx',
                 txt: 'Contact your local distributor'
@@ -358,21 +358,21 @@ export const PageSlides = [
                 tag: 'h1',
                 txt: 'Easy with every product'
             },
-            txt: 'Dental implants are the preferred option to replace missing teeth. Hundreds of thousands of people all over the world are using MIS dental implants to perfect their smile and restore confidence.',
+            txt: 'MIS delivers simplicity, reliability and innovation for implants, prosthetics, digital dentistry and regenerative solutions.',
             group: {
                 type: 'numbers',
                 items: [
                     {
-                        title: 4,
-                        text: 'The triangular shape provide high immediate crestal stability'
+                        title: 31,
+                        text: 'More than 30 convenient tool kits and sets that make procedures simple.'
                     },
                     {
-                        title: 2,
-                        text: '2 Platforms. Blue for Narrow and Purple for Standard'
+                        title: 116,
+                        text: 'Over 100 different tools to simplify every procedure.'
                     },
                     {
-                        title: 48,
-                        text: 'The 12° conical connection creates an ultimate seal'
+                        title: 60,
+                        text: 'Sixty top-quality drills for a precise and safe procedure.'
                     },
                     {
                         title: 4,
@@ -383,8 +383,8 @@ export const PageSlides = [
             image: './dist/img/bottom-graphic-easy.jpg'
         },
         outblock: {
-            txt: 'The simplicity of this geometrical change; circular to triangular; is at the core of some major advantages of the V3.Less cortical pressure, less bone resorption and better initial and biological stability. ',
-            h2: 'V3, More bone where it matters most',
+            txt: 'MIS offers a wide range of innovative tools and instruments, providing clinicians and lab technicians with simple and easy solutions suited to almost any clinical scenario.',
+            h2: 'MIS gives you tools for success.',
             btn: {
                 link: 'http://www.mis-implants.com/MIS-Info/ContactUs.aspx',
                 txt: 'Contact your local distributor'
@@ -455,27 +455,27 @@ export const PageSlides = [
     // PAGE SLIDE 5 -- Innovation leading the way
     {
         hash: 'Innovation_leading_the_way',
-        introBg: './dist/img/intro-inovation.jpg',
+        introBg: './dist/img/intro-innovation.jpg',
         infoblock: {
             title: {
                 tag: 'h1',
                 txt: 'Innovation leading the way'
             },
-            txt: 'Dental implants are the preferred option to replace missing teeth. Hundreds of thousands of people all over the world are using MIS dental implants to perfect their smile and restore confidence.',
+            txt: 'Keeping up with market demands means that our innovation comes from a real need to constantly improve, advance and provide the right solution.',
             group: {
                 type: 'numbers',
                 items: [
                     {
-                        title: 4,
-                        text: 'The triangular shape provide high immediate crestal stability'
+                        title: 1,
+                        text: 'A monolayer of multi-phosphonate molecules.'
                     },
                     {
-                        title: 2,
-                        text: '2 Platforms. Blue for Narrow and Purple for Standard'
+                        title: 3,
+                        text: 'Titanium + B+ + Bone'
                     },
                     {
-                        title: 48,
-                        text: 'The 12° conical connection creates an ultimate seal'
+                        title: 250,
+                        text: 'B+ Experience Team of 250 dentists using B+ implants and reporting back their findings.'
                     },
                     {
                         title: 4,
@@ -483,11 +483,11 @@ export const PageSlides = [
                     }
                 ]
             },
-            image: './dist/img/bottom-graphic-inovation.jpg'
+            image: './dist/img/bottom-graphic-innovation.jpg'
         },
         outblock: {
-            txt: 'The simplicity of this geometrical change; circular to triangular; is at the core of some major advantages of the V3.Less cortical pressure, less bone resorption and better initial and biological stability. ',
-            h2: 'V3, More bone where it matters most',
+            txt: 'The B+ was designed to integrate into the surface chemistry of the implant, while creating a layer that perfectly integrates with existing bone.',
+            h2: 'When titanium and bone synthesize',
             btn: {
                 link: 'http://www.mis-implants.com/MIS-Info/ContactUs.aspx',
                 txt: 'Contact your local distributor'
@@ -592,33 +592,33 @@ export const PageSlides = [
                 tag: 'h1',
                 txt: 'Technology taken to the limits'
             },
-            txt: 'Dental implants are the preferred option to replace missing teeth. Hundreds of thousands of people all over the world are using MIS dental implants to perfect their smile and restore confidence.',
+            txt: 'Pushing the envelope of today\'s technological advancements means MIS continuously explores new ways in which technology can take implant dentistry to the next level for optimal results.',
             group: {
                 type: 'numbers',
                 items: [
                     {
-                        title: 4,
-                        text: 'The triangular shape provide high immediate crestal stability'
+                        title: 3,
+                        text: 'New advancements to make things simple. V3. 4MATRIX. MGUIDE.'
+                    },
+                    {
+                        title: 3,
+                        text: 'The revolutionary triangular shape of the V3 implant.'
                     },
                     {
                         title: 2,
-                        text: '2 Platforms. Blue for Narrow and Purple for Standard'
+                        text: 'Two parts combine to make the 4MATRIX easy to handle.'
                     },
                     {
-                        title: 48,
-                        text: 'The 12° conical connection creates an ultimate seal'
-                    },
-                    {
-                        title: 4,
-                        text: '4 placement tools are specificly designed to enable reliable procedure'
+                        title: 3,
+                        text: 'Three MCENTERS using state-of-the-art technology to take digital dentistry forward.'
                     }
                 ]
             },
             image: './dist/img/bottom-graphic-technology.jpg'
         },
         outblock: {
-            txt: 'The simplicity of this geometrical change; circular to triangular; is at the core of some major advantages of the V3.Less cortical pressure, less bone resorption and better initial and biological stability. ',
-            h2: 'V3, More bone where it matters most',
+            txt: 'The key is to use the most advanced, sophisticated technology so that our customers see a simple, convenient result.',
+            h2: 'Using technology to make things simpler',
             btn: {
                 link: 'http://www.mis-implants.com/MIS-Info/ContactUs.aspx',
                 txt: 'Contact your local distributor'
@@ -719,21 +719,21 @@ export const PageSlides = [
                 tag: 'h1',
                 txt: 'Service in every step of the process'
             },
-            txt: 'Dental implants are the preferred option to replace missing teeth. Hundreds of thousands of people all over the world are using MIS dental implants to perfect their smile and restore confidence.',
+            txt: 'MIS strives to incorporate top notch service in every step of the process. This includes providing excellent training and marketing materials for our distributors and sales reps as well as for the dentists who use our products, and always being available to provide assistance when necessary.',
             group: {
                 type: 'numbers',
                 items: [
                     {
-                        title: 4,
-                        text: 'The triangular shape provide high immediate crestal stability'
+                        title: 24,
+                        text: '24-hour MCENTER service'
+                    },
+                    {
+                        title: 1,
+                        text: 'One convenient location for all marketing and education materials.'
                     },
                     {
                         title: 2,
-                        text: '2 Platforms. Blue for Narrow and Purple for Standard'
-                    },
-                    {
-                        title: 48,
-                        text: 'The 12° conical connection creates an ultimate seal'
+                        text: 'Fast, 2 day delivery guarantee anywhere in the world.'
                     },
                     {
                         title: 4,
@@ -744,8 +744,8 @@ export const PageSlides = [
             image: './dist/img/bottom-graphic-service.jpg'
         },
         outblock: {
-            txt: 'The simplicity of this geometrical change; circular to triangular; is at the core of some major advantages of the V3.Less cortical pressure, less bone resorption and better initial and biological stability. ',
-            h2: 'V3, More bone where it matters most',
+            txt: 'Customer service goes beyond support for products and procedures. At MIS, service also means building a platform for education.',
+            h2: 'There is no compromise on top quality service.',
             btn: {
                 link: 'http://www.mis-implants.com/MIS-Info/ContactUs.aspx',
                 txt: 'Contact your local distributor'
@@ -822,7 +822,7 @@ export const PageSlides = [
                 tag: 'h1',
                 txt: 'Integrity unwavering'
             },
-            txt: 'MIS is deeply committed to our core values of quality, service, agility and innovation, integrity and caring; reflected in every step of our work process and supported by over 300 dedicated MIS employees.',
+            txt: 'Integrity at MIS means an unwavering stance behind each one of our products, as well as corporate integrity towards our employees, suppliers, distributors and of course customers.  A genuine concern for all of the people who make this company run is a core value at MIS.',
             group: {
                 type: 'numbers',
                 items: [
@@ -840,15 +840,15 @@ export const PageSlides = [
                     },
                     {
                         title: 10,
-                        text: 'More then 10 certificates accordance with the most stringent international standards'
+                        text: 'More than 10 certificates in accordance with the most stringent international standards.'
                     }
                 ]
             },
             image: './dist/img/bottom-graphic-integrity.jpg'
         },
         outblock: {
-            txt: 'The simplicity of this geometrical change; circular to triangular; is at the core of some major advantages of the V3.Less cortical pressure, less bone resorption and better initial and biological stability. ',
-            h2: 'V3, More bone where it matters most',
+            txt: 'Having a name that can be trusted means never compromising on our beliefs or the way that we conduct our business in the world.',
+            h2: 'Our principles are our guide in the market.',
             btn: {
                 link: 'http://www.mis-implants.com/MIS-Info/ContactUs.aspx',
                 txt: 'Contact your local distributor'
@@ -933,7 +933,7 @@ export const PageSlides = [
                 tag: 'h1',
                 txt: 'Many years of experience and expertise'
             },
-            txt: 'With our cutting edge facilities, MIS offers a complete range of premium quality dental implants, superstructures, tools and kits, regenerative solutions and digital dentistry.',
+            txt: 'For over 20 years, MIS has been working hard to make things simple. With countless studies and research done over the years, in order to push the limits of innovation, yet maintain a safe, reliable and tested product.',
             group: {
                 type: 'numbers',
                 items: [
@@ -947,19 +947,19 @@ export const PageSlides = [
                     },
                     {
                         title: 22,
-                        text: '22 years of ...'
+                        text: '22 years of dedicated service in the market.'
                     },
                     {
-                        title: 4,
-                        text: 'More then 10 certificates accordance with the most stringent international standards'
+                        title: 50,
+                        text: 'More than 50 key opinion leaders globally who stand behind the products.'
                     }
                 ]
             },
             image: './dist/img/bottom-graphic-years.jpg'
         },
         outblock: {
-            txt: 'The simplicity of this geometrical change; circular to triangular; is at the core of some major advantages of the V3.Less cortical pressure, less bone resorption and better initial and biological stability. ',
-            h2: 'V3, More bone where it matters most',
+            txt: 'Standing behind MIS are world-class scientists and engineers, devoted to the continued research and development of innovative products and technologies.',
+            h2: 'Knowledge and expertise give MIS the advantage.',
             btn: {
                 link: 'http://www.mis-implants.com/MIS-Info/ContactUs.aspx',
                 txt: 'Contact your local distributor'
@@ -1044,21 +1044,21 @@ export const PageSlides = [
                 tag: 'h1',
                 txt: 'Preferred choice of dentists worldwide'
             },
-            txt: 'MIS products are distributed in over 60 countries worldwide through a well-established global distribution network.',
+            txt: '1 out of every 17 implants sold globally today is manufactured by MIS. Distributed in over 65 countries worldwide, the top quality and commitment to service keep the dentists who use our products satisfied and returning time and time again.',
             group: {
                 type: 'numbers',
                 items: [
                     {
-                        title: 3,
-                        text: 'Life time warranty for all of our implants'
+                        title: 17,
+                        text: '1 out of every 17 implants sold in the world is produced by MIS.'
                     },
                     {
-                        title: 3,
-                        text: '3 years warranty for all of our drills and tools'
+                        title: 2500,
+                        text: '2500 doctors attended the last MIS global conference in Barcelona.'
                     },
                     {
                         title: 48,
-                        text: '5 years warranty for all of our abutments and prosthetic accessories'
+                        text: 'A fast growing market with XX new locations joining MIS in the past year.'
                     },
                     {
                         title: 10,
@@ -1069,8 +1069,8 @@ export const PageSlides = [
             image: './dist/img/bottom-graphic-preferred.jpg'
         },
         outblock: {
-            txt: 'The simplicity of this geometrical change; circular to triangular; is at the core of some major advantages of the V3.Less cortical pressure, less bone resorption and better initial and biological stability. ',
-            h2: 'V3, More bone where it matters most',
+            txt: 'The global market for dental implants is growing rapidly and together with it is the presence of MIS in the world.',
+            h2: 'Offering simple, creative and comprehensive solutions.',
             btn: {
                 link: 'http://www.mis-implants.com/MIS-Info/ContactUs.aspx',
                 txt: 'Contact your local distributor'
@@ -1155,33 +1155,29 @@ export const PageSlides = [
                 tag: 'h1',
                 txt: 'Long & short term qualitative research'
             },
-            txt: 'It is an honor for MIS to collaborate with a host of prestigious universities and research institutions around the world, as well as distinguished scientists and clinical researchers who share our passion for new knowledge.',
+            txt: 'MIS products are backed by years of qualitative research and are currently included in over 90 international studies.',
             group: {
                 type: 'numbers',
                 items: [
                     {
-                        title: 95,
-                        text: '95 articals... (Example)'
+                        title: 40,
+                        text: 'Over 40 MIS research publications.'
                     },
                     {
-                        title: 65,
-                        text: '65 Case Studies... (Example)'
+                        title: 20,
+                        text: 'More than 20 published case studies.'
                     },
                     {
-                        title: 22,
-                        text: '5 years warranty for all of our abutments and prosthetic accessories'
-                    },
-                    {
-                        title: 4,
-                        text: 'More then 10 certificates accordance with the most stringent international standards.'
+                        title: 45,
+                        text: 'I need text for here'
                     }
                 ]
             },
             image: './dist/img/bottom-graphic-research.jpg'
         },
         outblock: {
-            txt: 'The simplicity of this geometrical change; circular to triangular; is at the core of some major advantages of the V3.Less cortical pressure, less bone resorption and better initial and biological stability. ',
-            h2: 'V3, More bone where it matters most',
+            txt: 'We stand by our pledge to conduct the most rigorous, consistent, and ongoing testing and evaluation of our products.',
+            h2: 'Substantial research is at the heart of simple products',
             btn: {
                 link: 'http://www.mis-implants.com/MIS-Info/ContactUs.aspx',
                 txt: 'Contact your local distributor'
@@ -1213,7 +1209,19 @@ export const PageSlides = [
                             }
                         ]
                     },
-                    {
+                        {
+                        img:  {
+                            src: 'dist/img/online-catalog-icon.png',
+                            alt: 'Online Catalog'
+                        },
+                        links: [
+                            {
+                                txt: 'V3 Mini Catalog',
+                                href: '#p'
+                            }
+                        ]
+                    },
+                     {
                         img:  {
                             src: 'dist/img/www.svg',
                             alt: 'Online Catalog'
@@ -1225,18 +1233,6 @@ export const PageSlides = [
                             },
                             {
                                 txt: 'VCONCEPT Minisite',
-                                href: '#p'
-                            }
-                        ]
-                    },
-                        {
-                        img:  {
-                            src: 'dist/img/online-catalog-icon.png',
-                            alt: 'Online Catalog'
-                        },
-                        links: [
-                            {
-                                txt: 'V3 Mini Catalog',
                                 href: '#p'
                             }
                         ]
@@ -1266,33 +1262,33 @@ export const PageSlides = [
                 tag: 'h1',
                 txt: 'Everything the dentist needs'
             },
-            txt: 'It is an honor for MIS to collaborate with a host of prestigious universities and research institutions around the world, as well as distinguished scientists and clinical researchers who share our passion for new knowledge.',
+            txt: 'With over 2000 implants, abutments, prosthetic components, tools and regenerative products to choose from, MIS offers a comprehensive solution for every clinical scenario.',
             group: {
                 type: 'numbers',
                 items: [
                     {
-                        title: 95,
-                        text: '95 articals... (Example)'
+                        title: 15,
+                        text: '15 different surgical kits.'
                     },
                     {
-                        title: 65,
-                        text: '65 Case Studies... (Example)'
+                        title: 5,
+                        text: 'Five types of implants...'
                     },
                     {
-                        title: 22,
-                        text: '5 years warranty for all of our abutments and prosthetic accessories'
+                        title: 7,
+                        text: 'Drilling diameter options...'
                     },
                     {
                         title: 4,
-                        text: 'More then 10 certificates accordance with the most stringent international standards.'
+                        text: 'Prosthetics options'
                     }
                 ]
             },
             image: './dist/img/bottom-graphic-everything.jpg'
         },
         outblock: {
-            txt: 'The simplicity of this geometrical change; circular to triangular; is at the core of some major advantages of the V3.Less cortical pressure, less bone resorption and better initial and biological stability. ',
-            h2: 'V3, More bone where it matters most',
+            txt: 'The range of choices offered to the dentist in products and tools is key to making it simple.',
+            h2: 'Solutions aimed to simplify implant dentistry',
             btn: {
                 link: 'http://www.mis-implants.com/MIS-Info/ContactUs.aspx',
                 txt: 'Contact your local distributor'
@@ -1326,6 +1322,18 @@ export const PageSlides = [
                     },
                     {
                         img:  {
+                            src: 'dist/img/online-catalog-icon.png',
+                            alt: 'Online Catalog'
+                        },
+                        links: [
+                            {
+                                txt: 'V3 Mini Catalog',
+                                href: '#p'
+                            }
+                        ]
+                    },
+                    {
+                        img:  {
                             src: 'dist/img/www.svg',
                             alt: 'Online Catalog'
                         },
@@ -1336,18 +1344,6 @@ export const PageSlides = [
                             },
                             {
                                 txt: 'VCONCEPT Minisite',
-                                href: '#p'
-                            }
-                        ]
-                    },
-                        {
-                        img:  {
-                            src: 'dist/img/online-catalog-icon.png',
-                            alt: 'Online Catalog'
-                        },
-                        links: [
-                            {
-                                txt: 'V3 Mini Catalog',
                                 href: '#p'
                             }
                         ]

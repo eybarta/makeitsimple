@@ -1,3 +1,4 @@
+import $ from 'jquery'
 var misSwiper, pagesSwiper;
 
 export function initSwiper()  {
@@ -50,18 +51,26 @@ export function initPagesSwiper() {
             shortSwipes:false,
             preloadImages: false,
             lazyLoadingInPrevNext: true,
-            scrollbar: '.swiper-scrollbar',
             nextButton: '.swiper-button-next',
             prevButton: '.swiper-button-prev',
             onInit(swiper) {
-                
-                setTimeout(function() {
-                    console.log('swiper > ', swiper);
+                let timer, height = Math.floor($(swiper.slides[swiper.activeIndex]).outerHeight(true));
+                setTimeout(()=> {
                     swiper.updateAutoHeight()
-                }, 1500)
+                },500)
+                $(window).on('scroll.swiper', function() {
+                    clearTimeout(timer);
+                    let height2 = Math.floor($(swiper.slides[swiper.activeIndex]).outerHeight(true));
+                    if (height!=height2) {
+                        swiper.updateAutoHeight()
+                        $(window).off('scroll.swiper')
+                    }
+                    timer = setTimeout(function() {
+                        $(window).off('scroll.swiper')
+                    },3000)
+                })
             },
         });
-    
 }
 
 export function videoSwiper() {
@@ -74,6 +83,13 @@ export function videoSwiper() {
         spaceBetween:0,
         keyboardControl: true,
         autoHeight: true,
-        autoplay: 11000
+        autoplay: 11000,
+        nextButton: '.video-next',
+        prevButton: '.video-prev',
+        onTransitionStart(swiper) {
+                let event = new Event('slidechange'),
+                    el = document.getElementById('vidSlider');
+                    el.dispatchEvent(event)
+        }
     });
 }

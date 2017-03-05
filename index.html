@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>MIS | Make It Simple</title>
+     <link rel="icon" href="./favicon.ico" type="image/png" sizes="16x16">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="./dist/css/aos.css">
     <link rel="stylesheet" href="./dist/css/style.css">
@@ -26,8 +27,8 @@
             <div id="intro" class="intro hp full-height unattach">
                 <button id="closeIntro" class="close-btn"></button>
                 <img id="simpleIntro" src="dist/img/simple-intro.png" />
-                <video id="vid" preload="auto" autoplay></video>
-                
+                <video id="introAnim" preload="auto" autoplay></video>
+                <video id="introAnimBlur" preload="auto" autoplay></video>
                 <div id='i360' class="i-360">
                     <img src="dist/img/360-icon.png" alt="The video includes a 360° experience">
                     <span>The video includes a <em>360°</em> experience</span>
@@ -250,9 +251,9 @@ All of our efforts within the company focus on this mission: To simplify the pro
                         <a target="_blank" href="http://www.mis-implants.com/Media/Printed-Materials/Products.aspx?#2560">Internal Printing Catalog <span>></span></a>
                     </div>
                 </li>
-                 <li>
+                 <li class="m0 pl2">
                     <div class="img-wrap">
-                        <img src="dist/img/implants.svg" alt="Printing Catalog">
+                        <img src="dist/img/implants.svg" alt="MIS Implants">
                     </div>
                     <div class="out-links">
                         <a target="_blank" href="http://www.mis-implants.com/Products/Implants.aspx">Our Implants <span>></span></a>
@@ -263,7 +264,7 @@ All of our efforts within the company focus on this mission: To simplify the pro
                 </li>
                  <li>
                     <div class="img-wrap">
-                        <img src="dist/img/www.svg" alt="Printing Catalog">
+                        <img src="dist/img/www.svg" alt="Mis Main Website">
                     </div>
                     <div class="out-links">
                         <a target="_blank" href="http://www.mis-implants.com">MIS Main Website<span>></span></a>
@@ -274,7 +275,7 @@ All of our efforts within the company focus on this mission: To simplify the pro
                 </li>
                  <li>
                      <div class="img-wrap">
-                        <img src="dist/img/eye.svg" alt="Printing Catalog">
+                        <img src="dist/img/eye.svg" alt="Printed Materials">
                     </div>
                     <div class="out-links">
                         <a target="_blank" href="http://www.mis-implants.com/Media/Printed-Materials/Products.aspx">Printed Materials<span>></span></a>
@@ -286,33 +287,39 @@ All of our efforts within the company focus on this mission: To simplify the pro
             </ul>
         </div>
         <footer class="pt-bigger">
-            <ul class="center">
+            <ul>
                 <li>
                     <h6>Mission & Vision</h6>
-                    <p class="minitxt">
-                        MIS Vision:<br>
-                        To be the preferred choice of dentists worldwide by offering simple, creative and comprehensive solutions, and to become the largest global dental implant producer.
-                    </p>
                     <div class="minitxt">
-                        MIS Values:
-                        <ul>
-                            <li>- Quality</li>
-                            <li>- Service</li>
-                            <li>- Agility & Innovation</li>
-                            <li>- Integrity & Caring</li>
-                        </ul>
+                        <p>
+                            MIS Vision:<br>
+                            To be the preferred choice of dentists worldwide by offering simple, creative and comprehensive solutions, and to become the largest global dental implant producer.
+                        </p>
+                        <p class="pt-med">
+                            MIS Values:
+                            <ul>
+                                <li>- Quality</li>
+                                <li>- Service</li>
+                                <li>- Agility & Innovation</li>
+                                <li>- Integrity & Caring</li>
+                            </ul>
+                        </p>
                     </div>
                 </li>
                 <li>
                     <h6>About Us</h6>
-                    <p class="minitxt">Established in 1995, MIS Implants Technologies Ltd. is at the forefront of development and production of advanced products and solutions aimed to simplify implant dentistry. With our cutting edge facilities, MIS offers a complete range of premium quality dental implants, superstructures, tools and kits, regenerative solutions and digital dentistry. Distributed in over 65 countries, MIS provides unparalleled service to our customers.</p>
-
-                    <a href="http://www.mis-implants.com" class="link pt-med">www.mis-implants.com</a>
+                    <div class="minitxt">
+                        <p>Established in 1995, MIS Implants Technologies Ltd. is at the forefront of development and production of advanced products and solutions aimed to simplify implant dentistry. With our cutting edge facilities, MIS offers a complete range of premium quality dental implants, superstructures, tools and kits, regenerative solutions and digital dentistry. Distributed in over 65 countries, MIS provides unparalleled service to our customers.</p>
+                        <a target="_blank" href="http://www.mis-implants.com" class="link pt-med">www.mis-implants.com</a>
+                    </div>
                 </li>
                 <li id="contact">
                     <h6>Contact Us</h6>
-                    <p class="minitxt">MIS is deeply committed to our core values of quality, service, agility and innovation, integrity and caring; reflected in every step of our work process and supported by over 300 dedicated MIS employees. MIS products are distributed in over 60 countries worldwide through a well-established global distribution network.</p>
-                    <a href="http://www.mis-implants.com" class="link pt-med">Contact your local distributer</a>
+                    <div class="minitxt">
+                        <p>MIS is deeply committed to our core values of quality, service, agility and innovation, integrity and caring; reflected in every step of our work process and supported by over 300 dedicated MIS employees. MIS products are distributed in over 60 countries worldwide through a well-established global distribution network.</p>
+                        <a target="_blank" href="http://www.mis-implants.com" class="link pt-med">Contact your local distributer</a>
+                    </div>
+                    
                     
                 </li>
             </ul>

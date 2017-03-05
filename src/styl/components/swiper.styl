@@ -75,7 +75,9 @@ med = 620px
                     +below(415px)
                         right 3%
 
-.pages-wrap
+.pages-wrap, .video-slider
+    .swiper-wrapper
+        height auto
     .swiper-button-prev, .swiper-container-rtl .swiper-button-next,
     .swiper-button-next, .swiper-container-rtl .swiper-button-prev
         position fixed
@@ -124,6 +126,7 @@ med = 620px
         top 35%
         +below(breaks.base)
             display none
+    
 // SWIPER PAGINATION BULLETS
 
 #make .swiper-pagination-bullets
@@ -160,16 +163,18 @@ med = 620px
             transform translateY(2px)
             &:after
                 content ''
+                border-style none
                 background #000
                 position absolute
                 top 0
                 left 0
                 border-radius 0
-                border-right 6px solid transparent
-                border-left 6px solid transparent
+                border-right 6px solid #fff
+                border-left 6px solid #fff
                 background initial
                 border-bottom 4px solid #000
                 transform translate(0, -4px)
+                -ms-transform translate(0, -4px)
         &-active
             background #16507d
             border-radius 50%
@@ -202,8 +207,22 @@ med = 620px
                     padding 0
                     video, img
                         width 100vw
+                        cure-me()
                         &.under
                             blur-me()
+        .video-prev, .video-next
+            position absolute
+            opacity 0
+            width 5%
+            padding-top 4.5%
+            transition opacity 200ms ease
+            border-width 8px
+            &:hover
+                opacity 0.9
+            &.swiper-button-disabled
+                pointer-events initial
+                &:hover
+                    opacity 0.2 !important
         .video-swiper-pagination
             bottom 5vh
             background none

@@ -39,6 +39,15 @@ $cross
 	&:after
 		transform translate(-50%, 0) rotate(45deg)
 
+cure-me()
+	-webkit-backface-visibility hidden
+	-webkit-perspective 1000
+	-webkit-transform translate3d(0,0,0)
+	-webkit-transform translateZ(0)
+	backface-visibility hidden
+	perspective 1000
+	transform translate3d(0,0,0)
+	transform translateZ(0)
 blur-me(pixels = 5px)
 	filter url("data:image/svg+xml;utf9,<svg%20version='1.1'%20xmlns='http://www.w3.org/2000/svg'><filter%20id='blur'><feGaussianBlur%20stdDeviation='10'%20/></filter></svg>#blur")
 	-webkit-filter blur(pixels)
@@ -46,9 +55,13 @@ blur-me(pixels = 5px)
 	-o-filter blur(pixels)
 	filter blur(pixels)
 
-// GRID
-$centered
-	lost-center 1200px
+// CENTERING
+centered(width = 1200px)
+	lost-center unit(width, 'px')
+
+
+
+
 
 // COLORS 
 dark = #1a232e

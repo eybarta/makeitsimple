@@ -7,11 +7,11 @@
             <li class="pb-med" v-if="group.type=='numbers'" v-for="(item, index) in group.items">
                 <div v-if="numload" class="big-num" :class="[item.title>9 ? 'dbl' : '']" >
                     <count-up v-if="isNumber(item.title)" :start="0" :end="parseInt(item.title)" :decimals="0" :duration="2.5" :options="countOptions"></count-up>
-                    <span v-else v-html="item.title" class="bigger"></span>
+                    <span v-else v-html="item.title" :class="[isNaN(item.title) ? '' : 'bigger']"></span>
                 </div>
                 <p class="midtxt tcenter" v-text="item.text"></p>
             </li>
-            <li  v-if="group.type=='images'" v-for="(item, index) in group.items">
+            <li  v-if="group.type=='images'" v-for="(item, index) in group.items" :class="[index==1 ? 'm0' : '']">
                 <div class="img-wrap">
                     <img :src="item.img.src" alt="item.img.alt">
                 </div>
@@ -20,7 +20,7 @@
                 </div>
             </li>
         </ul>
-        <div v-if="!!image" class="bottom-graphic-v3" :style="'background-image:url('+image+')'"></div>
+        <div v-if="!!image" class="bottom-graphic" :style="'background-image:url('+image+')'"></div>
     </div>
 </template>
 <script>
@@ -86,6 +86,9 @@ export default {
         },
         isNumber(num) {
             return _.isNumber(num);
+        },
+        isNaN(num) {
+            return _.isNaN(parseInt(num))
         }
     }
 }

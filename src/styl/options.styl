@@ -14,14 +14,14 @@ a
     text-align center
 
 .center
-    lost-center 1200px
+    centered(1000)
     +below(1200px)
         padding 0 3%
     +below(breaks.mobile)
         padding 0 14%
 
 .centered
-    @extend $centered
+    centered()
 
 .unattach
     background-attachment initial !important
@@ -47,6 +47,14 @@ for alias, prop in $space
                 else
                     {prop} round((value/2))
 
+.m0
+    margin 0 !important
+.mr3
+    margin-right 3% !important
+.p0
+    padding 0 !important
+.pl2
+    padding-left 2% !important
 
 .sub-title
     sub-title()

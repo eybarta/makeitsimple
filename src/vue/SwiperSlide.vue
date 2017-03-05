@@ -5,7 +5,7 @@
         </div>
         <info-block :title="infoblock.title" :txt="infoblock.txt" :group="infoblock.group" :image="infoblock.image"></info-block>
         <out-block :txt="outblock.txt" :h2="outblock.h2" :btn="outblock.btn"></out-block>
-        <info-block class="pb-max" :title="infoblock2.title" :txt="infoblock2.txt" :group="infoblock2.group"></info-block>
+        <info-block class="pb-max center" :title="infoblock2.title" :txt="infoblock2.txt" :group="infoblock2.group"></info-block>
     </div>
 </template>
 <script>

@@ -41,7 +41,7 @@ a.link, a.link:visited
 
 .preview-section
     .item-group
-        padding-top 110px
+        padding-top 80px
         +below(breaks.mobile)
             padding-top 90px
             img
@@ -64,7 +64,7 @@ a.link, a.link:visited
     top 50%
     left 50%
     transform translate(-50%, -50%)
-    z-index 99999999
+    z-index 9
     width 111%
     opacity 0.3
     animation breathe
@@ -81,6 +81,7 @@ a.link, a.link:visited
         position fixed
         z-index 999
     video
+        z-index 11
         self-center()
         width 100%
         +portrait()
@@ -118,6 +119,8 @@ a.link, a.link:visited
         position absolute 30px false false 30px
         z-index 99999
         display none
+        box-shadow 0 0 0.5px 0px white inset, 0 0 0.5px 0px white
+        opacity 0.8
         @extend $cross
         &:before, &:after
             background #fff
@@ -128,7 +131,7 @@ a.link, a.link:visited
         right 60px
         font-size 14px
         color #708190
-        z-index 9
+        z-index 13
         opacity 0
         transition opacity 400ms ease-in-cubic
         +below(breaks.mobile)
@@ -150,15 +153,18 @@ a.link, a.link:visited
         absolute-center()
         position absolute 0 0 0 0
         cursor pointer
-        // background rgba(#002d54, 0.9)
-        z-index 2
+        z-index 12
         opacity 0
         transform scale(2)
         transition 200ms opacity ease-out-cubic, transform 200ms ease-out-quad
         img
             max-width 302px
+            cursor pointer
+            &.toplay
+                cursor url('./assets/img/play-icon.png'), auto
             +below(breaks.tablet)
                 width 60%
+            
         div
             top 75%
             text-align center
@@ -181,16 +187,17 @@ a.link, a.link:visited
         position absolute 0 0 0 0
         width 100%
         height 100%
-        z-index 3
+        z-index 13
         transition opacity 200ms ease
         +below(breaks.tablet)
             top 0
             height 100%
     &.hp.playoverlay
+        cure-me()
         &:before, video
-            blur-me()
+            // blur-me()
         .play-overlay
-            background rgba(darkblue, 0.8)
+            // background rgba(darkblue, 0.8)
             opacity 1
             transform scale(1)
         .i-360
@@ -216,7 +223,7 @@ a.link, a.link:visited
     margin 0 auto
     +below(breaks.mid)
         width 40%
-.bottom-graphic-v3
+.bottom-graphic
     position relative
     background url('./assets/img/v3-bottom-graphic.jpg') no-repeat 50% bottom / auto 100%
     padding-bottom 16%
@@ -339,7 +346,7 @@ a.link, a.link:visited
                             background gray
                         &:before
                             display none
-                            background linkblue
+                            background darken(linkblue, 12)
                             height 1px
                             transform translate(-50%,-50%) rotate(-90deg)
                     input:checked
@@ -353,7 +360,7 @@ a.link, a.link:visited
                                 border-left 2px solid linkblue
                         & + div .plus
                             &:after
-                                background linkblue
+                                background darken(linkblue, 12)
                             &:before
                                 display block
                         & + div h4
@@ -381,21 +388,21 @@ a.link, a.link:visited
     +between(breaks.tablet, breaks.base)
         &:not(.num-grp)
             ul
-                width 72%
                 li
-                    width auto
                     margin-right 0
                     white-space nowrap
                     &:first-child, &:nth-child(2)
-                        margin-bottom 10%
+                        padding-bottom 6%
                     inline-grp(top)
                     & > *
                         &.img-wrap
                             inline-grp(top)
                             padding-right 3%
                             height auto
+                            width 48%
+                            text-align right
                             img
-                                width 80%
+                                max-width 80%
                         &.out-links
                             padding-left 6px
                             a
@@ -409,14 +416,17 @@ a.link, a.link:visited
         &:last-child
             padding-bottom 0
     .img-wrap
+        position relative
         height 200px
-        inline-grp()
-        text-align center
+        padding-left 30px
         +below(breaks.mobile)
             height auto
             text-align left
         img
             margin 0 auto
+            +above(breaks.base)
+                position absolute
+                bottom 0
             +below(breaks.mobile)
                 width 55%
                 margin 0 0 2%
@@ -444,27 +454,16 @@ a.link, a.link:visited
         span
             font-size 140px
             transform translate(-52%,-56%)
-    +below(breaks.tablet)            
-        .out-links
-            width 60%
-            margin auto
-            +below(breaks.mobile)
-                width auto
-                a
-                    display block
-                    width auto
-                    transform none
-                    left auto
-                    color rgba(dark, 0.75)
-                    &:hover
-                        color rgba(dark, 0.95)
+    .out-links
+        padding 30px 30px 0
+        +below(breaks.base)
+            padding-top 6px
     a
         mid-txt()
         font-family "Helvetica Neue"
         display block
         padding-top 16px
         color rgba(dark, 0.35)
-        text-indent 26%
         white-space nowrap
         margin 0 auto
         transition color 400ms ease
@@ -479,6 +478,21 @@ a.link, a.link:visited
             position relative
             left 50%
             transform translateX(-50%)
+    +below(breaks.tablet)            
+        .out-links
+            width 60%
+            margin auto
+            +below(breaks.mobile)
+                width auto
+                a
+                    display block
+                    width auto
+                    transform none
+                    left auto
+                    color rgba(dark, 0.75)
+                    &:hover
+                        color rgba(dark, 0.95)
+    
     .centered-text
         title4()
         width 45%
@@ -499,17 +513,13 @@ a.link, a.link:visited
         color #fff
     .mid-txt
         line-height 23px
-        width 45%
         margin 0 auto
         letter-spacing 1px
-        +below(breaks.tablet)
-            width 80%
     h2
-        width 25%
+        width 60%
         margin 0 auto
         padding 56px 0 76px
-        +below(breaks.tablet)
-            width 80%
+        +below(breaks.base)
             padding 36px 0 56px
     .btn
         background #ededed
@@ -524,9 +534,7 @@ a.link, a.link:visited
 
 // PAGES -- back home
 .back-home
-    top -3px
-    left 40px
-    position fixed
+    position absolute -3px auto auto 40px
     width 82px
     background #f2f2f2
     border-radius 0 0 360px 360px
@@ -548,7 +556,6 @@ a.link, a.link:visited
         background #363d48
         display block
         margin 0 auto 16px
-
         &:before
             content ''
             self-center()
@@ -557,7 +564,10 @@ a.link, a.link:visited
             height 20px
             border-top 1px solid #656668
             border-left 1px solid #656668
-
+            transition border 400ms ease
+        &:hover
+            &:before
+                border-color lighten(#656668, 25)
 
 
 .video-slider
