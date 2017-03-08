@@ -59,15 +59,19 @@ export const PageSlides = [
                         links: [
                             {
                                 txt: 'V3 Mini Catalog',
-                                href: '#p'
+                                href: 'http://www.mis-implants.com/Media/Printed-Materials/Products.aspx#37485'
                             },
                             {
                                 txt: 'V3 User Manual',
-                                href: '#p'
+                                href: 'http://www.mis-implants.com/Media/Printed-Materials/Users.aspx#39891'
                             },
                             {
                                 txt: 'Conical Restorative Catalog',
-                                href: '#p'
+                                href: 'http://www.mis-implants.com/Media/Printed-Materials/Products.aspx#37486'
+                            },
+                             {
+                                txt: 'Conical Catalog',
+                                href: 'http://www.mis-implants.com/Media/Printed-Materials/Products.aspx#37484'
                             }
                         ]
                     },
@@ -78,16 +82,16 @@ export const PageSlides = [
                         },
                         links: [
                             {
-                                txt: 'V3 Mini Catalog',
-                                href: '#p'
+                                txt: 'V3 Implant Movie',
+                                href: 'http://www.mis-implants.com/Media/Movies/Products.aspx#37532'
                             },
                             {
                                 txt: 'V3 Movie',
-                                href: '#p'
+                                href: 'http://www.mis-implants.com/Media/Movies/Products.aspx#37488'
                             },
                             {
                                 txt: 'VCONCEPT Movie',
-                                href: '#p'
+                                href: 'http://www.mis-implants.com/Media/Movies/Products.aspx#43079'
                             }
                         ]
                     },
@@ -99,11 +103,11 @@ export const PageSlides = [
                         links: [
                             {
                                 txt: 'V3 Minisite',
-                                href: '#p'
+                                href: 'http://v3-implant.com/'
                             },
                             {
                                 txt: 'VCONCEPT Minisite',
-                                href: '#p'
+                                href: 'http://www.vconcept.com/'
                             }
                         ]
                     },
@@ -115,11 +119,11 @@ export const PageSlides = [
                         links: [
                             {
                                 txt: 'VCONCEPT Clinical Cases',
-                                href: '#p'
+                                href: 'http://www.mis-implants.com/Media/Printed-Materials/Products.aspx#43709'
                             },
                             {
-                                txt: 'V3 Research Overview',
-                                href: '#p'
+                                txt: 'VCONCEPT Magazine',
+                                href: 'http://www.mis-implants.com/Media/Printed-Materials/General%20.aspx#48338'
                             }
                         ]
                     },
@@ -149,7 +153,8 @@ export const PageSlides = [
                         text: '2 Platforms. Blue for Narrow and Purple for Standard'
                     },
                     {
-                        title: '2K',
+                        title: 2,
+                        symbol: 'K',
                         text: 'Thousands of fatigue, insertion tool, sealing and other tests to ensure the best product.'
                     },
                     {
@@ -186,11 +191,11 @@ export const PageSlides = [
                         links: [
                             {
                                 txt: 'Company Profile',
-                                href: '#p'
+                                href: 'http://www.mis-implants.com/Media/Printed-Materials/General%20.aspx#37688'
                             },
                             {
                                 txt: 'Warranty Certificate',
-                                href: '#p'
+                                href: 'http://www.mis-implants.com/Media/Printed-Materials/General%20.aspx#37616'
                             }
                         ]
                     },
@@ -202,11 +207,11 @@ export const PageSlides = [
                         links: [
                             {
                                 txt: 'Company Overview',
-                                href: '#p'
+                                href: 'http://www.mis-implants.com/MIS-Info.aspx'
                             },
                             {
                                 txt: 'Our Mission & Vision',
-                                href: '#p'
+                                href: 'http://www.mis-implants.com/MIS-Info/Vision.aspx'
                             }
                         ]
                     },
@@ -218,11 +223,11 @@ export const PageSlides = [
                         links: [
                             {
                                 txt: 'MIS Website',
-                                href: '#p'
+                                href: 'http://www.mis-implants.com'
                             },
                             {
                                 txt: 'V3 Minisite',
-                                href: '#p'
+                                href: 'http://v3-implant.com/'
                             }
                         ]
                     },
@@ -245,7 +250,7 @@ export const PageSlides = [
                 items: [
                     {
                         title: 3,
-                        text: 'MIS restoration options for single teeth, fixed bridge for multiple teeth, complete denture, or a fixed restoration for a completely edentulous jaw.'
+                        text: 'MIS restoration options for single teeth, fixed bridge, complete denture, or a fixed restoration for edentulous jaw.'
                     },
                     {
                         title: 3,
@@ -293,7 +298,7 @@ export const PageSlides = [
                             },
                             {
                                 txt: 'Company Profile',
-                                href: '#p'
+                                href: 'http://www.mis-implants.com/Media/Printed-Materials/General%20.aspx#37688'
                             }
                         ]
                     },
@@ -305,7 +310,7 @@ export const PageSlides = [
                         links: [
                             {
                                 txt: 'Patient Movie',
-                                href: '#p'
+                                href: 'http://www.mis-implants.com/Media/Movies/General.aspx#118'
                             },
                             {
                                 txt: 'Company Movie',
@@ -313,7 +318,7 @@ export const PageSlides = [
                             },
                             {
                                 txt: 'The Company Behind...',
-                                href: '#p'
+                                href: 'http://www.mis-implants.com/Media/Movies/General.aspx#2170'
                             }
                         ]
                     },
@@ -325,11 +330,11 @@ export const PageSlides = [
                         links: [
                             {
                                 txt: 'MIS Website',
-                                href: '#p'
+                                href: 'http://www.mis-implants.com/MIS-Info.aspx'
                             },
                             {
                                 txt: 'V3 Minisite',
-                                href: '#p'
+                                href: 'http://www.mis-implants.com/MIS-Info/Vision.aspx'
                             }
                         ]
                     },
@@ -341,7 +346,7 @@ export const PageSlides = [
                         links: [
                             {
                                 txt: 'MIS Scientific Info',
-                                href: '#p'
+                                href: 'http://www.mis-implants.com/Scientific.aspx'
                             }
                         ]
                     },
@@ -367,16 +372,12 @@ export const PageSlides = [
                         text: 'More than 30 convenient tool kits and sets that make procedures simple.'
                     },
                     {
-                        title: 116,
-                        text: 'Over 100 different tools to simplify every procedure.'
+                        title: 14,
+                        text: '14 different tool categories, with over 100 different tools to simplify every procedure.'
                     },
                     {
                         title: 60,
                         text: 'Sixty top-quality drills for a precise and safe procedure.'
-                    },
-                    {
-                        title: 4,
-                        text: '4 placement tools are specificly designed to enable reliable procedure'
                     }
                 ]
             },
@@ -408,11 +409,11 @@ export const PageSlides = [
                         links: [
                             {
                                 txt: 'Conical Catalog',
-                                href: '#p'
+                                href: 'http://www.mis-implants.com/Media/Printed-Materials/Products.aspx?#37484'
                             },
                             {
                                 txt: 'Internal Catalog',
-                                href: '#p'
+                                href: 'http://www.mis-implants.com/Media/Printed-Materials/Products.aspx?#2560'
                             }
                         ]
                     },
@@ -424,11 +425,11 @@ export const PageSlides = [
                         links: [
                             {
                                 txt: 'Tools - Online Catalog',
-                                href: '#p'
+                                href: 'http://www.mis-implants.com/Catalog/ImplantSystem/Tools.aspx'
                             },
                             {
                                 txt: 'Kits - Online Catalog',
-                                href: '#p'
+                                href: 'http://www.mis-implants.com/Catalog/ImplantSystem/Kits.aspx'
                             }
                         ]
                     },
@@ -440,11 +441,11 @@ export const PageSlides = [
                         links: [
                             {
                                 txt: 'Tools Webpage',
-                                href: '#p'
+                                href: 'http://www.mis-implants.com/Products/Implants/Tools.aspx'
                             },
                             {
                                 txt: 'Kits Webpage',
-                                href: '#p'
+                                href: 'http://www.mis-implants.com/Products/Implants/Kits.aspx'
                             }
                         ]
                     }
@@ -474,12 +475,8 @@ export const PageSlides = [
                         text: 'Titanium + B+ + Bone'
                     },
                     {
-                        title: 250,
-                        text: 'B+ Experience Team of 250 dentists using B+ implants and reporting back their findings.'
-                    },
-                    {
-                        title: 4,
-                        text: '4 placement tools are specificly designed to enable reliable procedure'
+                        title: 10,
+                        text: 'B+ Experience Team of 250 dentists, implanting 10 B+ implants each and reporting back their findings.'
                     }
                 ]
             },
@@ -487,7 +484,7 @@ export const PageSlides = [
         },
         outblock: {
             txt: 'The B+ was designed to integrate into the surface chemistry of the implant, while creating a layer that perfectly integrates with existing bone.',
-            h2: 'When titanium and bone synthesize',
+            h2: 'Biological Organic Contact',
             btn: {
                 link: 'http://www.mis-implants.com/MIS-Info/ContactUs.aspx',
                 txt: 'Contact your local distributor'
@@ -502,6 +499,7 @@ export const PageSlides = [
             },
             group: {
                 type: 'images',
+                
                 items: [
                     {
                         img:  {
@@ -510,20 +508,16 @@ export const PageSlides = [
                         },
                         links: [
                             {
+                                txt: 'B+ Leaflet',
+                                href: '#p'
+                            },
+                            {
+                                txt: 'B+ Flier',
+                                href: '#p'
+                            },
+                             {
                                 txt: 'V3 Mini Catalog',
-                                href: '#p'
-                            },
-                            {
-                                txt: 'MCENTER Mini Catalog',
-                                href: '#p'
-                            },
-                            {
-                                txt: '4MATRIX Flier',
-                                href: '#p'
-                            },
-                            {
-                                txt: 'Innovation Flier',
-                                href: '#p'
+                                href: 'http://www.mis-implants.com/Media/Printed-Materials/Products.aspx#37485'
                             }
                         ]
                     },
@@ -534,17 +528,22 @@ export const PageSlides = [
                         },
                         links: [
                             {
+                                txt: 'B+ Movie',
+                                href: '#p'
+                            },
+                            {
                                 txt: 'V3 Movie',
-                                href: '#p'
+                                href: 'http://www.mis-implants.com/Media/Movies/Products.aspx#37488'
                             },
                             {
-                                txt: 'Mguide Movie',
-                                href: '#p'
+                                txt: 'C1 Movie',
+                                href: 'http://www.mis-implants.com/Media/Movies/Products.aspx#29920'
                             },
                             {
-                                txt: '4MATRIX Movie',
-                                href: '#p'
+                                txt: 'B+ Lecture',
+                                href: 'http://www.mis-implants.com/Media/Movies/Lectures.aspx#48408'
                             }
+                            
                         ]
                     },
                         {
@@ -554,31 +553,19 @@ export const PageSlides = [
                         },
                         links: [
                             {
-                                txt: 'V3 Minisite',
-                                href: '#p'
+                                txt: 'B+ Minisite',
+                                href: 'bplus.mis-implants.com'
                             },
                             {
-                                txt: 'VCONCEPT Minisite',
-                                href: '#p'
+                                txt: 'B+ Webpage',
+                                href: 'http://www.mis-implants.com/Products/Implants/B-Plus-Surface.aspx'
                             },
                             {
-                                txt: 'MGUIDE Webpage',
-                                href: '#p'
+                                txt: 'V3 Ministe',
+                                href: 'http://v3-implant.com/'
                             }
                         ]
-                    },
-                    {
-                        img:  {
-                            src: 'dist/img/magnify.svg',
-                            alt: 'Online Catalog'
-                        },
-                        links: [
-                            {
-                                txt: 'VCONCEPT Clinic Cases',
-                                href: '#p'
-                            }
-                        ]
-                    },
+                    }
                 ]
             }
         }
@@ -641,16 +628,20 @@ export const PageSlides = [
                         },
                         links: [
                             {
-                                txt: 'B+ Leaflet',
-                                href: '#p'
+                                txt: 'V3 Mini Catalog',
+                                href: 'http://www.mis-implants.com/Media/Printed-Materials/Products.aspx#37485'
                             },
                             {
-                                txt: 'B+ Flier',
-                                href: '#p'
+                                txt: 'MCENTER Mini Catalog',
+                                href: 'http://www.mis-implants.com/Media/Printed-Materials/Products.aspx#17639'
                             },
-                             {
-                                txt: 'V3 Mini Catalog',
-                                href: '#p'
+                            {
+                                txt: '4MATRIX Flier',
+                                href: 'http://www.mis-implants.com/Products/Regenerative-Solutions/Bone-Grafting-Materials/4MATRIX/Learn-More.aspx#40167'
+                            },
+                            {
+                                txt: 'Innovation Flier',
+                                href: 'http://www.mis-implants.com/Media/Printed-Materials/Products.aspx#29918'
                             }
                         ]
                     },
@@ -661,12 +652,16 @@ export const PageSlides = [
                         },
                         links: [
                             {
-                                txt: 'B+ Movie',
-                                href: '#p'
+                                txt: 'V3 Movie',
+                                href: 'http://www.mis-implants.com/Media/Movies/Products.aspx#37488'
                             },
                             {
-                                txt: 'V3 Movie',
-                                href: '#p'
+                                txt: 'Mguide Movie',
+                                href: 'http://www.mis-implants.com/Media/Movies/Products.aspx#4696'
+                            },
+                            {
+                                txt: '4MATRIX Movie',
+                                href: 'http://www.mis-implants.com/Media/Movies/Products.aspx#48349'
                             }
                         ]
                     },
@@ -677,16 +672,16 @@ export const PageSlides = [
                         },
                         links: [
                             {
-                                txt: 'B+ Minisite',
-                                href: '#p'
+                                txt: 'V3 Minisite',
+                                href: 'http://v3-implant.com/'
                             },
                             {
-                                txt: 'B+ Webpage',
-                                href: '#p'
+                                txt: 'VCONCEPT Minisite',
+                                href: 'http://www.vconcept.com/'
                             },
                             {
-                                txt: 'V3 Ministe',
-                                href: '#p'
+                                txt: 'MGUIDE Webpage',
+                                href: 'http://www.mis-implants.com/Products/Digital-Dentistry/MGUIDE.aspx'
                             }
                         ]
                     },
@@ -697,12 +692,8 @@ export const PageSlides = [
                         },
                         links: [
                             {
-                                txt: 'B+ Clinic Cases',
-                                href: '#p'
-                            },
-                            {
                                 txt: 'VCONCEPT Clinic Cases',
-                                href: '#p'
+                                href: 'http://www.mis-implants.com/Media/Printed-Materials/Products.aspx#43709'
                             }
                         ]
                     },
@@ -734,10 +725,6 @@ export const PageSlides = [
                     {
                         title: 2,
                         text: 'Fast, 2 day delivery guarantee anywhere in the world.'
-                    },
-                    {
-                        title: 4,
-                        text: '4 placement tools are specificly designed to enable reliable procedure'
                     }
                 ]
             },
@@ -769,11 +756,11 @@ export const PageSlides = [
                         links: [
                             {
                                 txt: 'Company Profile',
-                                href: '#p'
+                                href: 'http://www.mis-implants.com/Media/Printed-Materials/General%20.aspx#37688'
                             },
                             {
-                                txt: 'C1 User Guide',
-                                href: '#p'
+                                txt: 'Warranty Certificate',
+                                href: 'http://www.mis-implants.com/Media/Printed-Materials/General%20.aspx#37616'
                             }
                         ]
                     },
@@ -789,7 +776,7 @@ export const PageSlides = [
                             },
                             {
                                 txt: 'The Company Behind...',
-                                href: '#p'
+                                href: 'http://www.mis-implants.com/Media/Movies/General.aspx#2170'
                             }
                         ]
                     },
@@ -801,11 +788,11 @@ export const PageSlides = [
                         links: [
                             {
                                 txt: 'Company Overview Webpage',
-                                href: '#p'
+                                href: 'http://www.mis-implants.com/MIS-Info.aspx'
                             },
                             {
                                 txt: 'Contact Us Webpage',
-                                href: '#p'
+                                href: 'http://www.mis-implants.com/MIS-Info/ContactUs.aspx'
                             }
                         ]
                     },
@@ -871,12 +858,12 @@ export const PageSlides = [
                         },
                         links: [
                             {
-                                txt: 'Conical Catalog',
-                                href: '#p'
+                                txt: 'Company Profile',
+                                href: 'http://www.mis-implants.com/Media/Printed-Materials/General%20.aspx#37688'
                             },
                             {
-                                txt: 'Conical Restorative Catalog',
-                                href: '#p'
+                                txt: 'Warranty Certificate',
+                                href: 'http://www.mis-implants.com/Media/Printed-Materials/General%20.aspx#37616'
                             }
                         ]
                     },
@@ -887,8 +874,12 @@ export const PageSlides = [
                         },
                         links: [
                             {
-                                txt: 'V3 Online Catalog',
-                                href: '#p'
+                                txt: 'MIS Overview',
+                                href: 'http://www.mis-implants.com/MIS-Info.aspx'
+                            },
+                            {
+                                txt: 'MIS Quality Standards',
+                                href: 'http://www.mis-implants.com/MIS-Info/Quality.aspx'
                             }
                         ]
                     },
@@ -899,12 +890,12 @@ export const PageSlides = [
                         },
                         links: [
                             {
-                                txt: 'V3 Minisite',
-                                href: '#p'
+                                txt: 'MIS Website',
+                                href: 'http://mis-implant.com/'
                             },
                             {
-                                txt: 'VCONCEPT Minisite',
-                                href: '#p'
+                                txt: 'V3 Minisite',
+                                href: 'http://v3-implant.com/'
                             }
                         ]
                     },
@@ -916,7 +907,7 @@ export const PageSlides = [
                         links: [
                             {
                                 txt: 'VCONCEPT Clinical Cases',
-                                href: '#p'
+                                href: 'http://www.mis-implants.com/Media/Printed-Materials/Products.aspx#43709'
                             }
                         ]
                     },
@@ -975,19 +966,23 @@ export const PageSlides = [
             group: {
                 type: 'images',
                 items: [
-                    {
+                     {
                         img:  {
                             src: 'dist/img/prints.svg',
                             alt: 'Printing Catalog'
                         },
                         links: [
                             {
-                                txt: 'Conical Catalog',
-                                href: '#p'
+                                txt: 'Company Profile',
+                                href: 'http://www.mis-implants.com/Media/Printed-Materials/General%20.aspx#37688'
                             },
                             {
-                                txt: 'Conical Restorative Catalog',
-                                href: '#p'
+                                txt: 'Warranty Certificate',
+                                href: 'http://www.mis-implants.com/Media/Printed-Materials/General%20.aspx#37616'
+                            },
+                            {
+                                txt: 'Innovatively Simple Flier',
+                                href: 'http://www.mis-implants.com/Media/Printed-Materials/Products.aspx#29918'
                             }
                         ]
                     },
@@ -998,8 +993,16 @@ export const PageSlides = [
                         },
                         links: [
                             {
-                                txt: 'V3 Online Catalog',
+                                txt: 'Company Movie',
                                 href: '#p'
+                            },
+                            {
+                                txt: 'The Company Behind...',
+                                href: 'http://www.mis-implants.com/Media/Movies/General.aspx#2170'
+                            },
+                            {
+                                txt: 'VCONCEPT Movie',
+                                href: 'http://www.mis-implants.com/Media/Movies/Products.aspx#43079'
                             }
                         ]
                     },
@@ -1011,11 +1014,15 @@ export const PageSlides = [
                         links: [
                             {
                                 txt: 'V3 Minisite',
-                                href: '#p'
+                                href: 'http://v3-implant.com/'
                             },
                             {
                                 txt: 'VCONCEPT Minisite',
-                                href: '#p'
+                                href: 'http://www.vconcept.com/'
+                            },
+                            {
+                                txt: 'B+ Ministe',
+                                href: 'bplus.mis-implants.com'
                             }
                         ]
                     },
@@ -1026,8 +1033,12 @@ export const PageSlides = [
                         },
                         links: [
                             {
+                                txt: 'Scientific Overview',
+                                href: 'http://www.mis-implants.com/Scientific.aspx'
+                            },
+                            {
                                 txt: 'VCONCEPT Clinical Cases',
-                                href: '#p'
+                                href: 'http://www.mis-implants.com/Media/Printed-Materials/Products.aspx#43709'
                             }
                         ]
                     },
@@ -1053,12 +1064,14 @@ export const PageSlides = [
                         text: '1 out of every 17 implants sold in the world is produced by MIS.'
                     },
                     {
-                        title: 2500,
-                        text: '2500 doctors attended the last MIS global conference in Barcelona.'
+                        title: 3,
+                        symbol: 'K',
+                        text: 'Almost three thousand doctors attended the last MIS global conference in Barcelona.'
                     },
                     {
-                        title: 48,
-                        text: 'A fast growing market with XX new locations joining MIS in the past year.'
+                        title: 70,
+                        symbol: 'K',
+                        text: 'Over seventy thousand dentist using MIS products worldwide.'
                     },
                     {
                         title: 10,
@@ -1070,7 +1083,10 @@ export const PageSlides = [
         },
         outblock: {
             txt: 'The global market for dental implants is growing rapidly and together with it is the presence of MIS in the world.',
-            h2: 'Offering simple, creative and comprehensive solutions.',
+            h2: {
+                    txt: 'Offering simple, creative and comprehensive solutions.',
+                    break: 4,
+                },
             btn: {
                 link: 'http://www.mis-implants.com/MIS-Info/ContactUs.aspx',
                 txt: 'Contact your local distributor'
@@ -1086,23 +1102,52 @@ export const PageSlides = [
             group: {
                 type: 'images',
                 items: [
-                    {
+                     {
                         img:  {
                             src: 'dist/img/prints.svg',
                             alt: 'Printing Catalog'
                         },
                         links: [
                             {
-                                txt: 'V3 Mini Catalog',
-                                href: '#p'
+                                txt: 'Company Profile',
+                                href: 'http://www.mis-implants.com/Media/Printed-Materials/General%20.aspx#37688'
                             },
                             {
-                                txt: 'Conical  Printing Catalog',
-                                href: '#p'
+                                txt: 'Innovatively Simple Flier',
+                                href: 'http://www.mis-implants.com/Media/Printed-Materials/Products.aspx#29918'
+                            },
+                            {
+                                txt: 'Conical Catalog',
+                                href: 'http://www.mis-implants.com/Media/Printed-Materials/Products.aspx#37484'
                             }
                         ]
                     },
                     {
+                        img:  {
+                            src: 'dist/img/online-catalog-icon.png',
+                            alt: 'Online Catalog'
+                        },
+                        links: [
+                            {
+                                txt: 'Online Catalog',
+                                href: 'http://www.mis-implants.com/Catalog.aspx'
+                            },
+                            
+                            {
+                                txt: 'Company Movie',
+                                href: '#p'
+                            },
+                            {
+                                txt: 'The Company Behind...',
+                                href: 'http://www.mis-implants.com/Media/Movies/General.aspx#2170'
+                            },
+                            {
+                                txt: 'VCONCEPT Movie',
+                                href: 'http://www.mis-implants.com/Media/Movies/Products.aspx#43079'
+                            }
+                        ]
+                    },
+                        {
                         img:  {
                             src: 'dist/img/www.svg',
                             alt: 'Online Catalog'
@@ -1110,23 +1155,15 @@ export const PageSlides = [
                         links: [
                             {
                                 txt: 'V3 Minisite',
-                                href: '#p'
+                                href: 'http://v3-implant.com/'
                             },
                             {
                                 txt: 'VCONCEPT Minisite',
-                                href: '#p'
-                            }
-                        ]
-                    },
-                        {
-                        img:  {
-                            src: 'dist/img/online-catalog-icon.png',
-                            alt: 'Online Catalog'
-                        },
-                        links: [
+                                href: 'http://www.vconcept.com/'
+                            },
                             {
-                                txt: 'V3 Mini Catalog',
-                                href: '#p'
+                                txt: 'B+ Ministe',
+                                href: 'bplus.mis-implants.com'
                             }
                         ]
                     },
@@ -1137,11 +1174,15 @@ export const PageSlides = [
                         },
                         links: [
                             {
-                                txt: 'VCONCEPT Clinic Cases',
-                                href: '#p'
+                                txt: 'Scientific Overview',
+                                href: 'http://www.mis-implants.com/Scientific.aspx'
+                            },
+                            {
+                                txt: 'VCONCEPT Clinical Cases',
+                                href: 'http://www.mis-implants.com/Media/Printed-Materials/Products.aspx#43709'
                             }
                         ]
-                    },
+                    }
                 ]
             }
         }
@@ -1161,15 +1202,17 @@ export const PageSlides = [
                 items: [
                     {
                         title: 40,
+                        symbol: '+',
                         text: 'Over 40 MIS research publications.'
                     },
                     {
                         title: 20,
+                        symbol: '+',
                         text: 'More than 20 published case studies.'
                     },
                     {
                         title: 45,
-                        text: 'I need text for here'
+                        text: 'Over 45 influential key opinion leaders to back up the research done on MIS products.'
                     }
                 ]
             },
@@ -1193,35 +1236,56 @@ export const PageSlides = [
             group: {
                 type: 'images',
                 items: [
-                    {
+                     {
                         img:  {
                             src: 'dist/img/prints.svg',
                             alt: 'Printing Catalog'
                         },
                         links: [
                             {
-                                txt: 'V3 Mini Catalog',
-                                href: '#p'
+                                txt: 'Company Profile',
+                                href: 'http://www.mis-implants.com/Media/Printed-Materials/General%20.aspx#37688'
                             },
                             {
-                                txt: 'Conical  Printing Catalog',
-                                href: '#p'
+                                txt: 'Scientific Studies Vol 4',
+                                href: 'http://www.mis-implants.com/upload//Pdf/Volume_4_1.pdf'
+                            },
+                            {
+                                txt: 'Scientific Studies Vol 5',
+                                href: 'http://www.mis-implants.com/upload//PDF/MC-SS005.pdf'
+                            },
+                            {
+                                txt: 'Scientific Studies Vol 6',
+                                href: 'http://www.mis-implants.com/upload/PDF/MC-SS006_scientific-studies-6.pdf'
                             }
                         ]
                     },
-                        {
+                    {
                         img:  {
                             src: 'dist/img/online-catalog-icon.png',
                             alt: 'Online Catalog'
                         },
                         links: [
                             {
-                                txt: 'V3 Mini Catalog',
-                                href: '#p'
-                            }
+                                txt: 'Scientific Articles',
+                                href: 'http://www.mis-implants.com/Scientific/Articles.aspx'
+                            },
+                            
+                            {
+                                txt: 'Research Materials',
+                                href: 'http://www.mis-implants.com/Scientific/ResearchMaterials.aspx'
+                            },
+                            {
+                                txt: 'Case Studies',
+                                href: 'http://www.mis-implants.com/Scientific/Case-Study.aspx'
+                            },
+                            {
+                                txt: 'Lectures',
+                                href: 'http://www.mis-implants.com/Media/Movies/Lectures.aspx'
+                            },
                         ]
                     },
-                     {
+                        {
                         img:  {
                             src: 'dist/img/www.svg',
                             alt: 'Online Catalog'
@@ -1229,11 +1293,15 @@ export const PageSlides = [
                         links: [
                             {
                                 txt: 'V3 Minisite',
-                                href: '#p'
+                                href: 'http://v3-implant.com/'
                             },
                             {
                                 txt: 'VCONCEPT Minisite',
-                                href: '#p'
+                                href: 'http://www.vconcept.com/'
+                            },
+                            {
+                                txt: 'B+ Ministe',
+                                href: 'bplus.mis-implants.com'
                             }
                         ]
                     },
@@ -1244,11 +1312,19 @@ export const PageSlides = [
                         },
                         links: [
                             {
-                                txt: 'VCONCEPT Clinic Cases',
-                                href: '#p'
+                                txt: 'Scientific Overview',
+                                href: 'http://www.mis-implants.com/Scientific.aspx'
+                            },
+                            {
+                                txt: 'Research Updates 2016',
+                                href: 'http://www.mis-implants.com/Media/Newsletters/News2016.aspx#47832'
+                            },
+                            {
+                                txt: 'VCONCEPT Clinical Cases',
+                                href: 'http://www.mis-implants.com/Media/Printed-Materials/Products.aspx#43709'
                             }
                         ]
-                    },
+                    }
                 ]
             }
         }
@@ -1303,20 +1379,28 @@ export const PageSlides = [
             },
             group: {
                 type: 'images',
-                items: [
-                    {
+                items:[
+                     {
                         img:  {
                             src: 'dist/img/prints.svg',
                             alt: 'Printing Catalog'
                         },
                         links: [
                             {
-                                txt: 'V3 Mini Catalog',
-                                href: '#p'
+                                txt: 'Company Profile',
+                                href: 'http://www.mis-implants.com/Media/Printed-Materials/General%20.aspx#37688'
                             },
                             {
-                                txt: 'Conical  Printing Catalog',
-                                href: '#p'
+                                txt: 'Conical Catalog',
+                                href: 'http://www.mis-implants.com/Media/Printed-Materials/Products.aspx#37484'
+                            },
+                            {
+                                txt: 'Conical Restorative Catalog',
+                                href: 'http://www.mis-implants.com/Media/Printed-Materials/Products.aspx#37486'
+                            },
+                            {
+                                txt: 'Scientific Studies Vol 6',
+                                href: 'http://www.mis-implants.com/upload/PDF/MC-SS006_scientific-studies-6.pdf'
                             }
                         ]
                     },
@@ -1327,12 +1411,29 @@ export const PageSlides = [
                         },
                         links: [
                             {
-                                txt: 'V3 Mini Catalog',
-                                href: '#p'
+                                txt: 'Online Catalog',
+                                href: 'http://www.mis-implants.com/Catalog.aspx'
+                            },
+                            
+                            {
+                                txt: 'Research Materials',
+                                href: 'http://www.mis-implants.com/Scientific/ResearchMaterials.aspx'
+                            },
+                            {
+                                txt: 'V3 Movie',
+                                href: 'http://www.mis-implants.com/Media/Movies/Products.aspx#37532'
+                            },
+                            {
+                                txt: 'MGUIDE Movie',
+                                href: 'http://www.mis-implants.com/Media/Movies/Products.aspx#4696'
+                            },
+                            {
+                                txt: '4MATRIX Movie',
+                                href: 'http://www.mis-implants.com/Media/Movies/Products.aspx#48349'
                             }
                         ]
                     },
-                    {
+                        {
                         img:  {
                             src: 'dist/img/www.svg',
                             alt: 'Online Catalog'
@@ -1340,11 +1441,15 @@ export const PageSlides = [
                         links: [
                             {
                                 txt: 'V3 Minisite',
-                                href: '#p'
+                                href: 'http://v3-implant.com/'
                             },
                             {
                                 txt: 'VCONCEPT Minisite',
-                                href: '#p'
+                                href: 'http://www.vconcept.com/'
+                            },
+                            {
+                                txt: 'B+ Ministe',
+                                href: 'bplus.mis-implants.com'
                             }
                         ]
                     },
@@ -1355,11 +1460,15 @@ export const PageSlides = [
                         },
                         links: [
                             {
-                                txt: 'VCONCEPT Clinic Cases',
-                                href: '#p'
+                                txt: 'Scientific Overview',
+                                href: 'http://www.mis-implants.com/Scientific.aspx'
+                            },
+                            {
+                                txt: 'VCONCEPT Clinical Cases',
+                                href: 'http://www.mis-implants.com/Media/Printed-Materials/Products.aspx#43709'
                             }
                         ]
-                    },
+                    }
                 ]
             }
         }

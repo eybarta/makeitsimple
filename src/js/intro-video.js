@@ -6,6 +6,7 @@ import * as introAnim from './intro-animation'
 var $trig, $introVideo;
 
 export function initIntroVideo () {
+    console.log('in init intro video');
      $trig = $("#playintro img");
     $introVideo = $("#introvideo");
     // INTRO PLAYER
@@ -21,7 +22,7 @@ function closeTriggeHandler() {
         let closer = $introVideo.get(0).contentWindow.vrExitVR();
         console.log("closer >> ", closer);
         if (closer) {
-            closeIntroVideo()
+            closeIntroVideo();
         }
     }
     catch(e) {
@@ -38,20 +39,21 @@ function  playIntroVideo() {
     
     $introVideo.attr('src', 'http://simple.mis-implants.com/vr8').show()
     console.log($introVideo);
-    $("#closeIntro").show().one('click', closeTriggeHandler)
+    $("#closeIntro").show().on('click', closeTriggeHandler)
     
 }
 
 export function closeIntroVideo() {
     if ($introVideo.is(':visible')) {
-        $("#closeIntro").hide()
+        $("#closeIntro").hide().off()
         $("header").toggle();
         $("#intro").toggleClass('play')
         $introVideo.attr('src', '').hide()
         setTimeout(function() {
             $trig.one('click', playIntroVideo)
-            introAnim.show();
-            introAnim.play();
+            introAnim.introAnimToEnd();
+            $("#intro").removeClass('playoverlay');
+            $('#playintro img').removeClass('toplay');
         },1)
     }
     

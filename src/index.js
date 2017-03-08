@@ -3,6 +3,8 @@ import './styl/app.styl';
 import 'swiper/dist/css/swiper.css'
 
 import $ from 'jquery'
+import { globalCustomEventPoly } from './js/utils';
+globalCustomEventPoly();
 import { initIntroAnimation } from './js/intro-animation'
 import { initIntroVideo } from './js/intro-video'
 import { initSwiper } from './js/swiper'

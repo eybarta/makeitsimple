@@ -86,16 +86,15 @@
         /* vrc vr controls*/
     </style>
     <link href="scripts/site/jquery.vplayer.css" rel="stylesheet" />
-
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.1/jquery-ui.min.js"></script>
     <script src="scripts/site/jquery.vplayer.js?v2"></script>
-
     <script>
         function isIOS() { return /(iPad|iPhone|iPod)/g.test(navigator.userAgent); }
         function isIE11() { return navigator.userAgent.match(/Trident/); }
         function isFirefox() { return /firefox/i.test(navigator.userAgent); };
 
+        var isInVR = false;
         var isFullScreen = false;
         var iconURL = "images/icFS.png";
         var modeIcon;
@@ -124,10 +123,10 @@
             hpvBtnLabel = $('#desktopVideoPlayer1').find(".hpvBtnLabel");
             _hpvFS = $('#desktopVideoPlayer1').find(".hpvBtnLabel");
 
-            if (isIOS()) {
+            //if (isIOS()) {
                 $(hpvBtnLabel).find(".inner").html("");
                 $(modeIcon).hide();
-            }
+            //}
 
             $('#desktopVideoPlayer1').vplayer({
                 isVrMode: false,
@@ -172,15 +171,17 @@
             if (index < 0) {
                 tempIcon = (isFullScreen ? "images/icNS.png" : "images/icFS.png");
                 txtMode = (isFullScreen ? "NORMAL<br/>SCREEN" : "FULL<br/>SCREEN");
-                if (isIOS()) {
+                //if (isIOS()) {
                     txtMode = "";
                     $(modeIcon).hide();
-                }
+                    $(".hpvHandle2").hide();
+                //}
             }
             else {
                 tempIcon = "images/icVR.png";
                 txtMode = "CLICK<br/>ANYWHERE";
                 $(modeIcon).show();
+                $(".hpvHandle2").show();
             }
 
             if (tempIcon != iconURL) {
@@ -205,7 +206,7 @@
 
         function changeModeClicked() {
             if (VrIndex < 0) {
-                toggleFS();//Toggle full/normal screen mode
+                //toggleFS();//Toggle full/normal screen mode
             }
             else {
                 loadVR();
@@ -229,6 +230,8 @@
             //document.getElementById('VrFrame').contentWindow.loadVrVideo(VrVideoURL, VrImageURL);
             //var vrURL = "VrPlayer.html?image=" + VrImageURL + "&video=" + VrVideoURL + "&is_stereo=false";
             //var vrURL = "VrPlayer.html?image=" + VrImageURL + "&is_stereo=false";
+
+            isInVR = true;
 
             $("#VrFrame").attr("src", vrURL);
 
@@ -260,6 +263,8 @@
 
 
         function closeVR() {
+            isInVR = false;
+
             //1 Stop the vr player
             document.getElementById('VrFrame').contentWindow.pauseVideo();
 
@@ -343,9 +348,21 @@
             }
             UpdateScreenController();
         }
+
+
+        function vrExitVR() {
+            var canCloseMain = true;
+            
+            //return false if is in VR mode and exit the VR
+            if (isInVR) {
+                canCloseMain = false;
+                closeVR();
+            }
+            return canCloseMain;
+
+        }
+
     </script>
-
-
     <style>
         .clip {
             clip-path: circle(120vw at center);
@@ -363,7 +380,6 @@
             }
     </style>
 </head>
-
 
 <body>
     <div class="TopBar" style="display:none;">

@@ -16,7 +16,11 @@ export function initIntroAnimation() {
     $introAnim.one('canplaythrough', () => $introImage.hide())
     $introAnim.on('ended', () => {
         _introAnimEnded=true;
-        console.log('intro anim ended');
+        if ($(window).scrollTop()<5 || $(window).scrollTop()>299) {
+            introAnimToEnd();
+        } else {
+            introAnimRestart();
+        }
     })
     introAnimBlurBehind();
     loadAnim();
@@ -36,6 +40,7 @@ export function stop() {
 
 export function hide() {
     $introAnim.fadeOut(100);
+    $introAnimBlur.fadeOut(100);
     $introImage.fadeOut(100);
 }
 
@@ -45,23 +50,32 @@ export function play() {
 }
 
 export function show() {
+    console.log('anim show');
     $introAnim.fadeIn(200);
     $introAnimBlur.fadeIn(200);
     $introImage.fadeIn(200);
 }
 
 export function introAnimLoop() {
-    $introAnim.get(0).currentTime = 0;
-    $introAnimBlur.get(0).currentTime = 0;
+    if ($introAnimBlur.get(0).currentTime > 12) {
+        $introAnim.get(0).currentTime = 0;
+        $introAnimBlur.get(0).currentTime = 0;
+    }
     play();
 }
 export function introAnimToEnd() {
-    $introAnim.get(0).loop = false;
-    $introAnim.get(0).currentTime = 14
-    $introAnimBlur.get(0).loop = false;
-    $introAnimBlur.get(0).currentTime = 14
+        console.log('intro anim jump to end');
+        $introAnim.hide();
+        $introAnimBlur.hide();
+        $introImage.show();
 }
-
+export function introAnimRestart() {
+    $introAnim.get(0).currentTime = 0;
+    $introAnimBlur.get(0).currentTime = 0;
+    $introAnim.show();
+    $introAnimBlur.show();
+    play();
+}
 export function loadAnim() {
     $introAnim.attr('src', animation);
 }
@@ -70,11 +84,18 @@ export function loadAnimBlur() {
 }
 
 export function introAnimBlurAbove() {
+    console.log('introAnimBlurAbove');
     $introAnimBlur.css('z-index', 10);
     $introAnim.css('z-index', 9);
+    $introAnim.show()
+    $introAnimBlur.show()
 }
 
 export function introAnimBlurBehind() {
+    console.log('introAnimBlurBehind');
+    
     $introAnimBlur.css('z-index', 9);
     $introAnim.css('z-index', 10);
+    $introAnim.show()
+    $introAnimBlur.show()
 }

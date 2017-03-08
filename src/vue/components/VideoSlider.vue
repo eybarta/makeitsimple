@@ -1,13 +1,13 @@
 <template>
 <div class="video-slider" id="vidSlider">
-    <div :class="['info-toggle', infomode ? 'on' : '']" id="infoToggle" @click="toggleinfo"></div>
+    <div :class="['info-toggle', infomode ? 'on' : '']" id="infoToggle" @click.prevent.stop="toggleinfo"></div>
     <div ref="control" class="swiper-control">
         <div class="swiper-container video-swiper">
             <!-- Additional required wrapper -->
             <div class="swiper-wrapper">
                 <!-- Slides -->
                 <div class="swiper-slide">
-                    <div :class="['info-overlay', infomode ? 'on' : '']">
+                    <div :class="['info-overlay', !!infomode ? 'on' : '']">
                         <div class="inner">
                             <h2>As easy as 1, 2, 3...</h2>
                             <h5>MIS 4MATRIX, Make It Simple</h5>
@@ -18,7 +18,7 @@
                     <img v-else src="dist/img/animation/4MATRIX.gif" alt="">
                 </div>
                 <div class="swiper-slide">
-                    <div :class="['info-overlay', infomode ? 'on' : '']">
+                    <div :class="['info-overlay', !!infomode ? 'on' : '']">
                         <div class="inner">
                             <h2>From perfect planning to precise placement</h2>
                             <h5>MIS MGUIDE, Make It Simple</h5>
@@ -30,7 +30,7 @@
                     
                 </div>
                 <div class="swiper-slide">
-                    <div :class="['info-overlay', infomode ? 'on' : '']">
+                    <div :class="['info-overlay', !!infomode ? 'on' : '']">
                         <div class="inner">
                             <h2>MORE BONE Where it Matters Most...</h2>
                             <h5>V3 By MIS, Make It Simple</h5>
@@ -42,8 +42,8 @@
                 </div>
             </div>
         </div>
-        <div class="video-prev swiper-button-prev"></div>
-        <div class="video-next swiper-button-next"></div>
+        <div class="video-prev swiper-button-prev" ref="prev" @click.prevent="prevClicked"></div>
+        <div class="video-next swiper-button-next" ref="next" @click.prevent="nextClicked"></div>
         <div class="video-swiper-pagination"></div>                    
     </div>
 </div>
@@ -67,33 +67,38 @@ export default {
         this.swiper = videoSwiper();
         window.addEventListener('resize', e => { ref.trigger = new Date()})
         // Custom event triggered from 'sections-inview.js'
-        this.$el.addEventListener('inview', this.inview);
-        this.$el.addEventListener('slidechange', this.change);
+        this.$el.addEventListener('inview', this.restartSwiper);
+        this.$el.addEventListener('slidechange', this.resetVideos);
+        this.$el.addEventListener('lastslide', this.onLastSlide);
         
         
     },
     methods: {
-        inview() {
-            // Element is in view port.
-            // restart slides and animation
-            this.swiper.slideTo(0, 50, true);
-            if (!this.isMobile) {
-                this.$refs.vid1.currentTime = 0;
-            }
+        onLastSlide() {
+           $(this.$refs.vid3).on('ended', () => {
+               this.restartSwiper()
+           })
         },
-        change() {
+        restartSwiper() {
+            this.resetVideos();
+            this.swiper.slideTo(1, 50, true);
+            this.swiper.startAutoplay();
+        },
+        resetVideos() {
             // restart slides on change
             $(this.$el).find('video').prop('currentTime', 0);
         },
         toggleinfo() {
-            this.infomode = !this.infomode
-            this.swiper.stopAutoplay();
+            this.$set(this, 'infomode', !this.infomode);
+            console.log('toggle info ??');
+            $(".info-overlay").toggleClass('on');
+            !!this.infomode 
+            ? this.swiper.stopAutoplay()
+            : this.swiper.startAutoplay();
         }
     },
     computed: {
         isMobile() {
-            return true;
-            
             let trigger = this.trigger;
             let cond = document.body.offsetWidth<769;
             return document.body.offsetWidth<769;
@@ -102,4 +107,9 @@ export default {
 }
 </script>
 <style lang="stylus">
+.info-toggle
+    opacity 1
+    transition opacity 200ms ease-out
+    &:hover
+        opacity 0.6
 </style>

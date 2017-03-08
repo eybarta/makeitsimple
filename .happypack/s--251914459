@@ -16,6 +16,8 @@ require('./styl/app.styl');
 
 require('swiper/dist/css/swiper.css');
 
+var _utils = require('./js/utils');
+
 var _swiper = require('./js/swiper');
 
 var _Pages = require('./vue/Pages.vue');
@@ -25,14 +27,12 @@ var _Pages2 = _interopRequireDefault(_Pages);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 (0, _jquery2.default)(function () {
+    (0, _utils.globalCustomEventPoly)();
     (0, _swiper.initPagesSwiper)();
 });
 
 var pages = new _vue2.default({
     render: function render(h) {
         return h(_Pages2.default);
-    },
-    mounted: function mounted() {
-        console.log("VUE ROOT MOUNTED");
     }
 }).$mount('#pages');

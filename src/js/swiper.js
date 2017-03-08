@@ -1,6 +1,7 @@
 import $ from 'jquery'
 var misSwiper, pagesSwiper;
 
+
 export function initSwiper()  {
     misSwiper =  new Swiper('.mis-swiper-container', {
         pagination: '.mis-swiper-pagination',
@@ -9,8 +10,8 @@ export function initSwiper()  {
         spaceBetween:20,
         keyboardControl: true,
         preventClicks: false,
-        nextButton: '.swiper-button-next',
-        prevButton: '.swiper-button-prev',
+        nextButton: '.mis-next',
+        prevButton: '.mis-prev',
         breakpoints: {
             1600: {
                 slidesPerView:5,
@@ -54,42 +55,75 @@ export function initPagesSwiper() {
             nextButton: '.swiper-button-next',
             prevButton: '.swiper-button-prev',
             onInit(swiper) {
-                let timer, height = Math.floor($(swiper.slides[swiper.activeIndex]).outerHeight(true));
-                setTimeout(()=> {
-                    swiper.updateAutoHeight()
-                },500)
-                $(window).on('scroll.swiper', function() {
-                    clearTimeout(timer);
-                    let height2 = Math.floor($(swiper.slides[swiper.activeIndex]).outerHeight(true));
-                    if (height!=height2) {
-                        swiper.updateAutoHeight()
-                        $(window).off('scroll.swiper')
+                fixSwiperHeightIssue(swiper);
+                
+
+                $(window).on('keyup.pages', e => {
+                    if (e.keyCode==37) {
+                        // left
+                        swiper.slidePrev();
                     }
-                    timer = setTimeout(function() {
-                        $(window).off('scroll.swiper')
-                    },3000)
+                    else if (e.keyCode==39) {
+                        // right
+                        swiper.slideNext();
+                    }
                 })
+            },
+            onTransitionStart(swiper) {
+                let event = new CustomEvent('swiped'),
+                    el = document.getElementById('pageSwiperWrapper');
+
+                    $(el).css('height', 3350);
+                    el.dispatchEvent(event)
+
             },
         });
 }
 
 export function videoSwiper() {
+    console.log('running video swiper');
     return new Swiper('.video-swiper', {
         pagination: '.video-swiper-pagination',
-        // grabCursor: true,
         simulateTouch: true,
         paginationClickable: true,
         slidesPerView:1,
         spaceBetween:0,
         keyboardControl: true,
         autoHeight: true,
-        autoplay: 11000,
+        autoplay: 15050,
+        loop: true,
         nextButton: '.video-next',
         prevButton: '.video-prev',
         onTransitionStart(swiper) {
-                let event = new Event('slidechange'),
+                let event = new CustomEvent('slidechange'),
+                    el = document.getElementById('vidSlider');
+                    el.dispatchEvent(event)
+        },
+        onReachEnd(swiper) {
+             let event = new CustomEvent('lastslide'),
                     el = document.getElementById('vidSlider');
                     el.dispatchEvent(event)
         }
+
     });
+}
+
+
+// UTIL
+export function fixSwiperHeightIssue(swiper = pagesSwiper) {
+    let timer, height = Math.floor($(swiper.slides[swiper.activeIndex]).outerHeight(true));
+    setTimeout(()=> {
+        swiper.updateAutoHeight()
+    },100)
+    $(window).on('scroll.swiper', () => {
+        clearTimeout(timer);
+        let height2 = Math.floor($(swiper.slides[swiper.activeIndex]).outerHeight(true));
+        if (height!=height2) {
+            swiper.updateAutoHeight()
+            $(window).off('scroll.swiper')
+        }
+        timer = setTimeout(function() {
+            $(window).off('scroll.swiper')
+        },3000)
+    })
 }

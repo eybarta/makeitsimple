@@ -60,9 +60,9 @@
 		    vController =       $(element).find(".hpvController");
 		    dragger =           document.getElementById("hpvDragger");
 
-		    if (isIOS()) {
-		        $(handle2).hide();
-		    }
+		    //if (isIOS()) {
+		        $(handle2).hide(); //remove full screen anyway
+		    //}
 
 		    vContext = vgalRingCanvas.getContext("2d");
 		    vContext.translate(cWidth, 0);

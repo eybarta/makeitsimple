@@ -1,9 +1,12 @@
 <template>
         <div class="pages-wrap">
-
+        <div :class="['back-home', !!wideScreen ? 'sticky' : '']">
+            <span>HOME</span>
+            <a href="index.html#top"></a>
+        </div>
         <div class="swiper-container">
                 <!-- Additional required wrapper -->
-                <div class="swiper-wrapper" id="pageSwiperWrapper">
+                <div ref="swiper" class="swiper-wrapper" id="pageSwiperWrapper" @swiped="swiperSwiped">
                     <!-- Slides -->
                     <swiper-slide v-for="slide in slides" 
                         :hash="slide.hash"
@@ -13,6 +16,7 @@
                         :outblock="slide.outblock"
                         :infoblock2="slide.infoblock2"
                         :track-by="slide.hash"
+                        :swiped="swipetrigger"
                         key="slide.hash"
                          ></swiper-slide>
                 </div>
@@ -48,7 +52,7 @@
                 <li>
                     <h6>Contact Us</h6>
                     <p class="minitxt">MIS is deeply committed to our core values of quality, service, agility and innovation, integrity and caring; reflected in every step of our work process and supported by over 300 dedicated MIS employees. MIS products are distributed in over 60 countries worldwide through a well-established global distribution network.</p>
-                    <a target="_blank" href="http://www.mis-implants.com" class="link pt-med">Contact your local distributer</a>
+                    <a target="_blank" href="http://www.mis-implants.com/MIS-Info/ContactUs.aspx" class="link pt-med">Contact your local distributer</a>
                     
                 </li>
                 
@@ -64,15 +68,34 @@ import SwiperSlide from './SwiperSlide.vue';
 export default {
     data() {
         return {
-            slides: PageSlides
+            slides: PageSlides,
+            trigger: -1,
+            swipetrigger: -1
         }
     },
     components: {
         SwiperSlide
+    },
+    mounted() {
+        let ref = this;
+        window.addEventListener('resize', () => this.trigger = new Date())
+    },
+    methods: {
+        swiperSwiped() {
+            this.swipetrigger = new Date()
+        }
+    },
+    computed: {
+        wideScreen() {
+            let trigger = this.trigger;
+            return window.innerWidth>1300;
+        }
     }
 }
 </script>
 <style lang="stylus">
+.sticky
+    position fixed
 .pages-wrap
     overflow hidden
     .swiper-slide:last-child
