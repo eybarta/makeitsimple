@@ -5,7 +5,7 @@
 header-height = 58px
 header-height-mini = 40px
 hamburger-size = 46px
-hamburger-size-mini = 38px
+hamburger-size-mini = 40px
 
 
 $close
@@ -25,7 +25,6 @@ $close
 $hamburger
     self-center()
     width unit(hamburger-size/2, 'px')
-    z-index 9
     +below(breaks.base)
         width unit(hamburger-size-mini/2, 'px')
     &:before, &:after
@@ -35,7 +34,7 @@ $hamburger
             top 50%
             left 50%
             width 100%
-            opacity 0.9
+            opacity 1
             background none
         &:before
             transform translate(-50%, -8px)
@@ -45,17 +44,18 @@ $hamburger
             border-bottom 2px solid #fff
             +below(breaks.base)
                 transform translate(-50%, -6px)
-                height 4px
+                height 3px
                 
         &:after
             background #fff
             height 2px
             transform translate(-50%, 8px)
             +below(breaks.base)
-                transform translate(-50%, 6px)
+                transform translate(-50%, 4px)
 
 header
-    position fixed
+    opacity 0
+    position fixed !important
     top 0
     left 50%
     transform translate3d(0,0,0)
@@ -66,14 +66,13 @@ header
     width 105%
     z-index 999999991
     transition transform 400ms ease-in-out-circ, top 400ms ease-in-out-circ, left 400ms ease-in-out-circ, width 400ms ease-in-out-circ, height 400ms ease-in-out-circ, opacity 650ms ease-out-quad, clip-path 400ms ease-out-quad, -webkit-clip-path 400ms ease-out-quad
-    border-radius 360px
+    border-radius header-height
     overflow hidden
     +below(breaks.base)
         height header-height-mini
     +below(breaks.base)
         height 100vh
     +below(breaks.mobile)
-        border-radius 0
         width 100%
     .toggler
         height 20px
@@ -89,19 +88,24 @@ header
         max-width 900px
         overflow hidden
         opacity 0
+        background #222935
         transition opacity 400ms ease
+        +below(breaks.base)
+            width 100vw
         .nav
             float right
             inline-mid()
             width 100%
-            display block
+            // display block
             padding 10% 0
-            backface-visibility hidden
+            // backface-visibility hidden
             +below(breaks.base)
-                position relative
-                transform translate(-50%, -80%)
+                float none
+                position absolute
+                transform translate(-50%, -65%)
+                top 50%
                 left 50%
-                transition  transform 400ms ease-in-out-quad
+                transition transform 200ms ease-in-out-quad
             +above(breaks.base)
                 padding 0
                 height header-height
@@ -129,7 +133,7 @@ header
                         border-bottom 1px solid linkblue
                         pointer-events none
                     +below(breaks.base)
-                        sub-title()
+                        font-size 5vw
                         text-transform uppercase
                         letter-spacing 1px
         .logo
@@ -144,14 +148,18 @@ header
                 height 26px
             +below(breaks.base)
                 self-center(horizontal)
-                bottom 5%
+                bottom 36vh
                 top auto
     &.maximized
+        transition all 400ms ease-out-quad, border-radius 650ms ease-out-quad
+        opacity 1
+        border-radius 0
         .toggler
             @extend $hamburger
             left calc(98% - 40px)
-            +below(breaks.base)
-                top 3%
+            // +below(breaks.base)
+            //     top 3%
+            //     left calc(98% - 15px)
             &:before
                 border-color linkgray
              &:after
@@ -159,49 +167,71 @@ header
         .contain
             opacity 1
         +below(breaks.base)
-            transition transform 400ms ease-in-out-circ, top 400ms ease-in-out-circ, left 400ms ease-in-out-circ, opacity 650ms ease-out-quad, clip-path 400ms ease-out-quad, -webkit-clip-path 400ms ease-out-quad
-            border-radius 0
-            height 100vh
-            clip-path circle(100vh at center)
-            -webkit-clip-path circle(100vh at center)
+            transition transform 400ms ease-in-out-circ, left 400ms ease-in-out-circ, opacity 650ms ease-out-quad
+            height 150vh
+            width 150vw
+            border-radius 100%
+            self-center()
+            top 50vh
+            left 50vw
+            position fixed
+            // clip-path circle(100vh at center)
+            // -webkit-clip-path circle(100vh at center)
             opacity 1
+            .toggler
+                // transition top 400ms ease-out-quad
+                top 30vh
+                left 118vw
+            // left 0
+            // transform none
             .nav
+                // position absolute
                 top 50%
                 transform translate(-50%, -50%)
   
     &.animate
         width hamburger-size
         height @width
+        opacity 1
         +below(breaks.base)
-            transition transform 400ms ease-in-out-circ, left 400ms ease-in-out-circ, opacity 650ms ease-out-quad, clip-path 400ms ease-out-quad, -webkit-clip-path 400ms ease-out-quad
+            // transition transform 400ms ease-in-out-circ, left 400ms ease-in-out-circ, opacity 650ms ease-out-quad, clip-path 400ms ease-out-quad, -webkit-clip-path 400ms ease-out-quad
+            transition transform 400ms ease-in-out-circ, left 400ms ease-in-out-circ, opacity 650ms ease-out-quad, width 400ms ease-out-quad, height 400ms ease-out-quad
         .contain
             opacity 0
         +below(breaks.base)
             width hamburger-size-mini
         +below(breaks.base)
-            width 100vw
-            height 100vh
-            clip-path circle(100vh at center)
-            -webkit-clip-path circle(100vh at center)
-            border-radius 0
+            width 120vh
+            height 120vh
+            self-center()
+            border-radius 100%
+            // clip-path circle(100vh at center)
+            // -webkit-clip-path circle(100vh at center)
+            // border-radius 0
             &.seed
-                clip-path circle(2px at center)
-                -webkit-clip-path circle(2px at center) 
-                opacity 0.2
+                self-center()
+                border-radius 16px
+                opacity 0.5
+                // clip-path circle(31px at center)
+                // -webkit-clip-path circle(31px at center) 
     &.hamburger
         top 1%
         +below(breaks.base)
             top 0
-            transition transform 400ms ease-in-out-circ, top 400ms ease-in-out-circ, left 400ms ease-in-out-circ, opacity 650ms ease-out-quad, clip-path 400ms ease-out-quad, -webkit-clip-path 400ms ease-out-quad
-            top 50%
+            // transition transform 400ms ease-in-out-circ, top 400ms ease-in-out-circ, left 400ms ease-in-out-circ, opacity 650ms ease-out-quad, clip-path 400ms ease-out-quad, -webkit-clip-path 400ms ease-out-quad
+            transition transform 400ms ease-in-out-circ, top 400ms ease-in-out-circ, left 400ms ease-in-out-circ, opacity 650ms ease-out-quad, width 400ms ease-out-quad, height 400ms ease-out-quad
             border-radius 100%
-            width 5px
-            height 5px
-            clip-path circle(1vh at center)
-            -webkit-clip-path circle(1vh at center)
-            opacity 0.2
+            width 40px
+            height 40px
+            
+            // clip-path circle(31px at center)
+            // -webkit-clip-path circle(31px at center)
+            opacity 0.5
             transform-origin 50% 50%
+            self-center()
+            position fixed
             .nav
+                top 50%
                 transform translate(-50%, -150%)
                 transition transform 600ms ease-out-back, opacity 400ms ease-out
             .contain
@@ -210,7 +240,7 @@ header
                 overflow hidden
                 .nav
                     opacity 0
-                    transform translate(-50%, -150%)    
+                    transform translate(-50%, -150%)
     &.placed
         left calc(100% - 40px)
         opacity 0.6
@@ -221,13 +251,14 @@ header
         .toggler
             @extend $hamburger
         +below(breaks.base)
-            transition transform 380ms ease-in-out-circ, top 380ms ease-in-out-circ, left 380ms ease-in-out-circ
-            top 10px
+            // transition transform 380ms ease-in-out-circ, top 380ms ease-in-out-circ, left 380ms ease-in-out-circ, clip-path 400ms ease-out-quad, -webkit-clip-path 400ms ease-out-quad
+            transition transform 380ms ease-in-out-circ, top 380ms ease-in-out-circ, left 380ms ease-in-out-circ, width 400ms ease-out-quad, height 400ms ease-out-quad
+            top 5vh
             width 40px
             height 40px
             clip-path none
             -webkit-clip-path none
-            border-radius 360px
-        +below(breaks.base)
-            left calc(100% - 30px)
+            // border-radius unit(header-height-mini/2, 'px')
+            +below(breaks.base)
+                left calc(100% - 5vh)
             

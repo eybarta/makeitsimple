@@ -12,8 +12,17 @@ import { initMap } from './js/google-map';
 import { initScrollNav } from './js/scroll-nav'
 import * as utils from './js/utils'
 
+var $desktop;
+
+
 $(() => {
-    initIntroAnimation();
+    $desktop = $(window).width()>1025;
+    if ($desktop) {
+        initIntroAnimation();
+    }
+    else {
+        $("#bigGraphic").attr('src', 'dist/img/mobile-intro-graphic.jpg');
+    }
     initIntroVideo();
     initScrollNav();
     initSwiper();
@@ -61,8 +70,5 @@ function titleTextHandler() {
 import VideoSlider from './vue/components/VideoSlider.vue'
 
 const pages = new Vue({
-    render: h => h(VideoSlider),
-    mounted() {
-    	console.log("VideoSlider MOUNTED");
-    }
+    render: h => h(VideoSlider)
 }).$mount('#vidSlider');

@@ -94,7 +94,15 @@ margins = {
 	head: head-height
 }
 
-
+// gutters
+gutters(top = 14vh, bottom = 14vh) {
+	if (top!=false) {
+		padding-top: top;
+	}
+    if (bottom!=false) {
+        padding-bottom: bottom;
+	}
+}
 
 // mixins
 fontsizer(min = 13px, max = 24px, rangemin = breaks.mobile, rangemax = breaks.max)
@@ -156,8 +164,8 @@ centerize-children()
 			text-align center
 			display block !important
 
-self-center(dir=both)
-	position absolute
+self-center(dir=both, pos = absolute)
+	position pos
 	if (dir==vertical)
 		top 50%
 		transform translateY(-50%)

@@ -87,7 +87,7 @@ export const PageSlides = [
                             },
                             {
                                 txt: 'V3 Movie',
-                                href: 'http://www.mis-implants.com/Media/Movies/Products.aspx#37488'
+                                href: 'http://www.mis-implants.com/Media/Movies/Products.aspx#37532'
                             },
                             {
                                 txt: 'VCONCEPT Movie',
@@ -249,7 +249,7 @@ export const PageSlides = [
                 type: 'numbers',
                 items: [
                     {
-                        title: 3,
+                        title: 4,
                         text: 'MIS restoration options for single teeth, fixed bridge, complete denture, or a fixed restoration for edentulous jaw.'
                     },
                     {
@@ -294,7 +294,7 @@ export const PageSlides = [
                         links: [
                             {
                                 txt: 'Patient Brochure',
-                                href: '#p'
+                                href: 'http://www.mis-implants.com/Media/Printed-Materials/General%20.aspx#32226'
                             },
                             {
                                 txt: 'Company Profile',
@@ -527,13 +527,13 @@ export const PageSlides = [
                             alt: 'Online Catalog'
                         },
                         links: [
-                            {
-                                txt: 'B+ Movie',
-                                href: '#p'
-                            },
+                            // {
+                            //     txt: 'B+ Movie',
+                            //     href: '#p'
+                            // },
                             {
                                 txt: 'V3 Movie',
-                                href: 'http://www.mis-implants.com/Media/Movies/Products.aspx#37488'
+                                href: 'http://www.mis-implants.com/Media/Movies/Products.aspx#37532'
                             },
                             {
                                 txt: 'C1 Movie',
@@ -554,7 +554,7 @@ export const PageSlides = [
                         links: [
                             {
                                 txt: 'B+ Minisite',
-                                href: 'bplus.mis-implants.com'
+                                href: 'http://bplus.mis-implants.com/'
                             },
                             {
                                 txt: 'B+ Webpage',
@@ -653,7 +653,7 @@ export const PageSlides = [
                         links: [
                             {
                                 txt: 'V3 Movie',
-                                href: 'http://www.mis-implants.com/Media/Movies/Products.aspx#37488'
+                                href: 'http://www.mis-implants.com/Media/Movies/Products.aspx#37532'
                             },
                             {
                                 txt: 'Mguide Movie',
@@ -1022,7 +1022,7 @@ export const PageSlides = [
                             },
                             {
                                 txt: 'B+ Ministe',
-                                href: 'bplus.mis-implants.com'
+                                href: 'http://bplus.mis-implants.com/'
                             }
                         ]
                     },
@@ -1163,7 +1163,7 @@ export const PageSlides = [
                             },
                             {
                                 txt: 'B+ Ministe',
-                                href: 'bplus.mis-implants.com'
+                                href: 'http://bplus.mis-implants.com/'
                             }
                         ]
                     },
@@ -1301,7 +1301,7 @@ export const PageSlides = [
                             },
                             {
                                 txt: 'B+ Ministe',
-                                href: 'bplus.mis-implants.com'
+                                href: 'http://bplus.mis-implants.com/'
                             }
                         ]
                     },
@@ -1449,7 +1449,7 @@ export const PageSlides = [
                             },
                             {
                                 txt: 'B+ Ministe',
-                                href: 'bplus.mis-implants.com'
+                                href: 'http://bplus.mis-implants.com/'
                             }
                         ]
                     },

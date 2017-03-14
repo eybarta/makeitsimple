@@ -16,7 +16,10 @@ body
 
 #top
     position relative
-    height calc(100vh + 300px)    
+    height calc(100vh + 500px)   
+    min-height 100vh
+    +below(breaks.mobile)
+        height 100vh
 .wrap
     img.big_graphic
         vertical-align middle
@@ -31,7 +34,9 @@ body
             display block
             margin 0 auto 40px
         +below(breaks.mobile)
-            max-width 80%
+            max-width initial
+            width auto
+            margin-left -10%
             
 
     .infobox
@@ -134,10 +139,22 @@ footer
         small-txt()
         display block
     small
+        centered(1000)
+        padding 0 30px
         small-txt()
         display block
         color lightgray
-        text-align center
+        text-align left
         padding-top 100px
+        span
+            display inline-block
+            width 30%
+            margin-left 36%
         +below(breaks.base)
             padding-top 140px
+        +below(900px)
+            padding 60px 0 0
+            text-align center
+            span
+                width auto
+                margin 0 auto

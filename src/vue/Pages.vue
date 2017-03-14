@@ -58,7 +58,7 @@
                 
             </ul>
 
-            <small class="pt-bigger pb-min">© MIS Corporation. All Rights Reserved.</small>
+            <small class="pb-med"><span>© MIS Corporation. All Rights Reserved.</span></small>
         </footer>
     </div>
 </template>

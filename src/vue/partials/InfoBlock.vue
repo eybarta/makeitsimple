@@ -126,8 +126,8 @@ export default {
 h3
     text-align center
 .dbl span
-    transform translate(-55%, -55%)
-    letter-spacing -9px
+    transform translate(-50%, -55%)
+    // letter-spacing -9px
 .bigger
     font-size 200px !important
 .symbol

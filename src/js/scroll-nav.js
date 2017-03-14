@@ -2,14 +2,18 @@ import $ from 'jquery'
 import _ from 'lodash'
 import {sectionsInView} from './sections-inview'
 import { closeIntroVideo } from './intro-video'
-import { _introAnimEnded, introAnimToEnd, introAnimEl, introAnimLoop, introAnimBlurAbove, introAnimBlurBehind, introAnimRestart } from './intro-animation'
-var $links, $toggle, $desktop, introAnimation, mintimer, maxtimer, animtimer, scrollstart = true, scrollCount = 0;
+import { _introAnimEnded, introAnimToEnd, introAnimEl, introAnimLoop, introAnimBlurAbove, introAnimBlurBehind, introAnimRestart, hideHotSpot, showHotSpot } from './intro-animation'
+var $links, $toggle, introAnimation, mintimer, maxtimer, animtimer, scrollstart = true, homeclicked =false, scrollCount = 0;
 
 var header = {
     el: null,
     status: 'maximized'   // maximized, minimized, maximizing, minimizing
 
 }
+
+
+export var $desktop;
+
 export function initScrollNav() {
     header.el = $('header');
     $toggle = $('#toggle');
@@ -24,30 +28,36 @@ export function initScrollNav() {
 
 // Bind events to Menu
 function bindMenuEvents() {
-    $links.on('click touchstart', function(e) {
+    $links.on('click', function(e) {
             e.preventDefault();
             if (!$desktop) {
                 minimizeMenu();
             }
-            if ($(window).width()>1025) {
-                $(window).off('scroll')
-                $("#intro").removeClass('stick');
+            else {
+                // $(window).off('scroll')
+                // $("#intro").removeClass('stick');
             }
-            
             let anchor = $(this.getAttribute('href'));
-            console.log('anchro clicked ', anchor);
             if (anchor.length>0) {
-
+                let callbacked = false;
                 $('html,body').animate({
                     scrollTop: $(anchor).offset().top
-                }, 400, function() {
-                    setTimeout(function() {
-                        initMenu();
-
-                    },50)
+                }, 600, function() {
+                    if (!callbacked) {
+                        setTimeout(function() {
+                            if (!homeclicked) {
+                                initMenu();
+                            }
+                            console.log('end scroll animation, homeclicked=false');
+                            homeclicked = false;
+                        },50)
+                        callbacked = true;
+                    }
                 })
                 if (/top/gi.test(anchor.get(0).id)) {
-                    console.log('home clicked')
+                    console.log('clicked Home');
+                    homeclicked = true;
+                    scrollCount = 0;
                     introAnimRestart();
                 }
             }
@@ -63,40 +73,48 @@ function toggleMenu() {
     ? minimizeMenu()
     : maximizeMenu()
 }
-function initMenu() {
+function initMenu(e) {
+    console.log('initmenu > ', e);
     $desktop = $(window).width()>1025;
     clearTimers();
-    $(window).off('scroll').on('scroll', scrollCheck);
-    scrollCheck();
+
+    if ($desktop) {
+        $(window).off('scroll').on('scroll', scrollCheck);
+        scrollCheck();
+    } else {
+        minimizeMenu();
+        $("#intro").css('opacity', 1);
+    }
+    
 }
 
 function scrollCheck(e) {
+    console.log('scrolling.. check');
+    
+    handleMinMaxOnScroll();
+    if ($desktop) {
+        handleHeaderOnScroll();
+        handleIntroAnimOnScroll();
+        handleOnScrollSticky();
+    }
+
+    if (!homeclicked) {
+        scrollCount++;
+    }
+    $("#intro").css('opacity', 1);
+}
+
+function handleHeaderOnScroll() {
     let scrolltop = $(window).scrollTop();
     if (scrolltop<5) {
         scrollstart = true;
-        $("#intro").addClass('stick');
         if ($("#intro").hasClass('play')) {
             header.el.hide();
         }
-        else {
-            header.el.hasClass('hamburger') && maximizeMenu();
-        }
-
-        if (_introAnimEnded && scrollCount>2) {
-            introAnimToEnd();
-        } else {
-            introAnimBlurBehind();
-        }
-        // animtimer = setTimeout(function() {
-        //     introAnimBlurBehind();
-        // }, 200)
         $('#intro').removeClass('playoverlay');
         $('#playintro img').removeClass('toplay');
     } 
     else if (scrolltop>5) {
-        if ( !header.el.hasClass('hamburger')) {
-            minimizeMenu();
-        }
         if (!$("#intro").hasClass('play')) {
             header.el.show();
         } else {
@@ -105,39 +123,67 @@ function scrollCheck(e) {
         if (scrollstart) {
             $('#intro').addClass('playoverlay');
             $('#playintro img').removeClass('toplay');
-
-            clearTimeout(animtimer);
-            introAnimBlurAbove();
-            introAnimLoop();
-            
+            setTimeout(function() {
+                scrollstart = false;
+            }, 500)
         }
         else if (!$('#intro').hasClass('playoverlay')) {
              $('#playintro img').addClass('toplay');
         }
-        if (scrolltop<299) {
-            $("#intro").addClass('stick');
-        }
-        else {
+        if (scrolltop>499) {
             $("#intro").removeClass('stick').removeClass('playoverlay')
             closeIntroVideo();
-            if ( !header.el.hasClass('hamburger')) {
-                minimizeMenu();
-            }
             header.el.show();
-            if (!!introAnimEl) {
-                introAnimToEnd();                
-            }
         }
-        scrollstart = false;
-    }    
-    else if (!$desktop) {
-        minimizeMenu();
+        
+        
     }
     if (scrolltop>500) {
         $('#intro').removeClass('playoverlay');
     }
-    scrollCount++;
-    $("#intro").css('opacity', 1);
+}
+function handleOnScrollSticky() {
+    let scrolltop = $(window).scrollTop();
+    if (scrolltop<499) {
+        $("#intro").addClass('stick');
+    }
+    else {
+        $("#intro").removeClass('stick')
+    }
+}
+
+function handleMinMaxOnScroll() {
+    let scrolltop = $(window).scrollTop();
+    console.log('MAXIMIZED ' + scrolltop)
+    if (scrolltop<5 && !$("#intro").hasClass('play') && header.el.hasClass('hamburger') ) {
+        
+        maximizeMenu();
+    }
+    else if (scrolltop>5 && !header.el.hasClass('hamburger')) {
+        minimizeMenu();
+    }
+}
+
+function handleIntroAnimOnScroll() {
+    let scrolltop = $(window).scrollTop();
+    if (scrolltop<5) {
+        hideHotSpot();
+        if (_introAnimEnded && scrollCount>2) {
+            introAnimToEnd();
+        } else {
+            introAnimBlurBehind();
+        }
+    }
+    else if (scrolltop>499) {
+        console.log('introAnimToEnd')
+        introAnimToEnd();                
+    }
+    else if (scrolltop>5 && scrollstart) {
+        clearTimeout(animtimer);
+        introAnimBlurAbove();
+        introAnimLoop();
+    }
+    
 }
 // Minimize and Maximize Menu
 function minimizeMenu(e) {
@@ -153,8 +199,7 @@ function minimizeMenu(e) {
             .addClass('animate')
             .removeClass('maximized')
             .addClass('seed')
-        mintimer = setTimeout(function() {
-            header.el.addClass("hamburger");
+            .addClass("hamburger");
             mintimer = setTimeout(function() {
                 header.el
                     .on('click', maximizeMenu)
@@ -162,7 +207,6 @@ function minimizeMenu(e) {
                     .addClass("placed");
                     header.status = 'minimized';
             },300)
-        },400)
     }
 }
 function maximizeMenu(e) {
@@ -176,8 +220,6 @@ function maximizeMenu(e) {
         maxtimer = setTimeout(function() {
             header.el.removeClass("hamburger")
             maxtimer = setTimeout(function() {
-                    header.el.removeClass("animate")
-                    .removeClass('seed')
                     header.el.attr('class', 'maximized')
                     header.status = 'maximized';
                 }, 400)
@@ -190,7 +232,7 @@ function maximizeMenu(e) {
 function clearTimers(who) {
     clearTimeout(maxtimer);
     clearTimeout(mintimer);
-    header.status = null;
+    // header.status = null;
 }
 function preventStop(e) {
     if (!!e) {

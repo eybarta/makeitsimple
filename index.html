@@ -25,8 +25,10 @@
     <div class="wrap">
         <div id="top">
             <div id="intro" class="intro hp full-height unattach">
+                <div id="hotspot" class="hotspot"></div>
                 <button id="closeIntro" class="close-btn"></button>
                 <img id="simpleIntro" src="dist/img/simple-intro.png" />
+                <img id="simpleIntroMobile" src="dist/img/mobile-play.png" />
                 <video id="introAnim" preload="auto" autoplay></video>
                 <video id="introAnimBlur" preload="auto" autoplay></video>
                 <div id='i360' class="i-360">
@@ -45,7 +47,7 @@
         </div>
         <div class="preview-section" id="why">
             <div class="center">
-                <img class="big_graphic" src="dist/img/intro_graphic.jpg" alt="MIS Implants">
+                <img id="bigGraphic" class="big_graphic" src="dist/img/intro_graphic.jpg" alt="MIS Implants">
                 <div class="infobox">
                     <div class="info-title">
                         <h2 class="mb-big">Why Simple?</h2>
@@ -75,9 +77,9 @@
             </div>
 
         </div>
-        <div id="make">
-            <div class="mis-slider pb-bigger">
-                <h2 class="flip-title pb-bigger center">
+        <div id="make" class="">
+            <div class="mis-slider pb-bigger center-mobile">
+                <h2 class="flip-title pb-bigger">
                     <span class="title-right">MIS, Make It Simple</span>
                     <span class="subtxt subtitle-left">Because simplicity is as simple as you make it.</span>
                 </h2>
@@ -240,7 +242,7 @@ All of our efforts within the company focus on this mission: To simplify the pro
                 &nbsp;
             </div>
         </div>
-        <div class="info-block pt-max pb-max center" id="more">
+        <div class="info-block gutter-both center" id="more">
             <h2 id="infoTitle" class="mb-max tcenter">SIMPLY MORE INFORMATION</h2>
             <ul class="group-4">
                 <li>
@@ -324,7 +326,7 @@ All of our efforts within the company focus on this mission: To simplify the pro
                     
                 </li>
             </ul>
-            <small class="pb-med">© MIS Corporation. All Rights Reserved.</small>
+            <small class="pb-med"><span>© MIS Corporation. All Rights Reserved.</span></small>
         </footer>
     </div>
 

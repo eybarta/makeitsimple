@@ -90,11 +90,14 @@ export default {
         },
         toggleinfo() {
             this.$set(this, 'infomode', !this.infomode);
-            console.log('toggle info ??');
             $(".info-overlay").toggleClass('on');
-            !!this.infomode 
-            ? this.swiper.stopAutoplay()
-            : this.swiper.startAutoplay();
+            if (!!this.infomode) {
+                this.swiper.stopAutoplay()
+            }
+            else {
+                this.resetVideos();
+                this.swiper.startAutoplay();
+            }
         }
     },
     computed: {

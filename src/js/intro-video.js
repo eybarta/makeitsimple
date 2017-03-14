@@ -3,11 +3,12 @@ import $ from 'jquery'
 import * as introAnim from './intro-animation'
 // INTRO VIDEO FUNCTIONS
 
-var $trig, $introVideo;
+var $trig, $introVideo, $desktop, $playImg;
 
 export function initIntroVideo () {
-    console.log('in init intro video');
-     $trig = $("#playintro img");
+    $desktop = $(window).width()>1025;
+    $playImg = $("#playintro img");
+    $trig = $desktop ? $("#intro") : $("#simpleIntroMobile");
     $introVideo = $("#introvideo");
     // INTRO PLAYER
     $trig.one('click', playIntroVideo)
@@ -16,29 +17,28 @@ export function initIntroVideo () {
 
 function closeTriggeHandler() {
     var ref = this;
-    console.log('close intro video');
     try {
 
         let closer = $introVideo.get(0).contentWindow.vrExitVR();
-        console.log("closer >> ", closer);
         if (closer) {
             closeIntroVideo();
         }
     }
     catch(e) {
-        console.log('in catch>> ', e);
         closeIntroVideo()
     }    
 }
 
 function  playIntroVideo() {
-    introAnim.stop();
-    introAnim.hide();
-    $("header").hide();
-    $("#intro").toggleClass('play');
+    if ($desktop) {
+        introAnim.stop();
+        introAnim.hide();
+    }
     
+    $("header").hide();
+    $trig.toggleClass('play');
+    $playImg.hide();
     $introVideo.attr('src', 'http://simple.mis-implants.com/vr8').show()
-    console.log($introVideo);
     $("#closeIntro").show().on('click', closeTriggeHandler)
     
 }
@@ -47,13 +47,16 @@ export function closeIntroVideo() {
     if ($introVideo.is(':visible')) {
         $("#closeIntro").hide().off()
         $("header").toggle();
-        $("#intro").toggleClass('play')
+        $trig.toggleClass('play')
         $introVideo.attr('src', '').hide()
         setTimeout(function() {
-            $trig.one('click', playIntroVideo)
-            introAnim.introAnimToEnd();
-            $("#intro").removeClass('playoverlay');
-            $('#playintro img').removeClass('toplay');
+            $playImg.show();
+            $trig.one('click', playIntroVideo);
+            if ($desktop) {
+                introAnim.introAnimToEnd();
+            }
+            $trig.removeClass('playoverlay');
+            $playImg.removeClass('toplay');
         },1)
     }
     

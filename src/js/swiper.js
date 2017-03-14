@@ -81,7 +81,6 @@ export function initPagesSwiper() {
 }
 
 export function videoSwiper() {
-    console.log('running video swiper');
     return new Swiper('.video-swiper', {
         pagination: '.video-swiper-pagination',
         simulateTouch: true,
@@ -90,7 +89,7 @@ export function videoSwiper() {
         spaceBetween:0,
         keyboardControl: true,
         autoHeight: true,
-        autoplay: 15050,
+        autoplay: 11005,
         loop: true,
         nextButton: '.video-next',
         prevButton: '.video-prev',

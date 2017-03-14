@@ -111,10 +111,11 @@ med = 620px
                 height 30px
                 border-width 6px                    
         &.swiper-button-disabled
-            cursor pointer !important
+            display none
+            cursor default !important
             pointer-events initial
             &:hover
-                opacity 0.9 !important
+                opacity 0 !important
         &:hover
             opacity 0.8
         &.swiper-button-prev
@@ -221,9 +222,14 @@ med = 620px
             .swiper-wrapper
                 .swiper-slide
                     padding 0
+                    +below(breaks.mobile)
+                        overflow hidden
                     video, img
                         width 100vw
                         cure-me()
+                        +below(breaks.mobile)
+                            width 200vw
+                            transform translateX(-25%) !important
                         &.under
                             blur-me()
         .video-prev, .video-next
