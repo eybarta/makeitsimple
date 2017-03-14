@@ -7,10 +7,10 @@ export function sectionsInView() {
     let $links = $("header .nav a");
 
     _.each(sections, section => {
-        inView.threshold(0.2);
+        // inView.threshold(0.2);
         
         inView.offset({
-            top: 20,
+            top: 120,
             bottom: 150,
         });
         inView(`#${section}`).on('enter', el => {

@@ -48,14 +48,14 @@ function bindMenuEvents() {
                             if (!homeclicked) {
                                 initMenu();
                             }
-                            console.log('end scroll animation, homeclicked=false');
+                            // console.log('end scroll animation, homeclicked=false');
                             homeclicked = false;
                         },50)
                         callbacked = true;
                     }
                 })
                 if (/top/gi.test(anchor.get(0).id)) {
-                    console.log('clicked Home');
+                    // console.log('clicked Home');
                     homeclicked = true;
                     scrollCount = 0;
                     introAnimRestart();
@@ -74,7 +74,7 @@ function toggleMenu() {
     : maximizeMenu()
 }
 function initMenu(e) {
-    console.log('initmenu > ', e);
+    // console.log('initmenu > ', e);
     $desktop = $(window).width()>1025;
     clearTimers();
 
@@ -89,7 +89,7 @@ function initMenu(e) {
 }
 
 function scrollCheck(e) {
-    console.log('scrolling.. check');
+    // console.log('scrolling.. check');
     
     handleMinMaxOnScroll();
     if ($desktop) {
@@ -154,7 +154,7 @@ function handleOnScrollSticky() {
 
 function handleMinMaxOnScroll() {
     let scrolltop = $(window).scrollTop();
-    console.log('MAXIMIZED ' + scrolltop)
+    // console.log('MAXIMIZED ' + scrolltop)
     if (scrolltop<5 && !$("#intro").hasClass('play') && header.el.hasClass('hamburger') ) {
         
         maximizeMenu();
@@ -175,7 +175,7 @@ function handleIntroAnimOnScroll() {
         }
     }
     else if (scrolltop>499) {
-        console.log('introAnimToEnd')
+        // console.log('introAnimToEnd')
         introAnimToEnd();                
     }
     else if (scrolltop>5 && scrollstart) {

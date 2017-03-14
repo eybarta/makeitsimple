@@ -19,7 +19,7 @@ export function initIntroAnimation() {
         if ($(window).scrollTop()<5 || $(window).scrollTop()>499) {
             introAnimToEnd();
         } else {
-            introAnimRestart();
+            // introAnimRestart();
         }
     })
     introAnimBlurBehind();
@@ -70,7 +70,7 @@ export function introAnimLoop() {
     play();
 }
 export function introAnimToEnd() {
-    console.log('in intro anim to end');
+    // console.log('in intro anim to end');
         $introAnim.hide();
         $introAnimBlur.hide();
         $introImage.show();        
@@ -91,7 +91,7 @@ export function loadAnimBlur() {
 }
 
 export function introAnimBlurAbove() {
-    console.log('introAnimBlurAbove');
+    // console.log('introAnimBlurAbove');
     $introAnimBlur.css('z-index', 10);
     $introAnim.css('z-index', 9);
     $introAnim.show()
@@ -101,7 +101,7 @@ export function introAnimBlurAbove() {
 }
 
 export function introAnimBlurBehind() {
-    console.log('introAnimBlurBehind');
+    // console.log('introAnimBlurBehind');
     $introAnimBlur.css('z-index', 9);
     $introAnim.css('z-index', 10);
     $introAnim.show()

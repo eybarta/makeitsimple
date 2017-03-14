@@ -7,7 +7,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const WebpackCleanupPlugin = require('webpack-cleanup-plugin');
 const autoprefixer = require('autoprefixer');
 
-const nodeEnv = process.env.NODE_ENV || 'development';
+const nodeEnv = 'development';
 const isProduction = nodeEnv === 'production';
 
 const buildPath = path.resolve(__dirname, 'dist');
@@ -141,7 +141,7 @@ if (isProduction) {
                 drop_console: true
             },
             output: {
-            comments: false,
+            comments: true,
             },
         }),
         new WebpackCleanupPlugin({
