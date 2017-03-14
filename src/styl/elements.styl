@@ -95,8 +95,9 @@ a, a.link, a.link:visited
     .hotspot
         display none
         self-center()
+        top 48%
         width 80%
-        height 30%
+        height 18%
         z-index 999
         @media screen and (-webkit-min-device-pixel-ratio:0)
             cursor url('./assets/img/play-icon.png'), auto
@@ -575,9 +576,12 @@ a, a.link, a.link:visited
     width 82px
     background #f2f2f2
     border-radius 0 0 360px 360px
-    padding-top 45px
+    padding-top 17px
     opacity 0.8
     z-index 9999
+    +below(breaks.mobile)
+        width 44px
+        position fixed
     span
         font-family "Helvetica Neue"
         font-size 14px
@@ -585,6 +589,8 @@ a, a.link, a.link:visited
         text-align center
         color #363d48
         margin-bottom 10px
+        +below(breaks.mobile)
+            display none        
     a
         position relative
         width 58px
@@ -592,16 +598,24 @@ a, a.link, a.link:visited
         border-radius 100%
         background #363d48
         display block
-        margin 0 auto 16px
+        margin 0 auto 8px
+        +below(breaks.mobile)
+            width 31px
+            height @width
+            background #213749        
         &:before
             content ''
             self-center()
             transform translate(-35%, -50%) rotate(-45deg)
             width 20px
-            height 20px
+            height @width
             border-top 1px solid #656668
             border-left 1px solid #656668
             transition border 400ms ease
+            +below(breaks.mobile)
+                width 12px
+                height @width
+            
         &:hover
             &:before
                 border-color lighten(#656668, 25)

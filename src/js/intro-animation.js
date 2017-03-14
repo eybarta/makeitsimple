@@ -13,7 +13,7 @@ export function initIntroAnimation() {
     $introImage = $("#simpleIntro");
     $hotspot = $("#hotspot");
     // bind animation to video tag
-    $introAnim.one('canplaythrough', () => $introImage.hide())
+    // $introAnim.one('canplaythrough', () => $introImage.hide())
     $introAnim.on('ended', () => {
         _introAnimEnded=true;
         if ($(window).scrollTop()<5 || $(window).scrollTop()>499) {
@@ -101,6 +101,7 @@ export function introAnimBlurAbove() {
 }
 
 export function introAnimBlurBehind() {
+    console.log('introAnimBlurBehind');
     $introAnimBlur.css('z-index', 9);
     $introAnim.css('z-index', 10);
     $introAnim.show()
