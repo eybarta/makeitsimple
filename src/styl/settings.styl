@@ -76,8 +76,10 @@ linkgray = #727272
 breaks = {
 	mobile: 640px,
 	mid: 570px,
+	tablet2:767px,
 	tablet: 769px,
-	base: 1025px,
+	base: 1024px,
+	base2: 1025px,
 	big: 1200px,
 	bigger: 1600px,
 	max: 1880px
@@ -126,7 +128,7 @@ font = {
 }
 
 title1()
-	fontsizer(font.biggest*0.85, font.biggest)
+	fontsizer(font.big*1.125, font.biggest)
 	font-family 'Helvetica Thin'
 	
 title2()
@@ -136,13 +138,13 @@ title3()
 	fontsizer(round(font.big*0.85), round(font.big))
 	font-family 'Helvetica Thin'
 title4()
-	fontsizer(round(font.more*0.85), round(font.more))
-	font-family 'Helvetica Thin'
+	fontsizer(round(font.base), round(font.more))
+	font-family 'Helvetica Thin txt'
 title5()
 	fontsizer(round(font.mid*0.85), round(font.mid))
 	font-family 'Helvetica Thin'
 title6()
-	fontsizer(round(font.small*0.85), round(font.small))
+	fontsizer(round(font.small*0.95), round(font.small))
 	font-family 'Helvetica Thin txt'
 sub-title()
 	font-family 'Helvetica Thin txt'
@@ -152,7 +154,8 @@ mid-txt()
 	fontsizer(round(font.base*0.85), round(font.base))
 small-txt()
 	font-family 'Helvetica Thin txt'
-	fontsizer(round(font.smallest*0.85), round(font.smallest))
+	// font-size round(font.smallest)
+	fontsizer(round(font.smallest), round(font.smallest))
 	
 
 // POSITIONING

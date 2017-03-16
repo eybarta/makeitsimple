@@ -17,9 +17,11 @@ export var $desktop;
 export function initScrollNav() {
     header.el = $('header');
     $toggle = $('#toggle');
-    $desktop = $(window).width()>1025;
+    $desktop = $(window).width()>1024;
     $links = $("header .nav a");
-
+    if ($desktop) {
+        $("header").addClass('maximized')
+    }
     sectionsInView()
     bindMenuEvents()
     
@@ -65,7 +67,9 @@ function bindMenuEvents() {
     $toggle.on('click', toggleMenu);
     initMenu();
 
-    $(window).on('resize.menu', initMenu);
+    if ($desktop) {
+        $(window).on('resize.menu', initMenu);
+    }
 }
 
 function toggleMenu() {
@@ -74,15 +78,20 @@ function toggleMenu() {
     : maximizeMenu()
 }
 function initMenu(e) {
+    // alert('init menu')
+    setTimeout(function() {
+            $("header").css('visibility','visible');
+    }, 1500)
     // console.log('initmenu > ', e);
-    $desktop = $(window).width()>1025;
+    $desktop = $(window).width()>1024;
     clearTimers();
-
+    
     if ($desktop) {
         $(window).off('scroll').on('scroll', scrollCheck);
         scrollCheck();
-    } else {
-        minimizeMenu();
+    } 
+    else if (scrollstart || header.status != 'maximized') {
+        minimizeMenu();        
         $("#intro").css('opacity', 1);
     }
     
@@ -92,7 +101,7 @@ function scrollCheck(e) {
     // console.log('scrolling.. check');
     
     handleMinMaxOnScroll();
-    if ($desktop) {
+    if ( $(window).width()>1023) {
         handleHeaderOnScroll();
         handleIntroAnimOnScroll();
         handleOnScrollSticky();
@@ -154,9 +163,7 @@ function handleOnScrollSticky() {
 
 function handleMinMaxOnScroll() {
     let scrolltop = $(window).scrollTop();
-    // console.log('MAXIMIZED ' + scrolltop)
-    if (scrolltop<5 && !$("#intro").hasClass('play') && header.el.hasClass('hamburger') ) {
-        
+    if ($desktop && scrolltop<5 && !$("#intro").hasClass('play') && header.el.hasClass('hamburger') ) {
         maximizeMenu();
     }
     else if (scrolltop>5 && !header.el.hasClass('hamburger')) {
@@ -187,7 +194,7 @@ function handleIntroAnimOnScroll() {
 }
 // Minimize and Maximize Menu
 function minimizeMenu(e) {
-    if (header.status != 'minimized') {
+    if (header.status != 'minimized' && !homeclicked) {
         if (header.status != 'minimizing') {
             clearTimers();
         }
@@ -206,6 +213,9 @@ function minimizeMenu(e) {
                     .removeClass('seed')
                     .addClass("placed");
                     header.status = 'minimized';
+                    if (!$desktop) {
+                        $(window).off('scroll').on('scroll', scrollCheck);
+                    }
             },300)
     }
 }
@@ -222,6 +232,9 @@ function maximizeMenu(e) {
             maxtimer = setTimeout(function() {
                     header.el.attr('class', 'maximized')
                     header.status = 'maximized';
+                    if (!$desktop) {
+                        $(window).off('scroll');
+                    }
                 }, 400)
                 
         },400)

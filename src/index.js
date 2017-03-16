@@ -14,9 +14,9 @@ import * as utils from './js/utils'
 
 var $desktop;
 
-
+$("header").css({'visibility': 'hidden'});
 $(() => {
-    $desktop = $(window).width()>1025;
+    $desktop = $(window).width()>1023;
     if ($desktop) {
         initIntroAnimation();
     }
@@ -53,7 +53,7 @@ function  bindEvents() {
 // TITLE TEXT CHANGES ON RESIZE
 var titletxt = "SIMPLY MORE INFORMATION";
 function titleTextHandler() {
-    let isDevice = $(window).width()<769;
+    let isDevice = $(window).width()<640;
     $("#infoTitle").html(isDevice ? _.replace(titletxt, /\s/g, '<br>') : titletxt)
     if (isDevice) {
         $("#infoTitle").addClass('breaked')

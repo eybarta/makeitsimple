@@ -1,5 +1,5 @@
 <template>
-        <div class="pages-wrap">
+        <div :class="['pages-wrap', isAndroid ? 'android' : '']">
         <div :class="['back-home', !!wideScreen ? 'sticky' : '']">
             <span>HOME</span>
             <a href="index.html#top"></a>
@@ -25,7 +25,7 @@
                  <!-- If we need pagination -->
                 <div class="swiper-pagination"></div>
         </div>
-        <footer class="pt-bigger">
+        <footer class="pt-bigger center-mobile">
             <ul>
                 <li>
                     <h6>Mission & Vision</h6>
@@ -47,12 +47,12 @@
                     <h6>About Us</h6>
                     <p class="minitxt">Established in 1995, MIS Implants Technologies Ltd. is at the forefront of development and production of advanced products and solutions aimed to simplify implant dentistry. With our cutting edge facilities, MIS offers a complete range of premium quality dental implants, superstructures, tools and kits, regenerative solutions and digital dentistry. Distributed in over 65 countries, MIS provides unparalleled service to our customers.</p>
 
-                    <a target="_blank" href="http://www.mis-implants.com" class="link pt-med">www.mis-implants.com</a>
+                    <a target="_blank" href="http://www.mis-implants.com" class="link pt-med">www.mis-implants.com<span>></span></a>
                 </li>
                 <li>
                     <h6>Contact Us</h6>
                     <p class="minitxt">MIS is deeply committed to our core values of quality, service, agility and innovation, integrity and caring; reflected in every step of our work process and supported by over 300 dedicated MIS employees. MIS products are distributed in over 60 countries worldwide through a well-established global distribution network.</p>
-                    <a target="_blank" href="http://www.mis-implants.com/MIS-Info/ContactUs.aspx" class="link pt-med">Contact your local distributer</a>
+                    <a target="_blank" href="http://www.mis-implants.com/MIS-Info/ContactUs.aspx" class="link pt-med">Contact your local distributer <span> ></span></a>
                     
                 </li>
                 
@@ -89,6 +89,12 @@ export default {
         wideScreen() {
             let trigger = this.trigger;
             return window.innerWidth>1300;
+        },
+        isAndroid() {
+            if(navigator != undefined && navigator.userAgent != undefined) {
+                return (/android/gi.test(navigator.userAgent))
+            }
+            return false;
         }
     }
 }

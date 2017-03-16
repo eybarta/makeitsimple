@@ -7,6 +7,10 @@
     color #8aa7be
     line-height 20px
     letter-spacing 1.1px
+    +below(breaks.mobile)
+        color darken(#8aa7be, 15)
+        font-size 4.5vmin
+        line-height 1.1
 .minitxt
     small-txt()
     letter-spacing 1.1px
@@ -22,8 +26,9 @@
 a, a.link, a.link:visited
     color linkblue
     transition color 200ms ease
-    &:hover
-        color lighten(linkblue, 15)
+    +above(breaks.mobile)
+        &:hover
+            color lighten(linkblue, 15)
 
 .item-group
     lost-utility clearfix
@@ -37,13 +42,13 @@ a, a.link, a.link:visited
             max-width 170px
             +below(breaks.mobile)
                 max-width initial
-                width auto
+                width 80%
         .minitxt
             padding 0 9%
             +below(breaks.mid)
                 padding 0
             +below(breaks.mobile)
-                font-size 15px
+                font-size 4.2vmin
 
 
 .preview-section
@@ -81,7 +86,7 @@ a, a.link, a.link:visited
         self-center()
         +below(breaks.mobile)
             display block
-            top 32%
+            top 35%
             z-index 999
 .intro
     position relative
@@ -117,6 +122,7 @@ a, a.link, a.link:visited
         top 18%
         left 10%
         +below(breaks.mobile)
+            display none
             top 2%
             left 2%
             transform scale(0.8)
@@ -125,7 +131,9 @@ a, a.link, a.link:visited
             +portrait()
                 content ''
                 background url('./assets/img/mobile-simple-intro.png') no-repeat 50% 50% / 95% auto
-                position absolute 0 0 0 0
+                position absolute 0 false false 0
+                width 100%
+                height 100%
                 z-index 1
     &.intro-v3:before
         background-image url('./assets/img/v3-big.jpg')
@@ -183,8 +191,6 @@ a, a.link, a.link:visited
         cursor pointer
         z-index 12
         opacity 0
-        transform scale(2)
-        transition 200ms opacity ease-out-cubic, transform 200ms ease-out-quad
         +below(breaks.mobile)
             display none
         img
@@ -226,7 +232,6 @@ a, a.link, a.link:visited
         .play-overlay
             // background rgba(darkblue, 0.8)
             opacity 1
-            transform scale(1)
         .i-360
             opacity 1
             +below(breaks.mobile)
@@ -262,6 +267,8 @@ a, a.link, a.link:visited
         min-height 5vh
         padding-bottom 30%
         margin-top 20%
+    +below(breaks.mobile)
+        min-height 22vh
 .flip-title
     direction rtl
     white-space nowrap    
@@ -270,7 +277,7 @@ a, a.link, a.link:visited
         padding-bottom 60px
     & > *
         display inline-block
-        +below(breaks.tablet)
+        +mobile()
             display block
     .subtxt
         sub-title()
@@ -279,6 +286,9 @@ a, a.link, a.link:visited
         +below(breaks.tablet)
             margin-top 15px
             text-align left
+        +below(breaks.mobile)
+            font-size 4.5vmin
+            line-height 1.1
 
 
 // FAQ BLOCK
@@ -413,8 +423,18 @@ a, a.link, a.link:visited
 // INFO BLOCK
 .info-block
     overflow hidden
-    +between(breaks.tablet, breaks.base)
+    +below(breaks.mobile)
+        gutters(14vh, false)
+        li
+            padding-bottom 12vh
+        h3
+            margin-top 30px
+            padding-bottom 95px
+            font-size 36px
+    +tablet(orientation: portrait)
         &:not(.num-grp)
+            h2
+                margin-bottom 100px
             ul
                 li
                     margin-right 0
@@ -433,16 +453,16 @@ a, a.link, a.link:visited
                                 max-width 80%
                         &.out-links
                             padding-left 6px
+                            padding-top 6px                              
                             a
                                 text-indent 0
                                 white-space normal
-    li
-        +below(breaks.tablet)
-            padding-top 10%
-        +below(breaks.mobile)
-            gutters(14vh, false)
-        &:last-child
-            padding-bottom 0
+    +tablet(orientation: landscape)
+        &:not(.num-grp) ul
+            padding-left 18%
+
+    li:last-child
+        padding-bottom 0
     .img-wrap
         position relative
         height 200px
@@ -450,17 +470,21 @@ a, a.link, a.link:visited
         +below(breaks.mobile)
             height auto
             text-align left
+            padding-left 0
         img
             margin 0 auto
             +above(breaks.base)
                 position absolute
                 bottom 0
             +below(breaks.mobile)
-                width 55%
+                max-height 160px
+                max-width 80%
                 margin 0 0 2%
         +below(breaks.tablet)
             inline-grp(bottom)
             margin-bottom 28px
+        +below(breaks.mobile)
+            margin-bottom 35px
                 
     .big-num
         absolute-center(both)
@@ -476,10 +500,12 @@ a, a.link, a.link:visited
         & + .midtxt
             mid-txt()
             width 80%
-            +below(breaks.base)
-                width 60%
-        +below(breaks.base)
-            margin-bottom 2%
+            +below(breaks.big)
+                width 40%
+            +below(breaks.mobile)
+                width 75%
+        +below(breaks.big)
+            margin-bottom 5%
         
         span
             font-size 140px
@@ -492,8 +518,9 @@ a, a.link, a.link:visited
                 opacity 0
     .out-links
         padding 30px 30px 0
-        +below(breaks.base)
-            padding-top 6px
+        +below(breaks.mobile)
+            padding-top 0
+            padding-left 0
     a
         mid-txt()
         font-family "Helvetica Neue"
@@ -503,8 +530,12 @@ a, a.link, a.link:visited
         white-space nowrap
         margin 0 auto
         transition color 400ms ease
-        &:hover
-            color rgba(dark, 0.65)
+        +above(breaks.mobile)
+            &:hover
+                color rgba(dark, 0.65)
+        +below(breaks.mobile)
+            font-size 16px
+            line-height 1.1
         span
             padding-left 8px
         +below(breaks.mid)
@@ -514,9 +545,12 @@ a, a.link, a.link:visited
             position relative
             left 50%
             transform translateX(-50%)
+        +below(breaks.mobile)
+            &:first-child
+                padding-top 0
     +below(breaks.tablet)            
         .out-links
-            width 60%
+            // width 60%
             margin auto
             +below(breaks.mobile)
                 width auto
@@ -525,10 +559,7 @@ a, a.link, a.link:visited
                     width auto
                     transform none
                     left auto
-                    color rgba(dark, 0.75)
-                    &:hover
-                        color rgba(dark, 0.95)
-    
+                    color rgba(dark, 0.75)    
     .centered-text
         title4()
         width 45%
@@ -539,9 +570,22 @@ a, a.link, a.link:visited
         +below(breaks.base)
             width 70%
         +below(breaks.mobile)
-            width 80%
+            width auto
     
+
+.android
+    .info-block 
+        .big-num
+            span
+                self-center()
+                top 56%
+                display block
+                position relative
+                text-align center
+
+
 // OUT BLOCK
+
 .out-block
     background #21455e
     text-align center
@@ -551,12 +595,18 @@ a, a.link, a.link:visited
         line-height 23px
         margin 0 auto
         letter-spacing 1px
+        +below(breaks.mobile)
+            font-size 13px
     h2
         width 60%
         margin 0 auto
         padding 56px 0 76px
         +below(breaks.base)
             padding 36px 0 56px
+        +below(breaks.mobile)
+            width auto
+            padding-top 52px
+            padding-bottom 96px
     .btn
         background #ededed
         color darkblue
@@ -568,20 +618,23 @@ a, a.link, a.link:visited
         font-weight 600
         letter-spacing 1px
         transition background 400ms ease
-        &:hover
-            background #fff
+        +above(breaks.mobile)
+            &:hover
+                background #fff
 // PAGES -- back home
 .back-home
     position absolute -3px auto auto 40px
     width 82px
     background #f2f2f2
     border-radius 0 0 360px 360px
-    padding-top 17px
+    padding-top 47px
     opacity 0.8
     z-index 9999
     +below(breaks.mobile)
-        width 44px
-        position fixed
+        left 22px
+        padding-top 17px
+        width 50px
+        position absolute
     span
         font-family "Helvetica Neue"
         font-size 14px
@@ -600,7 +653,7 @@ a, a.link, a.link:visited
         display block
         margin 0 auto 8px
         +below(breaks.mobile)
-            width 31px
+            width 40px
             height @width
             background #213749        
         &:before
@@ -623,6 +676,8 @@ a, a.link, a.link:visited
 
 .video-slider
     position relative
+    min-height 60vh
+    background #001f31
     .info-overlay
         opacity 0
         position absolute 0 0 0 0
@@ -641,17 +696,26 @@ a, a.link, a.link:visited
                 text-align center
                 width 100%
                 margin-bottom 85px
+                +below(breaks.mobile)
+                    width auto
+                    padding 0 12%
+                    font-size 7vmin
             h5
                 margin-bottom 22px
                 color #ffffff
-                text-align center            
+                text-align center   
+                +below(breaks.mobile)
+                    width auto
+                    padding 0 12% 5px
+                    font-size 5vmin
             a
                 sub-title()
                 display block !important
                 color linkblue
                 text-align center
-                &:hover
-                    color lighten(linkblue, 15)
+                +above(breaks.mobile)
+                    &:hover
+                        color lighten(linkblue, 15)
             +below(breaks.mobile)
                 h2
                     margin-bottom 35px
@@ -664,7 +728,7 @@ a, a.link, a.link:visited
                 
 .info-toggle
     position absolute
-    top 16vh
+    top 4vw
     left 6vh
     cursor pointer
     white-space nowrap
@@ -688,6 +752,7 @@ a, a.link, a.link:visited
             padding-left 6px
         +below(breaks.mobile)
             small-txt()
+            padding-left 12px
     &:before
         content ''
         display inline-block
@@ -704,6 +769,10 @@ a, a.link, a.link:visited
         +below(breaks.mobile)
             width 30px
             height 30px
+            box-shadow 0 0 0.5px 0px white inset, 0 0 0.5px 0px white
+            border-width 1px
+            background-size auto 45%
+            
     &.on
         &:before
            background-image url('./assets/img/X.svg')

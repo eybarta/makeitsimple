@@ -32,7 +32,9 @@ med = 620px
                 color #16507d
                 opacity 1
                 transition opacity 400ms ease
-                font-size 14px
+                +below(breaks.mobile)
+                    font-size 16px
+
             img
                 width 100%
                 opacity 1
@@ -134,7 +136,11 @@ med = 620px
     .swiper-pagination-bullets
         margin-top 80px
         +below(breaks.mobile)
-            margin-top 35px        
+            margin-top 35px 
+            background #ccc
+            .swiper-pagination-bullet
+                background #fff
+                opacity 1
 // SWIPER PAGINATION BULLETS
 
 
@@ -154,8 +160,14 @@ med = 620px
         border-radius 45px
         height 34px
         white-space nowrap
+        overflow hidden
         +below(breaks.mobile)
-            padding 0 6px
+            padding 0 8px
+    
+        &.mis-swiper-pagination
+            +below(breaks.mobile)
+                .swiper-pagination-bullet:first-child:after
+                    border-bottom-color #fff
     .swiper-pagination-bullet
         margin 0 5px
         width 12px
@@ -192,23 +204,25 @@ med = 620px
                 transform translate(0, -4px)
                 -ms-transform translate(0, -4px)
         &-active
-            background #16507d
+            background #16507d !important
             border-radius 50%
             position relative
             &:first-child
                 &:after
                     border-bottom-color #16507d !important
-       
-
-
 // PAGES SLIDER CONFIG
+        
  .pages-wrap
     .swiper-pagination
         position absolute
         bottom auto !important
         top 93vh
         +below(breaks.mobile)
-            top 80vh
+            top 75vh
+    &.android
+        .swiper-pagination
+            +below(breaks.mobile)
+                top 90vh
         
 
 // VIDEO SLIDER

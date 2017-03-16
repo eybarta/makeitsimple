@@ -31,14 +31,14 @@ export default {
     computed: {
         parsedTxt() {
             let txt = this.txt;
-            if (txt.length>100) {
+            if (window.screen.width>640 && txt.length>100) {
                 return this.breaktext(txt, 80)
             }     
             return txt;       
         },
         parsedTitle() {
                 let titleTxt = this.h2.txt || this.h2;
-                if (titleTxt.length>30) {
+                if (window.screen.width>640 && titleTxt.length>30) {
                     // from break variable (1-0 based nth word from start of string)
                     let breakword = this.h2.break-1 || null;
 

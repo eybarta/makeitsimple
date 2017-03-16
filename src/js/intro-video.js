@@ -6,7 +6,7 @@ import * as introAnim from './intro-animation'
 var $trig, $introVideo, $desktop, $playImg;
 
 export function initIntroVideo () {
-    $desktop = $(window).width()>1025;
+    $desktop = $(window).width()>1023;
     $playImg = $("#playintro img");
     $trig = $desktop ? $("#intro") : $("#simpleIntroMobile");
     $introVideo = $("#introvideo");
@@ -38,7 +38,7 @@ function  playIntroVideo() {
     $("header").hide();
     $trig.toggleClass('play');
     $playImg.hide();
-    $introVideo.attr('src', 'http://simple.mis-implants.com/vr8').show()
+    $introVideo.attr('src',  $desktop ? 'http://simple.mis-implants.com/vr8' : 'https://www.youtube.com/embed/k_SKT7ke-38').show()
     $("#closeIntro").show().on('click', closeTriggeHandler)
     
 }

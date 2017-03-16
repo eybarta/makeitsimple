@@ -40,24 +40,20 @@ export function initSwiper()  {
 export function initPagesSwiper() {
         pagesSwiper = new Swiper('.swiper-container', {
             pagination: '.swiper-pagination',
-            simulateTouch: false,
+            simulateTouch: true,
             paginationClickable: true,
             slidesPerView:1,
             spaceBetween:0,
-            keyboardControl: true,
             autoHeight: true,
             hashnav: true,
+            threshold: 30,
             hashnavWatchState: true,
-            longSwipes:true,
-            shortSwipes:false,
             preloadImages: false,
             lazyLoadingInPrevNext: true,
             nextButton: '.swiper-button-next',
             prevButton: '.swiper-button-prev',
             onInit(swiper) {
                 fixSwiperHeightIssue(swiper);
-                
-
                 $(window).on('keyup.pages', e => {
                     if (e.keyCode==37) {
                         // left
@@ -87,7 +83,9 @@ export function videoSwiper() {
         paginationClickable: true,
         slidesPerView:1,
         spaceBetween:0,
+        shortSwipes: true,
         keyboardControl: true,
+        controlInverse: true,
         autoHeight: true,
         autoplay: 11005,
         loop: true,

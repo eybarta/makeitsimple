@@ -6,8 +6,8 @@ const DashboardPlugin = require('webpack-dashboard/plugin');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const WebpackCleanupPlugin = require('webpack-cleanup-plugin');
 const autoprefixer = require('autoprefixer');
-
-const nodeEnv = 'development';
+const autoprefixer2 = require('autoprefixer-stylus');
+const nodeEnv = process.env.NODE_ENV || 'development';
 const isProduction = nodeEnv === 'production';
 
 const buildPath = path.resolve(__dirname, 'dist');
@@ -21,14 +21,14 @@ const plugins = [
     new HappyPack({
         id: 'js',
         threads: 4,
-        loaders: [ 'babel-loader' ],
+        loaders: [ 'babel-loader' ]        
     }),
     new webpack.LoaderOptionsPlugin(
 			{
 			test: /\.styl$/,
 			options: {
 					stylus: {
-                        use: [ rupture({implicit:false}), poststylus([ 'lost', 'rucksack-css' ])],
+                        use: [ autoprefixer2({browsers: ['last 2 versions', 'safari 5', 'ie 11', 'opera 12.1', 'ios 6', 'android 4']}), rupture({implicit:false}), poststylus([ 'lost', 'rucksack-css' ])],
 					}
 				},
 			  preferPathResolver: 'webpack',
@@ -69,7 +69,7 @@ const rules = [
         test: /\.styl$/,
         loader: ExtractTextPlugin.extract({ 
             fallbackLoader:'style-loader',
-            loader:'css-loader!stylus-loader',
+            loader:'css-loader!stylus-loader!postcss-loader',
             
             options: {
                 postcss: [require('lost')(), require('autoprefixer')(), require('rucksack-css')()]
@@ -80,8 +80,12 @@ const rules = [
     },
     {
         test: /\.js$/,
-        loader: 'happypack/loader?id=js',
-        exclude: /node_modules/
+        loader: 'babel-loader',
+        exclude: /node_modules/,
+        // babelrc: false,
+        // query: {
+        //   presets: ['es2015', 'babili'],
+        // },
     },
     {
         // Match woff2 in addition to patterns like .woff?v=1.1.1.
@@ -141,7 +145,7 @@ if (isProduction) {
                 drop_console: true
             },
             output: {
-            comments: true,
+            comments: false,
             },
         }),
         new WebpackCleanupPlugin({

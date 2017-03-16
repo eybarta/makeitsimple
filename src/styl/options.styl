@@ -2,8 +2,14 @@
 @import 'settings'
 
 
-button, button:hover, button:active
+button
     outline none
+    &:active
+        outline none
+    +above(breaks.mobile)
+        &:hover
+            outline none
+    
 a
     text-decoration none
     color dark
@@ -60,7 +66,7 @@ for alias, prop in $space
     padding-left 2% !important
 
 .sub-title
-    sub-title()
+    sub-title()    
 .mid-txt
     mid-txt()
 .small-txt
@@ -76,6 +82,9 @@ for alias, prop in $space
     padding-left 3%
     text-align left
     vertical-align middle
+    +tablet(orientation: portrait)
+        width auto
+        padding-left 0
     +below(breaks.mobile)
         width auto
         padding 0

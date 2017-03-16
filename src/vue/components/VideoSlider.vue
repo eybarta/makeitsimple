@@ -9,6 +9,17 @@
                 <div class="swiper-slide">
                     <div :class="['info-overlay', !!infomode ? 'on' : '']">
                         <div class="inner">
+                            <h2>MORE BONE Where it Matters Most...</h2>
+                            <h5>V3 By MIS, Make It Simple</h5>
+                            <a target="_blank" href="http://www.mis-implants.com/Products/Implants/v3.aspx">Click for more  ></a>
+                        </div>
+                    </div>
+                    <video v-if="!isMobile" ref="vid3" :class="[infomode ? 'under' : '']" src="https://s3-eu-west-1.amazonaws.com/mis-implants/makeitsimple/Minisite/V3_ver.3.mp4" autoplay loop></video>
+                    <img v-else src="dist/img/animation/V3.gif" alt="">
+                </div>
+                <div class="swiper-slide">
+                    <div :class="['info-overlay', !!infomode ? 'on' : '']">
+                        <div class="inner">
                             <h2>As easy as 1, 2, 3...</h2>
                             <h5>MIS 4MATRIX, Make It Simple</h5>
                             <a target="_blank" href="http://www.mis-implants.com/Products/Regenerative-Solutions/Bone-Grafting-Materials/4MATRIX.aspx">Click for more  ></a>
@@ -29,17 +40,7 @@
                     <img v-else src="dist/img/animation/MGUIDE.gif" alt="">
                     
                 </div>
-                <div class="swiper-slide">
-                    <div :class="['info-overlay', !!infomode ? 'on' : '']">
-                        <div class="inner">
-                            <h2>MORE BONE Where it Matters Most...</h2>
-                            <h5>V3 By MIS, Make It Simple</h5>
-                            <a target="_blank" href="http://www.mis-implants.com/Products/Implants/v3.aspx">Click for more  ></a>
-                        </div>
-                    </div>
-                    <video v-if="!isMobile" ref="vid3" :class="[infomode ? 'under' : '']" src="https://s3-eu-west-1.amazonaws.com/mis-implants/makeitsimple/Minisite/V3_ver.3.mp4" autoplay loop></video>
-                    <img v-else src="dist/img/animation/V3.gif" alt="">
-                </div>
+                
             </div>
         </div>
         <div class="video-prev swiper-button-prev" ref="prev" @click.prevent="prevClicked"></div>

@@ -1,26 +1,28 @@
 <template>
-    <div class="info-block pt-max" :class="[group.type=='numbers' ? 'num-grp' : '']">
-        <h1 v-if="title.tag=='h1'" v-text="title.txt"></h1>
-        <h3 v-else-if="title.tag=='h3'" v-html="titleText" :class="[breakWords ? 'breaked' : '', !!title.classNames ? title.classNames : '' ]"></h3>
-        <div v-if="!!txt" class="centered-text pb-max pt-bigger" v-text="txt"></div>
-        <ul id="itemlist" :class="[group.items.length>3 ? 'group-4' : 'group-3', 'centered', 'items', 'pt-big']">
-            <li class="pb-med" v-if="group.type=='numbers'" v-for="(item, index) in group.items">
-                <div class="big-num" :class="[numload ? '' : 'transparent', item.title>9 ? 'dbl' : '']" >
-                    <div :class="['symbol', afterload ? 'load' : '', item.symbol=='+' ? 'small-pad' : '']" v-if="!!item.symbol" alt="Plus" v-text="item.symbol"></div>
-                    <count-up v-if="numload && isNumber(item.title)" :start="0" :end="parseInt(item.title)" :decimals="0" :duration="2.5" :options="countOptions"></count-up>
-                    <span v-else v-html="item.title" :class="[isNaN(item.title) ? '' : 'bigger']"></span>
-                </div>
-                <p class="midtxt tcenter" v-text="item.text"></p>
-            </li>
-            <li  v-if="group.type=='images'" v-for="(item, index) in group.items" :class="[index==1 ? 'm0' : '']">
-                <div class="img-wrap">
-                    <img :src="item.img.src" alt="item.img.alt">
-                </div>
-                <div class="out-links">
-                    <a v-for="link in item.links" target="_blank" :href="link.href">{{link.txt}} <span>></span></a>
-                </div>
-            </li>
-        </ul>
+    <div class="info-block" :class="[group.type=='numbers' ? 'num-grp gutter-top' : 'gutter-both']">
+        <div :class="[group.type=='numbers' ? 'center-mobile' : '']">
+            <h1 v-if="title.tag=='h1'" v-text="title.txt"></h1>
+            <h3 v-else-if="title.tag=='h3'" v-html="titleText" :class="[breakWords ? 'breaked' : '', !!title.classNames ? title.classNames : '' ]"></h3>
+            <div v-if="!!txt" class="centered-text pb-bigger pt-bigger" v-text="txt"></div>
+            <ul id="itemlist" :class="[group.items.length>3 || smallScreen ? 'group-4' : 'group-3', 'centered', 'items', 'pt-big']">
+                <li v-if="group.type=='numbers'" v-for="(item, index) in group.items">
+                    <div class="big-num" :class="[numload ? '' : 'transparent', item.title>9 ? 'dbl' : '']" >
+                        <div :class="['symbol', afterload ? 'load' : '', item.symbol=='+' ? 'small-pad' : '']" v-if="!!item.symbol" alt="Plus" v-text="item.symbol"></div>
+                        <count-up v-if="numload && isNumber(item.title)" :start="0" :end="parseInt(item.title)" :decimals="0" :duration="2.5" :options="countOptions"></count-up>
+                        <span v-else v-html="item.title" :class="[isNaN(item.title) ? '' : 'bigger']"></span>
+                    </div>
+                    <p class="midtxt tcenter" v-text="item.text"></p>
+                </li>
+                <li  v-if="group.type=='images'" v-for="(item, index) in group.items" :class="[index==1 ? 'm0' : '']">
+                    <div class="img-wrap">
+                        <img :src="item.img.src" alt="item.img.alt">
+                    </div>
+                    <div class="out-links">
+                        <a v-for="link in item.links" target="_blank" :href="link.href">{{link.txt}} <span>></span></a>
+                    </div>
+                </li>
+            </ul>
+        </div>
         <div v-if="!!image" class="bottom-graphic" :style="'background-image:url('+image+')'"></div>
     </div>
 </template>
@@ -77,9 +79,13 @@ export default {
       CountUp  
     },
     computed: {
+        smallScreen() {
+            let triggerme = this.trigger;
+            return window.innerWidth < 1024;
+        },
         isDevice() {
             let triggerme = this.trigger;
-            return window.innerWidth < 769;
+            return window.innerWidth < 768;
         },
         titleText() {
             if (this.breakWords) {
@@ -151,4 +157,7 @@ h3
         left 92%
     &.small-pad
         padding 4%
+.num-grp
+    li
+        margin-bottom 6vw
 </style>
