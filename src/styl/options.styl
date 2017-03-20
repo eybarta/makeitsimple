@@ -2,6 +2,7 @@
 @import 'settings'
 
 
+
 button
     outline none
     &:active
@@ -79,12 +80,18 @@ for alias, prop in $space
         width auto
 .title-right
     width 56%
-    padding-left 3%
+    padding-left 2%
     text-align left
     vertical-align middle
+    span
+        padding-left 5%
+    +below(breaks.base)
+        width 54%
     +tablet(orientation: portrait)
         width auto
         padding-left 0
+        span
+            padding-left 0
     +below(breaks.mobile)
         width auto
         padding 0
@@ -102,9 +109,20 @@ for alias, prop in $space
 // gutters
 .gutter
     &-both
-        gutters()
+        gutters(8vh, 8vh)
+        +mobile()
+            gutters(14vh, 14vh)
     &-top
-        gutters(14vh, false)
+        gutters(8vh, false)
+        +mobile()
+            gutters(14vh, false)
     &-bottom
-        gutters(false, 14vh)
+        gutters(false, 8vh)
+        +mobile()
+            gutters(false, 14vh)
         
+        
+
+// blur
+.blurme
+    blur-me()

@@ -1,8 +1,8 @@
 import $ from 'jquery'
 import _ from 'lodash'
 import {sectionsInView} from './sections-inview'
-import { closeIntroVideo } from './intro-video'
-import { _introAnimEnded, introAnimToEnd, introAnimEl, introAnimLoop, introAnimBlurAbove, introAnimBlurBehind, introAnimRestart, hideHotSpot, showHotSpot } from './intro-animation'
+// import { closeIntroVideo } from './intro-video'
+import { _introAnimEnded, introAnimToEnd, introAnimEl, introAnimLoop, introAnimBlurAbove, introAnimBlurBehind, introAnimRestart } from './intro-animation'
 var $links, $toggle, introAnimation, mintimer, maxtimer, animtimer, scrollstart = true, homeclicked =false, scrollCount = 0;
 
 var header = {
@@ -32,6 +32,7 @@ export function initScrollNav() {
 function bindMenuEvents() {
     $links.on('click', function(e) {
             e.preventDefault();
+            e.stopPropagation();
             if (!$desktop) {
                 minimizeMenu();
             }
@@ -60,7 +61,10 @@ function bindMenuEvents() {
                     // console.log('clicked Home');
                     homeclicked = true;
                     scrollCount = 0;
-                    introAnimRestart();
+                    var event = new CustomEvent('restartIntroAnim');
+                    var el = document.getElementById('intro');
+                    el.dispatchEvent(event)
+                    // introAnimRestart();
                 }
             }
     })
@@ -101,7 +105,7 @@ function scrollCheck(e) {
     // console.log('scrolling.. check');
     
     handleMinMaxOnScroll();
-    if ( $(window).width()>1023) {
+    if ( $(window).width()>1024) {
         handleHeaderOnScroll();
         handleIntroAnimOnScroll();
         handleOnScrollSticky();
@@ -141,7 +145,7 @@ function handleHeaderOnScroll() {
         }
         if (scrolltop>499) {
             $("#intro").removeClass('stick').removeClass('playoverlay')
-            closeIntroVideo();
+            // closeIntroVideo();
             header.el.show();
         }
         
@@ -152,18 +156,18 @@ function handleHeaderOnScroll() {
     }
 }
 function handleOnScrollSticky() {
-    let scrolltop = $(window).scrollTop();
-    if (scrolltop<499) {
-        $("#intro").addClass('stick');
-    }
-    else {
-        $("#intro").removeClass('stick')
-    }
+    // let scrolltop = $(window).scrollTop();
+    // if (scrolltop<499) {
+    //     $("#intro").addClass('stick');
+    // }
+    // else {
+    //     $("#intro").removeClass('stick')
+    // }
 }
 
 function handleMinMaxOnScroll() {
     let scrolltop = $(window).scrollTop();
-    if ($desktop && scrolltop<5 && !$("#intro").hasClass('play') && header.el.hasClass('hamburger') ) {
+    if ($(window).width()>1024 && scrolltop<5 && !$("#intro").hasClass('play') && header.el.hasClass('hamburger') ) {
         maximizeMenu();
     }
     else if (scrolltop>5 && !header.el.hasClass('hamburger')) {
@@ -174,7 +178,6 @@ function handleMinMaxOnScroll() {
 function handleIntroAnimOnScroll() {
     let scrolltop = $(window).scrollTop();
     if (scrolltop<5) {
-        hideHotSpot();
         if (_introAnimEnded && scrollCount>2) {
             introAnimToEnd();
         } else {
@@ -203,20 +206,24 @@ function minimizeMenu(e) {
             preventStop(e)
         }
         header.el
-            .addClass('animate')
             .removeClass('maximized')
-            .addClass('seed')
-            .addClass("hamburger");
+            .addClass('animate')
             mintimer = setTimeout(function() {
                 header.el
                     .on('click', maximizeMenu)
-                    .removeClass('seed')
-                    .addClass("placed");
-                    header.status = 'minimized';
+                    .addClass("hamburger")
+                    
+                    
+                    mintimer = setTimeout(function() {
+                        
+                                header.el.addClass("placed");
+                                header.status = 'minimized';
+                       
+                    }, 500)
                     if (!$desktop) {
                         $(window).off('scroll').on('scroll', scrollCheck);
                     }
-            },300)
+            },400)
     }
 }
 function maximizeMenu(e) {

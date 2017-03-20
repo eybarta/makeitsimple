@@ -3,23 +3,28 @@
 @import 'settings'
 
 body
+    +below(737px,orientation: landscape)
+        background url('./assets/img/landscape-unsupported.jpg') no-repeat 0 0 / cover
+        overflow hidden
+        *
+            display none
+    @media all and (min-width:768px) and (max-width:1024px) and (orientation: portrait)
+        background url('./assets/img/portrait-not-supported.jpg') no-repeat 0 0 / cover
+        overflow hidden
+        *
+            display none
+    position relative
     font-family "Helvetica Thin", "Helvetica Neue", Helvetica, Arial, sans-serif
     font-weight 300
     & > *
         font-family "Helvetica Thin", "Helvetica Neue", Helvetica, Arial, sans-serif
-        
 
 
 .full-height
     width 100%
     min-height 100vh
 
-#top
-    position relative
-    height calc(100vh + 500px)   
-    min-height 100vh
-    +below(breaks.mobile)
-        height 100vh
+
 .wrap
     img.big_graphic
         vertical-align middle
@@ -46,6 +51,8 @@ body
         padding 70px 0 0 2%
         .info-title
             padding 0 5%
+            h2
+                padding-bottom 20px
             +below(breaks.mobile)
                 padding 0
         +below(breaks.base)
@@ -85,7 +92,8 @@ for num in (1..12)
     & > *
         lost-column 1/4 4 2%
         +below(breaks.big)
-            lost-column 1/2 2 2%
+            &:not(.imgs)
+                lost-column 1/2 2 2%
         +below(breaks.mobile)
             lost-column 1/1 1 0
     
@@ -104,6 +112,20 @@ footer
     & > ul
         centered(1000)
         padding 0 30px
+        +tablet(orientation: landscape)
+            max-width 66vw
+            padding 0
+            h6
+                float left
+                width 25%
+                &:after
+                    width 40%
+
+            li>div
+                overflow hidden
+                padding-left 45px
+                .minitxt
+                    font-size 16px
         +below(breaks.mobile)
             padding 0
         & > *
@@ -119,6 +141,8 @@ footer
 
     .minitxt
         small-txt()
+        font-size 16px
+        font-family 'HelveticaLight'
         margin-bottom 10px
         color darken(lightgray, 40)
         line-height 1.3
@@ -138,6 +162,7 @@ footer
     h6
         margin-bottom 20px
         color linkgray
+        font-family 'HelveticaLight'
         &:after
             content ''
             display block

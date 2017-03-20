@@ -13,3 +13,15 @@ export function globalCustomEventPoly() {
 
   window.CustomEvent = CustomEvent;
 }
+
+
+export function once(node, type, callback) {
+    // create event
+    node.addEventListener(type, function(e) {
+        // remove event
+        node.removeEventListener(type, arguments.callee);
+        // call handler
+        return callback(e);
+    });
+
+}

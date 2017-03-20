@@ -40,16 +40,18 @@ export function initSwiper()  {
 export function initPagesSwiper() {
         pagesSwiper = new Swiper('.swiper-container', {
             pagination: '.swiper-pagination',
-            simulateTouch: true,
+            simulateTouch: false,
             paginationClickable: true,
             slidesPerView:1,
+            shortSwipes: true,
             spaceBetween:0,
             autoHeight: true,
             hashnav: true,
-            threshold: 30,
+            threshold: 35,
             hashnavWatchState: true,
             preloadImages: false,
             lazyLoadingInPrevNext: true,
+            touchMoveStopPropagation: true,
             nextButton: '.swiper-button-next',
             prevButton: '.swiper-button-prev',
             onInit(swiper) {
@@ -87,14 +89,16 @@ export function videoSwiper() {
         keyboardControl: true,
         controlInverse: true,
         autoHeight: true,
-        autoplay: 11005,
+        autoplay: 11000,
+        autoplayDisableOnInteraction: true,
         loop: true,
         nextButton: '.video-next',
         prevButton: '.video-prev',
         onTransitionStart(swiper) {
                 let event = new CustomEvent('slidechange'),
                     el = document.getElementById('vidSlider');
-                    el.dispatchEvent(event)
+                    el.dispatchEvent(event);
+                    swiper.startAutoplay()
         },
         onReachEnd(swiper) {
              let event = new CustomEvent('lastslide'),

@@ -1,13 +1,14 @@
 import $ from 'jquery'
 // Intro Simple Animation
 
-var $introAnim, $introAnimBlur, $introImage, $hotspot;
+var $introAnim, $introAnimBlur, $introImage, $hotspot, $desktop;
 
 const animation = 'https://s3-eu-west-1.amazonaws.com/mis-implants/makeitsimple/Minisite/First-Animation.mp4';
 const blurredAnimation = 'https://s3-eu-west-1.amazonaws.com/mis-implants/makeitsimple/Minisite/FirstAnimationBlur.mp4';
 export var _introAnimEnded = false;
 
 export function initIntroAnimation() {
+    $desktop = $(window).width()>1024;
     $introAnim = $("#introAnim");
     $introAnimBlur = $("#introAnimBlur");
     $introImage = $("#simpleIntro");
@@ -34,77 +35,117 @@ export function introAnimEl() {
 }
 
 export function stop() {
-    $introAnim.get(0).pause();
-    $introAnimBlur.get(0).pause();
+    $introAnim = $("#introAnim");
+    $introAnimBlur = $("#introAnimBlur");
+    if (!!$introAnim && !!$introAnimBlur && !isMozillaOrIE) {
+        $introAnim.get(0).pause();
+        $introAnimBlur.get(0).pause();
+    }
 }
 
 export function hide() {
-    $introAnim.fadeOut(100);
-    $introAnimBlur.fadeOut(100);
-    $introImage.fadeOut(100);
+    $introAnim = $("#introAnim");
+    $introAnimBlur = $("#introAnimBlur");
+    $introImage = $("#simpleIntro");
     
-}
-
-export function hideHotSpot() {
-    $hotspot.hide();   
-}
-export function showHotSpot() {
-    $hotspot.show();
+    if (!!$introAnim && !!$introAnimBlur && !isMozillaOrIE) {
+        $introAnim.fadeOut(100);
+        $introAnimBlur.fadeOut(100);
+        $introImage.fadeOut(100);
+    }
 }
 export function play() {
-    $introAnim.get(0).play();
-    $introAnimBlur.get(0).play();
+    $introAnim = $("#introAnim");
+    $introAnimBlur = $("#introAnimBlur");
+    if (!!$introAnim && !!$introAnimBlur && !isMozillaOrIE) {
+        $introAnim.get(0).play();
+        $introAnimBlur.get(0).play();
+    }
 }
 
 export function show() {
-    $introAnim.fadeIn(200);
-    $introAnimBlur.fadeIn(200);
-    $introImage.fadeIn(200);
+    $introAnim = $("#introAnim");
+    $introAnimBlur = $("#introAnimBlur");
+    $introImage = $("#simpleIntro");
+    
+    if (!!$introAnim && !!$introAnimBlur && !isMozillaOrIE) {
+        $introAnim.fadeIn(200);
+        $introAnimBlur.fadeIn(200);
+        $introImage.fadeIn(200);
+    }
 }
 
 export function introAnimLoop() {
-    if ($introAnimBlur.get(0).currentTime > 12) {
-        $introAnim.get(0).currentTime = 0;
-        $introAnimBlur.get(0).currentTime = 0;
+    $introAnim = $("#introAnim");
+    $introAnimBlur = $("#introAnimBlur");
+    if (!!$introAnim && !!$introAnimBlur && !isMozillaOrIE) {
+        if ($introAnimBlur.get(0).currentTime > 12) {
+            $introAnim.get(0).currentTime = 0;
+            $introAnimBlur.get(0).currentTime = 0;
+        }
+        play();
     }
-    play();
 }
 export function introAnimToEnd() {
-    // console.log('in intro anim to end');
+    $introAnim = $("#introAnim");
+    $introAnimBlur = $("#introAnimBlur");
+    $introImage = $("#simpleIntro");
+    
+    if (!!$introAnim && !!$introAnimBlur && !isMozillaOrIE) {
         $introAnim.hide();
         $introAnimBlur.hide();
         $introImage.show();        
+    }
 }
 export function introAnimRestart() {
-    console.log('restart animation');
-    $introAnim.get(0).currentTime = 0;
-    $introAnimBlur.get(0).currentTime = 0;
-    $introAnim.show();
-    $introAnimBlur.show();
-    play();
+    console.log('introAnimRestart');
+    $introAnim = $("#introAnim");
+    $introAnimBlur = $("#introAnimBlur");
+    if (!!$introAnim && !!$introAnimBlur && !isMozillaOrIE) {
+        $introAnim.get(0).currentTime = 0;
+        $introAnimBlur.get(0).currentTime = 0;
+        $introAnim.show();
+        $introAnimBlur.show();
+        play();
+    }
 }
 export function loadAnim() {
-    $introAnim.attr('src', animation);
+    $introAnim = $("#introAnim");
+    
+    if (!!$introAnim && !isMozillaOrIE) {
+        $introAnim.attr('src', animation);
+    }
 }
 export function loadAnimBlur() {
-    $introAnimBlur.attr('src', blurredAnimation);
+    $introAnimBlur = $("#introAnimBlur");
+    if (!!$introAnimBlur && !isMozillaOrIE) {
+        $introAnimBlur.attr('src', blurredAnimation);
+    }
 }
 
 export function introAnimBlurAbove() {
-    // console.log('introAnimBlurAbove');
-    $introAnimBlur.css('z-index', 10);
-    $introAnim.css('z-index', 9);
-    $introAnim.show()
-    $introAnimBlur.show()
-    
-    
+    $introAnim = $("#introAnim");
+    $introAnimBlur = $("#introAnimBlur");
+    if (!!$introAnim && !!$introAnimBlur && !isMozillaOrIE) {
+        $introAnimBlur.css('z-index', 10);
+        $introAnim.css('z-index', 9);
+        $introAnim.show()
+        $introAnimBlur.show()
+    }
 }
 
 export function introAnimBlurBehind() {
-    // console.log('introAnimBlurBehind');
-    $introAnimBlur.css('z-index', 9);
-    $introAnim.css('z-index', 10);
-    $introAnim.show()
-    $introAnimBlur.show()
-    
+    $introAnim = $("#introAnim");
+    $introAnimBlur = $("#introAnimBlur");
+    if (!!$introAnim && !!$introAnimBlur && !isMozillaOrIE) {
+        $introAnimBlur.css('z-index', 9);
+        $introAnim.css('z-index', 10);
+        $introAnim.show()
+        $introAnimBlur.show()
+    }
 }
+
+var isMozillaOrIE = function() {
+    let ua = window.navigator.userAgent;
+    return (/firefox/gi.test(ua) || "ActiveXObject" in window);
+}()

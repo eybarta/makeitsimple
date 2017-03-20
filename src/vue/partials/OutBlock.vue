@@ -17,9 +17,7 @@ export default {
         breaktext(txt, count) {
             let rgx = new RegExp(`^[\\.\\,\\w\\s\\+\\-\\'\\;]{0,${count}} `, 'i');
             let match = txt.match(rgx);
-            console.log('match>> ', match);
             let toArr = match[0] ? _.trim(match[0]).split(' ') : null;
-            console.log('toArr > ', toArr);
             if (!toArr) {
                 return txt;
             }

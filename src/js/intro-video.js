@@ -6,7 +6,7 @@ import * as introAnim from './intro-animation'
 var $trig, $introVideo, $desktop, $playImg;
 
 export function initIntroVideo () {
-    $desktop = $(window).width()>1023;
+    $desktop = $(window).width()>1024;
     $playImg = $("#playintro img");
     $trig = $desktop ? $("#intro") : $("#simpleIntroMobile");
     $introVideo = $("#introvideo");

@@ -3,11 +3,13 @@ const countrylist = [{"country":"ALBANIA","latlng":[41.153332,20.168331],"link":
 
 var markers = [],
     map,
-    isMobile;
-export var mapHasBeenPinned = false;
+    isMobile,
+    isDesktop,
+    mapHasBeenPinned = false;
 
 export function initMap() {
     isMobile = window.screen.width<640;
+    isDesktop = window.screen.width>1024;
     var latlng = new google.maps.LatLng(28,	0);
     var draggable = true;
     var myOptions = {
@@ -136,15 +138,17 @@ export function initMap() {
     };
     map = new google.maps.Map(document.getElementById("google-map-area-57a583ea6e019"), myOptions);
 
-    if (isMobile) {
+    if (!isDesktop) {
         pinupMap();
     }
 }
 export function pinupMap() {
-    for (var i = 0; i < countrylist.length; i++) {
-        addMarkerWithTimeout(countrylist[i], i * 50)
+    if (!mapHasBeenPinned) {
+        for (var i = 0; i < countrylist.length; i++) {
+            addMarkerWithTimeout(countrylist[i], i * 50)
+        }   
+        mapHasBeenPinned = true;
     }
-    mapHasBeenPinned = true;
 }
 
 
@@ -154,7 +158,8 @@ function addMarkerWithTimeout(country, timeout) {
         
         var marker_data = {
             position: new google.maps.LatLng(country.latlng[0],	country.latlng[1]),
-            icon: "dist/img/mis-pin.svg",
+            icon: { url: "dist/img/mis-pin.svg", scaledSize: new google.maps.Size(31, 29)},
+            optimized: false,
             map: map,
             title: country.title,
         }

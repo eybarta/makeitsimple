@@ -14,8 +14,9 @@
                             <a target="_blank" href="http://www.mis-implants.com/Products/Implants/v3.aspx">Click for more  ></a>
                         </div>
                     </div>
-                    <video v-if="!isMobile" ref="vid3" :class="[infomode ? 'under' : '']" src="https://s3-eu-west-1.amazonaws.com/mis-implants/makeitsimple/Minisite/V3_ver.3.mp4" autoplay loop></video>
-                    <img v-else src="dist/img/animation/V3.gif" alt="">
+                    <video v-if="isDesktop" ref="vid3" :class="[infomode ? 'under' : '']" src="https://s3-eu-west-1.amazonaws.com/mis-implants/makeitsimple/Minisite/V3_ver.3.mp4" autoplay loop></video>
+                    <img v-else-if="isTablet" src="dist/img/animation/V3-op.gif" alt="">
+                    <img v-else src="dist/img/animation/V3_mini.gif" alt="">
                 </div>
                 <div class="swiper-slide">
                     <div :class="['info-overlay', !!infomode ? 'on' : '']">
@@ -25,8 +26,9 @@
                             <a target="_blank" href="http://www.mis-implants.com/Products/Regenerative-Solutions/Bone-Grafting-Materials/4MATRIX.aspx">Click for more  ></a>
                         </div>
                     </div>
-                    <video v-if="!isMobile" ref="vid1" :class="[infomode ? 'under' : '']"  src="https://s3-eu-west-1.amazonaws.com/mis-implants/makeitsimple/Minisite/4MATRIX_3.mp4" autoplay loop></video>
-                    <img v-else src="dist/img/animation/4MATRIX.gif" alt="">
+                    <video v-if="isDesktop" ref="vid1" :class="[infomode ? 'under' : '']"  src="https://s3-eu-west-1.amazonaws.com/mis-implants/makeitsimple/Minisite/4MATRIX_3.mp4" autoplay loop></video>
+                    <img v-else-if="isTablet" src="dist/img/animation/4MATRIX-op.gif" alt="">
+                    <img v-else src="dist/img/animation/4MATRIX_mini.gif" alt="">
                 </div>
                 <div class="swiper-slide">
                     <div :class="['info-overlay', !!infomode ? 'on' : '']">
@@ -36,15 +38,15 @@
                             <a target="_blank" href="http://www.mis-implants.com/Products/Digital-Dentistry/MGUIDE.aspx">Click for more  ></a>
                         </div>
                     </div>
-                    <video v-if="!isMobile" ref="vid2" :class="[infomode ? 'under' : '']" src="https://s3-eu-west-1.amazonaws.com/mis-implants/makeitsimple/Minisite/MGUIDE_ver.3.mp4" autoplay loop></video>
-                    <img v-else src="dist/img/animation/MGUIDE.gif" alt="">
-                    
+                    <video v-if="isDesktop && !isMozillaOrIE" ref="vid2" :class="[infomode ? 'under' : '']" src="https://s3-eu-west-1.amazonaws.com/mis-implants/makeitsimple/Minisite/MGUIDE_ver.3.mp4" autoplay loop></video>
+                    <img v-else-if="isTablet || isMozillaOrIE" src="dist/img/animation/MGUIDE-op.gif" alt="">
+                    <img v-else src="dist/img/animation/MGUIDE_mini.gif" alt="">
                 </div>
                 
             </div>
         </div>
-        <div class="video-prev swiper-button-prev" ref="prev" @click.prevent="prevClicked"></div>
-        <div class="video-next swiper-button-next" ref="next" @click.prevent="nextClicked"></div>
+        <div class="video-prev swiper-button-prev" ref="prev"></div>
+        <div class="video-next swiper-button-next" ref="next"></div>
         <div class="video-swiper-pagination"></div>                    
     </div>
 </div>
@@ -102,10 +104,20 @@ export default {
         }
     },
     computed: {
+        isDesktop() {
+            let trigger = this.trigger;
+            return window.screen.width>1024
+        },
         isMobile() {
             let trigger = this.trigger;
-            let cond = document.body.offsetWidth<769;
-            return document.body.offsetWidth<769;
+            return window.screen.width<=736
+        },
+        isTablet() {
+            return !this.isMobile && !this.isDesktop;
+        },
+        isMozillaOrIE() {
+            let ua = window.navigator.userAgent;
+            return (/firefox/gi.test(ua) || "ActiveXObject" in window);
         }
     }
 }

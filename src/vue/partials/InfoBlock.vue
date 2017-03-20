@@ -4,7 +4,7 @@
             <h1 v-if="title.tag=='h1'" v-text="title.txt"></h1>
             <h3 v-else-if="title.tag=='h3'" v-html="titleText" :class="[breakWords ? 'breaked' : '', !!title.classNames ? title.classNames : '' ]"></h3>
             <div v-if="!!txt" class="centered-text pb-bigger pt-bigger" v-text="txt"></div>
-            <ul id="itemlist" :class="[group.items.length>3 || smallScreen ? 'group-4' : 'group-3', 'centered', 'items', 'pt-big']">
+            <ul id="itemlist" :class="[group.items.length>3 || smallScreen ? 'group-4' : 'group-3', group.items.length<4 ? 'less-items' : '',  'centered', 'items']">
                 <li v-if="group.type=='numbers'" v-for="(item, index) in group.items">
                     <div class="big-num" :class="[numload ? '' : 'transparent', item.title>9 ? 'dbl' : '']" >
                         <div :class="['symbol', afterload ? 'load' : '', item.symbol=='+' ? 'small-pad' : '']" v-if="!!item.symbol" alt="Plus" v-text="item.symbol"></div>
@@ -13,12 +13,12 @@
                     </div>
                     <p class="midtxt tcenter" v-text="item.text"></p>
                 </li>
-                <li  v-if="group.type=='images'" v-for="(item, index) in group.items" :class="[index==1 ? 'm0' : '']">
+                <li  v-if="group.type=='images'" v-for="(item, index) in group.items" :class="['imgs', index==1 ? 'm0' : '']">
                     <div class="img-wrap">
                         <img :src="item.img.src" alt="item.img.alt">
                     </div>
                     <div class="out-links">
-                        <a v-for="link in item.links" target="_blank" :href="link.href">{{link.txt}} <span>></span></a>
+                        <a v-for="link in item.links" target="_blank" :href="isDevice && !!link.pdf ? link.pdf : link.href">{{link.txt}} <span>></span></a>
                     </div>
                 </li>
             </ul>
@@ -54,6 +54,9 @@ export default {
             this.$set(this, 'numload', false);
             this.$set(this, 'afterload', false);
             this.numbersInViewHandler();
+            setTimeout(function() {
+                this.loadNumbers();
+            }.bind(this), 1900)
         }
     },
     mounted() {
@@ -101,16 +104,19 @@ export default {
         numbersInViewHandler() {
             inView.offset({ bottom: 300})
             inView('#itemlist').once('enter', el => {
-                this.$set(this, 'numload', true)
-                setTimeout(function() {
-                    this.$set(this, 'afterload', true)
-                }.bind(this), 1700)
+                this.loadNumbers();
             });
 
             setTimeout(() => {
                 // inView('#itemlist').emit('enter');
                 fixSwiperHeightIssue();
             }, 500)
+        },
+        loadNumbers() {
+            this.$set(this, 'numload', true)
+            setTimeout(function() {
+                this.$set(this, 'afterload', true)
+            }.bind(this), 1200)
         },
         resizeHandler() {
             // Nudge trigger to recompute computed properties on resize.
@@ -127,8 +133,8 @@ export default {
 }
 </script>
 <style lang="stylus" scoped>
-.info-block
-    min-height 400px
+// .info-block
+//     min-height 400px
 h3
     text-align center
 .dbl span
@@ -158,6 +164,13 @@ h3
     &.small-pad
         padding 4%
 .num-grp
+    ul
+        padding-top 70px
+        @media all and (max-width: 1024px)
+            padding 70px 12% 0
+        @media all and (max-width: 768px)
+            padding 70px 6% 0
+        
     li
-        margin-bottom 6vw
+        padding-bottom 70px
 </style>

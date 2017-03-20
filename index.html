@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="./dist/css/style.css">
 </head>
 <body class="root">
-    <header class="">
+    <header class="loading">
         <button id="toggle" class="toggler"></button>
         <div class="contain">
             <ul class="nav">
@@ -19,312 +19,250 @@
                 <li><a href="#faq">Frequently Asked Questions</a></li>
                 <li><a href="#more">Simply More information</a></li>
             </ul>
-            <a href="#top" class="logo"></a>
+            <a href="#top" class="logo"><img src="./dist/img/logo_makeitsimple.svg"></a>
         </div>
     </header>
     <div class="wrap">
-        <div id="top">
-            <div id="intro" class="intro hp full-height unattach">
-                <div id="hotspot" class="hotspot"></div>
-                <button id="closeIntro" class="close-btn"></button>
-                <img id="simpleIntro" src="dist/img/simple-intro.png" />
-                <img id="simpleIntroMobile" src="dist/img/mobile-play.png" />
-                <video id="introAnim" preload="auto" autoplay></video>
-                <video id="introAnimBlur" preload="auto" autoplay></video>
-                <div id='i360' class="i-360">
-                    <img src="dist/img/360-icon.png" alt="The video includes a 360° experience">
-                    <span>The video includes a <em>360°</em> experience</span>
-                </div>
-                <div id="playintro" class="play-overlay">
-                    <img src="dist/img/play-btn.png" alt="Play Video">
-                    <div class="intro-txt">
-                        <span>All the great things are simple...</span>
-                        <span>(Click to know more)</span>
-                    </div>
-                </div>
-                <iframe class="video-frame" id="introvideo" frameborder="0" allowfullscreen></iframe>
-                <!--<iframe class="video-frame" id="introvideo-mobile" src="https://www.youtube.com/embed/k_SKT7ke-38" frameborder="0" allowfullscreen></iframe>-->
-            </div>
-        </div>
-        <div class="preview-section" id="why">
-            <div class="center">
-                <img id="bigGraphic" class="big_graphic" src="dist/img/intro_graphic.jpg" alt="MIS Implants">
-                <div class="infobox">
-                    <div class="info-title">
-                        <h2 class="mb-big">Why Simple?</h2>
-                        <p class="sub-title txt">Simplification is a strategic imperative for MIS. We believe that this is the key to unlocking innovation and positioning ourselves for future success in an increasingly complex world.</p>
-                    </div>
-                    <div class="item-group group-3">
-                        <div class="item">
-                            <img src="dist/img/circle-simplify.png" alt="Simplify">
-                            <p class="minitxt">
-                                <strong>Our mission</strong> is to simplify implant dentistry. It is built into everything we do at MIS from research to engineering to product education.
-                            </p>
-                        </div>
-                        <div class="item">
-                            <img src="dist/img/circle-implant.png" alt="Implant">
-                            <p class="minitxt">
-                                <strong>To offer creative</strong> and comprehensive solutions to dental practitioners who are looking to simplify their practice and provide a better service to their patients.
-                            </p>
-                        </div>
-                        <div class="item">
-                            <img src="dist/img/circle-multi-implants.png" alt="Multi Implants">
-                            <p class="minitxt">
-                                <strong>To become the largest</strong> global dental implants manufacturer by making it simple for everyone, everywhere to use, enjoy and benefit from our products.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-        <div id="make" class="">
-            <div class="mis-slider pb-bigger center-mobile">
-                <h2 class="flip-title pb-bigger">
-                    <span class="title-right">MIS, Make It Simple</span>
-                    <span class="subtxt subtitle-left">Because simplicity is as simple as you make it.</span>
-                </h2>
-
-                <!--
-                // SLIDER >> MAKE IT SIMPLE
-                -->
-                <div class="swiper-control">
-                    <div class="swiper-container mis-swiper-container">
-                        <!-- Additional required wrapper -->
-                        <div class="swiper-wrapper">
-                            <!-- Slides -->
-                            <div class="swiper-slide">
-                                <a href="pages.html#More_with_less">
-                                    <img src="./dist/img/slides/mis-m.png" alt="More with less">
-                                </a>
-                                <div class="minitxt">More with less</div>
-                            </div>
-                            <div class="swiper-slide">
-                                <a href="pages.html#Agility_is_in_our_nature">
-                                    <img src="./dist/img/slides/mis-a.png" alt="Agility is in our nature">
-                                </a>
-                                <div class="minitxt">Agility is in our nature</div>
-                            </div>
-                            <div class="swiper-slide">
-                                <a href="pages.html#Key_to_satisfied_patients"> 
-                                    <img src="./dist/img/slides/mis-k.png" alt="Key to satisfied patients">
-                                </a>
-                                <div class="minitxt">Key to satisfied patients</div>
-                            </div>
-                            <div class="swiper-slide">
-                                <a href="pages.html#Easy_with_every_product">
-                                    <img src="./dist/img/slides/mis-e.png" alt="Easy with every product">
-                                </a>
-                                <div class="minitxt">Easy with every product</div>
-                            </div>
-                            <div class="swiper-slide">
-                                <a href="pages.html#Innovation_leading_the_way">
-                                    <img src="./dist/img/slides/mis-i.png" alt="Innovation leading the way">
-                                </a>
-                                <div class="minitxt">Innovation leading the way</div>
-                            </div>
-                            <div class="swiper-slide">
-                                <a href="pages.html#Technology_taken_to_the_limits"> 
-                                    <img src="./dist/img/slides/mis-t.png" alt="Technology taken to the limits">
-                                </a>
-                                <div class="minitxt">Technology taken to the limits</div>
-                            </div>
-                            <div class="swiper-slide">
-                                <a href="pages.html#Service_in_every_step_of_the_process"> 
-                                    <img src="./dist/img/slides/mis-s.png" alt="Service in every step of the process">
-                                </a>
-                                <div class="minitxt">Service in every step of the process</div>
-                            </div>
-                            <div class="swiper-slide">
-                                <a href="pages.html#Integrity_unwavering"> 
-                                    <img src="./dist/img/slides/mis-i2.png" alt="Integrity unwavering">
-                                </a>
-                                <div class="minitxt">Integrity unwavering</div>
-                            </div>
-                            <div class="swiper-slide">
-                                <a href="pages.html#Many_years_of_experience_and_expertise"> 
-                                    <img src="./dist/img/slides/mis-m2.png" alt="Many years of experience and expertise">
-                                </a>
-                                <div class="minitxt">Many years of experience and expertise</div>
-                            </div>
-                            <div class="swiper-slide">
-                                <a href="pages.html#Preferred_choice_of_dentists_worldwide"> 
-                                    <img src="./dist/img/slides/mis-p.png" alt="Preferred choice of dentists worldwide">
-                                </a>                                
-                                <div class="minitxt">Preferred choice of dentists worldwide</div>
-                            </div>
-
-                            <div class="swiper-slide">
-                                <a href="pages.html#Long_and_short_term_qualitative_research"> 
-                                    <img src="./dist/img/slides/mis-l.png" alt="Long & short term qualitative research">
-                                </a>
-                                <div class="minitxt">Long & short term qualitative research</div>
-                            </div>
-                            <div class="swiper-slide">
-                                <a href="pages.html#Everything_the_dentist_needs"> 
-                                    <img src="./dist/img/slides/mis-e2.png" alt="Everything the dentist needs">
-                                </a>
-                                <div class="minitxt">Everything the dentist needs</div>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- If we need navigation buttons -->
-                        <div class="swiper-button-prev mis-prev"></div>
-                        <div class="swiper-button-next mis-next"></div>
-                        <!-- If we need pagination -->
-                        <div class="swiper-pagination mis-swiper-pagination"></div>
-                </div>
-            </div>
-            <!--
-                Video slider with gradient background
+         <!--
+                Top Intro Section with intro animation and intro video
                 // LOADED WITH VUE**
             -->
-            <div id="vidSlider"></div>
+        <intro-section></intro-section>
+        <div id="rest" class="rest-of-page">
+            <div class="preview-section" id="why">
+                <div class="center">
+                    <img id="bigGraphic" class="big_graphic" src="dist/img/intro_graphic.jpg" alt="MIS Implants">
+                    <div class="infobox">
+                        <div class="info-title">
+                            <h2 class="mb-big">Why Simple?</h2>
+                            <p class="sub-title txt">Simplification is a strategic imperative for MIS. We believe that this is the key to unlocking innovation and positioning ourselves for future success in an increasingly complex world.</p>
+                        </div>
+                        <div class="item-group group-3">
+                            <div class="item">
+                                <img src="dist/img/circle-simplify.png" alt="Simplify">
+                                <p class="minitxt">
+                                    <strong>Our mission</strong> is to simplify implant dentistry. It is built into everything we do at MIS from research to engineering to product education.
+                                </p>
+                            </div>
+                            <div class="item">
+                                <img src="dist/img/circle-implant.png" alt="Implant">
+                                <p class="minitxt">
+                                    <strong>To offer creative</strong> and comprehensive solutions to dental practitioners who are looking to simplify their practice and provide a better service to their patients.
+                                </p>
+                            </div>
+                            <div class="item">
+                                <img src="dist/img/circle-multi-implants.png" alt="Multi Implants">
+                                <p class="minitxt">
+                                    <strong>To become the largest</strong> global dental implants manufacturer by making it simple for everyone, everywhere to use, enjoy and benefit from our products.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-        </div>
-        <!--
-            FAQ block
-        -->
-        <div class="faq-block center" id="faq">
-            <h2>Frequently Asked Questions</h2>
+            </div>
+            <div id="make" class="">
+                <div class="mis-slider pb-bigger center-mobile">
+                    <h2 class="flip-title pb-bigger">
+                        <span class="title-right"><span>MIS, Make It Simple</span></span>
+                        <span class="subtxt subtitle-left">Because simplicity is as simple as you make it.</span>
+                    </h2>
 
-            <div class="faq-control">
-                <h5>Make It Simple</h5>
-                <div class="qa">
-                    <ul>
-                        <li>
-                            <label for="_1">
-                                <input id="_1" type="radio" name="faq_group" checked hidden>
-                                <div>
-                                    <i class="plus"></i>
-                                    <h6>How exactly are you simple?</h6>
-                                    <div class="answer">Our simplicity starts at our core, even with the name of the company itself - MIS (Make It Simple)
-All of our efforts within the company focus on this mission: To simplify the process of producing our products – without compromising the final quality of course. To simplify the way in which you receive our products. To simplify the service you receive. To simplify logistical and procedural processes. To simplify the way relevant information is delivered. To simplify the cost in a way that fits every customer. And more…</div>
+                    <!--
+                    // SLIDER >> MAKE IT SIMPLE
+                    -->
+                    <div class="swiper-control">
+                        <div class="swiper-container mis-swiper-container">
+                            <!-- Additional required wrapper -->
+                            <div class="swiper-wrapper">
+                                <!-- Slides -->
+                                <div class="swiper-slide">
+                                    <a href="pages.html#More_with_less">
+                                        <img src="./dist/img/slides/mis-m.png" alt="More with less">
+                                    </a>
+                                    <div class="minitxt">More with less</div>
                                 </div>
-                            </label>
-                        </li>
-                        <li>
-                            <label for="_2">
-                                <input id="_2" type="radio" name="faq_group" hidden>
-                                <div>
-                                    <i class="plus"></i>
-                                    <h6>How do I know that you will make things simple for me?</h6>
-                                    <div class="answer">We put great effort and concern into what we can accomplish together in order to improve the simplicity of your work – so that in the end, this will be represented by the time you will be able to commit to the real thing – which is treating the maximum number of patients with minimum trivial and menial tasks.</div>
+                                <div class="swiper-slide">
+                                    <a href="pages.html#Agility_is_in_our_nature">
+                                        <img src="./dist/img/slides/mis-a.png" alt="Agility is in our nature">
+                                    </a>
+                                    <div class="minitxt">Agility is in our nature</div>
                                 </div>
-                            </label>
-                        </li>
-                        <li>
-                             <label for="_3">
-                                <input id="_3" type="radio" name="faq_group" hidden>
-                                <div>
-                                    <i class="plus"></i>
-                                    <h6>How do you make your products simple to use?</h6>
-                                    <div class="answer">At MIS, simplicity means getting all the tools you need to perform the implant placement with ease. With the Seven implant, for example, you will receive a final drill (for a simpler, clearer procedure) and a cover screw.</div>
+                                <div class="swiper-slide">
+                                    <a href="pages.html#Key_to_satisfied_patients"> 
+                                        <img src="./dist/img/slides/mis-k.png" alt="Key to satisfied patients">
+                                    </a>
+                                    <div class="minitxt">Key to satisfied patients</div>
                                 </div>
-                            </label>
+                                <div class="swiper-slide">
+                                    <a href="pages.html#Easy_with_every_product">
+                                        <img src="./dist/img/slides/mis-e.png" alt="Easy with every product">
+                                    </a>
+                                    <div class="minitxt">Easy with every product</div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <a href="pages.html#Innovation_leading_the_way">
+                                        <img src="./dist/img/slides/mis-i.png" alt="Innovation leading the way">
+                                    </a>
+                                    <div class="minitxt">Innovation leading the way</div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <a href="pages.html#Technology_taken_to_the_limits"> 
+                                        <img src="./dist/img/slides/mis-t.png" alt="Technology taken to the limits">
+                                    </a>
+                                    <div class="minitxt">Technology taken to the limits</div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <a href="pages.html#Service_in_every_step_of_the_process"> 
+                                        <img src="./dist/img/slides/mis-s.png" alt="Service in every step of the process">
+                                    </a>
+                                    <div class="minitxt">Service in every step of the process</div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <a href="pages.html#Integrity_unwavering"> 
+                                        <img src="./dist/img/slides/mis-i2.png" alt="Integrity unwavering">
+                                    </a>
+                                    <div class="minitxt">Integrity unwavering</div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <a href="pages.html#Many_years_of_experience_and_expertise"> 
+                                        <img src="./dist/img/slides/mis-m2.png" alt="Many years of experience and expertise">
+                                    </a>
+                                    <div class="minitxt">Many years of experience and expertise</div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <a href="pages.html#Preferred_choice_of_dentists_worldwide"> 
+                                        <img src="./dist/img/slides/mis-p.png" alt="Preferred choice of dentists worldwide">
+                                    </a>                                
+                                    <div class="minitxt">Preferred choice of dentists worldwide</div>
+                                </div>
 
-                        </li>
-                        <li>
-                             <label for="_4">
-                                <input id="_4" type="radio" name="faq_group" hidden>
-                                 <div>
-                                        <i class="plus"></i>
-                                        <h6>How do you make things simple for my surgical team?</h6>
-                                        <div class="answer">Support for you and your surgical team is a key priority for MIS. And here as well, the key is to make it simple. This is why your MIS sales rep is there for the dentist during surgery, both physically if necessary, on call or on line to guide and support you at every step in the process. In addition, there is a world of supporting information about all of our products and procedures in the form of online publications, instructions for use and maintenance as well as printed materials you will receive with each product or kit.</div>
+                                <div class="swiper-slide">
+                                    <a href="pages.html#Long_and_short_term_qualitative_research"> 
+                                        <img src="./dist/img/slides/mis-l.png" alt="Long & short term qualitative research">
+                                    </a>
+                                    <div class="minitxt">Long & short term qualitative research</div>
                                 </div>
-                            </label>
-                        </li>
-                    </ul>
+                                <div class="swiper-slide">
+                                    <a href="pages.html#Everything_the_dentist_needs"> 
+                                        <img src="./dist/img/slides/mis-e2.png" alt="Everything the dentist needs">
+                                    </a>
+                                    <div class="minitxt">Everything the dentist needs</div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- If we need navigation buttons -->
+                            <div class="swiper-button-prev mis-prev"></div>
+                            <div class="swiper-button-next mis-next"></div>
+                            <!-- If we need pagination -->
+                            <div class="swiper-pagination mis-swiper-pagination"></div>
+                    </div>
+                </div>
+                <!--
+                    Video slider with gradient background
+                    // LOADED WITH VUE**
+                -->
+                <video-slider></video-slider>
+            </div>
+            <!--
+                FAQ block
+                // LOADED WITH VUE**
+            -->
+            <faq></faq>
+            
+            <div class="google-map-wrapper" id="gmap">
+                <div class="google-map" id="google-map-area-57a583ea6e019" style="width:100%; height:800px;">
+                    &nbsp;
                 </div>
             </div>
-        </div>
-        <div class="google-map-wrapper" id="gmap">
-            <div class="google-map" id="google-map-area-57a583ea6e019" style="width:100%; height:800px;">
-                &nbsp;
+            <div class="info-block gutter-both center info-hp" id="more">
+                <h2 id="infoTitle" class="mb-max tcenter">SIMPLY MORE INFORMATION</h2>
+                <ul class="group-4">
+                    <li>
+                        <div class="img-wrap">
+                            <img src="dist/img/prints.svg" alt="Printing Catalog">
+                        </div>
+                        <div class="out-links">
+                            <a target="_blank" id="conicalLink" href="http://www.mis-implants.com/Media/Printed-Materials/Products.aspx?#37484">Conical  Printing Catalog  <span>></span></a>
+                            <a target="_blank" id="internalLink" href="http://www.mis-implants.com/Media/Printed-Materials/Products.aspx?#2560">Internal Printing Catalog <span>></span></a>
+                        </div>
+                    </li>
+                    <li class="m0 pl2">
+                        <div class="img-wrap">
+                            <img src="dist/img/implants.svg" alt="MIS Implants">
+                        </div>
+                        <div class="out-links">
+                            <a target="_blank" href="http://www.mis-implants.com/Products/Implants.aspx">Our Implants <span>></span></a>
+                            <a target="_blank" href="http://www.mis-implants.com/Products/Implants/v3.aspx">V3 Implant <span>></span></a>
+                            <a target="_blank" href="http://www.mis-implants.com/Products/Implants/c1.aspx">C1 Implant <span>></span></a>
+                            <a target="_blank" href="http://www.mis-implants.com/Products/Implants/seven.aspx">Seven Implant <span>></span></a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="img-wrap">
+                            <img src="dist/img/www.svg" alt="Mis Main Website">
+                        </div>
+                        <div class="out-links">
+                            <a target="_blank" href="http://www.mis-implants.com">MIS Main Website<span>></span></a>
+                            <a target="_blank" href="http://v3-implant.com">V3 Minisite<span>></span></a>
+                            <a target="_blank" href="http://www.vconcept.com">VCONCEPT Minisite<span>></span></a>
+                        </div>
+
+                    </li>
+                    <li>
+                        <div class="img-wrap">
+                            <img src="dist/img/eye.svg" alt="Printed Materials">
+                        </div>
+                        <div class="out-links">
+                            <a target="_blank" href="http://www.mis-implants.com/Media/Printed-Materials/Products.aspx">Printed Materials<span>></span></a>
+                            <a target="_blank" href="http://www.mis-implants.com/Media/Image-Gallery/Products.aspx">Image Gallery<span>></span></a>
+                            <a target="_blank" href="http://www.mis-implants.com/Media/Movies/Products.aspx">Videos<span>></span></a>
+                            <a target="_blank" href="http://www.mis-implants.com/Media/Movies/Lectures.aspx">Lectures<span>></span></a>
+                        </div>
+                    </li>
+                </ul>
             </div>
-        </div>
-        <div class="info-block gutter-both center" id="more">
-            <h2 id="infoTitle" class="mb-max tcenter">SIMPLY MORE INFORMATION</h2>
-            <ul class="group-4">
-                <li>
-                    <div class="img-wrap">
-                        <img src="dist/img/prints.svg" alt="Printing Catalog">
-                    </div>
-                    <div class="out-links">
-                        <a target="_blank" href="http://www.mis-implants.com/Media/Printed-Materials/Products.aspx?#37484">Conical  Printing Catalog  <span>></span></a>
-                        <a target="_blank" href="http://www.mis-implants.com/Media/Printed-Materials/Products.aspx?#2560">Internal Printing Catalog <span>></span></a>
-                    </div>
-                </li>
-                 <li class="m0 pl2">
-                    <div class="img-wrap">
-                        <img src="dist/img/implants.svg" alt="MIS Implants">
-                    </div>
-                    <div class="out-links">
-                        <a target="_blank" href="http://www.mis-implants.com/Products/Implants.aspx">Our Implants <span>></span></a>
-                        <a target="_blank" href="http://www.mis-implants.com/Products/Implants/v3.aspx">V3 Implant <span>></span></a>
-                        <a target="_blank" href="http://www.mis-implants.com/Products/Implants/c1.aspx">C1 Implant <span>></span></a>
-                        <a target="_blank" href="http://www.mis-implants.com/Products/Implants/seven.aspx">Seven Implant <span>></span></a>
-                    </div>
-                </li>
-                 <li>
-                    <div class="img-wrap">
-                        <img src="dist/img/www.svg" alt="Mis Main Website">
-                    </div>
-                    <div class="out-links">
-                        <a target="_blank" href="http://www.mis-implants.com">MIS Main Website<span>></span></a>
-                        <a target="_blank" href="http://v3-implant.com">V3 Minisite<span>></span></a>
-                        <a target="_blank" href="http://www.vconcept.com">VCONCEPT Minisite<span>></span></a>
-                    </div>
-
-                </li>
-                 <li>
-                     <div class="img-wrap">
-                        <img src="dist/img/eye.svg" alt="Printed Materials">
-                    </div>
-                    <div class="out-links">
-                        <a target="_blank" href="http://www.mis-implants.com/Media/Printed-Materials/Products.aspx">Printed Materials<span>></span></a>
-                        <a target="_blank" href="http://www.mis-implants.com/Media/Image-Gallery/Products.aspx">Image Gallery<span>></span></a>
-                        <a target="_blank" href="http://www.mis-implants.com/Media/Movies/Products.aspx">Videos<span>></span></a>
-                        <a target="_blank" href="http://www.mis-implants.com/Media/Movies/Lectures.aspx">Lectures<span>></span></a>
-                    </div>
-                </li>
-            </ul>
-        </div>
-        <footer class="pt-bigger center-mobile">
-            <ul>
-                <li>
-                    <h6>Mission & Vision</h6>
-                    <p class="minitxt">
-                        MIS Vision:<br>
-                        To be the preferred choice of dentists worldwide by offering simple, creative and comprehensive solutions, and to become the largest global dental implant producer.
-                    </p>
-                    <div class="minitxt">
-                        MIS Values:
-                        <ul>
-                            <li>- Quality</li>
-                            <li>- Service</li>
-                            <li>- Agility & Innovation</li>
-                            <li>- Integrity & Caring</li>
-                        </ul>
-                    </div>
-                </li>
-                <li>
-                    <h6>About Us</h6>
-                    <p class="minitxt">Established in 1995, MIS Implants Technologies Ltd. is at the forefront of development and production of advanced products and solutions aimed to simplify implant dentistry. With our cutting edge facilities, MIS offers a complete range of premium quality dental implants, superstructures, tools and kits, regenerative solutions and digital dentistry. Distributed in over 65 countries, MIS provides unparalleled service to our customers.</p>
-
-                    <a target="_blank" href="http://www.mis-implants.com" class="link pt-med">www.mis-implants.com<span>></span></a>
-                </li>
-                <li>
-                    <h6>Contact Us</h6>
-                    <p class="minitxt">MIS is deeply committed to our core values of quality, service, agility and innovation, integrity and caring; reflected in every step of our work process and supported by over 300 dedicated MIS employees. MIS products are distributed in over 60 countries worldwide through a well-established global distribution network.</p>
-                    <a target="_blank" href="http://www.mis-implants.com/MIS-Info/ContactUs.aspx" class="link pt-med">Contact your local distributer <span> ></span></a>
+            
+            <footer class="pt-bigger center-mobile">
+                <ul>
+                    <li>
+                        <h6>Mission & Vision</h6>
+                        <div>   
+                            <p class="minitxt">
+                                MIS Vision:<br>
+                                To be the preferred choice of dentists worldwide by offering simple, creative and comprehensive solutions, and to become the largest global dental implant producer.
+                            </p>
+                            <div class="minitxt">
+                                MIS Values:
+                                <ul>
+                                    <li>- Quality</li>
+                                    <li>- Service</li>
+                                    <li>- Agility & Innovation</li>
+                                    <li>- Integrity & Caring</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <h6>About Us</h6>
+                        <div>
+                            <p class="minitxt">Established in 1995, MIS Implants Technologies Ltd. is at the forefront of development and production of advanced products and solutions aimed to simplify implant dentistry. With our cutting edge facilities, MIS offers a complete range of premium quality dental implants, superstructures, tools and kits, regenerative solutions and digital dentistry. Distributed in over 65 countries, MIS provides unparalleled service to our customers.</p>
+                            <a target="_blank" href="http://www.mis-implants.com" class="link pt-med">www.mis-implants.com<span>></span></a>
+                        </div>
+                    </li>
+                    <li>
+                        <h6>Contact Us</h6>
+                        <div>
+                            <p class="minitxt">MIS is deeply committed to our core values of quality, service, agility and innovation, integrity and caring; reflected in every step of our work process and supported by over 300 dedicated MIS employees. MIS products are distributed in over 60 countries worldwide through a well-established global distribution network.</p>
+                            <a target="_blank" href="http://www.mis-implants.com/MIS-Info/ContactUs.aspx" class="link pt-med">Contact your local distributer <span> ></span></a>
+                        </div>
+                    </li>
                     
-                </li>
-                
-            </ul>
+                </ul>
 
-            <small class="pb-med"><span>© MIS Corporation. All Rights Reserved.</span></small>
-        </footer>
+                <small class="pb-med"><span>© MIS Corporation. All Rights Reserved.</span></small>
+            </footer>
+        </div>
     </div>
 
     <script type='text/javascript' src='http://maps.google.com/maps/api/js?key=AIzaSyDSa2Yj_l65LMWLN-ukJ_tuG96KVMLSNdE'></script>
