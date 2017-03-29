@@ -157,7 +157,7 @@ export const PageSlides = [
                     },
                     {
                         title: 15,
-                        text: '2 Platforms. Blue for Narrow and Purple for Standard'
+                        text: '15 different design concept cycles to get the best possible and simplest result.'
                     },
                     {
                         title: 2,
@@ -419,11 +419,11 @@ export const PageSlides = [
                         },
                         links: [
                             {
-                                txt: 'Conical Catalog',
+                                txt: 'Conical Con. Catalog',
                                 href: 'http://www.mis-implants.com/Media/Printed-Materials/Products.aspx?#37484'
                             },
                             {
-                                txt: 'Internal Catalog',
+                                txt: 'Internal Hex. Catalog',
                                 href: 'http://www.mis-implants.com/Media/Printed-Materials/Products.aspx?#2560'
                             }
                         ]
@@ -449,13 +449,13 @@ export const PageSlides = [
                             src: 'dist/img/www.svg',
                             alt: 'Online Catalog'
                         },
-                        links: [
+                        links: [    
                             {
-                                txt: 'Tools Webpage',
+                                txt: 'Tools Overview',
                                 href: 'http://www.mis-implants.com/Products/Implants/Tools.aspx'
                             },
                             {
-                                txt: 'Kits Webpage',
+                                txt: 'Kits Overview',
                                 href: 'http://www.mis-implants.com/Products/Implants/Kits.aspx'
                             }
                         ]

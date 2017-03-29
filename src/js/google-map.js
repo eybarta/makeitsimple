@@ -5,11 +5,13 @@ var markers = [],
     map,
     isMobile,
     isDesktop,
+    isIE,
     mapHasBeenPinned = false;
 
 export function initMap() {
     isMobile = window.screen.width<640;
     isDesktop = window.screen.width>1024;
+    isIE = "ActiveXObject" in window;
     var latlng = new google.maps.LatLng(28,	0);
     var draggable = true;
     var myOptions = {
@@ -138,7 +140,7 @@ export function initMap() {
     };
     map = new google.maps.Map(document.getElementById("google-map-area-57a583ea6e019"), myOptions);
 
-    if (!isDesktop) {
+    if (!isDesktop || isIE) {
         pinupMap();
     }
 }

@@ -1,4 +1,4 @@
-var _curVideoURL = "black.mp4";
+var _curVideoURL = "https://s3-eu-west-1.amazonaws.com/mis-implants/makeitsimple/Minisite/black.mp4";
 var _curImageURL = "";
 var _loader;
 

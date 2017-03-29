@@ -1,18 +1,21 @@
 import $ from 'jquery'
 // Intro Simple Animation
 
-var $introAnim, $introAnimBlur, $introImage, $hotspot, $desktop;
+var $intro, $introAnim, $introAnimBlur, $introImage, $hotspot, $desktop;
 
 const animation = 'https://s3-eu-west-1.amazonaws.com/mis-implants/makeitsimple/Minisite/First-Animation.mp4';
 const blurredAnimation = 'https://s3-eu-west-1.amazonaws.com/mis-implants/makeitsimple/Minisite/FirstAnimationBlur.mp4';
+var blockscroll = false;
 export var _introAnimEnded = false;
 
 export function initIntroAnimation() {
     $desktop = $(window).width()>1024;
+    $intro = $("#intro");
     $introAnim = $("#introAnim");
     $introAnimBlur = $("#introAnimBlur");
     $introImage = $("#simpleIntro");
     $hotspot = $("#hotspot");
+
     // bind animation to video tag
     // $introAnim.one('canplaythrough', () => $introImage.hide())
     $introAnim.on('ended', () => {
@@ -27,7 +30,8 @@ export function initIntroAnimation() {
     loadAnim();
     loadAnimBlur();
 
-    
+    $intro.on('blockscroll', () => blockscroll = true)
+    $intro.on('unblockscroll', () => blockscroll = false)
 }
 
 export function introAnimEl() {
@@ -35,40 +39,46 @@ export function introAnimEl() {
 }
 
 export function stop() {
+    console.log("anim stop>>?");
     $introAnim = $("#introAnim");
     $introAnimBlur = $("#introAnimBlur");
-    if (!!$introAnim && !!$introAnimBlur && !isMozillaOrIE) {
+    if (!!$introAnim.length && !!$introAnimBlur.length && !isMozillaOrIE) {
         $introAnim.get(0).pause();
         $introAnimBlur.get(0).pause();
     }
 }
 
 export function hide() {
+    console.log("anim hide>>?");
     $introAnim = $("#introAnim");
     $introAnimBlur = $("#introAnimBlur");
     $introImage = $("#simpleIntro");
     
-    if (!!$introAnim && !!$introAnimBlur && !isMozillaOrIE) {
+    if (!!$introAnim.length && !!$introAnimBlur.length && !isMozillaOrIE) {
         $introAnim.fadeOut(100);
         $introAnimBlur.fadeOut(100);
         $introImage.fadeOut(100);
     }
 }
 export function play() {
+    console.log("anim play>>?");
+    
     $introAnim = $("#introAnim");
     $introAnimBlur = $("#introAnimBlur");
-    if (!!$introAnim && !!$introAnimBlur && !isMozillaOrIE) {
+    if (!!$introAnim.length && !!$introAnimBlur.length && !isMozillaOrIE) {
         $introAnim.get(0).play();
         $introAnimBlur.get(0).play();
     }
 }
 
 export function show() {
+    console.log("anim show>>?");
+    
     $introAnim = $("#introAnim");
     $introAnimBlur = $("#introAnimBlur");
     $introImage = $("#simpleIntro");
     
-    if (!!$introAnim && !!$introAnimBlur && !isMozillaOrIE) {
+    if (!!$introAnim.length && !!$introAnimBlur.length && !isMozillaOrIE) {
         $introAnim.fadeIn(200);
         $introAnimBlur.fadeIn(200);
         $introImage.fadeIn(200);
@@ -76,9 +86,11 @@ export function show() {
 }
 
 export function introAnimLoop() {
+    console.log("anim introAnimLoop>>?");
+    
     $introAnim = $("#introAnim");
     $introAnimBlur = $("#introAnimBlur");
-    if (!!$introAnim && !!$introAnimBlur && !isMozillaOrIE) {
+    if (!!$introAnim.length && !!$introAnimBlur.length && !isMozillaOrIE) {
         if ($introAnimBlur.get(0).currentTime > 12) {
             $introAnim.get(0).currentTime = 0;
             $introAnimBlur.get(0).currentTime = 0;
@@ -87,21 +99,23 @@ export function introAnimLoop() {
     }
 }
 export function introAnimToEnd() {
-    $introAnim = $("#introAnim");
-    $introAnimBlur = $("#introAnimBlur");
-    $introImage = $("#simpleIntro");
-    
-    if (!!$introAnim && !!$introAnimBlur && !isMozillaOrIE) {
-        $introAnim.hide();
-        $introAnimBlur.hide();
-        $introImage.show();        
+    if (!blockscroll) {
+        $introAnim = $("#introAnim");
+        $introAnimBlur = $("#introAnimBlur");
+        $introImage = $("#simpleIntro");
+        
+        if (!!$introAnim.length && !!$introAnimBlur.length && !isMozillaOrIE) {
+            $introAnim.hide();
+            $introAnimBlur.hide();
+            $introImage.show();        
+        }
     }
 }
 export function introAnimRestart() {
     console.log('introAnimRestart');
     $introAnim = $("#introAnim");
     $introAnimBlur = $("#introAnimBlur");
-    if (!!$introAnim && !!$introAnimBlur && !isMozillaOrIE) {
+    if (!!$introAnim.length && !!$introAnimBlur.length && !isMozillaOrIE) {
         $introAnim.get(0).currentTime = 0;
         $introAnimBlur.get(0).currentTime = 0;
         $introAnim.show();
@@ -110,38 +124,51 @@ export function introAnimRestart() {
     }
 }
 export function loadAnim() {
-    $introAnim = $("#introAnim");
-    
-    if (!!$introAnim && !isMozillaOrIE) {
-        $introAnim.attr('src', animation);
+    if (!blockscroll) {
+        console.log('loadAnim');
+        $introAnim = $("#introAnim");
+        if (!!$introAnim.length && !isMozillaOrIE) {
+            $introAnim.attr('src', animation);
+        }
     }
 }
 export function loadAnimBlur() {
-    $introAnimBlur = $("#introAnimBlur");
-    if (!!$introAnimBlur && !isMozillaOrIE) {
-        $introAnimBlur.attr('src', blurredAnimation);
+    if (!blockscroll) {
+        console.log('loadAnimBlur');
+        $introAnimBlur = $("#introAnimBlur");
+        if (!!$introAnimBlur.length && !isMozillaOrIE) {
+            $introAnimBlur.attr('src', blurredAnimation);
+        }
     }
 }
 
 export function introAnimBlurAbove() {
-    $introAnim = $("#introAnim");
-    $introAnimBlur = $("#introAnimBlur");
-    if (!!$introAnim && !!$introAnimBlur && !isMozillaOrIE) {
-        $introAnimBlur.css('z-index', 10);
-        $introAnim.css('z-index', 9);
-        $introAnim.show()
-        $introAnimBlur.show()
+    if (!blockscroll) {
+        console.log('introAnimBlurAbove');
+        
+        $introAnim = $("#introAnim");
+        $introAnimBlur = $("#introAnimBlur");
+        if (!!$introAnim.length && !!$introAnimBlur.length && !isMozillaOrIE) {
+            $introAnimBlur.css('z-index', 10);
+            $introAnim.css('z-index', 9);
+            $introAnim.show()
+            $introAnimBlur.show()
+        }
     }
 }
 
 export function introAnimBlurBehind() {
-    $introAnim = $("#introAnim");
-    $introAnimBlur = $("#introAnimBlur");
-    if (!!$introAnim && !!$introAnimBlur && !isMozillaOrIE) {
-        $introAnimBlur.css('z-index', 9);
-        $introAnim.css('z-index', 10);
-        $introAnim.show()
-        $introAnimBlur.show()
+    if (!blockscroll) {
+        console.log('introAnimBlurBehind');
+        
+        $introAnim = $("#introAnim");
+        $introAnimBlur = $("#introAnimBlur");
+        if (!!$introAnim.length && !!$introAnimBlur.length && !isMozillaOrIE) {
+            $introAnimBlur.css('z-index', 9);
+            $introAnim.css('z-index', 10);
+            $introAnim.show()
+            $introAnimBlur.show()
+        }
     }
 }
 

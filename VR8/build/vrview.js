@@ -28853,7 +28853,7 @@ THREE.GeometryUtils = {
 
 THREE.ImageUtils = {
 
-	crossOrigin: undefined,
+	crossOrigin: '',
 
 	loadTexture: function ( url, mapping, onLoad, onError ) {
 
@@ -43418,7 +43418,7 @@ PhotosphereRenderer.prototype.setPhotosphere = function(src, opt_params) {
 
   // Load texture.
   var loader = new THREE.TextureLoader();
-  loader.crossOrigin = 'anonymous';
+  loader.crossOrigin = '';
   loader.load(src, this.onTextureLoaded_.bind(this), null,
               this.onTextureError_.bind(this));
 };

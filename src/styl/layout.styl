@@ -4,15 +4,23 @@
 
 body
     +below(737px,orientation: landscape)
-        background url('./assets/img/landscape-unsupported.jpg') no-repeat 0 0 / cover
+        position relative
+        width 100vw
+        height 100vh
         overflow hidden
-        *
-            display none
+        &:before
+            content ' '
+            background url('./assets/img/landscape-unsupported.jpg') no-repeat 0 0 / cover
+            overflow hidden
+            position fixed 0 0 0 0
+            z-index 999999999
     @media all and (min-width:768px) and (max-width:1024px) and (orientation: portrait)
         background url('./assets/img/portrait-not-supported.jpg') no-repeat 0 0 / cover
         overflow hidden
         *
             display none
+        // *
+        //     display none
     position relative
     font-family "Helvetica Thin", "Helvetica Neue", Helvetica, Arial, sans-serif
     font-weight 300
@@ -52,7 +60,8 @@ body
         .info-title
             padding 0 5%
             h2
-                padding-bottom 20px
+                padding-bottom 30px
+                margin 0
             +below(breaks.mobile)
                 padding 0
         +below(breaks.base)
@@ -95,7 +104,7 @@ for num in (1..12)
             &:not(.imgs)
                 lost-column 1/2 2 2%
         +below(breaks.mobile)
-            lost-column 1/1 1 0
+            lost-column 1/1 1 0 !important
     
 // .info-block:not(.num-grp)
 //     .group-4
@@ -151,11 +160,11 @@ footer
         &:last-child
             margin-top 25px
             ul 
-                margin 0
+                margin 10px 0 0 0
                 padding 0
                 li
-                    small-txt()
-                    color #727272
+                    font-family 'HelveticaLight'
+                    font-size 15px
                     margin 0
                     padding 0 0 3px
 

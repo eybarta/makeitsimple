@@ -88,7 +88,7 @@ header
         margin 0 auto
         max-width 1100px
         background #222935
-        transition opacity 400ms ease
+        transition opacity 800ms ease
         +above(1025px)
             opacity 0
         +below(breaks.base)
@@ -146,6 +146,10 @@ header
             +above(breaks.base)
                 left 0
                 min-height 26px
+            +tablet()
+                img
+                    max-height 5vmin
+                    max-width 100%
             +below(breaks.base)
                 self-center(horizontal)
                 bottom 15vh
@@ -155,13 +159,14 @@ header
                 transform none
                 img
                     height 7vmin
-            +tablet()
-                img
-                    height 5vmin
+                    max-height initial
+            
     &.maximized
-        transition all 400ms ease-out, border-radius 650ms ease-out
+        transition all 400ms ease-out, border-radius 800ms linear
         opacity 1
         overflow initial
+        .contain
+            opacity 1
         .toggler
             +above(breaks.base)
                 transition opacity 750ms ease-in-quad
@@ -172,7 +177,6 @@ header
                 border-color linkgray
              &:after
                 background linkgray
-        .contain
             +above(breaks.base)
                 transition opacity 750ms ease-in-quad
                 opacity 1
@@ -196,14 +200,19 @@ header
         width hamburger-size
         height @width
         opacity 1
+        .logo
+            visibility hidden
+        .contain
+            opacity 0
+            display block
         +below(breaks.base)
-            transition left 400ms ease-out, opacity 400ms ease-out, width 400ms ease-out, height 400ms ease-out, border-radius 400ms ease-out;
+            transition left 400ms ease-out, opacity 400ms ease-out, width 400ms ease-out, height 400ms ease-out, border-radius 800ms linear;
             .contain, .toggler
                 opacity 0
         +below(breaks.base)
             width hamburger-size-mini
         +below(breaks.base)
-            top 47%
+            top 50%
             left 50%
             width 150vmax
             height @width
@@ -212,12 +221,14 @@ header
         top 2%
         .toggler
             opacity 1
+        .contain
+            display none
         +below(breaks.base)
-            transition top 400ms ease-out, left 400ms ease-out,  width 400ms ease-out,  height 400ms ease-out, margin 400ms ease-out, opacity 400ms ease-out, transform 500ms ease-out;
+            transition top 400ms ease-out, left 400ms ease-out,  width 400ms ease-out,  height 400ms ease-out, margin 400ms ease-out, opacity 400ms ease-out
             width 40px
             height 40px
             opacity 0.5
-            top 45%
+            top 50%
             left 50%
             position fixed
             .nav
@@ -226,7 +237,6 @@ header
                 transition opacity 200ms ease-out
             .contain
                 opacity 0
-                height 0
                 .nav
                     opacity 0
                     transform translate(-50%, -50%)
@@ -241,11 +251,13 @@ header
         +below(breaks.base)
             top 40px
             left calc(100% - 20px)
-            transform translate(-100%, -50%)
+            margin-left -20px
         +below(breaks.tablet)
             width 40px
             height 40px
     &.maximized
+        .logo
+            visibility visible
         .toggler
             +below(breaks.tablet) // 6+
                 top 30px

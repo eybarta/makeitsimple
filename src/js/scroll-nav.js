@@ -35,6 +35,7 @@ function bindMenuEvents() {
             e.stopPropagation();
             if (!$desktop) {
                 minimizeMenu();
+                document.getElementById('rest').style.display = 'block';
             }
             else {
                 // $(window).off('scroll')
@@ -244,7 +245,7 @@ function maximizeMenu(e) {
                     }
                 }, 400)
                 
-        },400)
+        },500)
     }
 }
 

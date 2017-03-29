@@ -6,7 +6,7 @@
             <!-- Additional required wrapper -->
             <div class="swiper-wrapper">
                 <!-- Slides -->
-                <div class="swiper-slide">
+                <div class="swiper-slide" :data-swiper-autoplay="swiperAutoplay">
                     <div :class="['info-overlay', !!infomode ? 'on' : '']">
                         <div class="inner">
                             <h2>MORE BONE Where it Matters Most...</h2>
@@ -14,11 +14,13 @@
                             <a target="_blank" href="http://www.mis-implants.com/Products/Implants/v3.aspx">Click for more  ></a>
                         </div>
                     </div>
-                    <video v-if="isDesktop" ref="vid3" :class="[infomode ? 'under' : '']" src="https://s3-eu-west-1.amazonaws.com/mis-implants/makeitsimple/Minisite/V3_ver.3.mp4" autoplay loop></video>
-                    <img v-else-if="isTablet" src="dist/img/animation/V3-op.gif" alt="">
-                    <img v-else src="dist/img/animation/V3_mini.gif" alt="">
+                    <video v-if="isDesktop || isTablet" ref="vid3" :class="[infomode ? 'under' : '']" src="https://s3-eu-west-1.amazonaws.com/mis-implants/makeitsimple/Minisite/V3_ver.3.mp4" autoplay loop></video>
+                    <!--
+                        <img v-else-if="isTablet" src="dist/img/animation/V3_2.gif" alt="">
+                    -->
+                    <img v-else src="dist/img/animation/V3_3.gif" alt="">
                 </div>
-                <div class="swiper-slide">
+                <div class="swiper-slide" :data-swiper-autoplay="swiperAutoplay">
                     <div :class="['info-overlay', !!infomode ? 'on' : '']">
                         <div class="inner">
                             <h2>As easy as 1, 2, 3...</h2>
@@ -26,11 +28,13 @@
                             <a target="_blank" href="http://www.mis-implants.com/Products/Regenerative-Solutions/Bone-Grafting-Materials/4MATRIX.aspx">Click for more  ></a>
                         </div>
                     </div>
-                    <video v-if="isDesktop" ref="vid1" :class="[infomode ? 'under' : '']"  src="https://s3-eu-west-1.amazonaws.com/mis-implants/makeitsimple/Minisite/4MATRIX_3.mp4" autoplay loop></video>
-                    <img v-else-if="isTablet" src="dist/img/animation/4MATRIX-op.gif" alt="">
+                    <video v-if="isDesktop || isTablet" ref="vid1" :class="[infomode ? 'under' : '']"  src="https://s3-eu-west-1.amazonaws.com/mis-implants/makeitsimple/Minisite/4MATRIX_3.mp4" autoplay loop></video>
+                    <!--
+                    <img v-else-if="isTablet" src="dist/img/animation/4MATRIX_2.gif" alt="">
+                    -->
                     <img v-else src="dist/img/animation/4MATRIX_mini.gif" alt="">
                 </div>
-                <div class="swiper-slide">
+                <div class="swiper-slide" :data-swiper-autoplay="swiperAutoplay">
                     <div :class="['info-overlay', !!infomode ? 'on' : '']">
                         <div class="inner">
                             <h2>From perfect planning to precise placement</h2>
@@ -38,11 +42,12 @@
                             <a target="_blank" href="http://www.mis-implants.com/Products/Digital-Dentistry/MGUIDE.aspx">Click for more  ></a>
                         </div>
                     </div>
-                    <video v-if="isDesktop && !isMozillaOrIE" ref="vid2" :class="[infomode ? 'under' : '']" src="https://s3-eu-west-1.amazonaws.com/mis-implants/makeitsimple/Minisite/MGUIDE_ver.3.mp4" autoplay loop></video>
-                    <img v-else-if="isTablet || isMozillaOrIE" src="dist/img/animation/MGUIDE-op.gif" alt="">
+                    <video v-if="isDesktop || isTablet" ref="vid2" :class="[infomode ? 'under' : '']" src="https://s3-eu-west-1.amazonaws.com/mis-implants/makeitsimple/Minisite/MGUIDE_ver.3.mp4" autoplay loop></video>
+                    <!--
+                    <img v-else-if="isTablet" src="dist/img/animation/MGUIDE_2.gif" alt="">
+                    -->
                     <img v-else src="dist/img/animation/MGUIDE_mini.gif" alt="">
                 </div>
-                
             </div>
         </div>
         <div class="video-prev swiper-button-prev" ref="prev"></div>
@@ -104,6 +109,9 @@ export default {
         }
     },
     computed: {
+        swiperAutoplay() {
+            return (!this.isDesktop || this.isMozillaOrIE) ? 4200 : 11000
+        },
         isDesktop() {
             let trigger = this.trigger;
             return window.screen.width>1024

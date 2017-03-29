@@ -1,14 +1,14 @@
 <template>
     <div id="top" :class="[isDesktop ? 'extra-height' : '', !isDesktop && !isMobile ? 'extra-nudge' : '']">
-        <div id="intro" @click="playIntroVideo" @restartIntroAnim="restartAnim" :class="['intro', 'hp', 'full-height', 'unattach', isSticky ? 'sticky' : '']">
+        <div ref="intro" id="intro" @click="playIntroVideo" @restartIntroAnim="restartAnim" :class="['intro', 'hp', 'full-height', 'unattach', isSticky ? 'sticky' : '']">
             <div v-if="showhotspot" id="hotspot" class="hotspot"></div>
-            <button v-if="introvidplaying && !isMobile" @click.prevent.stop="closeTriggerHandler" id="closeIntro" class="close-btn"></button>
+            <button v-if="introvidplaying && (isAndroid || !isMobile)" @click.prevent.stop="closeTriggerHandler" id="closeIntro" class="close-btn"></button>
             <img v-if="!isMobile && !introvidplaying" id="simpleIntro" :class="[showplay&&zeroscroll ? 'blurme' : '']" src="dist/img/simple-intro.png" />
             <div v-if="isMobile && !introvidplaying" class="mobile-play">
                 <img id="simpleIntroMobile" :class="[showplay && zeroscroll ? 'blurme' : '']" src="dist/img/mobile-play.png" />
                 <img src="dist/img/mobile-simple-intro.png" />
             </div>
-                <template v-if="isDesktop && !isMozillaOrIE && zeroscroll">
+                <template v-if="!introvidplaying && isDesktop && !isMozillaOrIE && (zeroscroll||blockscroll)">
                     <video ref="introanim" id="introAnim" preload="auto" autoplay></video>
                     <video ref="introanimBlur" id="introAnimBlur" preload="auto" autoplay></video>
                     <div id='i360' class="i-360">
@@ -17,7 +17,7 @@
                     </div>
                 </template>
             <transition name="fade" appear>
-                <div v-if="showplay && !!zeroscroll" id="playintro" :class="['play-overlay', !isDesktop || isMozillaOrIE || zeroscroll ? 'blubg' : '', !zeroscroll ? 'hide' : '']">
+                <div v-if="showplay && !!zeroscroll && !blockscroll" id="playintro" :class="['play-overlay', !isDesktop || isMozillaOrIE || zeroscroll ? 'blubg' : '', !zeroscroll ? 'hide' : '']">
                     <img src="dist/img/play-btn.svg" alt="Play Video">
                     <div class="intro-txt">
                         <span>All the great things are simple...</span>
@@ -25,8 +25,9 @@
                     </div>
                 </div>
             </transition>
-            <iframe v-if="!!introvidplaying && !isMobile" ref="introvideo" class="video-frame" id="introvideo" frameborder="0" allowfullscreen></iframe>
-            <video v-if="!!introvidplaying && isMobile" ref="introvideomobile" class="video-frame" id="introvideomobile" src="https://s3-eu-west-1.amazonaws.com/mis-implants/makeitsimple/Minisite/MIS_Simple+Movie_compressed.mp4"></video>
+            <iframe v-if="!!introvidplaying && isAndroid" ref="introvideomobile" class="video-in-frame" frameborder="0" src="https://s3-eu-west-1.amazonaws.com/mis-implants/makeitsimple/Minisite/MIS_Simple+Movie_compressed.mp4" allowfullscreen></iframe>
+            <iframe v-else-if="!!introvidplaying && !isMobile" ref="introvideo" class="video-frame" id="introvideo" frameborder="0" allowfullscreen></iframe>
+            <video v-else-if="!!introvidplaying && isMobile" ref="introvideomobile" class="video-frame" id="introvideomobile" src="https://s3-eu-west-1.amazonaws.com/mis-implants/makeitsimple/Minisite/MIS_Simple+Movie_compressed.mp4"></video>
             
         </div>
     </div>
@@ -38,9 +39,12 @@ export default {
     data() {
         return {
             trigger: -1,
-            // zeroscroll: true,
+            timer: -1,
+            zeroscroll: true,
+            blockscroll: false,
             hasScrolled: false,
             introvidplaying: false,
+            scrolltop: 0,
             tabscroll:0,
             justLoaded: true,
 
@@ -52,14 +56,15 @@ export default {
             ref.trigger = new Date();
         })
         window.addEventListener('scroll', function() {
+            // console.log('scroll triggered');
             ref.trigger = new Date();
+            ref.$set(ref, 'scrolltop', $(window).scrollTop());
+            ref.scrollHandler();
         })
+        
         if (this.isTablet) {
-            this.$nextTick(function() {
-                window.scrollTo(0,0);
-                window.addEventListener('scroll', this.tabletScroll);
-            })
-            
+            this.tabletRestart();
+             
         }
     },
     computed: {
@@ -78,41 +83,9 @@ export default {
         isTablet() {
             return !this.isMobile && !this.isDesktop;
         },
-        zeroscroll() {
-            let trigger = this.trigger;
-            if ( $(window).scrollTop()==0) {
-                   return true;
-                }
-            else if ($(window).scrollTop()>500) {
-               return false;
-            }
-        },
-        scrollTop() {
-            let trigger = this.trigger;
-            if (!this.justLoaded) {
-                let scrolltop = $(window).scrollTop();
-                // if ( $(window).scrollTop()==0) {
-                //     this.$set(this, 'zeroscroll', true);
-                //     this.zeroscroll = true;
-                // }
-                // else if ($(window).scrollTop()>500) {
-                //     this.$set(this, 'zeroscroll', false);
-                //     this.zeroscroll = false;
-                // }
-                // this.$set(this, 'zeroscroll', (scrolltop==0) ? true : scrolltop>500 ? false : this.zeroscroll)
-                if (this.hasScrolled) {
-                    document.getElementById('rest').style.display = 'block'
-                }
-                return scrolltop
-            }
-            setTimeout(function() {
-                this.justLoaded =false;
-            }.bind(this), 400)
-            return 0
-
-        },
         isSticky() {
-            return this.isDesktop && this.scrollTop<499;
+            let trigger = this.trigger;
+            return this.isDesktop && this.scrolltop<500;
         },
         showplay() {
             let trigger = this.trigger;
@@ -122,44 +95,125 @@ export default {
             --> DESKTOP When windows.scrolltop is > 10 and < 499
                 ONLY after scrolling from top
             */
-            return  !this.introvidplaying && ( ( (this.isTablet || this.isMozillaOrIE) && this.hasScrolled)  ||  (!this.isMobile && this.scrollTop>10 && this.scrollTop < 499))
+            let must = !this.blockscroll && !this.introvidplaying && this.zeroscroll;
+            if (!!this.isTablet) {
+                return must && this.hasScrolled && this.scrolltop>0;
+            }
+            else if (!this.isMobile || !!this.isMozillaOrIE) {
+                return must && this.scrolltop>50 && this.scrolltop < 499;
+            }
+            return false;
         },
         showhotspot() {
             let trigger = this.trigger;
             return (this.isDesktop && !this.zeroscroll && !this.introvidplaying)
+        },
+        isAndroid() {
+            if(navigator != undefined && navigator.userAgent != undefined) {
+                return (/android/gi.test(navigator.userAgent))
+            }
+            return false;
         }
     },
+    mounted() {
+        console.log('isMozillaOrIE>> ', this.isMozillaOrIE);
+    },
     methods: {
+        tabletRestart() {
+            console.log('tabletRestart')
+            let ref = this;
+            // window.setInterval(function() {
+            //     ref.trigger = new Date();
+            // }, 300)
+            this.$nextTick(function() {
+                window.scrollTo(0,0);
+                window.addEventListener('scroll', this.tabletScroll);
+                this.$set(this, 'hasScrolled', false);
+                document.getElementById('rest').style.display = 'none';    
+            })
+        },
         tabletScroll() {
-            this.hasScrolled = true;
-            
-
-            console.log('tablet scrolled>> ', $(window).scrollTop());
-            if (this.tabscroll>5) {
-                window.removeEventListener('scroll', this.tabletScroll)
-                document.getElementById('rest').style.display = 'block';    
+            if (this.scrolltop>0) {
+                this.hasScrolled = true;
+                console.log('tablet scrolled>> ', $(window).scrollTop());
+                if (this.tabscroll>5) {
+                    window.removeEventListener('scroll', this.tabletScroll)
+                    document.getElementById('rest').style.display = 'block';    
+                }
+                
+                this.tabscroll++;
             }
-            
-            this.tabscroll++;
         },
         restartAnim() {
-            var vm = this;
-            var animation = 'https://s3-eu-west-1.amazonaws.com/mis-implants/makeitsimple/Minisite/First-Animation.mp4';
-            var blurredAnimation = 'https://s3-eu-west-1.amazonaws.com/mis-implants/makeitsimple/Minisite/FirstAnimationBlur.mp4';
-            setTimeout(function() {
-                this.$set(this, 'zeroscroll', true);
-                this.$nextTick(function() {
-                    let anim =this.$refs.introanim,
-                        blur = this.$refs.introanimBlur;
-                    $(anim).css('z-index', 12);
-                    $(anim).attr('src', animation);
-                    $(blur).attr('src', blurredAnimation);
-                    $(anim).show();
-                    $(blur).show();
-                    blur.play();
-                    anim.play();
-                });
-            }.bind(this), 650)
+            if (!!this.isDesktop) {
+                console.log("RESTART ANIMATION");
+                this.blockScroll();
+                var vm = this;
+                var animation = 'https://s3-eu-west-1.amazonaws.com/mis-implants/makeitsimple/Minisite/First-Animation.mp4';
+                var blurredAnimation = 'https://s3-eu-west-1.amazonaws.com/mis-implants/makeitsimple/Minisite/FirstAnimationBlur.mp4';
+                setTimeout(function() {
+                    this.$set(this, 'zeroscroll', true);
+                    this.$nextTick(function() {
+                        let anim =this.$refs.introanim,
+                            blur = this.$refs.introanimBlur;
+
+                            console.log("ANIM > ", anim);
+                            console.log("BLUR > ", blur);
+                        $(anim).css('z-index', 12);
+                        $(anim).attr('src', animation);
+                        $(blur).attr('src', blurredAnimation);
+                        $(anim).show();
+                        $(blur).show();
+                        blur.play();
+                        anim.play();
+                        this.unBlockScroll();
+                    });
+                }.bind(this), 450)
+            }
+        },
+        scrollHandler() {
+            console.log('scrollhandler >> ', this.scrolltop);
+            if (!this.justLoaded && !this.blockscroll) {
+                if ( this.scrolltop==0) {
+                    this.$set(this, 'zeroscroll', true);
+                    this.$set(this, 'justLoaded', true);
+                    if (this.isTablet) {
+                        this.tabletRestart();
+                    }
+                    // this.zeroscroll = true;
+                }
+                else if (this.scrolltop>500) {
+                    this.$set(this, 'zeroscroll', false);
+                    // this.zeroscroll = true;
+                    this.closeIntroVideo();
+                }
+                // this.$set(this, 'zeroscroll', (scrolltop==0) ? true : scrolltop>500 ? false : this.zeroscroll)
+                if (this.hasScrolled) {
+                    document.getElementById('rest').style.display = 'block'
+                }
+            }
+            else {
+                setTimeout(function() {
+                    this.$set(this, 'justLoaded', false);
+                }.bind(this), 400)
+            }
+        },
+        blockScroll() {
+            this.$set(this, 'blockscroll', true);
+            let event = new CustomEvent('blockscroll'),
+            el = this.$refs.intro;
+            el.dispatchEvent(event, true)
+        },
+        unBlockScroll() {
+            this.$nextTick(function() {
+                setTimeout(function() {
+                    this.$set(this, 'blockscroll', false);
+                    let event = new CustomEvent('unblockscroll'),
+                    el = this.$refs.intro;
+                    el.dispatchEvent(event, false)
+                }.bind(this), 400)
+            })
+            
         },
         playIntroVideo() {
             console.log('play video');
@@ -171,31 +225,16 @@ export default {
             $("header").hide();
                 this.$set(this, 'introvidplaying', true);
                 this.$nextTick(function() {
-                    if (this.isMobile) {
+                if (this.isMobile) {
                     let vid = this.$refs.introvideomobile;
-                    // vid.src = 'https://s3-eu-west-1.amazonaws.com/mis-implants/makeitsimple/Minisite/MIS_Simple+Movie_compressed.mp4';
                     $(vid).on('webkitendfullscreen fullscreenchange',this.closeIntroVideo);
-                    // try {
-                        // vid.requestFullscreen();
-                       vid.play();
-                        vid.webkitEnterFullscreen();
-                        
-                        setTimeout(function() {
-                            vid.play();
-                             vid.webkitEnterFullscreen();
-                            
-                        }, 200)
-                        
-                    // }
-                    // catch (e) {
-                    //     console.log('catched err  .. ', e);
-                    // }
-                    
-                    }
-                    else {
-                        this.$refs.introvideo.src = 'http://simple.mis-implants.com/vr8';
-                    }
-                })
+                    vid.play();
+                    vid.webkitEnterFullscreen();
+                }
+                else {
+                    this.$refs.introvideo.src = 'http://simple.mis-implants.com/vr8';
+                }
+            })
                 
         },
         closeTriggerHandler() {
@@ -217,9 +256,8 @@ export default {
             }   
         },
         closeIntroVideo() {
-            console.log('close video');
             if (this.isDesktop && !this.isMozillaOrIE) {
-                this.$refs.introvideo.src = '';
+                // this.$refs.introvideo.src = '';
                 introAnim.play();
                 introAnim.show();
             }
@@ -232,6 +270,17 @@ export default {
 </script>
 <style lang="stylus">
 @import '../../styl/settings.styl'
+.video-in-frame
+    position absolute
+    top 90px
+    left 0 
+    right 0
+    bottom 0
+    z-index 9999999990
+    @media all and (orientation: landscape)
+        top 0
+.close-btn
+    z-index 99999999999 !important
 #top
     position relative
     min-height 100vh

@@ -52,5 +52,5 @@ function checker() {
             var el = document.getElementById('vidSlider');
             el.dispatchEvent(event)
         }
-    },400)
+    },300)
 }

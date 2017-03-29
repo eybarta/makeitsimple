@@ -471,7 +471,7 @@
 		            $(hpvBtnLabel).addClass("r");
 		            //$(hpvBtnLabel).css("border", "solid 3px green");
 		        }
-		        console.log("prog=" + prog);
+		        //console.log("prog=" + prog);
 
 
 

@@ -5,6 +5,7 @@ var misSwiper, pagesSwiper;
 export function initSwiper()  {
     misSwiper =  new Swiper('.mis-swiper-container', {
         pagination: '.mis-swiper-pagination',
+        lazyLoading: true,
         paginationClickable: true,
         slidesPerView:7,
         spaceBetween:20,
@@ -47,7 +48,6 @@ export function initPagesSwiper() {
             spaceBetween:0,
             autoHeight: true,
             hashnav: true,
-            threshold: 35,
             hashnavWatchState: true,
             preloadImages: false,
             lazyLoadingInPrevNext: true,
@@ -85,13 +85,16 @@ export function videoSwiper() {
         paginationClickable: true,
         slidesPerView:1,
         spaceBetween:0,
+        effect: 'fade',
+        fade: {
+            crossFade: false
+            },
         shortSwipes: true,
         keyboardControl: true,
         controlInverse: true,
         autoHeight: true,
         autoplay: 11000,
         autoplayDisableOnInteraction: true,
-        loop: true,
         nextButton: '.video-next',
         prevButton: '.video-prev',
         onTransitionStart(swiper) {

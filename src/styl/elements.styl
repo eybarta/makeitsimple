@@ -102,7 +102,7 @@ a, a.link, a.link:visited
         height 18%
         z-index 999
         @media screen and (-webkit-min-device-pixel-ratio:0)
-            cursor url('./assets/img/play-icon.png'), auto
+            cursor pointer
     +below(breaks.mobile)
         background-image url('./assets/img/mobile-bg.jpg')
     &.stick
@@ -124,6 +124,10 @@ a, a.link, a.link:visited
     .mobile-play
         self-center()
         text-align center
+        width 100%
+        img:last-child
+            +above(410px)
+                width 98%
         & > *
             display inline-block
 
@@ -260,7 +264,7 @@ a, a.link, a.link:visited
     padding-bottom 16%
     margin-top 4%
     +below(breaks.base)
-        padding-bottom 30%
+        padding-bottom 26%
         margin-top 10%
     +below(breaks.mid)
         min-height 5vh
@@ -300,7 +304,7 @@ a, a.link, a.link:visited
             width 70%
 .faq-control
     width 80%
-    margin 60px auto 0
+    margin 100px auto 0
     +below(breaks.mobile)
         margin-top 90px
         width 100%
@@ -382,8 +386,9 @@ a, a.link, a.link:visited
                             width 100%
                             background gray
                         &:before
-                            display none
-                            background darken(linkblue, 12)
+                            display block
+                            // background darken(linkblue, 12)
+                            background gray
                             height 1px
                             transform translate(-50%,-50%) rotate(-90deg)
                     input:checked
@@ -399,7 +404,7 @@ a, a.link, a.link:visited
                             &:after
                                 background darken(linkblue, 12)
                             &:before
-                                display block
+                                display none
                         & + div h4
                             color linkblue
                         & + div .answer
@@ -417,13 +422,29 @@ a, a.link, a.link:visited
     height 70vh
     .google-map
         height 100% !important
+    h4
+        font-family 'HelveticaLight'
+        font-size 12px
+        padding 10px 0 0 15px
+        color #8e8e8e
+        +above(breaks.mobile)
+            display none
 
 
 // INFO BLOCK
 .info-block
     overflow hidden
+    +above(breaks.tablet)
+        &.info-hp
+            h2
+                margin-bottom 120px
+    +below(breaks.mobile)
+        &.info-hp h2
+            font-size 36px
+            margin-bottom 95px
     +below(breaks.big)
-        gutters(80px, 80px)
+        &:not(.num-grp)
+            gutters(110px, 80px)
         h3
             padding-bottom 95px
             font-size 36px
@@ -451,16 +472,19 @@ a, a.link, a.link:visited
                     float none
                     margin 0 auto
     +tablet(orientation: landscape)
-        .img-wrap
-            position relative
-            height 100px !important
-            img
-                position absolute
-                bottom 0
-                max-width 70%
-        li:nth-child(3)
-            img
-                max-width 88%
+        h3
+            padding-bottom 65px
+        .in-line
+            .img-wrap
+                position relative
+                height 120px !important
+                img
+                    position absolute
+                    bottom 0
+                    max-width 70%
+            &:nth-child(3)
+                img
+                    max-width 88%
     +between(breaks.tablet, breaks.big)
         &.info-hp
             h2
@@ -794,7 +818,6 @@ a, a.link, a.link:visited
         padding-left 14px
         display inline-block
         vertical-align middle
-        transition content 200ms ease
         +below(breaks.base2)
             padding-left 12px
         +below(breaks.mobile)
@@ -810,7 +833,6 @@ a, a.link, a.link:visited
         height 64px
         background url('./assets/img/info.svg') no-repeat 50% 50% / auto 60%
         opacity 0.7
-        transition background 200ms ease
         +below(breaks.base2)
             width 40px
             height 40px

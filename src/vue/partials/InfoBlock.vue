@@ -3,7 +3,7 @@
         <div :class="[group.type=='numbers' ? 'center-mobile' : '']">
             <h1 v-if="title.tag=='h1'" v-text="title.txt"></h1>
             <h3 v-else-if="title.tag=='h3'" v-html="titleText" :class="[breakWords ? 'breaked' : '', !!title.classNames ? title.classNames : '' ]"></h3>
-            <div v-if="!!txt" class="centered-text pb-bigger pt-bigger" v-text="txt"></div>
+            <div v-if="!!txt" class="centered-text pb-bigger pt-big" v-text="txt"></div>
             <ul id="itemlist" :class="[group.items.length>3 || smallScreen ? 'group-4' : 'group-3', group.items.length<4 ? 'less-items' : '',  'centered', 'items']">
                 <li v-if="group.type=='numbers'" v-for="(item, index) in group.items">
                     <div class="big-num" :class="[numload ? '' : 'transparent', item.title>9 ? 'dbl' : '']" >
@@ -13,7 +13,7 @@
                     </div>
                     <p class="midtxt tcenter" v-text="item.text"></p>
                 </li>
-                <li  v-if="group.type=='images'" v-for="(item, index) in group.items" :class="['imgs', index==1 ? 'm0' : '']">
+                <li  v-if="group.type=='images'" v-for="(item, index) in group.items" :class="['in-line', index==1 ? 'm0' : '']">
                     <div class="img-wrap">
                         <img :src="item.img.src" alt="item.img.alt">
                     </div>

@@ -114,7 +114,9 @@
         ///
         $(document).ready(function () {
 
-
+            if ($(window).width()<1025) {
+                $("#hpvPlayer1").attr('poster', 'https://s3-eu-west-1.amazonaws.com/mis-implants/makeitsimple/Minisite/MIS_Simple_Bg.jpg')
+            }
             document.addEventListener("fullscreenchange", FShandler);
             document.addEventListener("webkitfullscreenchange", FShandler);
             document.addEventListener("mozfullscreenchange", FShandler);
@@ -217,7 +219,7 @@
             var PlayerBase = "Player/index.html";
             //var PlayerBase = "VrPlayer.html";
             //http://localhost:62906/VR6/VrPlayer.html?image=https://s3-eu-west-1.amazonaws.com/mis-implants/makeitsimple/VR/360_0155_preview.jpg&is_stereo=false
-
+            
             $("#desktopVideoVR").show();
             if (isIOS() || isIE11() || isFirefox()) {
                 var vrURL = PlayerBase + "?image=" + VrImageURL + "&is_stereo=false";
@@ -420,13 +422,15 @@
                 </div>
                 <canvas id="hpvRingCanvas" class="hpvNormal" width="270" height="270"></canvas>
             </div>
-            <video onclick="onVideoClick();" class="hpvPlayer clip" id="hpvPlayer1"><source id="vhpvPlayerSrc" type="video/mp4" /></video>
+            <video onclick="onVideoClick();" class="hpvPlayer clip" id="hpvPlayer1">
+                <source id="vhpvPlayerSrc" type="video/mp4" />
+            </video>
         </div>
 
         <!-- 360 movie layer -->
         <div id="desktopVideoVR" class="clip" style="display:none;">
             <div class="PlayerWrapper">
-                <iframe src="VrPlayer.html?video=black.mp4&is_stereo=false" id="VrFrame" width="100%" height="100%" scrolling="no" allowfullscreen></iframe>
+                <iframe src="Player/index.html?video=https://s3-eu-west-1.amazonaws.com/mis-implants/makeitsimple/Minisite/black.mp4&is_stereo=false" id="VrFrame" width="100%" height="100%" scrolling="no" allowfullscreen></iframe>
             </div>
         </div>
 
