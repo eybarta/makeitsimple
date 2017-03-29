@@ -2,7 +2,7 @@
         <div :class="['pages-wrap', isAndroid ? 'android' : '']">
         <div :class="['back-home', !!wideScreen ? 'sticky' : '']">
             <span>HOME</span>
-            <a href="index.html#top"></a>
+            <a href="Default.aspx#top"></a>
         </div>
         <div class="swiper-container">
                 <!-- Additional required wrapper -->

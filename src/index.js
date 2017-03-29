@@ -17,8 +17,7 @@ var $desktop;
 $("header").css({'visibility': 'hidden'});
 $(() => {
     $desktop = $(window).width()>1023;
-    initSwiper();
-    initScrollNav();
+    if ($("#rest").is(":visible")) initSwiper();
     initMap();
     bindEvents();
     if ($desktop && !isMozillaOrIE()) {
@@ -31,6 +30,8 @@ $(() => {
         $("#conicalLink").attr('href', 'http://www.mis-implants.com/upload/PDF/Products/MIS_Conical_Connection_Catalog_2017_(MC-PCCSE)_Rev3.pdf')
         $("#internalLink").attr('href', 'http://www.mis-implants.com/upload/PDF/Products/MIS_Internal_Hex_Catalog_2016_(MC-CIH06)_Rev13.pdf')
     }
+
+    initScrollNav();
 })
 
 function isMozillaOrIE() {

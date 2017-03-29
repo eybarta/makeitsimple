@@ -35,6 +35,10 @@
 <script>
 import $ from 'jquery'
 import * as introAnim from '../../js/intro-animation'
+import {sectionsInView} from '../../js/sections-inview'
+import { initSwiper } from '../../js/swiper'
+
+
 export default {
     data() {
         return {
@@ -138,7 +142,12 @@ export default {
                 console.log('tablet scrolled>> ', $(window).scrollTop());
                 if (this.tabscroll>5) {
                     window.removeEventListener('scroll', this.tabletScroll)
-                    document.getElementById('rest').style.display = 'block';    
+                    document.getElementById('rest').style.display = 'block'; 
+                    setTimeout(function() {
+                        sectionsInView()
+                        initSwiper();
+                    },200)
+
                 }
                 
                 this.tabscroll++;
@@ -172,7 +181,7 @@ export default {
             }
         },
         scrollHandler() {
-            console.log('scrollhandler >> ', this.scrolltop);
+            
             if (!this.justLoaded && !this.blockscroll) {
                 if ( this.scrolltop==0) {
                     this.$set(this, 'zeroscroll', true);
@@ -256,14 +265,17 @@ export default {
             }   
         },
         closeIntroVideo() {
-            if (this.isDesktop && !this.isMozillaOrIE) {
-                // this.$refs.introvideo.src = '';
-                introAnim.play();
-                introAnim.show();
+            if (!!this.introvidplaying) {
+                if (this.isDesktop && !this.isMozillaOrIE) {
+                    // this.$refs.introvideo.src = '';
+                    console.log("close INtro Video");
+                    introAnim.play();
+                    introAnim.show();
+                }
+                this.$set(this, 'introvidplaying', false);
+                this.$set(this, 'zeroscroll', false);
+                $("header").show();
             }
-            this.$set(this, 'introvidplaying', false);
-            this.$set(this, 'zeroscroll', false);
-            $("header").show();
         }
     }
 }
