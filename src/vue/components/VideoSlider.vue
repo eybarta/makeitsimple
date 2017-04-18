@@ -45,7 +45,7 @@
                         </div>
                         <img v-if="!!isTablet" src="dist/img/animation/MGUIDE_2.gif" alt="">
                         <img v-else-if="!!isMobile" src="dist/img/animation/MGUIDE_mini.gif" alt="">
-                        <video v-else ref="vid3" :class="[infomode ? 'under' : '']" src="https://s3-eu-west-1.amazonaws.com/mis-implants/makeitsimple/Minisite/MGUIDE_ver.2.mp4" autoplay loop></video>
+                        <video v-else ref="vid3" :class="[infomode ? 'under' : '']" src="https://s3-eu-west-1.amazonaws.com/mis-implants/makeitsimple/Minisite/MGUIDE_ver.3.mp4" autoplay loop></video>
                     </template>
                 </div>
             </div>
