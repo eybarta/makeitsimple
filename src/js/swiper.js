@@ -1,6 +1,9 @@
 import $ from 'jquery'
+import { storageAvailable } from './utils'
 var misSwiper, pagesSwiper;
 
+
+var initialSlide = storageAvailable('localStorage') ? localStorage.getItem('pageIndex') || 0 : 0;
 
 export function initSwiper()  {
     misSwiper =  new Swiper('.mis-swiper-container', {
@@ -13,6 +16,7 @@ export function initSwiper()  {
         preventClicks: false,
         nextButton: '.mis-next',
         prevButton: '.mis-prev',
+        initialSlide,
         breakpoints: {
             1600: {
                 slidesPerView:5,
@@ -38,45 +42,45 @@ export function initSwiper()  {
     });
 }
 
-export function initPagesSwiper() {
-        pagesSwiper = new Swiper('.swiper-container', {
-            pagination: '.swiper-pagination',
-            simulateTouch: false,
-            paginationClickable: true,
-            slidesPerView:1,
-            shortSwipes: true,
-            spaceBetween:0,
-            autoHeight: true,
-            hashnav: true,
-            hashnavWatchState: true,
-            preloadImages: false,
-            lazyLoadingInPrevNext: true,
-            touchMoveStopPropagation: true,
-            nextButton: '.swiper-button-next',
-            prevButton: '.swiper-button-prev',
-            onInit(swiper) {
-                fixSwiperHeightIssue(swiper);
-                $(window).on('keyup.pages', e => {
-                    if (e.keyCode==37) {
-                        // left
-                        swiper.slidePrev();
-                    }
-                    else if (e.keyCode==39) {
-                        // right
-                        swiper.slideNext();
-                    }
-                })
-            },
-            onTransitionStart(swiper) {
-                let event = new CustomEvent('swiped'),
-                    el = document.getElementById('pageSwiperWrapper');
+// export function initPagesSwiper() {
+//         pagesSwiper = new Swiper('.swiper-container', {
+//             pagination: '.swiper-pagination',
+//             simulateTouch: false,
+//             paginationClickable: true,
+//             slidesPerView:1,
+//             shortSwipes: true,
+//             spaceBetween:0,
+//             autoHeight: true,
+//             hashnav: true,
+//             hashnavWatchState: true,
+//             preloadImages: false,
+//             lazyLoadingInPrevNext: true,
+//             touchMoveStopPropagation: true,
+//             nextButton: '.swiper-button-next',
+//             prevButton: '.swiper-button-prev',
+//             onInit(swiper) {
+//                 fixSwiperHeightIssue(swiper);
+//                 $(window).on('keyup.pages', e => {
+//                     if (e.keyCode==37) {
+//                         // left
+//                         swiper.slidePrev();
+//                     }
+//                     else if (e.keyCode==39) {
+//                         // right
+//                         swiper.slideNext();
+//                     }
+//                 })
+//             },
+//             onTransitionStart(swiper) {
+//                 let event = new CustomEvent('swiped'),
+//                     el = document.getElementById('pageSwiperWrapper');
 
-                    $(el).css('height', 3350);
-                    el.dispatchEvent(event)
+//                     $(el).css('height', 3350);
+//                     el.dispatchEvent(event)
 
-            },
-        });
-}
+//             },
+//         });
+// }
 
 export function videoSwiper() {
     return new Swiper('.video-swiper', {
@@ -85,6 +89,7 @@ export function videoSwiper() {
         paginationClickable: true,
         slidesPerView:1,
         spaceBetween:0,
+        initialSlide:0,
         effect: 'fade',
         fade: {
             crossFade: false
@@ -94,19 +99,21 @@ export function videoSwiper() {
         controlInverse: true,
         autoHeight: true,
         autoplay: 11000,
-        autoplayDisableOnInteraction: true,
+        autoplayDisableOnInteraction: false,
         nextButton: '.video-next',
         prevButton: '.video-prev',
         onTransitionStart(swiper) {
-                let event = new CustomEvent('slidechange'),
-                    el = document.getElementById('vidSlider');
-                    el.dispatchEvent(event);
-                    swiper.startAutoplay()
+            let event = new CustomEvent('slidechange'),
+                el = document.getElementById('vidSlider');
+                el.dispatchEvent(event);
+                console.log('swiper transition stop auto play >>', swiper);
+                // swiper.stopAutoplay();
+                // swiper.startAutoplay();
         },
         onReachEnd(swiper) {
              let event = new CustomEvent('lastslide'),
-                    el = document.getElementById('vidSlider');
-                    el.dispatchEvent(event)
+                el = document.getElementById('vidSlider');
+                el.dispatchEvent(event)
         }
 
     });

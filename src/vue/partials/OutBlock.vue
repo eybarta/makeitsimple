@@ -4,15 +4,14 @@
             <p class="mid-txt" v-html="parsedTxt"></p>
             <h2 ref="h2" v-html="parsedTitle"></h2>
         </div>
-        <a :href="btn.link" target="_blank" class="btn" v-text="btn.txt"></a>
+        <a :href="btnLink" target="_blank" class="btn" v-text="btnLabel"></a>
     </div>
 </template>
 <script>
 import $ from 'jquery'
+import { countrylist } from '../../js/country-list'
 export default {
     props: ['txt', 'h2', 'btn'],
-    mounted() {
-    },
     methods: {
         breaktext(txt, count) {
             let rgx = new RegExp(`^[\\.\\,\\w\\s\\+\\-\\'\\;]{0,${count}} `, 'i');
@@ -24,9 +23,42 @@ export default {
             toArr.push('<br>')
             let final = txt.replace(rgx, toArr.join(' '))
             return final;
-        }
+        },
+        
     },
     computed: {
+        btnLabel() {
+            let _cc = localStorage.getItem('cc');
+            if (!!_cc) {
+                let api = `https://restcountries.eu/rest/v2/alpha/${_cc}`;
+                return $.get(api).then(function( data ) {
+                    console.log('name >> ', data.name);
+                    return 'Contact our distributor in ' + data.name;
+                });
+            } else {
+                console.log('huh?');
+                return 'Contact your local distributor';
+            }
+        },
+        btnLink() {
+            let _cc = localStorage.getItem('cc');
+            let link = 'http://www.mis-implants.com/MIS-Info/ContactUs.aspx';
+            if (!!_cc) {
+                let api = `https://restcountries.eu/rest/v2/alpha/${_cc}`;
+                return $.get(api).then(function( data ) {
+                    console.log('name >> ', data.name);
+                    let countryObj = _.find(countrylist, obj => { return obj.country.toLowerCase()===data.name.toLowerCase() })
+                    if (!!countryObj) {
+                        link = countryObj.link;
+                    }
+                    return link;
+                });
+            } else {
+               
+                return link;
+            }
+
+        },
         parsedTxt() {
             let txt = this.txt;
             if (window.screen.width>640 && txt.length>100) {
@@ -51,7 +83,7 @@ export default {
 
                 }
                 return titleTxt
-        }
+        },
     }
 }
 </script>

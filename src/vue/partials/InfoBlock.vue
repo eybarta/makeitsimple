@@ -29,7 +29,7 @@
 <script>
 import CountUp from 'vue-countup-v2';
 import inView from 'in-view';
-import { fixSwiperHeightIssue } from '../../js/swiper'
+// import { fixSwiperHeightIssue } from '../../js/swiper'
 // import AOS from 'aos'
 export default {
     props: ['title', 'txt', 'group', 'image', 'swiped'],
@@ -107,10 +107,10 @@ export default {
                 this.loadNumbers();
             });
 
-            setTimeout(() => {
-                // inView('#itemlist').emit('enter');
-                fixSwiperHeightIssue();
-            }, 500)
+            // setTimeout(() => {
+            //     // inView('#itemlist').emit('enter');
+            //     fixSwiperHeightIssue();
+            // }, 500)
         },
         loadNumbers() {
             this.$set(this, 'numload', true)

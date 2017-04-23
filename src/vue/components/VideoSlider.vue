@@ -15,8 +15,8 @@
                                 <a target="_blank" href="http://www.mis-implants.com/Products/Implants/v3.aspx">Click for more  ></a>
                             </div>
                         </div>
-                        <img v-if="!!isTablet" src="dist/img/animation/V3_2.gif" alt="">
-                        <img v-else-if="!!isMobile" src="dist/img/animation/V3_mini.gif" alt="">
+                        <img v-if="!!isTablet" :src="'dist/img/animation/V3_2.gif?x='+Math.random()" alt="">
+                        <img v-else-if="!!isMobile" :src="'dist/img/animation/V3_mini.gif?x='+Math.random()" alt="">
                         <video v-else ref="vid3" :class="[infomode ? 'under' : '']" src="https://s3-eu-west-1.amazonaws.com/mis-implants/makeitsimple/Minisite/v3_ver_4.mp4" autoplay loop></video>
                     </template>
                 </div>
@@ -29,9 +29,9 @@
                                 <a target="_blank" href="http://www.mis-implants.com/Products/Regenerative-Solutions/Bone-Grafting-Materials/4MATRIX.aspx">Click for more  ></a>
                             </div>
                         </div>
-                        <img v-if="!!isTablet" src="dist/img/animation/4MATRIX_2.gif" alt="">
-                        <img v-else-if="!!isMobile" src="dist/img/animation/4MATRIX_mini.gif" alt="">
-                        <video v-else ref="vid3" :class="[infomode ? 'under' : '']" src="https://s3-eu-west-1.amazonaws.com/mis-implants/makeitsimple/Minisite/4MATRIX_3.mp4" autoplay loop></video>
+                        <img v-if="!!isTablet" :src="'dist/img/animation/4MATRIX_2.gif?x='+Math.random()" alt="">
+                        <img v-else-if="!!isMobile" :src="'dist/img/animation/4MATRIX_mini.gif?x='+Math.random()" alt="">
+                        <video  v-else ref="vid3" :class="[infomode ? 'under' : '']" src="https://s3-eu-west-1.amazonaws.com/mis-implants/makeitsimple/Minisite/4MATRIX_3.mp4" autoplay loop></video>
                     </template>
                 </div>
                 <div class="swiper-slide" :data-swiper-autoplay="swiperAutoplay">
@@ -43,8 +43,8 @@
                                 <a target="_blank" href="http://www.mis-implants.com/Products/Digital-Dentistry/MGUIDE.aspx">Click for more  ></a>
                             </div>
                         </div>
-                        <img v-if="!!isTablet" src="dist/img/animation/MGUIDE_2.gif" alt="">
-                        <img v-else-if="!!isMobile" src="dist/img/animation/MGUIDE_mini.gif" alt="">
+                        <img v-if="!!isTablet" :src="'dist/img/animation/MGUIDE_2.gif?x='+Math.random()" alt="">
+                        <img v-else-if="!!isMobile" :src="'dist/img/animation/MGUIDE_mini.gif?x='+Math.random()" alt="">
                         <video v-else ref="vid3" :class="[infomode ? 'under' : '']" src="https://s3-eu-west-1.amazonaws.com/mis-implants/makeitsimple/Minisite/MGUIDE_ver.3.mp4" autoplay loop></video>
                     </template>
                 </div>
@@ -52,7 +52,7 @@
         </div>
         <div class="video-prev swiper-button-prev" ref="prev"></div>
         <div class="video-next swiper-button-next" ref="next"></div>
-        <div class="video-swiper-pagination"></div>                    
+        <div class="video-swiper-pagination"></div>    
     </div>
 </div>
 </template>
@@ -62,6 +62,7 @@ import { videoSwiper } from '../../js/swiper'
 export default {
     data() {
         return {
+            testflag: false,
             trigger: 0,
             slideindex: 0,
             infomode: false,
@@ -89,16 +90,30 @@ export default {
            })
         },
         restartSwiper() {
+            this.swiper.slideTo(0, 0, true);
             this.resetVideos();
-            this.swiper.stopAutoplay();
-            this.swiper.slideTo(1, 50, true);
-            this.swiper.startAutoplay();
         },
         resetVideos() {
+            let vm = this;
             console.log('slide Index> ', this.swiper.activeIndex);
             this.$set(this, 'slideindex', this.swiper.activeIndex);
             // restart slides on change
             $(this.$el).find('video').prop('currentTime', 0);
+            this.$nextTick(function() {
+                let slide = $(this.$el).find('.swiper-slide').eq(this.swiper.activeIndex),
+                img =  slide.find('img');
+                if (!!img) {
+                    img.on('load', function() {
+                        vm.swiper.stopAutoplay(0);
+                        vm.swiper.pauseAutoplay(0);
+                        vm.swiper.startAutoplay(0);
+                    }).each(function() {
+                        if(this.complete) $(this).trigger('load');
+                    });
+                }
+            })
+            
+            
         },
         toggleinfo() {
             this.$set(this, 'infomode', !this.infomode);
@@ -108,13 +123,13 @@ export default {
             }
             else {
                 this.resetVideos();
-                this.swiper.startAutoplay();
+                // this.swiper.startAutoplay();
             }
         }
     },
     computed: {
         swiperAutoplay() {
-            return this.isMobile || this.isMozillaOrIE ? 4200 : 11000
+            return this.isMobile || this.isMozillaOrIE ? 5200 : 11000
         },
         isDesktop() {
             let trigger = this.trigger;
@@ -137,6 +152,22 @@ export default {
 }
 </script>
 <style lang="stylus">
+.test
+    position absolute
+    top 0
+    left 0
+    right 0
+    bottom 0
+    z-index 9999
+    background #fff
+    img
+        width 100%
+        height auto
+    button
+        border 1px solid green
+        color green
+        background #fff
+        padding 10px
 .info-toggle
     opacity 1
     transition opacity 200ms ease-out

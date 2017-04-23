@@ -8,11 +8,13 @@ using System.Xml;
 
 public partial class _Default : System.Web.UI.Page
 {
+    public String cc;
     protected void Page_Load(object sender, EventArgs e)
     {
+        
         if(!IsPostBack)
         {
-            String cc = "";
+            cc = "";
             try
             {
                 cc = appGeoIP.GetCountryCodeByAkamaiHeader().ToUpper();

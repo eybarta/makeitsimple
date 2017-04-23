@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
+const BabiliPlugin = require("babili-webpack-plugin");
 const resolvePath = require('resolve-path')
 const HappyPack = require('happypack');
 const DashboardPlugin = require('webpack-dashboard/plugin');
@@ -130,24 +131,7 @@ if (isProduction) {
             minimize: true,
             debug: false
         }),
-        new webpack.optimize.UglifyJsPlugin({
-            compress: {
-                warnings: false,
-                screw_ie8: true,
-                conditionals: true,
-                unused: true,
-                comparisons: true,
-                sequences: true,
-                dead_code: true,
-                evaluate: true,
-                if_return: true,
-                join_vars: true,
-                drop_console: true
-            },
-            output: {
-            comments: false,
-            },
-        }),
+        new BabiliPlugin({removeConsole:true}),
         new WebpackCleanupPlugin({
             exclude: ["js/**/*", "css/**/*", "img/**/*"],
         })
@@ -167,8 +151,8 @@ module.exports = {
     target: "web",
 	// entry point of our application
 	entry: {
-        script: './index.js',
-        pages: './pages.js'
+        script: './index.js'
+        // pages: './pages.js'
 	},
 	// where to place the compiled bundle
 	output: {
