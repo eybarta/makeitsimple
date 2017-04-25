@@ -7,11 +7,13 @@
         <div class="swiper-container">
             <div ref="swiper" class="swiper-wrapper" id="pageSwiperWrapper">
                 <div class="swiper-slide">
-                    <div class="intro full-height unattach" :style="'background-image:url('+introBackground+')'">
+                    <div class="page-intro full-height unattach" :style="'background-image:url('+introBackground+')'">
                         <img class="floater" v-if="introFloatingElement" :src="introFloatingElement" alt="introFloatingElement">
+                        
+                        <video-player v-if="introVideo" :vidurl="introVideo"></video-player>
                     </div>
                     <info-block :title="infoblock.title" :txt="infoblock.txt" :group="infoblock.group" :image="infoblock.image"></info-block>
-                    <out-block :txt="outblock.txt" :h2="outblock.h2" :btn="outblock.btn"></out-block>
+                    <out-block :txt="outblock.txt" :h2="outblock.h2" :country="country" :btn="outblock.btn"></out-block>
                     <info-block class="pb-max center" :title="infoblock2.title" :txt="infoblock2.txt" :group="infoblock2.group"></info-block>
                 </div>
             </div>
@@ -21,6 +23,7 @@
 <script>
 import InfoBlock from './partials/InfoBlock.vue'
 import OutBlock from './partials/OutBlock.vue'
+import VideoPlayer from './components/VideoPlayer.vue'
 import { storageAvailable } from '../js/utils'
 var fromHome = false;
 
@@ -29,14 +32,21 @@ export default {
         pageIndex: Number,
         hash: String,
         introBg: String,
+        introVideo: String,
         introFloatingElement: String,
         infoblock: Object,
         outblock: Object,
         infoblock2: Object
     },
+    fetch: {
+        country() {
+            return !!localStorage.getItem('cc') ? `https://restcountries.eu/rest/v2/alpha/${localStorage.getItem('cc')}` : false;
+        }
+    },
     data() {
         return {
-            fromHome: null
+            fromHome: null,
+            country: null
         }
     },
     created() {
@@ -47,7 +57,8 @@ export default {
     },
     components: {
         InfoBlock,
-        OutBlock
+        OutBlock,
+        VideoPlayer
     },
     beforeRouteEnter (to, from, next) {
         fromHome = !!from.name;
@@ -72,5 +83,14 @@ export default {
 }
 </script>
 <style lang="stylus">
-
+.page-intro
+    min-height auto
+    height 100vh
+    overflow hidden
+    position relative
+    #videoHolder
+        position absolute
+        width 100%
+        top 0
+        left 0
 </style>

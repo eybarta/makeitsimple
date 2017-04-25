@@ -241,6 +241,7 @@ import { storageAvailable } from '../js/utils'
 
 
 export default {
+    props: ['country'],
     data() {
         return {
             desktop: $(window).width()>1023,

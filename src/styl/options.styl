@@ -33,6 +33,12 @@ a
 .centered
     centered()
 
+.clearfix:after
+    content ''
+    display table
+    clear both
+    visibility hidden
+
 .unattach
     background-attachment initial !important
 
@@ -87,6 +93,8 @@ for alias, prop in $space
         padding-left 5%
     +below(breaks.base)
         width 54%
+        span
+            padding-left 0
     +tablet(orientation: portrait)
         width auto
         padding-left 0

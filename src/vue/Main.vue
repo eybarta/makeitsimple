@@ -32,7 +32,7 @@
                         <h6>Contact Us</h6>
                         <div>
                             <p class="minitxt">MIS is deeply committed to our core values of quality, service, agility and innovation, integrity and caring; reflected in every step of our work process and supported by over 300 dedicated MIS employees. MIS products are distributed in over 60 countries worldwide through a well-established global distribution network.</p>
-                            <a target="_blank" href="http://www.mis-implants.com/MIS-Info/ContactUs.aspx" class="link pt-med">Contact your local distributer <span> ></span></a>
+                            <a target="_blank" :href="btnLink" class="link pt-med" v-html="btnLabel"></a>
                         </div>
                     </li>
                     
@@ -43,9 +43,40 @@
     </div>
 </template>
 <script>    
+import { countrylist } from '../js/country-list'
 export default {
-    created() {
-        console.log("MAKE IT SIMPEL!?")
+    data() {
+        return {
+            country: null
+        }
+    },
+    fetch: {
+        country() {
+            return !!localStorage.getItem('cc') ? `https://restcountries.eu/rest/v2/alpha/${localStorage.getItem('cc')}` : false;
+        }
+    },
+    computed: {
+        btnLabel() {
+            let fulfilled = (!!this.country && this.country.fulfilled) || null;
+            if (!!fulfilled) {
+                    return 'Contact our distributor in ' + this.country.value.name + '  <span> ></span>';
+            } else {
+                return 'Contact your local distributor' + '  <span> ></span>';;
+            }
+        },
+        btnLink() {
+            let fulfilled = (!!this.country && this.country.fulfilled) || null;
+            let vm = this;
+            let link = 'http://www.mis-implants.com/MIS-Info/ContactUs.aspx';
+            if (!!fulfilled) {
+                let countryObj = _.find(countrylist, obj => { return obj.country.toLowerCase()===vm.country.value.name.toLowerCase() })
+
+                if (!!countryObj) {
+                    link = countryObj.link;
+                }
+            }
+            return link;
+        },
     }
 }
 </script>

@@ -118,6 +118,12 @@ a:visited {
   display: table;
   clear: both;
 }
+.clearfix:after {
+  content: '';
+  display: table;
+  clear: both;
+  visibility: hidden;
+}
 .unattach {
   background-attachment: initial !important;
 }
@@ -1031,6 +1037,9 @@ a:visited {
 @media only screen and (max-width: 1024px) {
   .title-right {
     width: 54%;
+  }
+  .title-right span {
+    padding-left: 0;
   }
 }
 @media only screen and (min-width: 400px) and (max-width: 1050px) and (orientation: portrait) {
@@ -2358,6 +2367,12 @@ a:visited {
   display: table;
   clear: both;
 }
+.clearfix:after {
+  content: '';
+  display: table;
+  clear: both;
+  visibility: hidden;
+}
 .unattach {
   background-attachment: initial !important;
 }
@@ -3272,6 +3287,9 @@ a:visited {
   .title-right {
     width: 54%;
   }
+  .title-right span {
+    padding-left: 0;
+  }
 }
 @media only screen and (min-width: 400px) and (max-width: 1050px) and (orientation: portrait) {
   .title-right {
@@ -3938,20 +3956,6 @@ a.link:visited {
           transform: translate(-50%, -50%);
   width: 100%;
 }
-.intro .floater {
-  position: absolute;
-  top: 18%;
-  left: 10%;
-}
-@media only screen and (max-width: 640px) {
-  .intro .floater {
-    display: none;
-    top: 2%;
-    left: 2%;
-    -webkit-transform: scale(0.8);
-            transform: scale(0.8);
-  }
-}
 .intro .mobile-play {
   position: absolute;
   top: 50%;
@@ -3972,15 +3976,15 @@ a.link:visited {
 .intro-v3:before {
   background-image: url(../../dist/img/v3-big.jpg);
 }
-.pages-wrap .intro {
+.pages-wrap .page-intro {
   background: url(../../dist/img/bg.jpg) no-repeat 50% 0/cover;
 }
 @media only screen and (max-width: 640px) {
-  .pages-wrap .intro {
+  .pages-wrap .page-intro {
     background-position: 50% 0;
   }
 }
-.pages-wrap .intro:before {
+.pages-wrap .page-intro:before {
   display: none;
 }
 @media only screen and (max-width: 640px) {
@@ -4159,6 +4163,20 @@ iframe {
 @media only screen and (max-width: 640px) {
   .hp.playoverlay .i-360 {
     display: none;
+  }
+}
+.page-intro .floater {
+  position: absolute;
+  top: 18%;
+  left: 10%;
+}
+@media only screen and (max-width: 640px) {
+  .page-intro .floater {
+    display: none;
+    top: 2%;
+    left: 2%;
+    -webkit-transform: scale(0.8);
+            transform: scale(0.8);
   }
 }
 .play #playintro {
@@ -4882,7 +4900,6 @@ iframe {
   }
 }
 .out-block h2 {
-  width: 60%;
   margin: 0 auto;
   padding: 56px 0 76px;
 }

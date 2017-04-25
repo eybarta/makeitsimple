@@ -4,9 +4,11 @@ globalCustomEventPoly()
 import Vue from 'vue'
 import AsyncComputed from 'vue-async-computed'
 import VueRouter from 'vue-router'
-
+import FetchData from 'vue-fetch-data'
+ 
 Vue.use(AsyncComputed)
 Vue.use(VueRouter)
+Vue.use(FetchData)
 
 import './styl/app.styl';
 import 'swiper/dist/css/swiper.css'

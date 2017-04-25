@@ -4,6 +4,7 @@ import { PagesData } from './js/pages-data';
 import Page from './vue/Page.vue'
 import Homepage from './vue/Homepage.vue'
 
+
 function dynamicPagePropsFn(route) {
     var hash = route.params.pageid,
     pageObj = _.find(PagesData, { hash }),
@@ -13,6 +14,7 @@ function dynamicPagePropsFn(route) {
             pageIndex,
             introBg:pageObj.introBg,
             introFloatingElement:pageObj.introFloatingElement,
+            introVideo: pageObj.introVideo,
             infoblock:pageObj.infoblock,
             outblock:pageObj.outblock,
             infoblock2:pageObj.infoblock2
@@ -32,6 +34,6 @@ export const routes = [
     {
         path: '*',
         name: 'home',
-        component: Homepage,
+        component: Homepage
     }
 ]

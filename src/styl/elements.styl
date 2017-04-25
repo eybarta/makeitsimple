@@ -112,15 +112,7 @@ a, a.link, a.link:visited
         z-index 11
         self-center()
         width 100%
-    .floater
-        position absolute
-        top 18%
-        left 10%
-        +below(breaks.mobile)
-            display none
-            top 2%
-            left 2%
-            transform scale(0.8)
+    
     .mobile-play
         self-center()
         text-align center
@@ -144,7 +136,7 @@ a, a.link, a.link:visited
         //         background-size 95% auto
     &.intro-v3:before
         background-image url('./assets/img/v3-big.jpg')
-    /.pages-wrap .intro
+    /.pages-wrap .page-intro
         background url('./assets/img/bg.jpg') no-repeat 50% 0 / cover
         +below(breaks.mobile)
             background-position 50% 0
@@ -239,7 +231,16 @@ a, a.link, a.link:visited
             opacity 1
             +below(breaks.mobile)
                 display none
-                    
+.page-intro
+    .floater
+        position absolute
+        top 18%
+        left 10%
+        +below(breaks.mobile)
+            display none
+            top 2%
+            left 2%
+            transform scale(0.8)                 
 .play
     #playintro
         opacity 0 !important
@@ -656,7 +657,6 @@ a, a.link, a.link:visited
 
 
 // OUT BLOCK
-
 .out-block
     background #21455e
     text-align center
@@ -669,7 +669,6 @@ a, a.link, a.link:visited
         +below(breaks.mobile)
             font-size 14px
     h2
-        width 60%
         margin 0 auto
         padding 56px 0 76px
         +below(breaks.base)
