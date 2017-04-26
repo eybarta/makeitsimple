@@ -66,6 +66,12 @@ import jQuery from 'jquery'
 		    vContext.scale(-1, 1);
 		    addDraggerLogic();
 
+
+			vContext.strokeStyle = "#ffffff";
+		    vContext.lineWidth = 5;
+		    vContext.beginPath();
+		    vContext.arc(cWidth / 2, cHeight / 2, pathRadius, 0, 2*Math.PI);
+		    vContext.stroke();
             /*
 		    $("#vgalNext").mousedown(function (event) {
 		        var nIndex = currentIndex + 1;

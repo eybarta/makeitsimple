@@ -22,7 +22,10 @@
             </div>
             
         </div>
-        <div id="hpVideoSoundControl" :class="[isMuted ? 'hpVideoMuteBtn' : 'hpVideoSoundBtn']" @click="isMuted=!isMuted"></div>
+        <div v-if="playing" class="controls">
+            <button @click.prevent.stop="closeTriggerHandler" id="closeIntro" class="close-btn"></button>
+            <div id="hpVideoSoundControl" :class="[isMuted ? 'hpVideoMuteBtn' : 'hpVideoSoundBtn']" @click="isMuted=!isMuted"></div>
+        </div>
     </div>
 </template>
 <script>
@@ -32,50 +35,59 @@ export default {
     props: ['vidurl'],
     data() {
         return {
+            playing:false,
             isMuted: false
         }
     },
     mounted() {
         console.log('video player created');
-         $("#video1").videoController();
-         
-         $("#video1").data('videoController').updateUI();
-         $("#video1").data('videoController').playVideoByURL(this.vidurl);
-         $("#video1").data('videoController').setControlsActive(true);
+        this.init();
+      
     },
     methods: {
-        toggleVideoSound() {
-            isSoundOn = !isSoundOn;
-                //if (isSoundOn) {
-
-                var isMuted = false;
-                //if ($("#video1").attr('muted'))
-                //{
-                    //if ($("#video1").attr('muted') == 'true') {
-                        //isMuted = true;
-                    //}
-                //}
-                var vid = document.getElementById("video1");
-                if (vid.muted)
-                {
-                    isMuted = true;
-                }
-
-
-                if (isMuted) {
-                    vid.muted = false;
-                    //$("#video1").attr('muted', false); //unmute
-                    $("#hpVideoSoundControl").attr("class", "hpVideoSoundBtn");
-                } else {
-                    vid.muted = true;
-                    //$("#video1").attr('muted', true); //mute
-                    $("#hpVideoSoundControl").attr("class", "hpVideoMuteBtn");
-                }
-        }
+        init() {
+            $("#video1").videoController();
+            $("#video1").data('videoController').updateUI();
+            // $("#video1").data('videoController').playVideoByURL(this.vidurl);
+            // this.playing = true;
+            $("#video1").data('videoController').setControlsActive(true);  
+        },
     }
 }
 </script>
 <style lang="stylus">
+.controls
+    position absolute
+    top 30px
+    right 30px
+    & > *
+        opacity 0.7
+        transition 300ms ease
+        &:hover
+            opacity 1
+    .close-btn
+        position relative
+        float right
+        top initial
+        left initial
+        border-radius 22.5px
+        width 42px
+        height @width
+        box-sizing border-box
+        margin-left 10px
+    #hpVideoSoundControl
+        width 45px
+        height 45px
+        float left
+        z-index 130
+        background-position center center
+        background-repeat no-repeat
+        cursor pointer
+        &.hpVideoMuteBtn
+            background-image url(assets/btnHpVideoSoundOff.png)
+        &.hpVideoSoundBtn
+            background-image url(assets/btnHpVideoSoundOn.png)
+
 #vgalController
     width 480px
     height 480px
@@ -99,23 +111,6 @@ export default {
 
 // .bgPause
 //     background-image url(images/videoPause.png)
-#hpVideoSoundControl
-    width 45px
-    height 45px
-    float left
-    position fixed
-    top 70px
-    right 25px
-    z-index 130
-    background-position center center
-    background-repeat no-repeat
-    // display none
-    cursor pointer
-.hpVideoMuteBtn
-    background-image url(assets/btnHpVideoSoundOff.png)
-
-.hpVideoSoundBtn
-    background-image url(assets/btnHpVideoSoundOn.png)
 
 #vgalRingCanvas
     z-index 106
