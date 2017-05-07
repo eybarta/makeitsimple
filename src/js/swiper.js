@@ -98,8 +98,8 @@ export function videoSwiper() {
         keyboardControl: true,
         controlInverse: true,
         autoHeight: true,
-        autoplay: 11000,
-        autoplayDisableOnInteraction: false,
+        // autoplay: 11000,
+        // autoplayDisableOnInteraction: false,
         nextButton: '.video-next',
         prevButton: '.video-prev',
         onTransitionStart(swiper) {

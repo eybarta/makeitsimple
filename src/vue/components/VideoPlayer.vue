@@ -1,7 +1,7 @@
 <template>
     <div class="video-wrapper">
         <div id="videoHolder">
-            <div id="hpVideoFull">
+            <div v-if="!mobile"  id="hpVideoFull">
                 <!-- start video controller -->
                 <div id="vgalController">
                     <div id="vgalDragger"><img src="./assets/trans30x30.png" /></div>
@@ -9,7 +9,7 @@
                     <div id="vgalHandle"    class="vgalEx fadeAnimation"><img src="./assets/jogEdge.png" /></div>
                     <div id="vgalTotalVal"  class="vgalEx fadeAnimation">0.00</div>
                     <div id="vgalTotal"     class="vgalEx fadeAnimation"><img src="./assets/jogEdgeHor.png" /></div>
-                    <div id="vgalPalyPauseIcon">
+                    <div id="vgalPalyPauseIcon" @click="playing=!playing; hidden=false">
                         <div class="vgalLine"></div>
                         <div class="vgalLine"></div>
                         <div class="vgalLine"></div>
@@ -17,13 +17,15 @@
                     <canvas id="vgalRingCanvas" width="270" height="270"></canvas>
                 </div>
                 <!-- end video controller -->
-
-                <video id="video1" class="" preload="auto" style="position:relative; width: 100%;" :muted="isMuted"></video>
+                <video v-show="!hidden" ref="vid" id="video1" class="" preload="auto" style="position:relative; width: 100%;" :muted="isMuted"></video>
             </div>
-            
+            <div v-else class="video-mobile">
+                <button @click="playvid" :class="['play-mobile', $route.params.pageid==='More_with_less' ? 'hidden' : '']"><img src="./assets/play-mobile.svg"></button>
+                <video v-show="!hidden && !!playing" ref="vid" id="video1" class="" preload="auto" style="position:relative; width: 100%;" :muted="isMuted"></video>
+            </div>
         </div>
-        <div v-if="playing" class="controls">
-            <button @click.prevent.stop="closeTriggerHandler" id="closeIntro" class="close-btn"></button>
+        <div v-if="!hidden && !mobile" class="controls">
+            <button @click.prevent.stop="close" id="closeIntro" class="close-btn"></button>
             <div id="hpVideoSoundControl" :class="[isMuted ? 'hpVideoMuteBtn' : 'hpVideoSoundBtn']" @click="isMuted=!isMuted"></div>
         </div>
     </div>
@@ -32,30 +34,87 @@
 import $ from 'jquery'
 import '../../js/jquery-video-controller.js'
 export default {
-    props: ['vidurl'],
+    props: ['vidurl', 'mobile'],
     data() {
         return {
+            hidden: true,
             playing:false,
             isMuted: false
         }
     },
     mounted() {
-        console.log('video player created');
-        this.init();
+        console.log('video player created >> ', this.$route.params);
+        if (!this.mobile) {
+            this.init();
+        }
+        
       
     },
     methods: {
         init() {
-            $("#video1").videoController();
-            $("#video1").data('videoController').updateUI();
+            let $vid = $(this.$refs.vid);
+            $vid.videoController({ videoUrl: this.vidurl});
+            $vid.data('videoController').updateUI();
             // $("#video1").data('videoController').playVideoByURL(this.vidurl);
             // this.playing = true;
-            $("#video1").data('videoController').setControlsActive(true);  
+            $vid.data('videoController').setControlsActive(true);  
         },
+        close() {
+            this.hidden = true;
+            this.playing = false;
+            this.$refs.vid.pause();
+            this.$refs.vid.currentTime = 0;
+            if (!this.mobile) {
+                $(this.$refs.vid).data('videoController').updateUI();
+            }
+    
+
+        },
+        playvid() {
+            console.log("play vid >> ", this.$refs.vid);
+            this.hidden = false;
+            this.playing = true;
+            this.$nextTick(function() {
+                let vid = this.$refs.vid;
+                vid.src = this.vidurl;
+                $(vid).off().on('webkitendfullscreen fullscreenchange',this.closevid);
+                vid.play();
+                vid.webkitEnterFullscreen();
+            })           
+        },
+        closevid() {
+            this.hidden = true;
+            this.playing = false;
+        }
+
     }
 }
 </script>
 <style lang="stylus">
+.video-wrapper
+    position relative
+    height 100%
+    overflow hidden
+    #videoHolder, #hpVideoFull
+        height 100%
+.play-mobile
+    position absolute
+    top 50%
+    left 50%
+    transform translate(-50%,-50%)
+.video-mobile
+    height 100%
+    video
+        position absolute
+        width 100%
+        top 50%
+        left 50%
+        transform translate(-50%,-50%)
+        z-index 999
+    button
+        z-index 9991
+        &.hidden
+            opacity 0
 .controls
     position absolute
     top 30px
@@ -106,11 +165,6 @@ export default {
     background-repeat no-repeat
     cursor pointer
 
-// .bgPlay
-//     background-image url(images/videoPlay.png)
-
-// .bgPause
-//     background-image url(images/videoPause.png)
 
 #vgalRingCanvas
     z-index 106

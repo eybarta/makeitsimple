@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="MisWebsite" Class="DataClassesDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=tcp:m0b6g5sq4b.database.windows.net,1433;Initial Catalog=MisWebsite;Persist Security Info=True;User ID=eranh@m0b6g5sq4b" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="MisWebsiteConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.tMembers" Member="tMembers">
+    <Type Name="tMember">
+      <Column Name="member_id" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="is_active" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="DESKCASE_APP_USER_HD" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="DESKCASE_APP_USER_ALLOW_CLOUD_MANAGE" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="DESKCASE_APP_ALLOWED" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ECASE_APP_ALLOW" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="ECASE_APP_LEVEL" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="admin_level_param" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="admin_level" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="first_name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="last_name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="email" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="password" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="address" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="country" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="city" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="state" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="zip_code" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="phone_home" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="phone_office" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="phone_mobile" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="receive_notifications" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="date" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

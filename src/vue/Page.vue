@@ -10,7 +10,7 @@
                     <div class="page-intro full-height unattach" :style="'background-image:url('+introBackground+')'">
                         <img class="floater" v-if="introFloatingElement" :src="introFloatingElement" alt="introFloatingElement">
                         
-                        <video-player v-if="introVideo" :vidurl="introVideo"></video-player>
+                        <video-player v-if="introVideo" :mobile="isMobile" :vidurl="introVideo"></video-player>
                     </div>
                     <info-block :title="infoblock.title" :txt="infoblock.txt" :group="infoblock.group" :image="infoblock.image"></info-block>
                     <out-block :txt="outblock.txt" :h2="outblock.h2" :country="country" :btn="outblock.btn"></out-block>
@@ -68,6 +68,9 @@ export default {
     computed: {
         introBackground() {
             return window.screen.width<540 ? this.introBg.replace('.jpg', '-mobile.jpg') : this.introBg;
+        },
+        isMobile() {
+            return window.screen.width<=736
         },
         wideScreen() {
             let trigger = this.trigger;

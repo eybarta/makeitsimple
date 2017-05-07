@@ -15,6 +15,7 @@ import jQuery from 'jquery'
 		var defaults =
         {
             coverVideo:'',
+			videoUrl: '',
             onVideoIndexChange: function () { }
         }
 
@@ -45,6 +46,8 @@ import jQuery from 'jquery'
 
 		plugin.init = function () {
 			plugin.settings = $.extend({}, defaults, options);
+
+			
 			initLayout();
 			setLayout();
 			currentIndex = 0;
@@ -66,7 +69,9 @@ import jQuery from 'jquery'
 		    vContext.scale(-1, 1);
 		    addDraggerLogic();
 
-
+			
+			handleVal.style.display = 'none';
+			handle.style.display = 'none';
 			vContext.strokeStyle = "#ffffff";
 		    vContext.lineWidth = 5;
 		    vContext.beginPath();
@@ -84,15 +89,22 @@ import jQuery from 'jquery'
 		        window.location.hash = "Videos/" + nIndex;
 		    });
             */
-
+			var playcount = 0;
 		    $(vController).mousedown(function (event) {
-		        if($(video)[0].paused==false)
-		        {
-		            $(video)[0].pause();
-		        } else {
+				if (playcount<1) {
+					plugin.playVideoByURL(plugin.settings.videoUrl);
 		            $(video)[0].play();
-		        }
+				}
+		        else {
+					if($(video)[0].paused==false)
+					{
+						$(video)[0].pause();
+					} else {
+						$(video)[0].play();
+					}
+				}
 		        updatePlayPauseMode();
+				playcount++;
 		    });
 		    $(window).mousemove(function (event) {
 
@@ -308,7 +320,7 @@ import jQuery from 'jquery'
 
 		var formatTime = function(totalSeconds)
 		{
-		    var ts = Math.floor(totalSeconds);
+		    var ts = isNaN(totalSeconds) ? 0 : Math.floor(totalSeconds);
 		    var minutes = Math.floor(ts / 60);
 		    var seconds = ts - (minutes * 60);
 		    var display = minutes + ":" + seconds;
@@ -399,10 +411,17 @@ import jQuery from 'jquery'
 		    vContext.stroke();
 
 		    var hAng = 90-_deg;//_deg - 180;//
+			
 		    $(handle).css("top", hy + "px");
 		    $(handle).css("left", hx + "px");
 		    $(handle).css("transform", "rotate(" + hAng + "deg)");
-		    
+		    if ($(handle).is(":hidden")) {
+				setTimeout(function() {
+					$(handle).show();
+					$(handleVal).show();
+					
+				}, 500)
+			}
 
 		    $(dragger).css("left", hx + "px");
 		    $(dragger).css("top", hy + "px");

@@ -105,7 +105,7 @@ const rules = [
     {
         test: /\.(ttf|svg|eot)$/,
         loader: 'file-loader',
-        exclude: /img/,
+        include: [/fonts/],
         options: {
             name: 'fonts/[hash].[ext]',
             publicPath: './'
@@ -131,7 +131,7 @@ if (isProduction) {
             minimize: true,
             debug: false
         }),
-        new BabiliPlugin({removeConsole:true}),
+        new BabiliPlugin({removeConsole:true, removeDebugger:true}),
         new WebpackCleanupPlugin({
             exclude: ["js/**/*", "css/**/*", "img/**/*"],
         })

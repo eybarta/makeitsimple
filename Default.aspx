@@ -21,6 +21,7 @@
     <script>
         localStorage.setItem('cc', "<%=cc %>");
     </script>
+    <!--<script src="https://www.google.com/recaptcha/api.js?onload=vueRecaptchaApiLoaded&render=explicit" async defer></script>-->
 </head>
 <body class="root">
     <div id="simple"></div>

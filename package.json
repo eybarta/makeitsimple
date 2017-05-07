@@ -11,6 +11,7 @@
   "author": "Eyal B",
   "license": "ISC",
   "dependencies": {
+    "@finpo/vue2-recaptcha-invisible": "^1.1.1",
     "aos": "^2.1.1",
     "css-reset-and-normalize": "^0.3.0",
     "in-view": "^0.6.1",
