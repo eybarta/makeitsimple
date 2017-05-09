@@ -19,7 +19,7 @@
                     // LOADED WITH VUE**
                 -->
             <intro-section></intro-section>
-            <div id="rest" class="rest-of-page" style="display:block;">
+            <div id="rest" class="rest-of-page">
                 <div class="preview-section" id="why">
                     <div class="center">
                         <img id="bigGraphic" class="big_graphic" src="dist/img/intro_graphic.jpg" alt="MIS Implants">

@@ -143,6 +143,7 @@ export default {
                 if (this.tabscroll>5) {
                     window.removeEventListener('scroll', this.tabletScroll)
                     document.getElementById('rest').style.display = 'block'; 
+                    $('footer').show();
                     setTimeout(function() {
                         sectionsInView()
                         initSwiper();

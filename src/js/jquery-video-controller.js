@@ -151,14 +151,14 @@ import jQuery from 'jquery'
 		            hideControlsDelay = setTimeout(function () {
 		                if (!isDraggingHandle) {
 		                    var md = getMouseDistanceFromCenter();
-		                    if (md.dX > 250 || md.dY > 250)
-		                    {
+		                    // if (md.dX > 250 || md.dY > 250)
+		                    // {
 		                        isVideoControlsVisible = false;
 		                        $(vController).css("opacity", "0");
 		                        //$("#vgalNext").css("opacity", "0");
 		                        //$("#vgalPre").css("opacity", "0");
 		                        //$("#vgalCloseLayer").css("opacity", "0");
-		                    }
+		                    // }
 		                }
 		            }, 2000);
 		        }

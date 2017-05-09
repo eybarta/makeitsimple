@@ -1,9 +1,9 @@
 <template>
     <div class="video-wrapper">
-        <div id="videoHolder">
+        <div id="videoHolder" @click="playvid">
             <div v-if="!mobile"  id="hpVideoFull">
                 <!-- start video controller -->
-                <div id="vgalController">
+                <div id="vgalController" v-if="!hidden && !!playing">
                     <div id="vgalDragger"><img src="./assets/trans30x30.png" /></div>
                     <div id="vgalHandleVal" class="vgalEx fadeAnimation"></div>
                     <div id="vgalHandle"    class="vgalEx fadeAnimation"><img src="./assets/jogEdge.png" /></div>
@@ -45,7 +45,7 @@ export default {
     mounted() {
         console.log('video player created >> ', this.$route.params);
         if (!this.mobile) {
-            this.init();
+            // this.init();
         }
         
       
@@ -72,14 +72,27 @@ export default {
         },
         playvid() {
             console.log("play vid >> ", this.$refs.vid);
+
             this.hidden = false;
             this.playing = true;
+
             this.$nextTick(function() {
-                let vid = this.$refs.vid;
-                vid.src = this.vidurl;
-                $(vid).off().on('webkitendfullscreen fullscreenchange',this.closevid);
-                vid.play();
-                vid.webkitEnterFullscreen();
+                let vid = this.$refs.vid,
+                    $vid = $(vid);
+                if (!!this.mobile) {
+                    vid.src = this.vidurl;
+                    $(vid).off().on('webkitendfullscreen fullscreenchange',this.closevid);
+                    vid.play();
+                    vid.webkitEnterFullscreen();
+                }
+                else {
+                    $vid.videoController({ videoUrl: this.vidurl});
+                    $vid.data('videoController').updateUI();
+                    $("#video1").data('videoController').playVideoByURL(this.vidurl);
+                    // this.playing = true;
+                    $vid.data('videoController').setControlsActive(true);  
+                }
+                
             })           
         },
         closevid() {
@@ -96,6 +109,7 @@ export default {
     height 100%
     overflow hidden
     #videoHolder, #hpVideoFull
+        cursor pointer
         height 100%
 .play-mobile
     position absolute
