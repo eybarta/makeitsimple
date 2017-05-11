@@ -4,8 +4,8 @@
             <span v-text="fromHome ? 'BACK' : 'HOME'"></span>
             <a href="/Default.aspx#makeitsimple"></a>
         </div>
-        <div class="swiper-container">
-            <div ref="swiper" class="swiper-wrapper" id="pageSwiperWrapper">
+        <div :class="['swiper-container', vidplaying ? 'overall' : '']">
+            <div ref="swiper" class="swiper-wrapper" id="pageSwiperWrapper" @playingvid="vidplaying=true" @stoppedvid="vidplaying=false">
                 <div class="swiper-slide">
                     <div class="page-intro full-height unattach" :style="'background-image:url('+introBackground+')'">
                         <img class="floater" v-if="introFloatingElement" :src="introFloatingElement" alt="introFloatingElement">
@@ -46,7 +46,8 @@ export default {
     data() {
         return {
             fromHome: null,
-            country: null
+            country: null,
+            vidplaying: false
         }
     },
     created() {
@@ -86,6 +87,8 @@ export default {
 }
 </script>
 <style lang="stylus">
+.overall
+    z-index 99999
 .page-intro
     min-height auto
     height 100vh

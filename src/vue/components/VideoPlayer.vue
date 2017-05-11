@@ -1,5 +1,5 @@
 <template>
-    <div class="video-wrapper">
+    <div :class="['video-wrapper', !!playing ? 'cinema' : '']" >
         <div id="videoHolder" @click="playvid">
             <div v-if="!mobile"  id="hpVideoFull">
                 <!-- start video controller -->
@@ -60,15 +60,25 @@ export default {
             $vid.data('videoController').setControlsActive(true);  
         },
         close() {
-            this.hidden = true;
-            this.playing = false;
+            this.closevid();
             this.$refs.vid.pause();
             this.$refs.vid.currentTime = 0;
             if (!this.mobile) {
                 $(this.$refs.vid).data('videoController').updateUI();
             }
+            
     
 
+        },
+        dispatchPlayEvent() {
+            let event = new CustomEvent('playingvid'),
+                el = document.getElementById('pageSwiperWrapper');
+                el.dispatchEvent(event);
+        },
+        dispatchStopEvent() {
+            let event = new CustomEvent('stoppedvid'),
+                el = document.getElementById('pageSwiperWrapper');
+                el.dispatchEvent(event);
         },
         playvid() {
             console.log("play vid >> ", this.$refs.vid);
@@ -76,6 +86,9 @@ export default {
             this.hidden = false;
             this.playing = true;
 
+            this.dispatchPlayEvent();
+            
+                
             this.$nextTick(function() {
                 let vid = this.$refs.vid,
                     $vid = $(vid);
@@ -98,6 +111,7 @@ export default {
         closevid() {
             this.hidden = true;
             this.playing = false;
+            this.dispatchStopEvent();
         }
 
     }
@@ -111,6 +125,11 @@ export default {
     #videoHolder, #hpVideoFull
         cursor pointer
         height 100%
+    &.cinema
+        background darken(gray, 88)
+        video
+            top 50%
+            transform translateY(-50%)
 .play-mobile
     position absolute
     top 50%

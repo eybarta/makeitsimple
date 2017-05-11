@@ -27,8 +27,8 @@ export const PagesData = [
                         text: 'The 12° conical connection creates an ultimate seal.'
                     },
                     {
-                        title: 4,
-                        text: '4 different placement tools are specifically designed to enable a reliable procedure.'
+                        title: 1,
+                        text: 'One consistent concave emergence profile for the entire prosthetic line.'
                     }
                 ]
             },
