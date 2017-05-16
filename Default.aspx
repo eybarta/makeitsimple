@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>MIS | Make It Simple</title>
-     <link rel="icon" href="favicon2.ico" sizes="16x16">
+     <link rel="icon" href="/dist/img/favicon.ico" sizes="16x16">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!--<link rel="stylesheet" href="./dist/css/aos.css">-->
     <link rel="stylesheet" href="/dist/css/style.css?<%= new Random().Next(0,10000).ToString() %>">

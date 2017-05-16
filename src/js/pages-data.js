@@ -96,7 +96,7 @@ export const PagesData = [
                                 href: 'http://www.mis-implants.com/Media/Movies/Products.aspx#37532'
                             },
                             {
-                                txt: 'VCONCEPT Movie',
+                                txt: 'Creativity Goes Unbound...',
                                 href: 'http://www.mis-implants.com/Media/Movies/Products.aspx#43079'
                             }
                         ]
@@ -120,14 +120,14 @@ export const PagesData = [
                         },
                         links: [
                             {
-                                txt: 'VCONCEPT Clinical Cases',
+                                txt: 'V3 Clinical Cases',
                                 href: 'http://www.mis-implants.com/Media/Printed-Materials/Products.aspx#43709',
                                 pdf: 'http://www.mis-implants.com/upload/PDF/Research/VCONCEPT_Clinical_Cases_(MC-SS007)_Rev2.pdf'
                             },
                             {
-                                txt: 'VCONCEPT Magazine',
-                                href: 'http://www.mis-implants.com/Media/Printed-Materials/General%20.aspx#48338',
-                                pdf: 'http://www.mis-implants.com/upload/PDF/market/MIS_Magazine_2016_(MC-MMAG5)_Rev4.pdf'
+                                txt: 'V3 Magazine',
+                                href: 'http://www.mis-implants.com/Media/Printed-Materials/General%20.aspx#37487',
+                                pdf: 'http://www.mis-implants.com/upload/PDF/MNEWS_V3_(MC-MMAG5)_Rev3.pdf'
                             }
                         ]
                     },

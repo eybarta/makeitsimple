@@ -43,6 +43,7 @@ import jQuery from 'jquery'
 		var winCX;
 		var winCY;
 		var currentIndex;
+		var playcount = 0;
 
 		plugin.init = function () {
 			plugin.settings = $.extend({}, defaults, options);
@@ -77,6 +78,8 @@ import jQuery from 'jquery'
 		    vContext.beginPath();
 		    vContext.arc(cWidth / 2, cHeight / 2, pathRadius, 0, 2*Math.PI);
 		    vContext.stroke();
+
+			$(vController).on('stoppedvid', resetVideoPlayer);
             /*
 		    $("#vgalNext").mousedown(function (event) {
 		        var nIndex = currentIndex + 1;
@@ -89,8 +92,8 @@ import jQuery from 'jquery'
 		        window.location.hash = "Videos/" + nIndex;
 		    });
             */
-			var playcount = 0;
 		    $(vController).mousedown(function (event) {
+				console.log("MOUSEDOWN FROM VCONTOLLER ??", playcount, $(video)[0].paused);
 				if (playcount<1) {
 					plugin.playVideoByURL(plugin.settings.videoUrl);
 		            $(video)[0].play();
@@ -108,7 +111,11 @@ import jQuery from 'jquery'
 		    });
 		    $(window).mousemove(function (event) {
 
-		        lastMouseX = event.pageX;
+		        updateControls();
+		    });
+		}
+		var updateControls = function() {
+			lastMouseX = event.pageX;
 		        lastMouseY = event.pageY;
 		        var dX = Math.abs(lastMouseX - winCX);
 		        var dY = Math.abs(lastMouseY - winCY);
@@ -123,6 +130,7 @@ import jQuery from 'jquery'
 		        }
                 */
 
+				console.log("FROM MOVE .. ", _isControlsActive);
 
 		        if (!_isControlsActive)
 		        {
@@ -162,9 +170,11 @@ import jQuery from 'jquery'
 		                }
 		            }, 2000);
 		        }
-		    });
 		}
-
+		var resetVideoPlayer = function() {
+			console.log('reset vid player');
+			playcount = 0;
+		}
 		var resizeHandler = function ()
 		{
 		    winWidth = $(window).width();
@@ -244,7 +254,7 @@ import jQuery from 'jquery'
 		var isVideoControlsVisible = false;
 
 		var isFirstVideo = true;
-
+		var playcount = 0;
 		var updatePlayPauseMode = function()
 		{
 		    if ($(video)[0].paused) {
@@ -255,6 +265,8 @@ import jQuery from 'jquery'
 		}
 
 		var loadVideo = function () {
+			console.log("LOAD VIDEO>> ", playcount);
+			playcount++;
 		    var vURL = _currentVideoURL;
 		    if (isFirstVideo) {
 		        $(video).bind("timeupdate", onVideoUpdateTime);
@@ -281,6 +293,7 @@ import jQuery from 'jquery'
 
 		    updatePlayPauseMode();
 		    isFirstVideo = false;
+			updateControls();
 		}
 
 		var setLayout = function () {

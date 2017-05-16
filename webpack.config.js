@@ -17,8 +17,10 @@ const normalize = path.resolve(__dirname, './node_modules/css-reset-and-normaliz
 const rupture = require('rupture');
 const poststylus = require('poststylus');
 
+var BitBarWebpackProgressPlugin = require("bitbar-webpack-progress-plugin");
 // Common plugins
 const plugins = [
+    new BitBarWebpackProgressPlugin(),
     new HappyPack({
         id: 'js',
         threads: 4,

@@ -25,7 +25,7 @@
 		var handleVal;      var durationVal;            var winCY;
 		var vController; var dragger; var Btn360;var BtnFS;
 		var _isHpDKSoundOn = true;
-
+		var isActiveTimer = 0;
 		plugin.init = function () {
 			plugin.settings = $.extend({}, defaults, options);
 			initLayout();
@@ -100,13 +100,27 @@
 		    $("#hpvSoundBtn").mousedown(function (event) {
 		        dtToggleVideoSound();
 		    });
-
+			
 		    $(window).mousemove(function (event) {
+				showControlsMode("normal");
+				$(vController).css("opacity", "1");
 		        //var msg = event.pageX + ", " + event.pageY + " " + isVideoControlsVisible;
 		        lastMouseX = event.pageX;
 		        lastMouseY = event.pageY;
 		        updateControlsByMousePos();
 		    });
+			
+
+			isActiveTimer = setInterval(function() {
+				if (!!_hpvControlsActive)
+		    	{
+					updateControlsByMousePos();
+					clearInterval(isActiveTimer);
+				}
+			}, 200)
+			setTimeout(function() {
+				clearInterval(isActiveTimer);
+			}, 3000)
 		}
 
 		plugin.updateVRControls = function () { updateVRControls(); }
@@ -127,6 +141,7 @@
 
 		var updateControlsByMousePos = function()
 		{
+			console.log('updateControlsByMousePos >> ');
 		    var dX = Math.abs(lastMouseX - winCX);
 		    var dY = Math.abs(lastMouseY - winCY);
 
@@ -148,10 +163,12 @@
 		        hideControlsDelay = setTimeout(function () {
 		            if (!isDraggingHandle) {
 		                var md = getMouseDistanceFromCenter();
-		                if (md.dX > 350 || md.dY > 350) {
+		                // if (md.dX > 350 || md.dY > 350) {
 		                    isVideoControlsVisible = false;
 		                    showControlsMode("none");
-		                }
+							$(vController).css("opacity", "0");
+
+		                // }
 		            }
 		        }, 2000);
 		    }
@@ -214,6 +231,7 @@
 
         //Touch device support
 		var touchMove = function (e) {
+			
 		    var tX = e.originalEvent.touches[0].pageX;
 		    var tY = e.originalEvent.touches[0].pageY;
 		    var ang = getAngleBy2Points(winCX, winCY, tX, tY);
