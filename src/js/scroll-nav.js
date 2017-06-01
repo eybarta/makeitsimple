@@ -122,7 +122,7 @@ function handleHeaderOnScroll() {
     let scrolltop = $(window).scrollTop();
     if (scrolltop<5) {
         scrollstart = true;
-        if ($("#intro").hasClass('play')) {
+        if (!!$("#introvideo").length) {
             header.el.hide();
         }
         $('#intro').removeClass('playoverlay');
@@ -146,8 +146,10 @@ function handleHeaderOnScroll() {
         }
         if (scrolltop>499) {
             $("#intro").removeClass('stick').removeClass('playoverlay')
-            // closeIntroVideo();
-            header.el.show();
+            if(!$("#introvideo")) {
+                header.el.show();
+            }
+            
         }
         
         

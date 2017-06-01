@@ -59,7 +59,6 @@
 		    vgalRingCanvas =    document.getElementById("hpvRingCanvas");
 		    vController =       $(element).find(".hpvController");
 		    dragger =           document.getElementById("hpvDragger");
-
 		    //if (isIOS()) {
 		        $(handle2).hide(); //remove full screen anyway
 		    //}
@@ -103,7 +102,10 @@
 			
 		    $(window).mousemove(function (event) {
 				showControlsMode("normal");
-				$(vController).css("opacity", "1");
+				$(vController).find("*").css("opacity", "1");
+				$(window.parent.parent.documentElement).css('cursor', '');
+				$("html, body, body *").css('cursor', '');
+				$(vController).css('cursor', 'pointer');
 		        //var msg = event.pageX + ", " + event.pageY + " " + isVideoControlsVisible;
 		        lastMouseX = event.pageX;
 		        lastMouseY = event.pageY;
@@ -166,8 +168,18 @@
 		                // if (md.dX > 350 || md.dY > 350) {
 		                    isVideoControlsVisible = false;
 		                    showControlsMode("none");
-							$(vController).css("opacity", "0");
+							$(vController).children("*").not("#btnFs, .hpvHandle2, .hpvBtnLabel").css("opacity", "0");
 
+							var parentdoc = window.parent.parent.document;
+							console.log('parentdoc >> ', parentdoc);
+
+							$(parentdoc.documentElement).css('cursor', 'none');
+							$(parentdoc.body).css('cursor', 'none');
+
+							$("html, body, body *").css('cursor', 'none');
+							$(vController).css('cursor', 'none');
+
+							// $(window).trigger('mousemove');
 		                // }
 		            }
 		        }, 2000);

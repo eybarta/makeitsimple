@@ -23,7 +23,7 @@
                 </li>
             </ul>
         </div>
-        <div v-if="!!image" class="bottom-graphic" :style="'background-image:url('+image+')'"></div>
+        <div v-if="!!image" :class="['bottom-graphic', /technology/gi.test(image) ? 'bigger' : '']" :style="'background-image:url('+image+')'"></div>
     </div>
 </template>
 <script>

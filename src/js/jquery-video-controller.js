@@ -141,6 +141,7 @@ import jQuery from 'jquery'
 		            $(vController).css("display", "initial");
 		            //console.log(msg);
 		            $(vController).css("opacity", "1");
+					$(".cinema *").css('cursor', '');
 		            //$("#vgalNext").css("opacity", "");
 		            //$("#vgalPre").css("opacity", "");
 		            //$("#vgalCloseLayer").css("opacity", "");
@@ -163,6 +164,7 @@ import jQuery from 'jquery'
 		                    // {
 		                        isVideoControlsVisible = false;
 		                        $(vController).css("opacity", "0");
+								$(".cinema *").css('cursor', 'none');
 		                        //$("#vgalNext").css("opacity", "0");
 		                        //$("#vgalPre").css("opacity", "0");
 		                        //$("#vgalCloseLayer").css("opacity", "0");

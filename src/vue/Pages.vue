@@ -68,5 +68,7 @@ export default {
     .swiper-slide:last-child
         .bottom-graphic
             padding-bottom 20%
-
+    .bottom-graphic.bigger
+        padding-bottom 20%
+    
 </style>

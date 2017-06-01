@@ -15,6 +15,7 @@ function dynamicPagePropsFn(route) {
             introBg:pageObj.introBg,
             introFloatingElement:pageObj.introFloatingElement,
             introVideo: pageObj.introVideo,
+            introMobileVideo: pageObj.introMobileVideo,
             infoblock:pageObj.infoblock,
             outblock:pageObj.outblock,
             infoblock2:pageObj.infoblock2

@@ -20,7 +20,7 @@
                 <video v-show="!hidden" ref="vid" id="video1" class="" preload="auto" style="position:relative; width: 100%;" :muted="isMuted"></video>
             </div>
             <div v-else class="video-mobile">
-                <button @click="playvid($event)" :class="['play-mobile', $route.params.pageid==='More_with_less' ? 'hidden' : '']"><img src="./assets/play-mobile.svg"></button>
+                <button v-if="showMobilePlayButton" @click="playvid($event)" :class="['play-mobile', $route.params.pageid==='More_with_less' ? 'hidden' : '']"><img src="./assets/play-mobile.svg"></button>
                 <video v-show="!hidden && !!playing" ref="vid" id="video1" class="" preload="auto" style="position:relative; width: 100%;" :muted="isMuted"></video>
             </div>
         </div>
@@ -43,6 +43,7 @@ export default {
             hidden: true,
             playing:false,
             isMuted: false
+            
         }
     },
     mounted() {
@@ -52,6 +53,11 @@ export default {
         }
         
       
+    },
+    computed: {
+        showMobilePlayButton() {
+            return !!this.mobile && this.$route.params.pageid!="Technology_taken_to_the_limits";
+        }
     },
     methods: {
         init() {
